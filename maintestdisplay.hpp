@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "lib/DLLoader.hpp"
 
 class Sprite {
     public:

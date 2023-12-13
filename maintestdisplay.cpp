@@ -31,7 +31,7 @@ void Sprite::animateSprite(int frameCount, int frameToBegin, int numberFrameToAn
 
     // Définir la région de texture à afficher
     sf::IntRect textureRect(frameWidth * (frameToBegin - 1 + frameIndex), top, frameWidth, bottom);
-    
+
     _Sprite.setTextureRect(textureRect);
     if (frameIndex == frameCount - 1) {
         if (_EndAnimation == false)
@@ -47,6 +47,12 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
     sf::Clock clock;
     Sprite explosion("sprites/r-typesheet44.gif");
+
+    DLLoader loader("../test_lib_r_type.so");
+
+    IGame *game = loader.getInstance("create");
+
+    game->run();
 
     while (window.isOpen())
     {
