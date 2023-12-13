@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.26)
+cmake_minimum_required(VERSION 3.25)
 project(bootstrap)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -9,3 +9,12 @@ add_executable(bootstrap
         GameEngine.hpp
         maintestdisplay.cpp)
 target_link_libraries(bootstrap sfml-graphics sfml-audio)
+
+add_library(test_lib_r_type SHARED
+        lib/r_type/RType.cpp
+        lib/r_type/RType.hpp)
+target_compile_options(test_lib_r_type PRIVATE -fPIC)
+
+set_target_properties(test_lib_r_type PROPERTIES PREFIX "" SUFFIX .so LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
+
+
