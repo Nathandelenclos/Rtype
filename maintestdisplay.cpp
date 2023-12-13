@@ -4,37 +4,49 @@
 
 #include "maintestdisplay.hpp"
 
-Sprite::Sprite(std::string path) {
+Sprite::Sprite(std::string path, int animationLimit) {
     if (!_Texture.loadFromFile(path)) {
         // Gestion de l'erreur si le chargement de la texture échoue
     } else {
         _Sprite.setTexture(_Texture);
+        _AnimationLimit = animationLimit;
+        _NumberAnimation = 0;
+        _EndAnimation = false;
     }
 }
 
-void Sprite::animateSprite(int frameCount, int animationStop, float switchTime, int top, int bottom, sf::Clock clock, sf::RenderWindow& window) {
+void Sprite::animateSprite(int frameCount, int frameToBegin, int numberFrameToAnim, float switchTime, int top, int bottom, sf::Clock clock, sf::RenderWindow& window) {
+    if (_AnimationLimit != -1 && _NumberAnimation >= _AnimationLimit)
+        return;
     // Calculer la largeur de chaque frame
     int frameWidth = _Texture.getSize().x / frameCount;
 
     // Calculer le temps écoulé depuis le début de l'animation
     float time = clock.getElapsedTime().asSeconds();
 
-    frameCount = animationStop;
+    frameCount = numberFrameToAnim;
 
     // Calculer l'indice de la frame actuelle
     int frameIndex = static_cast<int>(int((time / switchTime)) % frameCount);
 
     // Définir la région de texture à afficher
-    sf::IntRect textureRect(frameIndex * frameWidth, top, frameWidth, bottom);
+    sf::IntRect textureRect(frameWidth * (frameToBegin - 1 + frameIndex), top, frameWidth, bottom);
     
     _Sprite.setTextureRect(textureRect);
+    if (frameIndex == frameCount - 1) {
+        if (_EndAnimation == false)
+            _NumberAnimation++;
+        _EndAnimation = true;
+    } else {
+        _EndAnimation = false;
+    }
 }
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
     sf::Clock clock;
-    Sprite explosion("sprites/r-typesheet44.gif");
+    Sprite explosion("sprites/r-typesheet44.gif", 2);
 
     while (window.isOpen())
     {
@@ -45,7 +57,7 @@ int main()
         }
 
         window.clear();
-        explosion.animateSprite(10, 10, 0.1, 98, explosion.getSizeY(), clock, window);
+        explosion.animateSprite(10, 6, 5, 0.3, 98, explosion.getSizeY(), clock, window);
         explosion.drawSprite(window);
         window.display();
     }
