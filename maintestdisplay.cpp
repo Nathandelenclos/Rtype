@@ -12,7 +12,7 @@ Sprite::Sprite(std::string path) {
     }
 }
 
-void Sprite::animateSprite(int frameCount, int animationStop, float switchTime, int top, sf::Clock clock, sf::RenderWindow& window) {
+void Sprite::animateSprite(int frameCount, int animationStop, float switchTime, int top, int bottom, sf::Clock clock, sf::RenderWindow& window) {
     // Calculer la largeur de chaque frame
     int frameWidth = _Texture.getSize().x / frameCount;
 
@@ -25,13 +25,9 @@ void Sprite::animateSprite(int frameCount, int animationStop, float switchTime, 
     int frameIndex = static_cast<int>(int((time / switchTime)) % frameCount);
 
     // Définir la région de texture à afficher
-    sf::IntRect textureRect(frameIndex * frameWidth, top, frameWidth, _Texture.getSize().y);
+    sf::IntRect textureRect(frameIndex * frameWidth, top, frameWidth, bottom);
     
     _Sprite.setTextureRect(textureRect);
-}
-
-void Sprite::drawSprite(sf::RenderWindow& window) {
-    window.draw(_Sprite);
 }
 
 int main()
@@ -49,7 +45,7 @@ int main()
         }
 
         window.clear();
-        explosion.animateSprite(10, 10, 0.1, 98, clock, window);
+        explosion.animateSprite(10, 10, 0.1, 98, explosion.getSizeY(), clock, window);
         explosion.drawSprite(window);
         window.display();
     }
