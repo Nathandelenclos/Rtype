@@ -4,6 +4,10 @@
 
 #include "maintestdisplay.hpp"
 
+#include <ranges>
+#include "ParallaxBg.hpp"
+
+
 Sprite::Sprite(std::string path, int animationLimit) {
     if (!_Texture.loadFromFile(path)) {
         // Gestion de l'erreur si le chargement de la texture échoue
@@ -31,7 +35,7 @@ void Sprite::animateSprite(int frameCount, int frameToBegin, int numberFrameToAn
 
     // Définir la région de texture à afficher
     sf::IntRect textureRect(frameWidth * (frameToBegin - 1 + frameIndex), top, frameWidth, bottom);
-    
+
     _Sprite.setTextureRect(textureRect);
     if (frameIndex == frameCount - 1) {
         if (_EndAnimation == false)
@@ -42,25 +46,64 @@ void Sprite::animateSprite(int frameCount, int frameToBegin, int numberFrameToAn
     }
 }
 
-int main()
-{
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
-    sf::Clock clock;
-    Sprite explosion("sprites/r-typesheet44.gif");
+//int main()
+//{
+//    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+//    sf::Clock clock;
+//    Sprite explosion("../sprites/r-typesheet44.gif");
+//
+//    while (window.isOpen())
+//    {
+//        sf::Event event{};
+//        while (window.pollEvent(event)) {
+//            if (event.type == sf::Event::Closed)
+//                window.close();
+//        }
+//
+//        window.clear();
+//        explosion.animateSprite(10, 6, 5, 0.1, 98, explosion.getSizeY(), clock, window);
+//        explosion.drawSprite(window);
+//        window.display();
+//    }
+//
+//    return 0;
+//}
 
-    while (window.isOpen())
-    {
+int main() {
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Parallax Example");
+
+    ParallaxBackground parallax;
+
+    // Ajoutez les couches avec des vitesses différentes
+    parallax.addLayer("../sprites/backgroud/background_1.png", 0.5f);
+    parallax.addLayer("../sprites/backgroud/background_2.png", 1.0f);
+    parallax.addLayer("../sprites/backgroud/background_3.png", 1.5f);
+    parallax.addLayer("../sprites/backgroud/background_4.png", 2.0f);
+
+    sf::Clock clock;
+
+    while (window.isOpen()) {
         sf::Event event{};
         while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed) {
                 window.close();
+            }
         }
 
+        float deltaTime = clock.restart().asSeconds();
+
+        parallax.update(deltaTime);
+
         window.clear();
-        explosion.animateSprite(10, 6, 5, 0.3, 98, explosion.getSizeY(), clock, window);
-        explosion.drawSprite(window);
+
+        // Affichez les couches dans l'ordre inverse
+        for (auto & layer : std::ranges::reverse_view(parallax.layers)) {
+            window.draw(layer._sprite);
+        }
+
         window.display();
     }
 
     return 0;
 }
+

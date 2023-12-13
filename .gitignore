@@ -6,3 +6,4 @@ CMakeCache.txt
 RType/
 test_lib_r_type.so
 r-type_server
+.DS_Store
