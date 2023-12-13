@@ -6,7 +6,7 @@
 
 class Sprite {
     public:
-        Sprite(std::string path, int animationLimit = -1);
+        Sprite(std::string path, int animationLimit = 0);
         ~Sprite() = default;
         void animateSprite(int frameCount, int frameToBegin, int numberFrameToAnim, float switchTime, int top, int bottom, sf::Clock clock, sf::RenderWindow& window);
         void drawSprite(sf::RenderWindow& window) { window.draw(_Sprite); };

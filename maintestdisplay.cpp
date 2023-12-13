@@ -16,7 +16,7 @@ Sprite::Sprite(std::string path, int animationLimit) {
 }
 
 void Sprite::animateSprite(int frameCount, int frameToBegin, int numberFrameToAnim, float switchTime, int top, int bottom, sf::Clock clock, sf::RenderWindow& window) {
-    if (_AnimationLimit != -1 && _NumberAnimation >= _AnimationLimit)
+    if (_AnimationLimit != 0 && _NumberAnimation >= _AnimationLimit)
         return;
     // Calculer la largeur de chaque frame
     int frameWidth = _Texture.getSize().x / frameCount;
@@ -46,7 +46,7 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
     sf::Clock clock;
-    Sprite explosion("sprites/r-typesheet44.gif", 2);
+    Sprite explosion("sprites/r-typesheet44.gif");
 
     while (window.isOpen())
     {
