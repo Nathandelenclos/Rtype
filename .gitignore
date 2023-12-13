@@ -1,6 +1,5 @@
 .idea
 cmake*
-sprites/
 CMakeFiles/
 bootstrap
 CMakeCache.txt
