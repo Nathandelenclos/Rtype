@@ -1,2 +1,9 @@
 .idea
 cmake*
+sprites/
+CMakeFiles/
+bootstrap
+CMakeCache.txt
+RType/
+test_lib_r_type.so
+r-type_server
