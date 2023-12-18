@@ -32,6 +32,24 @@ void ServerSocket::send(const std::string& message) {
     }
 }
 
+void ServerSocket::addClient(struct sockaddr_in client) {
+    int id = 1;
+    while (clients.find(id) != clients.end()) {
+        id++;
+    }
+    clients[id] = client;
+}
+
+int ServerSocket::getClientId(struct sockaddr_in client) {
+    for (auto& [id, cli] : clients) {
+        if (cli.sin_addr.s_addr == client.sin_addr.s_addr && cli.sin_port == client.sin_port) {
+            return id;
+        }
+    }
+    return -1;
+}
+
+
 void ServerSocket::receive() {
     char buffer[1024] = {0};
     struct sockaddr_in cli_addr{};
@@ -39,7 +57,9 @@ void ServerSocket::receive() {
     if (recvfrom(sockfd, buffer, 1024, 0, (struct sockaddr*)&cli_addr, &len) < 0) {
         throw std::runtime_error("Failed to read from socket");
     }
-    std::cout << "Received message from " << inet_ntoa(cli_addr.sin_addr) << ":" << ntohs(cli_addr.sin_port) << std::endl;
+    addClient(cli_addr);
+    int id = getClientId(cli_addr);
+    std::cout << "Received message from " << inet_ntoa(cli_addr.sin_addr) << ":" << ntohs(cli_addr.sin_port) << " (id: " << id << ")" << std::endl;
     std::cout << "Message: " << buffer << std::endl;
     lastMessage = buffer;
     lastClientAddress = cli_addr;

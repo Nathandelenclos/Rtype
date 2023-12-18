@@ -12,6 +12,7 @@
 #include <string.h>
 #include <vector>
 #include <arpa/inet.h>
+#include <map>
 #include "../shared/USocket.hpp"
 
 class ServerSocket : public USocket {
@@ -24,15 +25,16 @@ public:
     void receive() override;
 
     void run() override;
+    void addClient(struct sockaddr_in client);
+    int getClientId(sockaddr_in client);
+
 
 private:
     int sockfd;
     struct sockaddr_in serv_addr;
     std::string lastMessage;
-    // store clients
-    std::vector<struct sockaddr_in> clients;
+    std::map<int, struct sockaddr_in> clients;
     struct sockaddr_in lastClientAddress;
-
 };
 
 #endif //R_TYPE_SERVER_SERVERSOCKET_HPP
