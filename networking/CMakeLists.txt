@@ -10,3 +10,9 @@ add_executable(r-type_server_network
         server/ServerSocket.hpp
         server/main.cpp
 )
+
+add_executable(r-type_client_network
+        shared/USocket.hpp
+        client/ClientSocket.cpp
+        client/ClientSocket.hpp
+        client/main.cpp)
