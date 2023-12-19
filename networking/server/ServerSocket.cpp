@@ -26,8 +26,8 @@ void ServerSocket::init_server(std::string ip, int port) {
     }
 }
 
-void ServerSocket::send(const std::string& message) {
-    if (sendto(sockfd, message.c_str(), message.size(), 0, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0) {
+void ServerSocket::send(const std::string& message, struct sockaddr_in client) {
+    if (sendto(sockfd, message.c_str(), message.size(), 0, (struct sockaddr*)&client, sizeof(client)) < 0) {
         throw std::runtime_error("Failed to send message");
     }
 }
@@ -63,13 +63,14 @@ void ServerSocket::receive() {
     std::cout << "Message: " << buffer << std::endl;
     lastMessage = buffer;
     lastClientAddress = cli_addr;
+    send("received", cli_addr);
 }
 
 void ServerSocket::run() {
     while (true) {
         receive();
         if (lastMessage == "ping") {
-            send("pong");
+            send("pong", lastClientAddress);
         }
         if (lastMessage == "exit")
             break;

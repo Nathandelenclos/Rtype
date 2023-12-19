@@ -21,7 +21,7 @@ public:
     ~ServerSocket();
 
     void init_server(std::string ip, int port);
-    void send(const std::string& message) override;
+    void send(const std::string& message, struct sockaddr_in dest) override;
     void receive() override;
 
     void run() override;
