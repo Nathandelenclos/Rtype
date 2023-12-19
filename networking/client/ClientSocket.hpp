@@ -6,16 +6,13 @@
 #define R_TYPE_SERVER_CLIENTSOCKET_HPP
 
 #include <string>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <unistd.h>
-#include <string.h>
+#include <cstring>
 #include "../shared/USocket.hpp"
 
 class ClientSocket : public USocket {
 public:
     ClientSocket();
-    ~ClientSocket();
+    ~ClientSocket() override;
 
     void init_client(std::string ip, int port);
     void send(const std::string& message, struct sockaddr_in dest) override;

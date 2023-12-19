@@ -6,10 +6,16 @@
 #define R_TYPE_SERVER_USOCKET_HPP
 
 #include <string>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
+
+#ifdef _WIN32
+    #include <winsock2.h>
+    #include <ws2tcpip.h>
+#elif defined(__unix__) || defined(__linux__)
+    #include <sys/socket.h>
+    #include <netinet/in.h>
+    #include <arpa/inet.h>
+    #include <unistd.h>
+#endif
 
 
 class USocket {

@@ -6,19 +6,15 @@
 #define R_TYPE_SERVER_SERVERSOCKET_HPP
 
 #include <string>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <unistd.h>
-#include <string.h>
+#include <cstring>
 #include <vector>
-#include <arpa/inet.h>
 #include <map>
 #include "../shared/USocket.hpp"
 
 class ServerSocket : public USocket {
 public:
     ServerSocket();
-    ~ServerSocket();
+    ~ServerSocket() override;
 
     void init_server(std::string ip, int port);
     void send(const std::string& message, struct sockaddr_in dest) override;
@@ -30,11 +26,11 @@ public:
 
 
 private:
-    int sockfd;
-    struct sockaddr_in serv_addr;
+    unsigned long long sockfd;
+    struct sockaddr_in serv_addr{};
     std::string lastMessage;
     std::map<int, struct sockaddr_in> clients;
-    struct sockaddr_in lastClientAddress;
+    struct sockaddr_in lastClientAddress{};
 };
 
 #endif //R_TYPE_SERVER_SERVERSOCKET_HPP

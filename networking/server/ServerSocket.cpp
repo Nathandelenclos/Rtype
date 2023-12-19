@@ -3,15 +3,37 @@
 #include <iostream>
 
 ServerSocket::ServerSocket() {
-    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-    if (sockfd < 0) {
-        throw std::runtime_error("Failed to create socket");
-    }
+    std::cout << "ServerSocket constructor" << std::endl;
+
+    #ifdef _WIN32
+        WSADATA wsaData;
+        if (WSAStartup(MAKEWORD(2,2), &wsaData) != 0) {
+            std::cout << "WSAStartup failed: " << WSAGetLastError() << std::endl;
+            throw std::runtime_error("Failed to initialize Winsock");
+        }
+        sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+        if (sockfd == INVALID_SOCKET) {
+            std::cout << "Error at socket(): " << WSAGetLastError() << std::endl;
+            WSACleanup();
+            throw std::runtime_error("Failed to create socket");
+        }
+    #elif defined(__unix__) || defined(__unix__)
+        sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+        if (sockfd < 0) {
+            std::cout << "Error sockfd < 0 sockfd : " << sockfd << std::endl;
+            throw std::runtime_error("Failed to create socket");
+        }
+    #endif
+
     std::cout << "Socket created successfully (fd: " << sockfd << ")" << std::endl;
 }
 
 ServerSocket::~ServerSocket() {
-    close(sockfd);
+    #ifdef _WIN32
+        closesocket(sockfd);
+    #elif defined(__unix__) || defined(__unix__)
+        close(sockfd);
+    #endif
 }
 
 void ServerSocket::init_server(std::string ip, int port) {
