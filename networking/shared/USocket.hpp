@@ -16,7 +16,7 @@ class USocket {
 public:
     virtual ~USocket() = default;
 
-    virtual void send(const std::string& message) = 0;
+    virtual void send(const std::string& message, struct sockaddr_in dest) = 0;
     virtual void receive() = 0;
 
     virtual void run() = 0;
