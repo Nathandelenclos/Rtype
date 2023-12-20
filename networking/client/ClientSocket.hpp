@@ -20,10 +20,15 @@ public:
 
     void run() override;
 
+    void listen_server();
+    void init_fd_set();
+
 private:
     int sockfd;
     struct sockaddr_in serv_addr;
     std::string lastMessage;
+    fd_set _readfds;
+    bool loop;
 };
 
 #endif //R_TYPE_SERVER_CLIENTSOCKET_HPP

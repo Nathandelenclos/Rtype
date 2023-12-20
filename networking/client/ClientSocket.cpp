@@ -29,6 +29,8 @@ ClientSocket::ClientSocket() {
         }
     #endif
 
+    loop = true;
+
     std::cout << "Socket created successfully (fd: " << sockfd << ")" << std::endl;
 }
 
@@ -73,14 +75,40 @@ void ClientSocket::receive() {
 }
 
 void ClientSocket::run() {
-    while (true) {
+    while (loop) {
         std::string message;
-        std::cout << "Enter message: ";
-        std::getline(std::cin, message);
-        send(message, serv_addr);
-        receive();
+        init_fd_set();
+        listen_server();
         if (lastMessage == "exit") {
             break;
         }
     }
+}
+
+void ClientSocket::listen_server() {
+    int action = select(FD_SETSIZE, &_readfds, nullptr, nullptr, nullptr);
+
+    if (action == -1) {
+        throw std::runtime_error("Error: select failed");
+    } else if (action == 0) {
+        throw std::runtime_error("Error: select timeout");
+    } else {
+        if (FD_ISSET(STDIN_FILENO, &_readfds)) {
+            std::string message;
+            if (!std::getline(std::cin, message)) {
+                loop = false;
+                return;
+            }
+            send(message, serv_addr);
+        }
+        if (FD_ISSET(sockfd, &_readfds)) {
+            receive();
+        }
+    }
+}
+
+void ClientSocket::init_fd_set() {
+    FD_ZERO(&_readfds);
+    FD_SET(STDIN_FILENO, &_readfds);
+    FD_SET(sockfd, &_readfds);
 }
