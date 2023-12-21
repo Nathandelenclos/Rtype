@@ -21,6 +21,11 @@ ClientSocket::ClientSocket() {
             WSACleanup();
             throw std::runtime_error("Failed to create socket");
         }
+        std::cout << "Init timeout" << std::endl;
+        timeout = std::make_unique<struct timeval>();
+        timeout->tv_sec = 0;
+        timeout->tv_usec = 1;
+        std::cout << "Init timeout done" << std::endl;
     #elif defined(__unix__) || defined(__unix__)
         sockfd = socket(AF_INET, SOCK_DGRAM, 0);
         if (sockfd < 0) {
@@ -52,6 +57,8 @@ void ClientSocket::init_client(std::string ip, int port) {
 }
 
 void ClientSocket::send(const std::string& message, struct sockaddr_in dest) {
+    std::cout << "ClientSocket send" << std::endl;
+    std::cout << "message: " << message << std::endl;
     if (sendto(sockfd, message.c_str(), message.size(), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
         throw std::runtime_error("Failed to send message");
     }
@@ -74,25 +81,67 @@ void ClientSocket::receive() {
     lastMessage = buffer;
 }
 
-void ClientSocket::run() {
-    while (loop) {
-        std::string message;
-        init_fd_set();
-        listen_server();
-        if (lastMessage == "exit") {
-            break;
+#ifdef _WIN32
+    void ClientSocket::read_input() {
+        while (loop) {
+            std::string message;
+            std::getline(std::cin, message);
+            {
+                std::lock_guard<std::mutex> lock(mtx);
+                input = message;
+            }
         }
     }
+#endif
+
+void ClientSocket::run() {
+    std::cout << "ClientSocket run" << std::endl;
+    #ifdef _WIN32
+        inputThread = std::thread(&ClientSocket::read_input, this);
+
+        while (loop) {
+            init_fd_set();
+            std::string message;
+            {
+                std::lock_guard<std::mutex> lock(mtx);
+                if (!input.empty()) {
+                    message = input;
+                    input.clear();
+                }
+            }
+            if (!message.empty()) {
+                send(message, serv_addr);
+            }
+            if (FD_ISSET(sockfd, &_readfds)) {
+                if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) > 0) {
+                    receive();
+                }
+            }
+
+        }
+
+        inputThread.join();
+    #elif defined(__unix__) || defined(__unix__)
+        while (loop) {
+            init_fd_set();
+            listen_server();
+            if (lastMessage == "exit") {
+                break;
+            }
+        }
+    #endif
 }
 
 void ClientSocket::listen_server() {
+    std::cout << "listen_server" << std::endl;
     int action = select(FD_SETSIZE, &_readfds, nullptr, nullptr, nullptr);
-
+    std::cout << "action: " << action << std::endl;
     if (action == -1) {
         throw std::runtime_error("Error: select failed");
     } else if (action == 0) {
         throw std::runtime_error("Error: select timeout");
     } else {
+        std::cout << "FD_ISSET(STDIN_FILENO, &_readfds): " << FD_ISSET(STDIN_FILENO, &_readfds) << std::endl;
         if (FD_ISSET(STDIN_FILENO, &_readfds)) {
             std::string message;
             if (!std::getline(std::cin, message)) {
@@ -109,6 +158,8 @@ void ClientSocket::listen_server() {
 
 void ClientSocket::init_fd_set() {
     FD_ZERO(&_readfds);
-    FD_SET(STDIN_FILENO, &_readfds);
+    #ifndef _WIN32
+        FD_SET(STDIN_FILENO, &_readfds);
+    #endif
     FD_SET(sockfd, &_readfds);
 }

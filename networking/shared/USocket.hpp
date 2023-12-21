@@ -10,6 +10,8 @@
 #ifdef _WIN32
     #include <winsock2.h>
     #include <ws2tcpip.h>
+
+    #define STDIN_FILENO 0
 #elif defined(__unix__) || defined(__linux__)
     #include <sys/socket.h>
     #include <netinet/in.h>
