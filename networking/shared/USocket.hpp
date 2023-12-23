@@ -19,6 +19,18 @@
     #include <unistd.h>
 #endif
 
+typedef enum code {
+    EVENT,
+    MESSAGE,
+    LOGIN,
+    LOGOUT
+} CODE;
+
+typedef struct packet {
+    CODE code;
+    int data_size;
+    void *data;
+} Packet;
 
 class USocket {
 public:
