@@ -9,6 +9,7 @@
 #include <cstring>
 #include <vector>
 #include <map>
+#include <memory>
 #include "../shared/USocket.hpp"
 
 class ServerSocket : public USocket {
@@ -17,7 +18,7 @@ public:
     ~ServerSocket() override;
 
     void init_server(std::string ip, int port);
-    void send(const std::string& message, struct sockaddr_in dest) override;
+    void send(Packet *packet, struct sockaddr_in dest) override;
     void receive() override;
 
     void run() override;

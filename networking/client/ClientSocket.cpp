@@ -56,29 +56,56 @@ void ClientSocket::init_client(std::string ip, int port) {
     }
 }
 
-void ClientSocket::send(const std::string& message, struct sockaddr_in dest) {
+void ClientSocket::send(Packet *packet, struct sockaddr_in dest) {
     std::cout << "ClientSocket send" << std::endl;
-    std::cout << "message: " << message << std::endl;
-    if (sendto(sockfd, message.c_str(), message.size(), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
+    if (sendto(sockfd, reinterpret_cast<const char *>(&packet->code), sizeof(int), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
+        throw std::runtime_error("Failed to send message");
+    }
+    if (sendto(sockfd, reinterpret_cast<const char *>(&packet->data_size), sizeof(int), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
+        throw std::runtime_error("Failed to send message");
+    }
+    if (sendto(sockfd, reinterpret_cast<const char *>(packet->data), packet->data_size, 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
         throw std::runtime_error("Failed to send message");
     }
 }
 
 void ClientSocket::receive() {
-    char buffer[1024] = {0};
-    struct sockaddr_in cli_addr{};
-    socklen_t len = sizeof(cli_addr);
-    if (recvfrom(sockfd, buffer, 1024, 0, (struct sockaddr*)&cli_addr, &len) < 0) {
+    Packet packet{};
+    packet.code = UNDEFINED;
+    struct sockaddr_in cli_addr_code{};
+    socklen_t len_code = sizeof(cli_addr_code);
+    if (recvfrom(sockfd, reinterpret_cast<char *>(&packet.code), sizeof(int), 0, (struct sockaddr*)&cli_addr_code, &len_code) < 0) {
         throw std::runtime_error("Failed to read from socket");
     }
-    std::string message = buffer;
+    if (packet.code == UNDEFINED) {
+        throw std::runtime_error("Failed to read from socket");
+    }
+    struct sockaddr_in cli_addr_size{};
+    socklen_t len_size = sizeof(cli_addr_size);
+    if (recvfrom(sockfd, reinterpret_cast<char *>(&packet.data_size), sizeof(int), 0, (struct sockaddr*)&cli_addr_size, &len_size) < 0) {
+        throw std::runtime_error("Failed to read from socket");
+    }
+    if (cli_addr_size.sin_addr.s_addr != cli_addr_code.sin_addr.s_addr || cli_addr_size.sin_port != cli_addr_code.sin_port) {
+        throw std::runtime_error("Failed to read from socket");
+    }
+    packet.data = malloc(packet.data_size + 1);
+    memset(packet.data, 0, packet.data_size + 1);
+    struct sockaddr_in cli_addr_data{};
+    socklen_t len_data = sizeof(cli_addr_data);
+    char *buffer = static_cast<char *>(malloc(packet.data_size + 1));
+    memset(buffer, 0, packet.data_size + 1);
+    if (recvfrom(sockfd, buffer, packet.data_size, 0, (struct sockaddr*)&cli_addr_data, &len_data) < 0) {
+        throw std::runtime_error("Failed to read from socket");
+    }
+    memcpy(packet.data, buffer, packet.data_size);
+    std::string message = reinterpret_cast<char *>(packet.data);
     if (message == "received") {
-        std::cout << "(Ghost Mode) Received message from " << inet_ntoa(cli_addr.sin_addr) << ":" << ntohs(cli_addr.sin_port) << std::endl;
+        std::cout << "(Ghost Mode) Received message from " << inet_ntoa(cli_addr_data.sin_addr) << ":" << ntohs(cli_addr_data.sin_port) << std::endl;
         return;
     }
-    std::cout << "Received message from " << inet_ntoa(cli_addr.sin_addr) << ":" << ntohs(cli_addr.sin_port) << std::endl;
-    std::cout << "Message: " << buffer << std::endl;
-    lastMessage = buffer;
+    std::cout << "Received message from " << inet_ntoa(cli_addr_data.sin_addr) << ":" << ntohs(cli_addr_data.sin_port) << std::endl;
+    std::cout << "Message: " << message << std::endl;
+    lastMessage = message;
 }
 
 #ifdef _WIN32
@@ -110,7 +137,12 @@ void ClientSocket::run() {
                 }
             }
             if (!message.empty()) {
-                send(message, serv_addr);
+                std::unique_ptr<Packet> packet = std::make_unique<Packet>();
+                packet->code = MESSAGE;
+                packet->data_size = message.size();
+                packet->data = malloc(packet->data_size);
+                memcpy(packet->data, message.c_str(), packet->data_size);
+                send(packet.get(), serv_addr);
             }
             if (FD_ISSET(sockfd, &_readfds)) {
                 if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) > 0) {
@@ -148,7 +180,12 @@ void ClientSocket::listen_server() {
                 loop = false;
                 return;
             }
-            send(message, serv_addr);
+            std::unique_ptr<Packet> packet = std::make_unique<Packet>();
+            packet->code = MESSAGE;
+            packet->data_size = message.size();
+            packet->data = malloc(packet->data_size);
+            memcpy(packet->data, message.c_str(), packet->data_size);
+            send(packet.get(), serv_addr);
         }
         if (FD_ISSET(sockfd, &_readfds)) {
             receive();

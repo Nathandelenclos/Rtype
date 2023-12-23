@@ -17,7 +17,7 @@ public:
     ~ClientSocket() override;
 
     void init_client(std::string ip, int port);
-    void send(const std::string& message, struct sockaddr_in dest) override;
+    void send(Packet *packet, struct sockaddr_in dest) override;
     void receive() override;
 
     void run() override;
