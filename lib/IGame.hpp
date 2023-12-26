@@ -1,14 +1,14 @@
-//
-// Created by talleux on 12/13/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** RType
+** File description:
+** IGame.cpp
+*/
 
-#ifndef BOOTSTRAP_IGAME_HPP
-#define BOOTSTRAP_IGAME_HPP
+#pragma once
 
 class IGame {
 public:
     virtual ~IGame() = default;
     virtual void run() = 0;
 };
-
-#endif //BOOTSTRAP_IGAME_HPP

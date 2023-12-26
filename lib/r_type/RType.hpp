@@ -1,13 +1,14 @@
-//
-// Created by talleux on 12/13/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** RType
+** File description:
+** RType.hpp
+*/
 
-#ifndef BOOTSTRAP_RTYPE_HPP
-#define BOOTSTRAP_RTYPE_HPP
+#pragma once
 
 #include <iostream>
 #include "../IGame.hpp"
-
 
 class RType : public IGame {
 public:
@@ -23,6 +24,3 @@ public:
         std::cout << "RType::run()" << std::endl;
     }
 };
-
-
-#endif //BOOTSTRAP_RTYPE_HPP

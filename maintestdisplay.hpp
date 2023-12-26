@@ -1,5 +1,11 @@
-#ifndef MAINTESTDISPLAY_HPP
-#define MAINTESTDISPLAY_HPP
+/*
+** EPITECH PROJECT, 2023
+** RType
+** File description:
+** maintestdisplay.hpp
+*/
+
+#pragma once
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -22,5 +28,3 @@ class Sprite {
         bool _EndAnimation;
 
 };
-
-#endif // MAINTESTDISPLAY_HPP

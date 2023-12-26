@@ -1,10 +1,11 @@
-//
-// Created by talleux on 12/13/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** RType
+** File description:
+** GameEngine.hpp
+*/
 
-#ifndef BOOTSTRAP_GAMEENGINE_HPP
-#define BOOTSTRAP_GAMEENGINE_HPP
-
+#pragma once
 
 class GameEngine {
 public:
@@ -15,6 +16,3 @@ public:
     private:
 
 };
-
-
-#endif //BOOTSTRAP_GAMEENGINE_HPP

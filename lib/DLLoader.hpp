@@ -1,10 +1,11 @@
-//
-// Created by talleux on 12/13/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** RType
+** File description:
+** DLLoader.cpp
+*/
 
-#ifndef BOOTSTRAP_DLLOADER_HPP
-#define BOOTSTRAP_DLLOADER_HPP
-
+#pragma once
 
 #include <dlfcn.h>
 #include <iostream>
