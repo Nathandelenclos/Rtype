@@ -110,24 +110,11 @@ public:
     }
 };
 
-class Player : public IEntity {
-public:
-    explicit Player() {
-        components.push_back(new DrawComponent());
-    }
-    std::vector<IComponent*> getComponents() override {
-        return components;
-    }
-    void addComponent(IComponent* component) override {
-        components.push_back(component);
-    }
-    std::vector<IComponent*> components;
-};
-
 class Entity : public IEntity {
 public:
     explicit Entity() = default;
     std::vector<IComponent*> getComponents() override {
+        return components;
     }
     void addComponent(IComponent* component) override {
         components.push_back(component);
@@ -145,10 +132,8 @@ int main() {
     player.addComponent(new NameComponent("player"));
     player.addComponent(new DrawComponent());
 
-    Entity player2;
-    entities.push_back(&player2);
-
     Entity enemy;
+    entities.push_back(&enemy);
     enemy.addComponent(new NameComponent("enemy"));
     enemy.addComponent(new DrawComponent());
 
