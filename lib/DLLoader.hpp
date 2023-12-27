@@ -46,6 +46,3 @@ private:
     typedef RType* create_t();
     void* handle = nullptr;
 };
-
-
-#endif //BOOTSTRAP_DLLOADER_HPP

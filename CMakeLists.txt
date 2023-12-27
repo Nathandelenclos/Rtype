@@ -9,7 +9,6 @@ add_executable(r-type_server
         GameEngine.hpp
         maintestdisplay.cpp
         lib/IGame.hpp
-        lib/DLLoader.cpp
         lib/DLLoader.hpp)
 target_link_libraries(r-type_server sfml-graphics sfml-audio)
 
