@@ -19,7 +19,7 @@ public:
 
     void init_server(std::string ip, int port);
     void send(Packet *packet, struct sockaddr_in dest) override;
-    void receive() override;
+    std::unique_ptr<Packet> receive() override;
 
     void run() override;
     void addClient(struct sockaddr_in client);

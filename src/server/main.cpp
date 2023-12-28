@@ -18,7 +18,10 @@ int main() {
 
     serverSocket.init_server("127.0.0.1", 6969);
 
+    std::unique_ptr<Packet> packet;
+
     while (true) {
+        packet = serverSocket.receive();
         for (auto service: game->getServices()) {
             service->update(game->getObjects());
         }

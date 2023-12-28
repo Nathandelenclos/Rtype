@@ -38,7 +38,7 @@ public:
     virtual ~USocket() = default;
 
     virtual void send(Packet *packet, struct sockaddr_in dest) = 0;
-    virtual void receive() = 0;
+    virtual std::unique_ptr<Packet> receive() = 0;
 
     virtual void run() = 0;
 };
