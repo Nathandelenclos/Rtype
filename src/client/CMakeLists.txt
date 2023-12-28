@@ -10,7 +10,11 @@ add_executable(r-type_client
         networking/client/ClientSocket.cpp
         networking/client/ClientSocket.hpp
         src/client/ClientCore.cpp
-        src/client/ClientCore.hpp)
+        src/client/ClientCore.hpp
+        src/client/Scenes/IScene.hpp
+        src/client/Components/IComponent.hpp
+        Components/AComponent.cpp
+        Components/AComponent.hpp)
 target_link_libraries(r-type_client sfml-graphics sfml-audio sfml-system sfml-window)
 
 set_target_properties(r-type_client PROPERTIES EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR})
