@@ -2,13 +2,12 @@
 ** EPITECH PROJECT, 2023
 ** RType
 ** File description:
-** IGame.cpp
+** IObject.hpp
 */
 
 #pragma once
 
-class IGame {
+class IObject {
 public:
-    virtual ~IGame() = default;
-    virtual void run() = 0;
+    virtual ~IObject() = default;
 };

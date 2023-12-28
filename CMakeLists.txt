@@ -3,33 +3,19 @@ project(r-type)
 
 set(CMAKE_CXX_STANDARD 17)
 
-find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
-add_executable(r-type_server_test
-        GameEngine.cpp
-        GameEngine.hpp
-        maintestdisplay.cpp
-        lib/IGame.hpp
-        lib/DLLoader.hpp)
-target_link_libraries(r-type_server_test sfml-graphics sfml-audio)
-
-add_library(test_lib_r_type SHARED
-        lib/r_type/RType.cpp
-        lib/r_type/RType.hpp
-        lib/IGame.hpp)
-target_compile_options(test_lib_r_type PRIVATE -fPIC)
+include(src/lib/r_type/CMakeLists.txt)
 
 add_executable(r-type_server
-        GameEngine.cpp
-        GameEngine.hpp
-        server/main.cpp
-        lib/IGame.hpp
-        lib/DLLoader.hpp)
+        src/lib/IGame.hpp
+        src/lib/DLLoader.hpp
+        src/lib/IObject.hpp
+        src/lib/IService.hpp
+        src/server/main.cpp)
 
 find_package(SFML 2.5 COMPONENTS graphics audio system window REQUIRED)
 add_executable(r-type_client
-        client/main.cpp)
+        src/client/main.cpp)
 target_link_libraries(r-type_client sfml-graphics sfml-audio sfml-system sfml-window)
 
-set_target_properties(test_lib_r_type PROPERTIES PREFIX "" SUFFIX .so LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 set_target_properties(r-type_server PROPERTIES EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR})
 set_target_properties(r-type_client PROPERTIES EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR})

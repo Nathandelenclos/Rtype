@@ -27,8 +27,8 @@ public:
         }
     }
 
-    RType* getInstance(const std::string& functionName) {
-        dlerror();  // Clear any existing error
+    IGame* getInstance(const std::string& functionName) {
+        dlerror();
         create_t* create = (create_t*) dlsym(handle, functionName.c_str());
         const char* dlsym_error = dlerror();
         if (dlsym_error) {
@@ -43,6 +43,6 @@ public:
     }
 
 private:
-    typedef RType* create_t();
+    typedef IGame* create_t();
     void* handle = nullptr;
 };
