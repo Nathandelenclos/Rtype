@@ -4,6 +4,10 @@
 
 #pragma once
 
+#include <vector>
+#include <memory>
+#include "../Components/IComponent.hpp"
+
 class IScene {
     public:
         virtual ~IScene() = default;

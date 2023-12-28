@@ -15,6 +15,7 @@ class AComponent : public IComponent {
 
         [[nodiscard]] ComponentType getType() const override;
         void action() override = 0;
+        void display() override = 0;
         void addActionTarget(std::unique_ptr<IComponent> component) override;
         void addSubComponent(std::unique_ptr<IComponent> component) override;
 };
