@@ -69,7 +69,7 @@ void ClientSocket::send(Packet *packet, struct sockaddr_in dest) {
     }
 }
 
-void ClientSocket::receive() {
+std::tuple<std::unique_ptr<Packet>, int> ClientSocket::receive() {
     Packet packet{};
     packet.code = UNDEFINED;
     struct sockaddr_in cli_addr_code{};
@@ -101,11 +101,12 @@ void ClientSocket::receive() {
     std::string message = reinterpret_cast<char *>(packet.data);
     if (message == "received") {
         std::cout << "(Ghost Mode) Received message from " << inet_ntoa(cli_addr_data.sin_addr) << ":" << ntohs(cli_addr_data.sin_port) << std::endl;
-        return;
+        return std::make_tuple(nullptr, 0);
     }
     std::cout << "Received message from " << inet_ntoa(cli_addr_data.sin_addr) << ":" << ntohs(cli_addr_data.sin_port) << std::endl;
     std::cout << "Message: " << message << std::endl;
     lastMessage = message;
+    return std::make_tuple(std::make_unique<Packet>(packet), -1);
 }
 
 #ifdef _WIN32
@@ -123,6 +124,11 @@ void ClientSocket::receive() {
 
 void ClientSocket::run() {
     std::cout << "ClientSocket run" << std::endl;
+
+    std::tuple<std::unique_ptr<Packet>, int> packet_client_id;
+
+    std::unique_ptr<Packet> packet;
+
     #ifdef _WIN32
         inputThread = std::thread(&ClientSocket::read_input, this);
 
@@ -164,7 +170,7 @@ void ClientSocket::run() {
     #endif
 }
 
-void ClientSocket::listen_server() {
+std::tuple<std::unique_ptr<Packet>, int> ClientSocket::listen_server() {
     std::cout << "listen_server" << std::endl;
     int action = select(FD_SETSIZE, &_readfds, nullptr, nullptr, nullptr);
     std::cout << "action: " << action << std::endl;
@@ -178,7 +184,7 @@ void ClientSocket::listen_server() {
             std::string message;
             if (!std::getline(std::cin, message)) {
                 loop = false;
-                return;
+                return std::make_tuple(nullptr, 0);
             }
             std::unique_ptr<Packet> packet = std::make_unique<Packet>();
             packet->code = MESSAGE;
@@ -188,7 +194,7 @@ void ClientSocket::listen_server() {
             send(packet.get(), serv_addr);
         }
         if (FD_ISSET(sockfd, &_readfds)) {
-            receive();
+            return receive();
         }
     }
 }

@@ -18,11 +18,11 @@ public:
 
     void init_client(std::string ip, int port);
     void send(Packet *packet, struct sockaddr_in dest) override;
-    void receive() override;
+    std::tuple<std::unique_ptr<Packet>, int> receive() override;
 
     void run() override;
 
-    void listen_server();
+    std::tuple<std::unique_ptr<Packet>, int> listen_server();
     void init_fd_set();
 
     #ifdef _WIN32
