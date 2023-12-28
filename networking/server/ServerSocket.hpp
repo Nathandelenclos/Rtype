@@ -26,6 +26,9 @@ public:
     int getClientId(sockaddr_in client);
 
     void init_fd_set();
+
+    std::map<int, struct sockaddr_in> getClients() const;
+
 private:
     unsigned long long sockfd;
     struct sockaddr_in serv_addr{};

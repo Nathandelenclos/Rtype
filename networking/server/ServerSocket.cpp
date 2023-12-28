@@ -183,3 +183,7 @@ void ServerSocket::run() {
             break;
     }
 }
+
+std::map<int, struct sockaddr_in> ServerSocket::getClients() const {
+    return clients;
+}
