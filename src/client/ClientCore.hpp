@@ -8,7 +8,7 @@
 
 class ClientCore {
     public:
-        ClientCore() = default;
+        ClientCore();
         ~ClientCore() = default;
         void run();
 
