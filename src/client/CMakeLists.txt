@@ -13,8 +13,10 @@ add_executable(r-type_client
         src/client/ClientCore.hpp
         src/client/Scenes/IScene.hpp
         src/client/Components/IComponent.hpp
-        Components/AComponent.cpp
-        Components/AComponent.hpp)
+        src/client/Components/AComponent.cpp
+        src/client/Components/AComponent.hpp
+        src/client/Components/Text/TextComponent.cpp
+        src/client/Components/Text/TextComponent.hpp)
 target_link_libraries(r-type_client sfml-graphics sfml-audio sfml-system sfml-window)
 
 set_target_properties(r-type_client PROPERTIES EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR})

@@ -4,11 +4,6 @@
 
 #include "AComponent.hpp"
 
-AComponent::AComponent(ComponentType type)
-{
-    _type = type;
-}
-
 ComponentType AComponent::getType() const
 {
     return _type;

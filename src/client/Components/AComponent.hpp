@@ -11,11 +11,10 @@
 
 class AComponent : public IComponent {
     public:
-        AComponent(ComponentType type);
-        virtual ~AComponent() = default;
+        ~AComponent() override = default;
 
-        [[nodiscard]] virtual ComponentType getType() const;
-        virtual void action() = 0;
-        virtual void addActionTarget(std::unique_ptr<IComponent> component);
-        virtual void addSubComponent(std::unique_ptr<IComponent> component);
+        [[nodiscard]] ComponentType getType() const override;
+        void action() override = 0;
+        void addActionTarget(std::unique_ptr<IComponent> component) override;
+        void addSubComponent(std::unique_ptr<IComponent> component) override;
 };
