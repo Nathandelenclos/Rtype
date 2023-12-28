@@ -23,6 +23,7 @@ int main() {
     std::unique_ptr<Packet> packet;
 
     while (true) {
+        serverSocket.init_fd_set();
         packet_client_id = serverSocket.receive();
         packet = std::move(std::get<0>(packet_client_id));
 

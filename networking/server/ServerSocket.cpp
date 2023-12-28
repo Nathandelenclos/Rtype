@@ -106,7 +106,7 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::receive() {
         return std::tuple<std::unique_ptr<Packet>, int>(nullptr, 0);
     }
 
-
+    std::cout << "packet.code: " << packet.code << std::endl;
     struct sockaddr_in cli_addr_size{};
     socklen_t len_size = sizeof(cli_addr_size);
     if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) < 0) {
@@ -121,6 +121,7 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::receive() {
     } else {
         return std::tuple<std::unique_ptr<Packet>, int>(nullptr, 0);
     }
+    std::cout << "packet.data_size: " << packet.data_size << std::endl;
 
 
     packet.data = malloc(packet.data_size + 1);
@@ -142,6 +143,8 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::receive() {
     }
     memcpy(packet.data, buffer, packet.data_size);
 
+    std::string message = reinterpret_cast<char *>(packet.data);
+    std::cout << "message: " << message << std::endl;
 
     int id = getClientId(cli_addr_data);
     if (id == -1) {
