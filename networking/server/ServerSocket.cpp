@@ -24,7 +24,9 @@ ServerSocket::ServerSocket() {
             throw std::runtime_error("Failed to create socket");
         }
     #endif
-
+    timeout = std::make_unique<struct timeval>();
+    timeout->tv_sec = 0;
+    timeout->tv_usec = 1;
     std::cout << "Socket created successfully (fd: " << sockfd << ")" << std::endl;
 }
 

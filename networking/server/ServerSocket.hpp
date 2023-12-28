@@ -32,6 +32,7 @@ private:
     std::string lastMessage;
     std::map<int, struct sockaddr_in> clients;
     struct sockaddr_in lastClientAddress{};
+    std::unique_ptr<struct timeval> timeout;
 };
 
 #endif //R_TYPE_SERVER_SERVERSOCKET_HPP
