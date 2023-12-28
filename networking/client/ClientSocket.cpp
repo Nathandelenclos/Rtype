@@ -46,13 +46,14 @@ ClientSocket::~ClientSocket() {
     #endif
 }
 
-void ClientSocket::init_client(std::string ip, int port) {
+bool ClientSocket::init_client(const std::string& ip, int port) {
     memset(&serv_addr, 0, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(port);
     if (inet_pton(AF_INET, ip.c_str(), &serv_addr.sin_addr) <= 0) {
-        throw std::runtime_error("Invalid address");
+        return false;
     }
+    return true;
 }
 
 void ClientSocket::send(Packet *packet, struct sockaddr_in dest) {
