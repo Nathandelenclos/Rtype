@@ -10,8 +10,8 @@
 #include <vector>
 #include "IService.hpp"
 
-class GraphicService : public IService {
+class Graphic : public IService {
 public:
-    GraphicService() = default;
+    Graphic() = default;
     void update(std::vector<IObject*> objects) override;
 };

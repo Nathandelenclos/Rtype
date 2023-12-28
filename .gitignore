@@ -4,6 +4,6 @@ CMakeFiles/
 bootstrap
 CMakeCache.txt
 RType/
-test_lib_r_type.so
+*lib_r_type.so
 r-type_server
 build

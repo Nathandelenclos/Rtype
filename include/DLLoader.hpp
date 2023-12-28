@@ -10,7 +10,7 @@
 #include <dlfcn.h>
 #include <iostream>
 #include "DLLoader.hpp"
-#include "r_type/RType.hpp"
+#include "IGame.hpp"
 
 class DLLoader {
 public:

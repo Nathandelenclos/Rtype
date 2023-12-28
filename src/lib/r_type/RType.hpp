@@ -8,16 +8,16 @@
 #pragma once
 
 #include <iostream>
-#include "../IGame.hpp"
+#include "../../../include/IGame.hpp"
 #include "./entities/Player.hpp"
-#include "./services/GraphicService.hpp"
+#include "./services/Graphic.hpp"
 
 class RType : public IGame {
 public:
     RType() {
         std::cout << "RType constructor" << std::endl;
         objects.push_back(new Player());
-        services.push_back(new GraphicService());
+        services.push_back(new Graphic());
     }
 
     ~RType() override {

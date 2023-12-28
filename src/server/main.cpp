@@ -6,10 +6,10 @@
 */
 
 #include <iostream>
-#include "DLLoader.hpp"
+#include "../../include/DLLoader.hpp"
 
 int main() {
-    DLLoader loader("../test_lib_r_type.so");
+    DLLoader loader("../lib_r_type.so");
 
     IGame *game = loader.getInstance("create");
 

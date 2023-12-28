@@ -13,11 +13,7 @@
 
 class Player: public Drawable, public IObject {
 public:
-    Player() {
-        std::cout << "Player constructor" << std::endl;
-    }
+    Player() = default;
 
-    void draw() override {
-        std::cout << "Player::draw()" << std::endl;
-    }
+    void draw() override;
 };

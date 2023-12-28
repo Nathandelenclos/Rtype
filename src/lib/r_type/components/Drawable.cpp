@@ -1,5 +1,8 @@
-//
-// Created by nathan on 12/26/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** RType
+** File description:
+** Drawable.cpp
+*/
 
 #include "Drawable.hpp"

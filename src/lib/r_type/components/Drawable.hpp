@@ -8,7 +8,7 @@
 #pragma once
 
 #include <iostream>
-#include "IObject.hpp"
+#include "../../../../include/IObject.hpp"
 
 class Drawable {
 public:
