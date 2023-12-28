@@ -29,17 +29,17 @@ public:
         void read_input();
     #endif
 
+    struct sockaddr_in serv_addr;
 private:
     int sockfd;
-    struct sockaddr_in serv_addr;
     std::string lastMessage;
     fd_set _readfds;
     bool loop;
+    std::unique_ptr<struct timeval> timeout;
     #ifdef _WIN32
         std::string input;
         std::mutex mtx;
         std::thread inputThread;
-        std::unique_ptr<struct timeval> timeout;
     #endif
 };
 

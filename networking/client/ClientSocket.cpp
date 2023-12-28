@@ -21,11 +21,6 @@ ClientSocket::ClientSocket() {
             WSACleanup();
             throw std::runtime_error("Failed to create socket");
         }
-        std::cout << "Init timeout" << std::endl;
-        timeout = std::make_unique<struct timeval>();
-        timeout->tv_sec = 0;
-        timeout->tv_usec = 1;
-        std::cout << "Init timeout done" << std::endl;
     #elif defined(__unix__) || defined(__unix__)
         sockfd = socket(AF_INET, SOCK_DGRAM, 0);
         if (sockfd < 0) {
@@ -33,6 +28,10 @@ ClientSocket::ClientSocket() {
             throw std::runtime_error("Failed to create socket");
         }
     #endif
+
+    timeout = std::make_unique<struct timeval>();
+    timeout->tv_sec = 0;
+    timeout->tv_usec = 1;
 
     loop = true;
 
@@ -57,14 +56,14 @@ void ClientSocket::init_client(std::string ip, int port) {
 }
 
 void ClientSocket::send(Packet *packet, struct sockaddr_in dest) {
-    std::cout << "ClientSocket send" << std::endl;
     if (sendto(sockfd, reinterpret_cast<const char *>(&packet->code), sizeof(int), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
         throw std::runtime_error("Failed to send message");
     }
     if (sendto(sockfd, reinterpret_cast<const char *>(&packet->data_size), sizeof(int), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
         throw std::runtime_error("Failed to send message");
     }
-    if (sendto(sockfd, reinterpret_cast<const char *>(packet->data), packet->data_size, 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
+    char *buffer = static_cast<char *>(packet->data);
+    if (sendto(sockfd, buffer, packet->data_size, 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
         throw std::runtime_error("Failed to send message");
     }
 }
@@ -74,37 +73,55 @@ std::tuple<std::unique_ptr<Packet>, int> ClientSocket::receive() {
     packet.code = UNDEFINED;
     struct sockaddr_in cli_addr_code{};
     socklen_t len_code = sizeof(cli_addr_code);
-    if (recvfrom(sockfd, reinterpret_cast<char *>(&packet.code), sizeof(int), 0, (struct sockaddr*)&cli_addr_code, &len_code) < 0) {
-        throw std::runtime_error("Failed to read from socket");
+    if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) > 0) {
+        if (recvfrom(sockfd, reinterpret_cast<char *>(&packet.code), sizeof(int), 0, (struct sockaddr*)&cli_addr_code, &len_code) < 0) {
+            throw std::runtime_error("Failed to read from socket");
+        }
+        if (packet.code == UNDEFINED) {
+            throw std::runtime_error("Failed to read from socket");
+        }
+    } else {
+        return std::make_tuple(nullptr, 0);
     }
-    if (packet.code == UNDEFINED) {
-        throw std::runtime_error("Failed to read from socket");
-    }
+
+
     struct sockaddr_in cli_addr_size{};
     socklen_t len_size = sizeof(cli_addr_size);
-    if (recvfrom(sockfd, reinterpret_cast<char *>(&packet.data_size), sizeof(int), 0, (struct sockaddr*)&cli_addr_size, &len_size) < 0) {
-        throw std::runtime_error("Failed to read from socket");
+    if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) > 0) {
+        if (recvfrom(sockfd, reinterpret_cast<char *>(&packet.data_size), sizeof(int), 0, (struct sockaddr*)&cli_addr_size, &len_size) < 0) {
+            throw std::runtime_error("Failed to read from socket");
+        }
+        if (cli_addr_size.sin_addr.s_addr != cli_addr_code.sin_addr.s_addr || cli_addr_size.sin_port != cli_addr_code.sin_port) {
+            throw std::runtime_error("Failed to read from socket");
+        }
+    } else {
+        return std::make_tuple(nullptr, 0);
     }
-    if (cli_addr_size.sin_addr.s_addr != cli_addr_code.sin_addr.s_addr || cli_addr_size.sin_port != cli_addr_code.sin_port) {
-        throw std::runtime_error("Failed to read from socket");
-    }
+
+
     packet.data = malloc(packet.data_size + 1);
     memset(packet.data, 0, packet.data_size + 1);
     struct sockaddr_in cli_addr_data{};
     socklen_t len_data = sizeof(cli_addr_data);
     char *buffer = static_cast<char *>(malloc(packet.data_size + 1));
     memset(buffer, 0, packet.data_size + 1);
-    if (recvfrom(sockfd, buffer, packet.data_size, 0, (struct sockaddr*)&cli_addr_data, &len_data) < 0) {
-        throw std::runtime_error("Failed to read from socket");
+    if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) > 0) {
+        if (recvfrom(sockfd, buffer, packet.data_size, 0, (struct sockaddr*)&cli_addr_data, &len_data) < 0) {
+            throw std::runtime_error("Failed to read from socket");
+        }
+    } else {
+        free(buffer);
+        free(packet.data);
+        return std::make_tuple(nullptr, 0);
     }
     memcpy(packet.data, buffer, packet.data_size);
+
+
     std::string message = reinterpret_cast<char *>(packet.data);
     if (message == "received") {
         std::cout << "(Ghost Mode) Received message from " << inet_ntoa(cli_addr_data.sin_addr) << ":" << ntohs(cli_addr_data.sin_port) << std::endl;
         return std::make_tuple(nullptr, 0);
     }
-    std::cout << "Received message from " << inet_ntoa(cli_addr_data.sin_addr) << ":" << ntohs(cli_addr_data.sin_port) << std::endl;
-    std::cout << "Message: " << message << std::endl;
     lastMessage = message;
     return std::make_tuple(std::make_unique<Packet>(packet), -1);
 }
