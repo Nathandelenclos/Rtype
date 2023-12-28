@@ -19,13 +19,13 @@ public:
 
     void init_server(std::string ip, int port);
     void send(Packet *packet, struct sockaddr_in dest) override;
-    std::unique_ptr<Packet> receive() override;
+    std::tuple<std::unique_ptr<Packet>, int> receive() override;
 
     void run() override;
     void addClient(struct sockaddr_in client);
     int getClientId(sockaddr_in client);
 
-
+    void init_fd_set();
 private:
     unsigned long long sockfd;
     struct sockaddr_in serv_addr{};
@@ -33,6 +33,7 @@ private:
     std::map<int, struct sockaddr_in> clients;
     struct sockaddr_in lastClientAddress{};
     std::unique_ptr<struct timeval> timeout;
+    fd_set _readfds;
 };
 
 #endif //R_TYPE_SERVER_SERVERSOCKET_HPP
