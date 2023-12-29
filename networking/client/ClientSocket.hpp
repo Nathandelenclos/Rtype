@@ -16,7 +16,7 @@ public:
     ClientSocket();
     ~ClientSocket() override;
 
-    void init_client(std::string ip, int port);
+    bool init_client(const std::string& ip, int port);
     void send(Packet *packet, struct sockaddr_in dest) override;
     std::tuple<std::unique_ptr<Packet>, int> receive() override;
 

@@ -155,10 +155,17 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::receive() {
 
     lastClientAddress = cli_addr_data;
     std::unique_ptr<Packet> cli_addr_packet = std::make_unique<Packet>();
-    cli_addr_packet->code = MESSAGE;
-    cli_addr_packet->data_size = 8;
-    cli_addr_packet->data = malloc(8);
-    memcpy(cli_addr_packet->data, "received", 8);
+    if (message == "connection") {
+        cli_addr_packet->code = MESSAGE;
+        cli_addr_packet->data_size = 19;
+        cli_addr_packet->data = malloc(19);
+        memcpy(cli_addr_packet->data, "connection accepted", 19);
+    } else {
+        cli_addr_packet->code = MESSAGE;
+        cli_addr_packet->data_size = 8;
+        cli_addr_packet->data = malloc(8);
+        memcpy(cli_addr_packet->data, "received", 8);
+    }
     send(cli_addr_packet.get(), cli_addr_data);
     return std::make_tuple(std::move(std::make_unique<Packet>(packet)), id);
 }
@@ -170,6 +177,7 @@ void ServerSocket::init_fd_set() {
 
 void ServerSocket::run() {
     while (true) {
+        init_fd_set();
         receive();
         if (lastMessage == "ping") {
             std::unique_ptr<Packet> packet = std::make_unique<Packet>();

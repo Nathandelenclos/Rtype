@@ -8,5 +8,5 @@
 #include "Player.hpp"
 
 void Player::draw() {
-    std::cout << "Player::draw()" << std::endl;
+    //std::cout << "Player::draw()" << std::endl;
 }
