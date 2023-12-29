@@ -20,7 +20,9 @@ add_executable(r-type_client
         src/client/Scenes/AScene.cpp
         src/client/Scenes/AScene.hpp
         src/client/Scenes/Menu/MenuScene.cpp
-        src/client/Scenes/Menu/MenuScene.hpp)
+        src/client/Scenes/Menu/MenuScene.hpp
+        src/client/Components/Button/ButtonComponent.cpp
+        src/client/Components/Button/ButtonComponent.hpp)
 target_link_libraries(r-type_client sfml-graphics sfml-audio sfml-system sfml-window)
 
 set_target_properties(r-type_client PROPERTIES EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR})
