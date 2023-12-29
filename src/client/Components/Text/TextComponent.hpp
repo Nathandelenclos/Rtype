@@ -7,15 +7,14 @@
 #include <vector>
 #include <memory>
 #include <string>
-#include <SFML/Graphics.hpp>
 #include "../AComponent.hpp"
 
 class TextComponent : public AComponent {
     public:
         TextComponent();
-        ~TextComponent() override = default;
 
-        void display(sf::RenderWindow& window);
+        void display(sf::RenderWindow& window) override;
+        void action() override;
 
         void setText(std::string text);
         void setFont(const sf::Font& font);

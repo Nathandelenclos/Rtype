@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <memory>
+#include <SFML/Graphics.hpp>
 
 typedef enum {
     TEXT,
@@ -21,7 +22,7 @@ class IComponent {
 
         [[nodiscard]] virtual ComponentType getType() const = 0;
         virtual void action() = 0;
-        virtual void display() = 0;
+        virtual void display(sf::RenderWindow& window) = 0;
         virtual void addActionTarget(std::unique_ptr<IComponent> component) = 0;
         virtual void addSubComponent(std::unique_ptr<IComponent> component) = 0;
 

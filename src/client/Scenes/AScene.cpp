@@ -9,9 +9,16 @@ void AScene::addComponent(std::unique_ptr<IComponent> component)
     _components.push_back(std::move(component));
 }
 
-void AScene::display()
+void AScene::display(sf::RenderWindow& window)
 {
     for (auto &component : _components) {
-        component->display();
+        component->display(window);
+    }
+}
+
+void AScene::update()
+{
+    for (auto &component : _components) {
+        component->action();
     }
 }

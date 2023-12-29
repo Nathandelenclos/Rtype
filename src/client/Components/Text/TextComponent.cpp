@@ -11,7 +11,7 @@ TextComponent::TextComponent()
     _type = ComponentType::TEXT;
     _text = "base_text";
     _sfText.setString(_text);
-    _font.loadFromFile("assets/fonts/December Show.ttf");
+    _font.loadFromFile("../src/client/assets/fonts/DecemberShow.ttf");
     _sfText.setFont(_font);
     _position = sf::Vector2f(0, 0);
     _sfText.setPosition(_position);
@@ -19,6 +19,10 @@ TextComponent::TextComponent()
     _sfText.setFillColor(_color);
     _size = 30;
     _sfText.setCharacterSize(_size);
+}
+
+void TextComponent::action()
+{
 }
 
 void TextComponent::setText(std::string text)

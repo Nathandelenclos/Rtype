@@ -3,3 +3,13 @@
 //
 
 #include "MenuScene.hpp"
+
+MenuScene::MenuScene()
+{
+    init_scene();
+}
+
+void MenuScene::init_scene()
+{
+    addComponent(std::make_unique<TextComponent>());
+}

@@ -13,7 +13,9 @@ class IScene {
         virtual ~IScene() = default;
 
         virtual void addComponent(std::unique_ptr<IComponent> component) = 0;
-        virtual void display() = 0;
+        virtual void display(sf::RenderWindow& window) = 0;
+
+        virtual void update() = 0;
 
     private:
         std::vector<std::unique_ptr<IComponent>> _components;
