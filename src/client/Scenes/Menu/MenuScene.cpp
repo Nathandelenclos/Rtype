@@ -17,10 +17,12 @@ void MenuScene::init_scene()
     std::shared_ptr<TextComponent> text_button = std::make_shared<TextComponent>(_socket);
     std::shared_ptr<InputComponent> address_input = std::make_shared<InputComponent>(_socket);
     std::shared_ptr<InputComponent> port_input = std::make_shared<InputComponent>(_socket);
+    std::shared_ptr<SoundComponent> sound = std::make_shared<SoundComponent>(_socket);
 
     button->addActionTarget(text);
     button->addActionTarget(address_input);
     button->addActionTarget(port_input);
+    button->addActionTarget(sound);
     std::function<void()> handleClick = std::bind(&ButtonComponent::handleClickInitServer, button);
     button->setCallback(handleClick);
 

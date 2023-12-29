@@ -14,7 +14,9 @@ typedef enum {
     SPRITE,
     BUTTON,
     INPUT,
-    VARIABLE
+    VARIABLE,
+    MUSIC,
+    SOUND
 } ComponentType;
 
 class IComponent {

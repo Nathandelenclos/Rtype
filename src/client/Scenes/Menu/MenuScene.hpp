@@ -11,6 +11,7 @@
 #include "../../Components/Text/TextComponent.hpp"
 #include "../../Components/Button/ButtonComponent.hpp"
 #include "../../Components/Input/InputComponent.hpp"
+#include "../../Components/Sound/SoundComponent.hpp"
 
 class MenuScene : public AScene {
     public:

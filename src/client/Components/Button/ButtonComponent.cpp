@@ -3,6 +3,7 @@
 //
 
 #include "ButtonComponent.hpp"
+#include "../Sound/SoundComponent.hpp"
 
 #include <utility>
 
@@ -82,7 +83,6 @@ void ButtonComponent::handleClickInitServer()
 {
     std::string ip;
     std::string port;
-    std::cout << "handleClickInitServer" << std::endl;
     for (auto &component : action_target) {
         if (component->getType() == ComponentType::INPUT) {
             if (component->getAttribute() == "address") {
@@ -90,6 +90,8 @@ void ButtonComponent::handleClickInitServer()
             } else if (component->getAttribute() == "port") {
                 port = dynamic_cast<InputComponent *>(component.get())->getText();
             }
+        } else if (component->getType() == ComponentType::SOUND) {
+            dynamic_cast<SoundComponent *>(component.get())->action();
         }
     }
     if (ip.empty() || port.empty()) {
