@@ -1,5 +1,5 @@
 //
-// Created by Talleux on 29/12/2023.
+// Created by talleux on 12/29/23.
 //
 
 #pragma once
@@ -13,13 +13,12 @@
 #include "../../Components/Input/InputComponent.hpp"
 #include "../../Components/Sound/SoundComponent.hpp"
 #include "../../Components/Music/MusicComponent.hpp"
-#include "../../Components/Sprite/SpriteComponent.hpp"
 
-class MenuScene : public AScene {
+class MainScene : public AScene {
     public:
         //take socket as parameter
-        explicit MenuScene(std::shared_ptr<ClientSocket> socket);
-        ~MenuScene() override = default;
+        explicit MainScene(std::shared_ptr<ClientSocket> socket);
+        ~MainScene() override = default;
 
         void init_scene();
         void handleEvent(const sf::Event& event, sf::RenderWindow& window) override;
@@ -28,6 +27,5 @@ class MenuScene : public AScene {
 
     private:
         std::shared_ptr<ClientSocket> _socket;
+
 };
-
-

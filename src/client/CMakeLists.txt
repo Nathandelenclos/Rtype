@@ -28,7 +28,11 @@ add_executable(r-type_client
         src/client/Components/Sound/SoundComponent.cpp
         src/client/Components/Sound/SoundComponent.hpp
         src/client/Components/Music/MusicComponent.cpp
-        src/client/Components/Music/MusicComponent.hpp)
+        src/client/Components/Music/MusicComponent.hpp
+        #src/client/Scenes/Menu/MainScene.cpp
+        #src/client/Scenes/Menu/MainScene.hpp
+        src/client/Components/Sprite/SpriteComponent.cpp
+        src/client/Components/Sprite/SpriteComponent.hpp)
 target_link_libraries(r-type_client sfml-graphics sfml-audio sfml-system sfml-window)
 
 set_target_properties(r-type_client PROPERTIES EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR})

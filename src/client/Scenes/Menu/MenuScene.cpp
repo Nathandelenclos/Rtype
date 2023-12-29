@@ -19,6 +19,7 @@ void MenuScene::init_scene()
     std::shared_ptr<InputComponent> port_input = std::make_shared<InputComponent>(_socket);
     std::shared_ptr<SoundComponent> sound = std::make_shared<SoundComponent>(_socket);
     std::shared_ptr<MusicComponent> music = std::make_shared<MusicComponent>(_socket);
+    std::shared_ptr<SpriteComponent> sprite = std::make_shared<SpriteComponent>(_socket);
 
     button->addActionTarget(text);
     button->addActionTarget(address_input);
@@ -41,6 +42,7 @@ void MenuScene::init_scene()
     port_input->setAttribute("port");
     text->setAttribute("text add serv");
 
+    addComponent(sprite);
     addComponent(text);
     addComponent(button);
     addComponent(text_button);
