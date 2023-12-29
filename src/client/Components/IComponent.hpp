@@ -7,6 +7,7 @@
 #include <vector>
 #include <memory>
 #include <SFML/Graphics.hpp>
+#include "../../../networking/client/ClientSocket.hpp"
 
 typedef enum {
     TEXT,
@@ -28,7 +29,11 @@ class IComponent {
 
         virtual void handleEvent(const sf::Event& event, sf::RenderWindow& window) = 0;
 
+        virtual void setAttribute(std::string attribute) = 0;
+        virtual std::string getAttribute() = 0;
+
     protected:
+        std::string _attribute;
         ComponentType _type;
         std::vector<std::shared_ptr<IComponent>> action_target;
         std::vector<std::shared_ptr<IComponent>> sub_components;

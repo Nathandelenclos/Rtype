@@ -9,7 +9,7 @@
 
 class InputComponent : public AComponent {
     public:
-        InputComponent();
+        explicit InputComponent(std::shared_ptr<ClientSocket> socket);
         void action() override;
         void setTexture(const sf::Texture& texture);
         void setPosition(sf::Vector2f position);
@@ -24,7 +24,7 @@ class InputComponent : public AComponent {
         void handleClick();
 
         void setText();
-        void getText();
+        std::string getText();
 
 
     private:
@@ -38,4 +38,5 @@ class InputComponent : public AComponent {
         std::function<void()> _callback;
         std::string _textEntry;
         bool _isClicked;
+        std::shared_ptr<ClientSocket> _socket;
 };

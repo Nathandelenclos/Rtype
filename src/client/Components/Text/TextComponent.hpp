@@ -11,7 +11,7 @@
 
 class TextComponent : public AComponent {
     public:
-        TextComponent();
+        explicit TextComponent(std::shared_ptr<ClientSocket> socket);
 
         void display(sf::RenderWindow& window) override;
         void action() override;
@@ -34,5 +34,6 @@ class TextComponent : public AComponent {
 
         std::vector<std::unique_ptr<IComponent>> _subComponents;
         std::vector<std::unique_ptr<IComponent>> _actionTargets;
+        std::shared_ptr<ClientSocket> _socket;
 
 };

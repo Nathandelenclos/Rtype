@@ -18,3 +18,13 @@ void AComponent::addSubComponent(std::shared_ptr<IComponent> component)
 {
     sub_components.push_back(std::move(component));
 }
+
+void AComponent::setAttribute(std::string attribute)
+{
+    _attribute = attribute;
+}
+
+std::string AComponent::getAttribute()
+{
+    return _attribute;
+}

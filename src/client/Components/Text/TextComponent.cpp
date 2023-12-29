@@ -6,7 +6,7 @@
 
 #include <utility>
 
-TextComponent::TextComponent()
+TextComponent::TextComponent(std::shared_ptr<ClientSocket> socket)
 {
     _type = ComponentType::TEXT;
     _text = "base_text";
@@ -19,6 +19,8 @@ TextComponent::TextComponent()
     _sfText.setFillColor(_color);
     _size = 30;
     _sfText.setCharacterSize(_size);
+    _attribute = "";
+    _socket = std::move(socket);
 }
 
 void TextComponent::action()

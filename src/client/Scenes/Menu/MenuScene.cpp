@@ -4,21 +4,24 @@
 
 #include "MenuScene.hpp"
 
-MenuScene::MenuScene()
-{
+#include <utility>
+
+MenuScene::MenuScene(std::shared_ptr<ClientSocket> socket) : _socket(std::move(socket)) {
     init_scene();
 }
 
 void MenuScene::init_scene()
 {
-    std::shared_ptr<TextComponent> text = std::make_shared<TextComponent>();
-    std::shared_ptr<ButtonComponent> button = std::make_shared<ButtonComponent>();
-    std::shared_ptr<TextComponent> text_button = std::make_shared<TextComponent>();
-    std::shared_ptr<InputComponent> address_input = std::make_shared<InputComponent>();
-    std::shared_ptr<InputComponent> port_input = std::make_shared<InputComponent>();
+    std::shared_ptr<TextComponent> text = std::make_shared<TextComponent>(_socket);
+    std::shared_ptr<ButtonComponent> button = std::make_shared<ButtonComponent>(_socket);
+    std::shared_ptr<TextComponent> text_button = std::make_shared<TextComponent>(_socket);
+    std::shared_ptr<InputComponent> address_input = std::make_shared<InputComponent>(_socket);
+    std::shared_ptr<InputComponent> port_input = std::make_shared<InputComponent>(_socket);
 
     button->addActionTarget(text);
-    std::function<void()> handleClick = std::bind(&ButtonComponent::handleClick, button);
+    button->addActionTarget(address_input);
+    button->addActionTarget(port_input);
+    std::function<void()> handleClick = std::bind(&ButtonComponent::handleClickInitServer, button);
     button->setCallback(handleClick);
 
     text_button->setText("Init Server Connection");
@@ -29,6 +32,10 @@ void MenuScene::init_scene()
 
     address_input->addActionTarget(port_input);
     port_input->addActionTarget(address_input);
+
+    address_input->setAttribute("address");
+    port_input->setAttribute("port");
+    text->setAttribute("text add serv");
 
     addComponent(text);
     addComponent(button);
@@ -42,4 +49,25 @@ void MenuScene::handleEvent(const sf::Event& event, sf::RenderWindow& window)
     for (auto &component : _components) {
         component->handleEvent(event, window);
     }
+}
+
+void MenuScene::receiveData() {
+    std::tuple<std::unique_ptr<Packet>, int> packet = _socket->receive();
+    std::unique_ptr<Packet> p = std::move(std::get<0>(packet));
+
+    if (p != nullptr) {
+        if (p->code == MESSAGE) {
+            std::string message = static_cast<char *>(p->data);
+            if (message == "connection accepted") {
+                for (auto &component : _components) {
+                    if (component->getType() == ComponentType::TEXT) {
+                        if (component->getAttribute() == "text add serv") {
+                            dynamic_cast<TextComponent *>(component.get())->setText("Connection accepted");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

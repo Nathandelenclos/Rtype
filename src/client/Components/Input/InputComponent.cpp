@@ -3,9 +3,10 @@
 //
 
 #include <iostream>
+#include <utility>
 #include "InputComponent.hpp"
 
-InputComponent::InputComponent()
+InputComponent::InputComponent(std::shared_ptr<ClientSocket> socket)
 {
     _type = ComponentType::INPUT;
     _texture.loadFromFile("../src/client/assets/button.png");
@@ -25,6 +26,8 @@ InputComponent::InputComponent()
     _text.setFillColor(sf::Color::Black);
     _text.setCharacterSize(30);
     _isClicked = false;
+    _attribute = "";
+    _socket = std::move(socket);
 }
 
 void InputComponent::action()
@@ -76,9 +79,9 @@ void InputComponent::setText()
     _text.setString(_textEntry);
 }
 
-void InputComponent::getText()
+std::string InputComponent::getText()
 {
-    _textEntry = _text.getString();
+    return _textEntry;
 }
 
 void InputComponent::setIsClicked(bool isClicked)
@@ -95,13 +98,10 @@ void InputComponent::handleEvent(const sf::Event& event, sf::RenderWindow& windo
                     if (!_textEntry.empty()) {
                         _textEntry.erase(_textEntry.size() - 1);
                         setText();
-                        std::cout << _textEntry << std::endl;
-
                     }
                 } else {
                     _textEntry += static_cast<char>(event.text.unicode);
                     setText();
-                    std::cout << _textEntry << std::endl;
                 }
             }
         }

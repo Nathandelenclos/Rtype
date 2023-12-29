@@ -17,6 +17,7 @@ class IScene {
 
         virtual void update() = 0;
         virtual void handleEvent(const sf::Event& event, sf::RenderWindow& window) = 0;
+        virtual void receiveData() = 0;
 
     private:
         std::vector<std::shared_ptr<IComponent>> _components;

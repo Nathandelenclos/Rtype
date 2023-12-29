@@ -53,10 +53,20 @@ bool ClientSocket::init_client(const std::string& ip, int port) {
     if (inet_pton(AF_INET, ip.c_str(), &serv_addr.sin_addr) <= 0) {
         return false;
     }
+
+    Packet packet{};
+    packet.code = MESSAGE;
+    packet.data_size = 10;
+    packet.data = malloc(packet.data_size);
+    memcpy(packet.data, "connection", packet.data_size);
+
+    send(&packet, serv_addr);
+
     return true;
 }
 
 void ClientSocket::send(Packet *packet, struct sockaddr_in dest) {
+    std::cout << "ClientSocket send" << std::endl;
     if (sendto(sockfd, reinterpret_cast<const char *>(&packet->code), sizeof(int), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
         throw std::runtime_error("Failed to send message");
     }
@@ -215,6 +225,7 @@ std::tuple<std::unique_ptr<Packet>, int> ClientSocket::listen_server() {
             return receive();
         }
     }
+    return std::make_tuple(nullptr, 0);
 }
 
 void ClientSocket::init_fd_set() {

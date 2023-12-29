@@ -19,7 +19,7 @@ class ClientCore {
         void run();
 
     private:
-        std::unique_ptr<ClientSocket> _socket;
+        std::shared_ptr<ClientSocket> _socket;
         std::map<std::string, std::unique_ptr<IScene>> _scenes;
         std::unique_ptr<IScene> _currentScene;
 };

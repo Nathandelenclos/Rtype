@@ -4,7 +4,9 @@
 
 #include "ButtonComponent.hpp"
 
-ButtonComponent::ButtonComponent()
+#include <utility>
+
+ButtonComponent::ButtonComponent(std::shared_ptr<ClientSocket> socket)
 {
     _type = ComponentType::BUTTON;
     _texture.loadFromFile("../src/client/assets/button.png");
@@ -15,6 +17,8 @@ ButtonComponent::ButtonComponent()
     _sprite.setScale(_size);
     _rect = sf::IntRect(0, 0, 701, 301);
     _sprite.setTextureRect(_rect);
+    _attribute = "";
+    _socket = std::move(socket);
 }
 
 void ButtonComponent::action()
@@ -74,12 +78,44 @@ void ButtonComponent::handleEvent(const sf::Event& event, sf::RenderWindow& wind
     }
 }
 
-void ButtonComponent::handleClick()
+void ButtonComponent::handleClickInitServer()
 {
+    std::string ip;
+    std::string port;
+    std::cout << "handleClickInitServer" << std::endl;
     for (auto &component : action_target) {
-        if (component->getType() == ComponentType::TEXT) {
-            std::shared_ptr<TextComponent> text = std::dynamic_pointer_cast<TextComponent>(component);
-            text->setText("Button clicked");
+        if (component->getType() == ComponentType::INPUT) {
+            if (component->getAttribute() == "address") {
+                ip = dynamic_cast<InputComponent *>(component.get())->getText();
+            } else if (component->getAttribute() == "port") {
+                port = dynamic_cast<InputComponent *>(component.get())->getText();
+            }
+        }
+    }
+    if (ip.empty() || port.empty()) {
+        for (auto &component : action_target) {
+            if (component->getType() == ComponentType::TEXT) {
+                if (component->getAttribute() == "text add serv") {
+                    dynamic_cast<TextComponent *>(component.get())->setText("Please fill all fields");
+                }
+            }
+        }
+    } else {
+        for (auto &component: action_target) {
+            if (component->getType() == ComponentType::TEXT) {
+                if (component->getAttribute() == "text add serv") {
+                    try {
+                        std::stoi(port);
+                    } catch (std::exception &e) {
+                        dynamic_cast<TextComponent *>(component.get())->setText("Port must be a number");
+                        return;
+                    }
+                    if (_socket->init_client(ip, std::stoi(port)))
+                        dynamic_cast<TextComponent *>(component.get())->setText("Finding server...");
+                    else
+                        dynamic_cast<TextComponent *>(component.get())->setText("Server not found");
+                }
+            }
         }
     }
 }
