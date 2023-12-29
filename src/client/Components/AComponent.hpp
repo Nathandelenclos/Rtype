@@ -11,6 +11,7 @@
 
 class AComponent : public IComponent {
     public:
+        explicit AComponent(ClientCore* clientCore) : IComponent(clientCore) {}
         ~AComponent() override = default;
 
         [[nodiscard]] ComponentType getType() const override;

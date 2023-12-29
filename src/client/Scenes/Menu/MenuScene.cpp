@@ -6,20 +6,21 @@
 
 #include <utility>
 
-MenuScene::MenuScene(std::shared_ptr<ClientSocket> socket) : _socket(std::move(socket)) {
+MenuScene::MenuScene(ClientCore* clientCore, std::shared_ptr<ClientSocket> socket) : AScene(clientCore), _socket(std::move(socket))
+{
     init_scene();
 }
 
 void MenuScene::init_scene()
 {
-    std::shared_ptr<TextComponent> text = std::make_shared<TextComponent>(_socket);
-    std::shared_ptr<ButtonComponent> button = std::make_shared<ButtonComponent>(_socket);
-    std::shared_ptr<TextComponent> text_button = std::make_shared<TextComponent>(_socket);
-    std::shared_ptr<InputComponent> address_input = std::make_shared<InputComponent>(_socket);
-    std::shared_ptr<InputComponent> port_input = std::make_shared<InputComponent>(_socket);
-    std::shared_ptr<SoundComponent> sound = std::make_shared<SoundComponent>(_socket);
-    std::shared_ptr<MusicComponent> music = std::make_shared<MusicComponent>(_socket);
-    std::shared_ptr<SpriteComponent> sprite = std::make_shared<SpriteComponent>(_socket);
+    std::shared_ptr<TextComponent> text = std::make_shared<TextComponent>(_clientCore, _socket);
+    std::shared_ptr<ButtonComponent> button = std::make_shared<ButtonComponent>(_clientCore, _socket);
+    std::shared_ptr<TextComponent> text_button = std::make_shared<TextComponent>(_clientCore, _socket);
+    std::shared_ptr<InputComponent> address_input = std::make_shared<InputComponent>(_clientCore, _socket);
+    std::shared_ptr<InputComponent> port_input = std::make_shared<InputComponent>(_clientCore, _socket);
+    std::shared_ptr<SoundComponent> sound = std::make_shared<SoundComponent>(_clientCore, _socket);
+    std::shared_ptr<MusicComponent> music = std::make_shared<MusicComponent>(_clientCore, _socket);
+    std::shared_ptr<SpriteComponent> sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
 
     button->addActionTarget(text);
     button->addActionTarget(address_input);

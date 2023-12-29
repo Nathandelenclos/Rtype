@@ -19,8 +19,11 @@ typedef enum {
     SOUND
 } ComponentType;
 
+class ClientCore;
+
 class IComponent {
     public:
+        explicit IComponent(ClientCore* clientCore) : _clientCore(clientCore) {}
         virtual ~IComponent() = default;
 
         [[nodiscard]] virtual ComponentType getType() const = 0;
@@ -39,6 +42,7 @@ class IComponent {
         ComponentType _type;
         std::vector<std::shared_ptr<IComponent>> action_target;
         std::vector<std::shared_ptr<IComponent>> sub_components;
+        ClientCore* _clientCore;
 };
 
 

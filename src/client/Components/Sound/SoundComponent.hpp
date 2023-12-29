@@ -9,7 +9,7 @@
 
 class SoundComponent : public AComponent {
     public:
-        explicit SoundComponent(std::shared_ptr<ClientSocket> socket);
+        explicit SoundComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket);
         ~SoundComponent() override = default;
 
         void action() override;

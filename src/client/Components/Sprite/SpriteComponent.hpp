@@ -9,7 +9,7 @@
 
 class SpriteComponent : public AComponent {
     public:
-        explicit SpriteComponent(std::shared_ptr<ClientSocket> socket);
+        explicit SpriteComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket);
         ~SpriteComponent() override = default;
 
         void action() override;

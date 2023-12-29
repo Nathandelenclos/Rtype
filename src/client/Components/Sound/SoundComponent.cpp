@@ -4,7 +4,7 @@
 
 #include "SoundComponent.hpp"
 
-SoundComponent::SoundComponent(std::shared_ptr<ClientSocket> socket)
+SoundComponent::SoundComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
 {
     _type = ComponentType::SOUND;
     if (!_buffer.loadFromFile("../src/client/assets/sounds/click.wav"))

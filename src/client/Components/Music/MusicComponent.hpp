@@ -10,7 +10,7 @@
 
 class MusicComponent : public AComponent {
     public:
-        explicit MusicComponent(std::shared_ptr<ClientSocket> socket);
+        explicit MusicComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket);
         ~MusicComponent() override;
         void action() override;
         void display(sf::RenderWindow& window) override;

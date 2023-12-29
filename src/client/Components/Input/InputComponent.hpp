@@ -9,7 +9,7 @@
 
 class InputComponent : public AComponent {
     public:
-        explicit InputComponent(std::shared_ptr<ClientSocket> socket);
+        explicit InputComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket);
         void action() override;
         void setTexture(const sf::Texture& texture);
         void setPosition(sf::Vector2f position);

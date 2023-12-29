@@ -3,10 +3,11 @@
 //
 
 #include "ButtonComponent.hpp"
+#include "../../ClientCore.hpp"
 
 #include <utility>
 
-ButtonComponent::ButtonComponent(std::shared_ptr<ClientSocket> socket)
+ButtonComponent::ButtonComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
 {
     _type = ComponentType::BUTTON;
     _texture.loadFromFile("../src/client/assets/button.png");
@@ -19,6 +20,8 @@ ButtonComponent::ButtonComponent(std::shared_ptr<ClientSocket> socket)
     _sprite.setTextureRect(_rect);
     _attribute = "";
     _socket = std::move(socket);
+    std::function<void()> default_handle_click = std::bind(&ButtonComponent::defaultCallback, this);
+    setCallback(default_handle_click);
 }
 
 void ButtonComponent::action()
@@ -123,4 +126,19 @@ void ButtonComponent::handleClickInitServer()
             }
         }
     }
+}
+
+void ButtonComponent::handleClickMainScene()
+{
+    for (auto &component : action_target) {
+        if (component->getType() == ComponentType::SOUND) {
+            dynamic_cast<SoundComponent *>(component.get())->action();
+        }
+    }
+    _clientCore->setCurrentScene("menu");
+}
+
+void ButtonComponent::defaultCallback()
+{
+
 }

@@ -6,7 +6,7 @@
 #include <utility>
 #include "InputComponent.hpp"
 
-InputComponent::InputComponent(std::shared_ptr<ClientSocket> socket)
+InputComponent::InputComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
 {
     _type = ComponentType::INPUT;
     _texture.loadFromFile("../src/client/assets/button.png");

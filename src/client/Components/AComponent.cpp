@@ -4,6 +4,7 @@
 
 #include "AComponent.hpp"
 
+
 ComponentType AComponent::getType() const
 {
     return _type;

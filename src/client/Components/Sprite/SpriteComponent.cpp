@@ -4,7 +4,7 @@
 
 #include "SpriteComponent.hpp"
 
-SpriteComponent::SpriteComponent(std::shared_ptr<ClientSocket> socket)
+SpriteComponent::SpriteComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
 {
     _socket = std::move(socket);
     if (!_texture.loadFromFile("../src/client/assets/missing.png"))

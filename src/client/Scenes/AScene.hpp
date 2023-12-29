@@ -8,6 +8,7 @@
 
 class AScene : public IScene {
     public:
+        explicit AScene(ClientCore* clientCore) : IScene(clientCore) {}
         ~AScene() override = default;
 
         void addComponent(std::shared_ptr<IComponent> component) override;
@@ -15,7 +16,10 @@ class AScene : public IScene {
 
         void update() override;
 
+        void pauseScene() override;
+        void resumeScene() override;
+        void stopScene() override;
+
     protected:
         std::vector<std::shared_ptr<IComponent>> _components;
-
 };

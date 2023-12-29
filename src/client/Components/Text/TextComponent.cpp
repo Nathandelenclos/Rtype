@@ -6,7 +6,7 @@
 
 #include <utility>
 
-TextComponent::TextComponent(std::shared_ptr<ClientSocket> socket)
+TextComponent::TextComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
 {
     _type = ComponentType::TEXT;
     _text = "base_text";

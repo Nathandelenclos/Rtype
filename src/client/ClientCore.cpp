@@ -7,8 +7,9 @@
 ClientCore::ClientCore()
 {
     _socket = std::make_shared<ClientSocket>();
-    _scenes["menu"] = std::make_unique<MenuScene>(_socket);
-    _currentScene = std::move(_scenes["menu"]);
+    _scenes["menu"] = std::make_unique<MenuScene>(this, _socket);
+    _scenes["main"] = std::make_unique<MainScene>(this, _socket);
+    _currentScene = _scenes["main"];
 }
 
 bool ClientCore::init_socket(const std::string& ip, int port)
@@ -34,4 +35,16 @@ void ClientCore::run()
         _currentScene->display(window);
         window.display();
     }
+}
+
+std::shared_ptr<IScene> ClientCore::getSceneByName(const std::string& name)
+{
+    return _scenes[name];
+}
+
+void ClientCore::setCurrentScene(const std::string& name)
+{
+    _currentScene->continueScene = false;
+    _currentScene->stopScene();
+    _currentScene = getSceneByName(name);
 }

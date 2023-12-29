@@ -19,3 +19,33 @@ void AScene::display(sf::RenderWindow& window)
 void AScene::update()
 {
 }
+
+void AScene::pauseScene()
+{
+    for (auto &component : _components) {
+        if (component->getType() == MUSIC) {
+            auto music = std::dynamic_pointer_cast<MusicComponent>(component);
+            music->setPaused(true);
+        }
+    }
+}
+
+void AScene::resumeScene()
+{
+    for (auto &component : _components) {
+        if (component->getType() == MUSIC) {
+            auto music = std::dynamic_pointer_cast<MusicComponent>(component);
+            music->setPaused(false);
+        }
+    }
+}
+
+void AScene::stopScene()
+{
+    for (auto &component : _components) {
+        if (component->getType() == MUSIC) {
+            auto music = std::dynamic_pointer_cast<MusicComponent>(component);
+            music->stop();
+        }
+    }
+}

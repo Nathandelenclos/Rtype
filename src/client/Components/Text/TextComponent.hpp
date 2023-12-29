@@ -11,7 +11,7 @@
 
 class TextComponent : public AComponent {
     public:
-        explicit TextComponent(std::shared_ptr<ClientSocket> socket);
+        explicit TextComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket);
 
         void display(sf::RenderWindow& window) override;
         void action() override;

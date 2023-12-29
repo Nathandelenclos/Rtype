@@ -5,7 +5,7 @@
 #include "MusicComponent.hpp"
 #include <iostream>
 
-MusicComponent::MusicComponent(std::shared_ptr<ClientSocket> socket)
+MusicComponent::MusicComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
 {
     _type = ComponentType::MUSIC;
     if (!_music.openFromFile("../src/client/assets/musics/music.ogg"))
@@ -13,6 +13,7 @@ MusicComponent::MusicComponent(std::shared_ptr<ClientSocket> socket)
     _music.setLoop(true);
     _music.setVolume(_volume);
     _socket = std::move(socket);
+    _clientCore = core;
 }
 
 MusicComponent::~MusicComponent()

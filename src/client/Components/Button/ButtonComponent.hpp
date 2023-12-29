@@ -14,7 +14,7 @@
 
 class ButtonComponent : public AComponent {
     public:
-        explicit ButtonComponent(std::shared_ptr<ClientSocket> socket);
+        explicit ButtonComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket);
         void action() override;
         void setTexture(const sf::Texture& texture);
         void setPosition(sf::Vector2f position);
@@ -27,6 +27,9 @@ class ButtonComponent : public AComponent {
 
         void handleEvent(const sf::Event& event, sf::RenderWindow& window) override;
         void handleClickInitServer();
+        void handleClickMainScene();
+
+        void defaultCallback();
 
     private:
         sf::Texture _texture;
