@@ -25,3 +25,15 @@ void SoundComponent::action()
 void SoundComponent::handleEvent(const sf::Event& event, sf::RenderWindow& window)
 {
 }
+
+void SoundComponent::setSound(const std::string& path)
+{
+    if (!_buffer.loadFromFile(path))
+        throw std::runtime_error("Cannot load " + path);
+    _sound.setBuffer(_buffer);
+}
+
+void SoundComponent::stop()
+{
+    _sound.stop();
+}

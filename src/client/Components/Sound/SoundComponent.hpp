@@ -15,6 +15,9 @@ class SoundComponent : public AComponent {
         void action() override;
         void display(sf::RenderWindow& window) override;
 
+        void setSound(const std::string& path);
+        void stop();
+
         void handleEvent(const sf::Event& event, sf::RenderWindow& window) override;
 
     private:

@@ -12,6 +12,7 @@
 #include "../../Components/Button/ButtonComponent.hpp"
 #include "../../Components/Input/InputComponent.hpp"
 #include "../../Components/Sound/SoundComponent.hpp"
+#include "../../Components/Music/MusicComponent.hpp"
 
 class MenuScene : public AScene {
     public:

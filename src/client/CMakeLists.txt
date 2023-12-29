@@ -26,7 +26,9 @@ add_executable(r-type_client
         src/client/Components/Input/InputComponent.cpp
         src/client/Components/Input/InputComponent.hpp
         src/client/Components/Sound/SoundComponent.cpp
-        src/client/Components/Sound/SoundComponent.hpp)
+        src/client/Components/Sound/SoundComponent.hpp
+        src/client/Components/Music/MusicComponent.cpp
+        src/client/Components/Music/MusicComponent.hpp)
 target_link_libraries(r-type_client sfml-graphics sfml-audio sfml-system sfml-window)
 
 set_target_properties(r-type_client PROPERTIES EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR})

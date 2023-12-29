@@ -9,6 +9,8 @@
 #include "../AComponent.hpp"
 #include "../Text/TextComponent.hpp"
 #include "../Input/InputComponent.hpp"
+#include "../Sound/SoundComponent.hpp"
+#include "../Music/MusicComponent.hpp"
 
 class ButtonComponent : public AComponent {
     public:

@@ -3,7 +3,6 @@
 //
 
 #include "ButtonComponent.hpp"
-#include "../Sound/SoundComponent.hpp"
 
 #include <utility>
 
@@ -92,6 +91,8 @@ void ButtonComponent::handleClickInitServer()
             }
         } else if (component->getType() == ComponentType::SOUND) {
             dynamic_cast<SoundComponent *>(component.get())->action();
+        } else if (component->getType() == ComponentType::MUSIC) {
+            dynamic_cast<MusicComponent *>(component.get())->setPaused(!dynamic_cast<MusicComponent *>(component.get())->isPlaying());
         }
     }
     if (ip.empty() || port.empty()) {
@@ -117,6 +118,8 @@ void ButtonComponent::handleClickInitServer()
                     else
                         dynamic_cast<TextComponent *>(component.get())->setText("Server not found");
                 }
+            } else if (component->getType() == ComponentType::MUSIC) {
+                dynamic_cast<MusicComponent *>(component.get())->setVolume(50);
             }
         }
     }

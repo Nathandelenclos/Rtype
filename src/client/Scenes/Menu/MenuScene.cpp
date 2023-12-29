@@ -18,11 +18,13 @@ void MenuScene::init_scene()
     std::shared_ptr<InputComponent> address_input = std::make_shared<InputComponent>(_socket);
     std::shared_ptr<InputComponent> port_input = std::make_shared<InputComponent>(_socket);
     std::shared_ptr<SoundComponent> sound = std::make_shared<SoundComponent>(_socket);
+    std::shared_ptr<MusicComponent> music = std::make_shared<MusicComponent>(_socket);
 
     button->addActionTarget(text);
     button->addActionTarget(address_input);
     button->addActionTarget(port_input);
     button->addActionTarget(sound);
+    button->addActionTarget(music);
     std::function<void()> handleClick = std::bind(&ButtonComponent::handleClickInitServer, button);
     button->setCallback(handleClick);
 
@@ -44,6 +46,8 @@ void MenuScene::init_scene()
     addComponent(text_button);
     addComponent(address_input);
     addComponent(port_input);
+    addComponent(sound);
+    addComponent(music);
 }
 
 void MenuScene::handleEvent(const sf::Event& event, sf::RenderWindow& window)
