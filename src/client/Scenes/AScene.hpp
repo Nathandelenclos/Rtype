@@ -10,12 +10,12 @@ class AScene : public IScene {
     public:
         ~AScene() override = default;
 
-        void addComponent(std::unique_ptr<IComponent> component) override;
+        void addComponent(std::shared_ptr<IComponent> component) override;
         void display(sf::RenderWindow& window) override;
 
         void update() override;
 
     protected:
-        std::vector<std::unique_ptr<IComponent>> _components;
+        std::vector<std::shared_ptr<IComponent>> _components;
 
 };

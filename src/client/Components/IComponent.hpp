@@ -23,13 +23,15 @@ class IComponent {
         [[nodiscard]] virtual ComponentType getType() const = 0;
         virtual void action() = 0;
         virtual void display(sf::RenderWindow& window) = 0;
-        virtual void addActionTarget(std::unique_ptr<IComponent> component) = 0;
-        virtual void addSubComponent(std::unique_ptr<IComponent> component) = 0;
+        virtual void addActionTarget(std::shared_ptr<IComponent> component) = 0;
+        virtual void addSubComponent(std::shared_ptr<IComponent> component) = 0;
+
+        virtual void handleEvent(const sf::Event& event, sf::RenderWindow& window) = 0;
 
     protected:
         ComponentType _type;
-        std::vector<std::unique_ptr<IComponent>> action_target;
-        std::vector<std::unique_ptr<IComponent>> sub_components;
+        std::vector<std::shared_ptr<IComponent>> action_target;
+        std::vector<std::shared_ptr<IComponent>> sub_components;
 };
 
 

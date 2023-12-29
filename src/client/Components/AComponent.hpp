@@ -14,6 +14,6 @@ class AComponent : public IComponent {
         ~AComponent() override = default;
 
         [[nodiscard]] ComponentType getType() const override;
-        void addActionTarget(std::unique_ptr<IComponent> component) override;
-        void addSubComponent(std::unique_ptr<IComponent> component) override;
+        void addActionTarget(std::shared_ptr<IComponent> component) override;
+        void addSubComponent(std::shared_ptr<IComponent> component) override;
 };

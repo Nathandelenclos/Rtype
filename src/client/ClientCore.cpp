@@ -25,6 +25,7 @@ void ClientCore::run()
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
+            _currentScene->handleEvent(event, window);
         }
         _currentScene->update();
         _currentScene->display(window);

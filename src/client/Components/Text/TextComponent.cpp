@@ -59,3 +59,7 @@ void TextComponent::display(sf::RenderWindow& window)
 {
     window.draw(_sfText);
 }
+
+void TextComponent::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+{
+}

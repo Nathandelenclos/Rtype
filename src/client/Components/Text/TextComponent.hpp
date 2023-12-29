@@ -22,6 +22,8 @@ class TextComponent : public AComponent {
         void setColor(sf::Color color);
         void setSize(unsigned int size);
 
+        void handleEvent(const sf::Event& event, sf::RenderWindow& window) override;
+
     private:
         std::string _text;
         sf::Font _font;

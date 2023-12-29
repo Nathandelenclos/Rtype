@@ -8,6 +8,7 @@
 #include <vector>
 #include "../AScene.hpp"
 #include "../../Components/Text/TextComponent.hpp"
+#include "../../Components/Button/ButtonComponent.hpp"
 
 class MenuScene : public AScene {
     public:
@@ -15,7 +16,7 @@ class MenuScene : public AScene {
         ~MenuScene() override = default;
 
         void init_scene();
-
+        void handleEvent(const sf::Event& event, sf::RenderWindow& window) override;
 };
 
 

@@ -4,9 +4,9 @@
 
 #include "AScene.hpp"
 
-void AScene::addComponent(std::unique_ptr<IComponent> component)
+void AScene::addComponent(std::shared_ptr<IComponent> component)
 {
-    _components.push_back(std::move(component));
+    _components.push_back(component);
 }
 
 void AScene::display(sf::RenderWindow& window)
@@ -18,7 +18,4 @@ void AScene::display(sf::RenderWindow& window)
 
 void AScene::update()
 {
-    for (auto &component : _components) {
-        component->action();
-    }
 }
