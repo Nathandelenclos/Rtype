@@ -9,11 +9,11 @@ ButtonComponent::ButtonComponent()
     _type = ComponentType::BUTTON;
     _texture.loadFromFile("../src/client/assets/button.png");
     _sprite.setTexture(_texture);
-    _position = sf::Vector2f(150, 150);
+    _position = sf::Vector2f(150, 100);
     _sprite.setPosition(_position);
-    _size = sf::Vector2f(1, 1);
+    _size = sf::Vector2f(0.75, 0.75);
     _sprite.setScale(_size);
-    _rect = sf::IntRect(0, 0, 350, 301);
+    _rect = sf::IntRect(0, 0, 701, 301);
     _sprite.setTextureRect(_rect);
 }
 
