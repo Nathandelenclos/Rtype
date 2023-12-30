@@ -6,14 +6,14 @@
 
 #include <memory>
 #include <vector>
-#include "../../../../networking/client/ClientSocket.hpp"
-#include "../AScene.hpp"
-#include "../../Components/Text/TextComponent.hpp"
-#include "../../Components/Button/ButtonComponent.hpp"
-#include "../../Components/Input/InputComponent.hpp"
-#include "../../Components/Sound/SoundComponent.hpp"
-#include "../../Components/Music/MusicComponent.hpp"
-#include "../../Components/Sprite/SpriteComponent.hpp"
+#include "networking/client/ClientSocket.hpp"
+#include "Scenes/AScene.hpp"
+#include "Components/Text/TextComponent.hpp"
+#include "Components/Button/ButtonComponent.hpp"
+#include "Components/Input/InputComponent.hpp"
+#include "Components/Sound/SoundComponent.hpp"
+#include "Components/Music/MusicComponent.hpp"
+#include "Components/Sprite/SpriteComponent.hpp"
 
 class MainScene : public AScene {
     public:

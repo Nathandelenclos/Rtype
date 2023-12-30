@@ -6,6 +6,7 @@
 #define R_TYPE_SERVER_USOCKET_HPP
 
 #include <string>
+#include <memory>
 
 #ifdef _WIN32
     #include <winsock2.h>
@@ -26,6 +27,7 @@ typedef enum code {
     LOGIN,
     LOGOUT,
     HEARTBEAT,
+    ELEMENT,
 } CODE;
 
 typedef struct packet {
@@ -33,6 +35,22 @@ typedef struct packet {
     int data_size;
     void *data;
 } Packet;
+
+typedef enum type {
+    PLAYER,
+    ENEMY,
+    BULLET,
+    BACKGROUND,
+} Type;
+
+typedef struct element {
+    int id;
+    float x;
+    float y;
+    int width;
+    int height;
+    Type type;
+} Element;
 
 class USocket {
 public:

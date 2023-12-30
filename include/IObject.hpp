@@ -7,7 +7,11 @@
 
 #pragma once
 
+#include "../networking/shared/USocket.hpp"
+#include "memory"
+
 class IObject {
 public:
     virtual ~IObject() = default;
+    virtual Packet *getPacket() const = 0;
 };

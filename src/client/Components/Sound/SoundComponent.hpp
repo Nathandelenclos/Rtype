@@ -5,7 +5,7 @@
 #pragma once
 
 #include <SFML/Audio.hpp>
-#include "../AComponent.hpp"
+#include "Components/AComponent.hpp"
 
 class SoundComponent : public AComponent {
     public:

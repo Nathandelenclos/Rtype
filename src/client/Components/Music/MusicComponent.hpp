@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "../AComponent.hpp"
+#include "Components/AComponent.hpp"
 #include <SFML/Audio.hpp>
 
 

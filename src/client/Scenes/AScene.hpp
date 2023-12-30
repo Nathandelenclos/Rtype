@@ -13,7 +13,7 @@ class AScene : public IScene {
 
         void addComponent(std::shared_ptr<IComponent> component) override;
         void display(sf::RenderWindow& window) override;
-
+        void handleEvent(const sf::Event& event, sf::RenderWindow& window) override;
         void update() override;
 
         void pauseScene() override;

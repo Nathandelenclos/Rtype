@@ -15,22 +15,22 @@
 class RType : public IGame {
 public:
     RType() {
-        //std::cout << "RType constructor" << std::endl;
         objects.push_back(new Player());
         services.push_back(new Graphic());
     }
 
     ~RType() override {
-        //std::cout << "RType destructor" << std::endl;
+        for (auto &object : objects)
+            delete object;
+        for (auto &service : services)
+            delete service;
     }
 
     [[nodiscard]] std::vector<IObject*> getObjects() const override {
-        //std::cout << "RType::getObjects()" << std::endl;
         return objects;
     }
 
     [[nodiscard]] std::vector<IService*> getServices() const override {
-        //std::cout << "RType::getServices()" << std::endl;
         return services;
     }
 

@@ -19,7 +19,7 @@ void MainScene::init_scene()
     std::shared_ptr<ButtonComponent> button_init_serv = std::make_shared<ButtonComponent>(_clientCore, _socket);
     std::shared_ptr<TextComponent> text_button_init_serv = std::make_shared<TextComponent>(_clientCore, _socket);
 
-    music->setVolume(25);
+    music->setVolume(10);
 
     background->setSize(sf::Vector2f (800, 600));
 

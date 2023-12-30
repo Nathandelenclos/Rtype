@@ -9,10 +9,11 @@
 #include <chrono>
 #include <thread>
 #include <sys/time.h>
-#include "../../networking/client/ClientSocket.hpp"
+#include "networking/client/ClientSocket.hpp"
 #include "Scenes/IScene.hpp"
 #include "Scenes/Menu/MenuScene.hpp"
 #include "Scenes/Menu/MainScene.hpp"
+#include "Scenes/Game/GameScene.hpp"
 
 class ClientCore {
     public:

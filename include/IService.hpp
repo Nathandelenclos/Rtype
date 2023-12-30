@@ -9,8 +9,11 @@
 
 #include <vector>
 #include "IObject.hpp"
+#include "IGame.hpp"
+
+class IGame;
 
 class IService {
 public:
-    virtual void update(std::vector<IObject*> objects) = 0;
+    virtual void update(IGame *game, std::vector<IObject*> objects) = 0;
 };

@@ -6,11 +6,11 @@
 
 #include <functional>
 #include <iostream>
-#include "../AComponent.hpp"
-#include "../Text/TextComponent.hpp"
-#include "../Input/InputComponent.hpp"
-#include "../Sound/SoundComponent.hpp"
-#include "../Music/MusicComponent.hpp"
+#include "Components/AComponent.hpp"
+#include "Components/Text/TextComponent.hpp"
+#include "Components/Input/InputComponent.hpp"
+#include "Components/Sound/SoundComponent.hpp"
+#include "Components/Music/MusicComponent.hpp"
 
 class ButtonComponent : public AComponent {
     public:

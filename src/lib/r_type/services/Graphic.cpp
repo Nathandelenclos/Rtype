@@ -8,7 +8,7 @@
 #include "Graphic.hpp"
 #include "Drawable.hpp"
 
-void Graphic::update(std::vector<IObject *> objects) {
+void Graphic::update(IGame *game, std::vector<IObject*> objects) {
     for (auto &object : objects) {
         auto drawable = dynamic_cast<Drawable*>(object);
         if (drawable) {
