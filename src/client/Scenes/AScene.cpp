@@ -25,7 +25,7 @@ void AScene::pauseScene()
     for (auto &component : _components) {
         if (component->getType() == MUSIC) {
             auto music = std::dynamic_pointer_cast<MusicComponent>(component);
-            music->setPaused(true);
+            music->setPaused(false);
         }
     }
 }
@@ -35,7 +35,7 @@ void AScene::resumeScene()
     for (auto &component : _components) {
         if (component->getType() == MUSIC) {
             auto music = std::dynamic_pointer_cast<MusicComponent>(component);
-            music->setPaused(false);
+            music->setPaused(true);
         }
     }
 }

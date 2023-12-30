@@ -47,6 +47,7 @@ void MusicComponent::setSound(const std::string& path)
 
 bool MusicComponent::isPlaying() const
 {
+    std::cout << "isPlaying " << _music.getStatus() << " " << sf::Music::Playing << std::endl;
     return _music.getStatus() == sf::Music::Playing;
 }
 
@@ -67,10 +68,16 @@ void MusicComponent::setLoop(bool loop)
 
 void MusicComponent::setPaused(bool paused)
 {
-    if (paused)
+
+    if (paused) {
         _music.play();
-    else
-        _music.pause();
+        std::cout << "play" << std::endl;
+    } else {
+        do {
+            _music.pause();
+            std::cout << "pause" << std::endl;
+        } while (_music.getStatus() != sf::Music::Paused);
+    }
 }
 
 void MusicComponent::setVolume(float volume)

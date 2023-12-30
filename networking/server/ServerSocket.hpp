@@ -24,6 +24,7 @@ public:
     void run() override;
     void addClient(struct sockaddr_in client);
     int getClientId(sockaddr_in client);
+    struct sockaddr_in getClientAddress(int id);
 
     void init_fd_set();
 

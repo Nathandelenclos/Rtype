@@ -24,7 +24,8 @@ typedef enum code {
     EVENT,
     MESSAGE,
     LOGIN,
-    LOGOUT
+    LOGOUT,
+    HEARTBEAT,
 } CODE;
 
 typedef struct packet {

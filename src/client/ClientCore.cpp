@@ -14,27 +14,36 @@ ClientCore::ClientCore()
 
 bool ClientCore::init_socket(const std::string& ip, int port)
 {
-    return _socket->init_client(ip, port);
+    if (_socket->isInit())
+        return true;
+    bool init = _socket->init_client(ip, port);
+    _socket->setInit(init);
+    if (!init)
+        return false;
+    _heartBeatThread = std::thread(&ClientCore::sendHeartBeat, this, std::ref(_window));
+    return init;
 }
 
 void ClientCore::run()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "R-Type");
+    _window.create(sf::VideoMode(800, 600), "R-Type");
     sf::Event event{};
 
-    while (window.isOpen()) {
-        window.clear();
+    while (_window.isOpen()) {
+        _window.clear();
         _socket->init_fd_set();
-        while (window.pollEvent(event)) {
+        while (_window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
-                window.close();
-            _currentScene->handleEvent(event, window);
+                _window.close();
+            _currentScene->handleEvent(event, _window);
         }
         _currentScene->receiveData();
         _currentScene->update();
-        _currentScene->display(window);
-        window.display();
+        _currentScene->display(_window);
+        _window.display();
     }
+    if (_heartBeatThread.joinable())
+        _heartBeatThread.join();
 }
 
 std::shared_ptr<IScene> ClientCore::getSceneByName(const std::string& name)
@@ -47,4 +56,20 @@ void ClientCore::setCurrentScene(const std::string& name)
     _currentScene->continueScene = false;
     _currentScene->stopScene();
     _currentScene = getSceneByName(name);
+    _currentScene->continueScene = true;
+    _currentScene->resumeScene();
+}
+
+void ClientCore::sendHeartBeat(sf::RenderWindow& window)
+{
+    std::unique_ptr<Packet> packet = std::make_unique<Packet>();
+
+    packet->code = HEARTBEAT;
+    packet->data_size = sizeof(timeval);
+    packet->data = malloc(packet->data_size);
+    while (window.isOpen()) {
+        gettimeofday((timeval*)packet->data, nullptr);
+        _socket->send(packet.get(), _socket->serv_addr);
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
 }

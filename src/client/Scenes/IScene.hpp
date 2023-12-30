@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <memory>
+#include <sys/time.h>
 #include "../Components/IComponent.hpp"
 #include "../Components/Sound/SoundComponent.hpp"
 #include "../Components/Music/MusicComponent.hpp"
@@ -31,4 +32,5 @@ private:
         std::vector<std::shared_ptr<IComponent>> _components;
     protected:
         ClientCore* _clientCore;
+        timeval _pingTime{};
 };

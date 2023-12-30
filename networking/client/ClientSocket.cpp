@@ -235,3 +235,11 @@ void ClientSocket::init_fd_set() {
     #endif
     FD_SET(sockfd, &_readfds);
 }
+
+bool ClientSocket::isInit() const {
+    return _isInit;
+}
+
+void ClientSocket::setInit(bool init) {
+    _isInit = init;
+}

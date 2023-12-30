@@ -12,35 +12,39 @@
 #include "../shared/USocket.hpp"
 
 class ClientSocket : public USocket {
-public:
-    ClientSocket();
-    ~ClientSocket() override;
+    public:
+        ClientSocket();
+        ~ClientSocket() override;
 
-    bool init_client(const std::string& ip, int port);
-    void send(Packet *packet, struct sockaddr_in dest) override;
-    std::tuple<std::unique_ptr<Packet>, int> receive() override;
+        bool init_client(const std::string& ip, int port);
+        void send(Packet *packet, struct sockaddr_in dest) override;
+        std::tuple<std::unique_ptr<Packet>, int> receive() override;
 
-    void run() override;
+        void run() override;
 
-    std::tuple<std::unique_ptr<Packet>, int> listen_server();
-    void init_fd_set();
+        std::tuple<std::unique_ptr<Packet>, int> listen_server();
+        void init_fd_set();
 
-    #ifdef _WIN32
-        void read_input();
-    #endif
+        bool isInit() const;
+        void setInit(bool init);
 
-    struct sockaddr_in serv_addr;
-private:
+        #ifdef _WIN32
+            void read_input();
+        #endif
+
+        struct sockaddr_in serv_addr;
     int sockfd;
+private:
     std::string lastMessage;
-    fd_set _readfds;
-    bool loop;
-    std::unique_ptr<struct timeval> timeout;
-    #ifdef _WIN32
-        std::string input;
-        std::mutex mtx;
-        std::thread inputThread;
-    #endif
+        fd_set _readfds;
+        bool loop;
+        std::unique_ptr<struct timeval> timeout;
+        bool _isInit;
+        #ifdef _WIN32
+            std::string input;
+            std::mutex mtx;
+            std::thread inputThread;
+        #endif
 };
 
 #endif //R_TYPE_SERVER_CLIENTSOCKET_HPP

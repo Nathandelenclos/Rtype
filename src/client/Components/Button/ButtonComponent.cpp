@@ -116,9 +116,10 @@ void ButtonComponent::handleClickInitServer()
                         dynamic_cast<TextComponent *>(component.get())->setText("Port must be a number");
                         return;
                     }
-                    if (_socket->init_client(ip, std::stoi(port)))
-                        dynamic_cast<TextComponent *>(component.get())->setText("Finding server...");
-                    else
+                    if (_clientCore->init_socket(ip, std::stoi(port))) {
+                        if (!_socket->isInit())
+                            dynamic_cast<TextComponent *>(component.get())->setText("Finding server...");
+                    } else
                         dynamic_cast<TextComponent *>(component.get())->setText("Server not found");
                 }
             } else if (component->getType() == ComponentType::MUSIC) {

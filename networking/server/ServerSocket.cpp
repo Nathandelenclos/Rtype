@@ -195,3 +195,7 @@ void ServerSocket::run() {
 std::map<int, struct sockaddr_in> ServerSocket::getClients() const {
     return clients;
 }
+
+struct sockaddr_in ServerSocket::getClientAddress(int id) {
+    return clients[id];
+}
