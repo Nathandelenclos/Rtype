@@ -7,6 +7,6 @@
 
 #include "RType.hpp"
 
-extern "C" RType* create() {
-    return new RType();
+extern "C" RType* create(ServerSocket *socket) {
+    return new RType(socket);
 }

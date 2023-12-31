@@ -12,7 +12,9 @@ add_library(lib_r_type SHARED
         src/lib/r_type/entities/Player.cpp
         src/lib/r_type/entities/Player.hpp
         src/lib/r_type/components/Drawable.cpp
-        src/lib/r_type/components/Drawable.hpp)
+        src/lib/r_type/components/Drawable.hpp
+        networking/server/ServerSocket.cpp
+        networking/server/ServerSocket.hpp)
 
 target_compile_options(lib_r_type PRIVATE -fPIC)
 

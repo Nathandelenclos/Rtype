@@ -13,9 +13,12 @@
 
 class Player: public Drawable, public IObject {
 public:
-    Player() = default;
-    ~Player() = default;
-    Packet *getPacket() const override;
+    explicit Player(ServerSocket *socket);
+    ~Player() override = default;
+    [[nodiscard]] Packet *getPacket() const override;
 
     void draw() override;
+
+private:
+    ServerSocket *socket;
 };

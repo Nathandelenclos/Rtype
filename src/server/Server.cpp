@@ -10,8 +10,8 @@
 Server::Server(std::string const &ip, int port) {
     _serverSocket = std::make_unique<ServerSocket>();
     _gameLoader = std::make_unique<DLLoader>("../lib_r_type.so");
-    _game = std::unique_ptr<IGame>(_gameLoader->getInstance("create"));
     _serverSocket->init_server(ip, port);
+    _game = std::unique_ptr<IGame>(_gameLoader->getInstance("create", _serverSocket.get()));
     _packetHeartBeat = std::make_unique<Packet>();
 }
 
@@ -55,15 +55,20 @@ std::ostream &operator<<(std::ostream &os, std::unique_ptr<Packet> &packet) {
     return os;
 }
 
+Packet packet{};
+
 void Server::run() {
     while (true) {
         _serverSocket->init_fd_set();
         _packetClientId = _serverSocket->receive();
         _packet = std::move(std::get<0>(_packetClientId));
 
-        for (auto service: _game->getServices()) {
-            service->update(_game.get(), _game->getObjects());
-        }
+        /*for (auto service: _game->getServices()) {
+            IService *service1 = dynamic_cast<IService *>(service);
+            std::vector<IObject *> objects = _game->getObjects();
+            IGame *game = _game.get();
+            service1->update(game, _game->getObjects());
+        }*/
         /*for (auto object: _game->getObjects()) {
             _serverSocket->broadcast(object->getPacket());
         }*/
@@ -83,5 +88,13 @@ void Server::run() {
             _packet.reset();
             _packetClientId = std::tuple<std::unique_ptr<Packet>, int>(nullptr, 0);
         }
+        //test (ça fonctionne ici mais pas ailleurs (reçois UNDEFINED packet sur le client depuis un send à un autre endroit qu'ici))
+        /*packet.code = LOGIN;
+        packet.data_size = 4;
+        packet.data = malloc(packet.data_size);
+        memcpy(packet.data, "test", packet.data_size);
+        if (!_serverSocket->getClients().empty())
+            _serverSocket->send(&packet, _serverSocket->getClientAddress(1));
+        */
     }
 }

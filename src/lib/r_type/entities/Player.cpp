@@ -7,8 +7,13 @@
 
 #include "Player.hpp"
 
+Player::Player(ServerSocket *socket) : socket(socket) {
+}
+
 void Player::draw() {
-    //std::cout << "Player::draw()" << std::endl;
+    Packet *packet = getPacket();
+    for (auto &client : socket->getClients())
+        socket->send(packet, client.second);
 }
 
 Packet *Player::getPacket() const {
@@ -16,8 +21,8 @@ Packet *Player::getPacket() const {
     std::unique_ptr<Element> element = std::make_unique<Element>();
     element->x = 0;
     element->y = 0;
-    element->width = 0;
-    element->height = 0;
+    element->width = 1;
+    element->height = 1;
     element->type = PLAYER;
 
     packet->code = ELEMENT;

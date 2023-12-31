@@ -14,8 +14,8 @@
 
 class RType : public IGame {
 public:
-    RType() {
-        objects.push_back(new Player());
+    RType(ServerSocket *socket) {
+        objects.push_back(new Player(socket));
         services.push_back(new Graphic());
     }
 

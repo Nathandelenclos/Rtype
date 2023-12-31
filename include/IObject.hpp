@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "../networking/shared/USocket.hpp"
+#include "../networking/server/ServerSocket.hpp"
 #include <memory>
 #include <string>
 #include <cstring>

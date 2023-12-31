@@ -15,10 +15,12 @@
 class DLLoader {
 public:
     explicit DLLoader(const std::string& libraryPath) {
+        std::cout << "Loading library: " << libraryPath << '\n';
         handle = dlopen(libraryPath.c_str(), RTLD_LAZY);
         if (!handle) {
             std::cerr << "Cannot open library: " << dlerror() << '\n';
         }
+        std::cout << "Library loaded\n";
     }
 
     ~DLLoader() {
@@ -27,7 +29,7 @@ public:
         }
     }
 
-    IGame* getInstance(const std::string& functionName) {
+    IGame* getInstance(const std::string& functionName, ServerSocket *socket) {
         dlerror();
         create_t* create = (create_t*) dlsym(handle, functionName.c_str());
         const char* dlsym_error = dlerror();
@@ -39,10 +41,11 @@ public:
             std::cerr << "Function '" << functionName << "' not found in the library.\n";
             return nullptr;
         }
-        return create();
+        std::cout << "Function '" << functionName << "' found in the library.\n";
+        return create(socket);
     }
 
 private:
-    typedef IGame* create_t();
+    typedef IGame* create_t(ServerSocket *socket);
     void* handle = nullptr;
 };

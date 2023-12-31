@@ -29,8 +29,9 @@ public:
 
     void init_fd_set();
 
-    std::map<int, struct sockaddr_in> getClients() const;
+    [[nodiscard]] std::map<int, struct sockaddr_in> getClients() const;
 
+    std::string test = "test";
 private:
     unsigned long long sockfd;
     struct sockaddr_in serv_addr{};

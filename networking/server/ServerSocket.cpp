@@ -52,11 +52,8 @@ void ServerSocket::init_server(std::string ip, int port) {
 
 void ServerSocket::send(Packet *packet, struct sockaddr_in client) {
     std::cout << "ClientSocket send" << std::endl;
-    char *buffer = static_cast<char *>(malloc(packet->data_size + 1));
-    memset(buffer, 0, packet->data_size + 1);
-    memcpy(buffer, packet->data, packet->data_size);
-    std::string message = buffer;
-    std::cout << "message: " << message << std::endl;
+    std::cout << "packet->code: " << packet->code << std::endl;
+    std::cout << "packet->data_size: " << packet->data_size << std::endl;
     if (sendto(sockfd, reinterpret_cast<const char *>(&packet->code), sizeof(int), 0, (struct sockaddr*)&client, sizeof(client)) < 0) {
         throw std::runtime_error("Failed to send message");
     }
@@ -85,10 +82,11 @@ int ServerSocket::getClientId(struct sockaddr_in client) {
     return -1;
 }
 
+Packet packet_last{};
+
 
 std::tuple<std::unique_ptr<Packet>, int> ServerSocket::receive() {
-    Packet packet{};
-    packet.code = UNDEFINED;
+    packet_last.code = UNDEFINED;
 
 
     struct sockaddr_in cli_addr_code{};
@@ -96,23 +94,23 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::receive() {
     if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) < 0) {
         throw std::runtime_error("Failed to read from socket");
     } else if (FD_ISSET(sockfd, &_readfds)) {
-        if (recvfrom(sockfd, reinterpret_cast<char *>(&packet.code), sizeof(int), 0, (struct sockaddr*)&cli_addr_code, &len_code) < 0) {
+        if (recvfrom(sockfd, reinterpret_cast<char *>(&packet_last.code), sizeof(int), 0, (struct sockaddr*)&cli_addr_code, &len_code) < 0) {
             throw std::runtime_error("Failed to read from socket");
         }
-        if (packet.code == UNDEFINED) {
+        if (packet_last.code == UNDEFINED) {
             throw std::runtime_error("Failed to read from socket");
         }
     } else {
         return std::tuple<std::unique_ptr<Packet>, int>(nullptr, 0);
     }
 
-    std::cout << "packet.code: " << packet.code << std::endl;
+    std::cout << "packet.code: " << packet_last.code << std::endl;
     struct sockaddr_in cli_addr_size{};
     socklen_t len_size = sizeof(cli_addr_size);
     if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) < 0) {
         throw std::runtime_error("Failed to read from socket");
     } else if (FD_ISSET(sockfd, &_readfds)) {
-        if (recvfrom(sockfd, reinterpret_cast<char *>(&packet.data_size), sizeof(int), 0, (struct sockaddr*)&cli_addr_size, &len_size) < 0) {
+        if (recvfrom(sockfd, reinterpret_cast<char *>(&packet_last.data_size), sizeof(int), 0, (struct sockaddr*)&cli_addr_size, &len_size) < 0) {
             throw std::runtime_error("Failed to read from socket");
         }
         if (cli_addr_size.sin_addr.s_addr != cli_addr_code.sin_addr.s_addr || cli_addr_size.sin_port != cli_addr_code.sin_port) {
@@ -121,29 +119,29 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::receive() {
     } else {
         return std::tuple<std::unique_ptr<Packet>, int>(nullptr, 0);
     }
-    std::cout << "packet.data_size: " << packet.data_size << std::endl;
+    std::cout << "packet.data_size: " << packet_last.data_size << std::endl;
 
 
-    packet.data = malloc(packet.data_size + 1);
-    memset(packet.data, 0, packet.data_size + 1);
+    packet_last.data = malloc(packet_last.data_size + 1);
+    memset(packet_last.data, 0, packet_last.data_size + 1);
     struct sockaddr_in cli_addr_data{};
     socklen_t len_data = sizeof(cli_addr_data);
-    char *buffer = static_cast<char *>(malloc(packet.data_size + 1));
-    memset(buffer, 0, packet.data_size + 1);
+    char *buffer = static_cast<char *>(malloc(packet_last.data_size + 1));
+    memset(buffer, 0, packet_last.data_size + 1);
     if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) < 0) {
         throw std::runtime_error("Failed to read from socket");
     } else if (FD_ISSET(sockfd, &_readfds)) {
-        if (recvfrom(sockfd, buffer, packet.data_size, 0, (struct sockaddr*)&cli_addr_data, &len_data) < 0) {
+        if (recvfrom(sockfd, buffer, packet_last.data_size, 0, (struct sockaddr*)&cli_addr_data, &len_data) < 0) {
             throw std::runtime_error("Failed to read from socket");
         }
     } else {
         free(buffer);
-        free(packet.data);
+        free(packet_last.data);
         return std::tuple<std::unique_ptr<Packet>, int>(nullptr, 0);
     }
-    memcpy(packet.data, buffer, packet.data_size);
+    memcpy(packet_last.data, buffer, packet_last.data_size);
 
-    std::string message = reinterpret_cast<char *>(packet.data);
+    std::string message = reinterpret_cast<char *>(packet_last.data);
     std::cout << "message: " << message << std::endl;
 
     int id = getClientId(cli_addr_data);
@@ -167,7 +165,7 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::receive() {
         memcpy(cli_addr_packet->data, "received", 8);
     }
     send(cli_addr_packet.get(), cli_addr_data);
-    return std::make_tuple(std::move(std::make_unique<Packet>(packet)), id);
+    return std::make_tuple(std::move(std::make_unique<Packet>(packet_last)), id);
 }
 
 void ServerSocket::init_fd_set() {
