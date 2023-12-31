@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 find_package(SFML 2.5 COMPONENTS graphics audio system window REQUIRED)
 
+include_directories(src/client .)
 add_executable(r-type_client
         src/client/main.cpp
         networking/client/ClientSocket.cpp
@@ -31,6 +32,8 @@ add_executable(r-type_client
         src/client/Components/Music/MusicComponent.hpp
         src/client/Scenes/Menu/MainScene.cpp
         src/client/Scenes/Menu/MainScene.hpp
+        src/client/Scenes/Game/GameScene.cpp
+        src/client/Scenes/Game/GameScene.hpp
         src/client/Components/Sprite/SpriteComponent.cpp
         src/client/Components/Sprite/SpriteComponent.hpp)
 target_link_libraries(r-type_client sfml-graphics sfml-audio sfml-system sfml-window)

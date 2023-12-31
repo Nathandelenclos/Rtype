@@ -14,6 +14,8 @@
 class Player: public Drawable, public IObject {
 public:
     Player() = default;
+    ~Player() = default;
+    Packet *getPacket() const override;
 
     void draw() override;
 };

@@ -1,6 +1,4 @@
 //
-// Created by talleux on 12/29/23.
-//
 
 #include "SpriteComponent.hpp"
 
@@ -52,4 +50,10 @@ void SpriteComponent::setRect(sf::IntRect rect)
 {
     _rect = rect;
     _sprite.setTextureRect(_rect);
+}
+
+void SpriteComponent::setPosition(float x, float y)
+{
+    _position = sf::Vector2f(x, y);
+    _sprite.setPosition(_position);
 }

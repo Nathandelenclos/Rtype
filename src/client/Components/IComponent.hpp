@@ -7,7 +7,7 @@
 #include <vector>
 #include <memory>
 #include <SFML/Graphics.hpp>
-#include "../../../networking/client/ClientSocket.hpp"
+#include "networking/client/ClientSocket.hpp"
 
 typedef enum {
     TEXT,

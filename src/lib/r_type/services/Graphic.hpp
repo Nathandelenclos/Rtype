@@ -13,5 +13,5 @@
 class Graphic : public IService {
 public:
     Graphic() = default;
-    void update(std::vector<IObject*> objects) override;
+    void update(IGame *game, std::vector<IObject*> objects) override;
 };

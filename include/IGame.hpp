@@ -11,6 +11,8 @@
 #include "IObject.hpp"
 #include "IService.hpp"
 
+class IService;
+
 class IGame {
 public:
     virtual ~IGame() = default;

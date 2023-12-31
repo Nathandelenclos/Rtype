@@ -7,7 +7,7 @@
 #include <vector>
 #include <memory>
 #include <string>
-#include "../AComponent.hpp"
+#include "Components/AComponent.hpp"
 
 class TextComponent : public AComponent {
     public:

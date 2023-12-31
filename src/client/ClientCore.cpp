@@ -9,6 +9,7 @@ ClientCore::ClientCore()
     _socket = std::make_shared<ClientSocket>();
     _scenes["menu"] = std::make_unique<MenuScene>(this, _socket);
     _scenes["main"] = std::make_unique<MainScene>(this, _socket);
+    _scenes["game"] = std::make_unique<GameScene>(this, _socket);
     _currentScene = _scenes["main"];
 }
 

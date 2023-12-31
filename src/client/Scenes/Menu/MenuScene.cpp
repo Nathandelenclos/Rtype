@@ -3,7 +3,7 @@
 //
 
 #include "MenuScene.hpp"
-#include "../../ClientCore.hpp"
+#include "ClientCore.hpp"
 
 #include <utility>
 
@@ -51,6 +51,8 @@ void MenuScene::init_scene()
     text_ping->setText("Ping: 0ms");
     text_ping->setPosition(sf::Vector2f(0, 550));
 
+    music->setVolume(10);
+
     addComponent(sprite);
     addComponent(text);
     addComponent(button);
@@ -87,6 +89,7 @@ void MenuScene::receiveData() {
                     if (component->getType() == ComponentType::TEXT) {
                         if (component->getAttribute() == "text add serv") {
                             dynamic_cast<TextComponent *>(component.get())->setText("Connection accepted");
+                            _clientCore->setCurrentScene("game");
                         }
                     }
                 }
@@ -108,5 +111,4 @@ void MenuScene::receiveData() {
             }
         }
     }
-
 }

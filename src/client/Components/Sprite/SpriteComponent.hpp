@@ -5,7 +5,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "../AComponent.hpp"
+#include "Components/AComponent.hpp"
 
 class SpriteComponent : public AComponent {
     public:
@@ -15,6 +15,7 @@ class SpriteComponent : public AComponent {
         void action() override;
         void setTexture(const sf::Texture& texture);
         void setPosition(sf::Vector2f position);
+        void setPosition(float x, float y);
         void setSize(sf::Vector2f size);
         void setRect(sf::IntRect rect);
         void display(sf::RenderWindow& window) override;

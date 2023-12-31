@@ -199,3 +199,9 @@ std::map<int, struct sockaddr_in> ServerSocket::getClients() const {
 struct sockaddr_in ServerSocket::getClientAddress(int id) {
     return clients[id];
 }
+
+void ServerSocket::broadcast(Packet *packet) {
+    for (auto& [id, client] : clients) {
+        send(packet, client);
+    }
+}
