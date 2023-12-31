@@ -17,6 +17,7 @@ class IScene {
         virtual ~IScene() = default;
 
         virtual void addComponent(std::shared_ptr<IComponent> component) = 0;
+        virtual std::vector<std::shared_ptr<IComponent>> getComponents() = 0;
         virtual void display(sf::RenderWindow& window) = 0;
 
         virtual void update() = 0;

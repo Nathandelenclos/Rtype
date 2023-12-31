@@ -94,8 +94,6 @@ void ButtonComponent::handleClickInitServer()
             }
         } else if (component->getType() == ComponentType::SOUND) {
             dynamic_cast<SoundComponent *>(component.get())->action();
-        } else if (component->getType() == ComponentType::MUSIC) {
-            dynamic_cast<MusicComponent *>(component.get())->setPaused(!dynamic_cast<MusicComponent *>(component.get())->isPlaying());
         }
     }
     if (ip.empty() || port.empty()) {
@@ -122,8 +120,6 @@ void ButtonComponent::handleClickInitServer()
                     } else
                         dynamic_cast<TextComponent *>(component.get())->setText("Server not found");
                 }
-            } else if (component->getType() == ComponentType::MUSIC) {
-                dynamic_cast<MusicComponent *>(component.get())->setVolume(50);
             }
         }
     }
@@ -135,8 +131,40 @@ void ButtonComponent::handleClickMainScene()
         if (component->getType() == ComponentType::SOUND) {
             dynamic_cast<SoundComponent *>(component.get())->action();
         }
+        if (component->getType() == ComponentType::MUSIC) {
+            auto music = dynamic_cast<MusicComponent *>(component.get());
+            if (music->getPersistant())
+                continue;
+            music->stop();
+        }
     }
     _clientCore->setCurrentScene("menu");
+}
+
+void ButtonComponent::handleClickAccessGame()
+{
+    for (auto &component : action_target) {
+        if (component->getType() == ComponentType::SOUND) {
+            dynamic_cast<SoundComponent *>(component.get())->action();
+        }
+    }
+    if (!_socket->isInit()) {
+        for (auto &component: action_target) {
+            if (component->getType() == ComponentType::TEXT) {
+                if (component->getAttribute() == "text error not init") {
+                    dynamic_cast<TextComponent *>(component.get())->setText("Please init server connection");
+                }
+            }
+        }
+        return;
+    }
+    for (auto &component: action_target) {
+        if (component->getType() == ComponentType::MUSIC) {
+            auto music = dynamic_cast<MusicComponent *>(component.get());
+            music->stop();
+        }
+    }
+    _clientCore->setCurrentScene("game");
 }
 
 void ButtonComponent::defaultCallback()

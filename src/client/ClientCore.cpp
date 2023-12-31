@@ -55,7 +55,7 @@ std::shared_ptr<IScene> ClientCore::getSceneByName(const std::string& name)
 void ClientCore::setCurrentScene(const std::string& name)
 {
     _currentScene->continueScene = false;
-    _currentScene->stopScene();
+    _currentScene->pauseScene();
     _currentScene = getSceneByName(name);
     _currentScene->continueScene = true;
     _currentScene->resumeScene();
@@ -73,4 +73,9 @@ void ClientCore::sendHeartBeat(sf::RenderWindow& window)
         _socket->send(packet.get(), _socket->serv_addr);
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
+}
+
+std::shared_ptr<IScene> ClientCore::getCurrentScene() const
+{
+    return _currentScene;
 }

@@ -28,6 +28,7 @@ class ButtonComponent : public AComponent {
         void handleEvent(const sf::Event& event, sf::RenderWindow& window) override;
         void handleClickInitServer();
         void handleClickMainScene();
+        void handleClickAccessGame();
 
         void defaultCallback();
 

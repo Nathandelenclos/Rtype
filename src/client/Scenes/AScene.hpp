@@ -12,6 +12,7 @@ class AScene : public IScene {
         ~AScene() override = default;
 
         void addComponent(std::shared_ptr<IComponent> component) override;
+        std::vector<std::shared_ptr<IComponent>> getComponents() override;
         void display(sf::RenderWindow& window) override;
         void handleEvent(const sf::Event& event, sf::RenderWindow& window) override;
         void update() override;

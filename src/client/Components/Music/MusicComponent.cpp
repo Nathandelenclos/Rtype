@@ -76,7 +76,7 @@ void MusicComponent::setPaused(bool paused)
         do {
             _music.pause();
             std::cout << "pause" << std::endl;
-        } while (_music.getStatus() != sf::Music::Paused);
+        } while (_music.getStatus() != sf::Music::Paused && _music.getStatus() != sf::Music::Stopped);
     }
 }
 
@@ -95,4 +95,14 @@ void MusicComponent::stop()
 {
     std::cout << "stop" << std::endl;
     _music.stop();
+}
+
+void MusicComponent::setPersistant(bool persistant)
+{
+    _persistant = persistant;
+}
+
+bool MusicComponent::getPersistant() const
+{
+    return _persistant;
 }

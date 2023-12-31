@@ -12,6 +12,18 @@
 GameScene::GameScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket) : AScene(clientCore),
                                                                                      _socket(std::move(socket)) {
 //    initTextures();
+    init_scene();
+}
+
+void GameScene::init_scene()
+{
+    std::shared_ptr<TextComponent> text_ping = std::make_shared<TextComponent>(_clientCore, _socket);
+
+    text_ping->setAttribute("text ping");
+    text_ping->setText("");
+    text_ping->setPosition(sf::Vector2f(0, 550));
+
+    addComponent(text_ping);
 }
 
 void GameScene::receiveData() {
@@ -64,6 +76,11 @@ void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {
     if (event.type == sf::Event::KeyPressed) {
         if (event.key.code == sf::Keyboard::Escape) {
             _clientCore->setCurrentScene("main");
+            for (auto &component: _clientCore->getCurrentScene()->getComponents()) {
+                if (component->getType() == ComponentType::MUSIC) {
+                    dynamic_cast<MusicComponent *>(component.get())->action();
+                }
+            }
             return;
         }
     }

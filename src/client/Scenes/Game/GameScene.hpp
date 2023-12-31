@@ -15,8 +15,9 @@
 class GameScene : public AScene {
 public:
     GameScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket);
-
     ~GameScene() override = default;
+
+    void init_scene();
     void handleEvent(const sf::Event &event, sf::RenderWindow &window) override;
     void receiveData() override;
 

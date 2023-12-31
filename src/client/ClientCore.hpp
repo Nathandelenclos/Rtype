@@ -26,6 +26,7 @@ class ClientCore {
 
         std::shared_ptr<IScene> getSceneByName(const std::string& name);
         void setCurrentScene(const std::string& name);
+        std::shared_ptr<IScene> getCurrentScene() const;
 
         void sendHeartBeat(sf::RenderWindow& window);
 

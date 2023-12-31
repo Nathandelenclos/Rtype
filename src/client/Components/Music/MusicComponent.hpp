@@ -19,9 +19,11 @@ class MusicComponent : public AComponent {
         bool isPlaying() const;
         bool getLoop() const;
         float getVolume() const;
+        bool getPersistant() const;
         void setLoop(bool loop);
         void setPaused(bool paused);
         void setVolume(float volume);
+        void setPersistant(bool persistant);
         void stop();
 
         void handleEvent(const sf::Event& event, sf::RenderWindow& window) override;
@@ -31,6 +33,7 @@ class MusicComponent : public AComponent {
         std::shared_ptr<ClientSocket> _socket;
         bool _toPlay = true;
         float _volume = 100;
+        bool _persistant = false;
 
 };
 

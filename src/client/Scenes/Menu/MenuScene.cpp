@@ -22,15 +22,14 @@ void MenuScene::init_scene()
     std::shared_ptr<InputComponent> address_input = std::make_shared<InputComponent>(_clientCore, _socket);
     std::shared_ptr<InputComponent> port_input = std::make_shared<InputComponent>(_clientCore, _socket);
     std::shared_ptr<SoundComponent> sound = std::make_shared<SoundComponent>(_clientCore, _socket);
-    std::shared_ptr<MusicComponent> music = std::make_shared<MusicComponent>(_clientCore, _socket);
-    std::shared_ptr<SpriteComponent> sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
     std::shared_ptr<TextComponent> text_ping = std::make_shared<TextComponent>(_clientCore, _socket);
+
+    text->setText("");
 
     button->addActionTarget(text);
     button->addActionTarget(address_input);
     button->addActionTarget(port_input);
     button->addActionTarget(sound);
-    button->addActionTarget(music);
     std::function<void()> handleClick = std::bind(&ButtonComponent::handleClickInitServer, button);
     button->setCallback(handleClick);
 
@@ -51,16 +50,13 @@ void MenuScene::init_scene()
     text_ping->setText("Ping: 0ms");
     text_ping->setPosition(sf::Vector2f(0, 550));
 
-    music->setVolume(10);
 
-    addComponent(sprite);
     addComponent(text);
     addComponent(button);
     addComponent(text_button);
     addComponent(address_input);
     addComponent(port_input);
     addComponent(sound);
-    addComponent(music);
     addComponent(text_ping);
 }
 
@@ -89,7 +85,6 @@ void MenuScene::receiveData() {
                     if (component->getType() == ComponentType::TEXT) {
                         if (component->getAttribute() == "text add serv") {
                             dynamic_cast<TextComponent *>(component.get())->setText("Connection accepted");
-                            _clientCore->setCurrentScene("game");
                         }
                     }
                 }
