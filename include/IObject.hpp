@@ -8,7 +8,9 @@
 #pragma once
 
 #include "../networking/shared/USocket.hpp"
-#include "memory"
+#include <memory>
+#include <string>
+#include <cstring>
 
 class IObject {
 public:

@@ -29,6 +29,7 @@ class ClientCore {
         std::shared_ptr<IScene> getCurrentScene() const;
 
         void sendHeartBeat(sf::RenderWindow& window);
+        void startHeartBeat();
 
 
     private:

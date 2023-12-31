@@ -81,6 +81,8 @@ void MenuScene::receiveData() {
         if (p->code == MESSAGE) {
             std::string message = static_cast<char *>(p->data);
             if (message == "connection accepted") {
+                _socket->setInit(true);
+                _clientCore->startHeartBeat();
                 for (auto &component : _components) {
                     if (component->getType() == ComponentType::TEXT) {
                         if (component->getAttribute() == "text add serv") {

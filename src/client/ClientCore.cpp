@@ -18,10 +18,8 @@ bool ClientCore::init_socket(const std::string& ip, int port)
     if (_socket->isInit())
         return true;
     bool init = _socket->init_client(ip, port);
-    _socket->setInit(init);
     if (!init)
         return false;
-    _heartBeatThread = std::thread(&ClientCore::sendHeartBeat, this, std::ref(_window));
     return init;
 }
 
@@ -78,4 +76,9 @@ void ClientCore::sendHeartBeat(sf::RenderWindow& window)
 std::shared_ptr<IScene> ClientCore::getCurrentScene() const
 {
     return _currentScene;
+}
+
+void ClientCore::startHeartBeat()
+{
+    _heartBeatThread = std::thread(&ClientCore::sendHeartBeat, this, std::ref(_window));
 }

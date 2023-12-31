@@ -12,8 +12,8 @@ void Player::draw() {
 }
 
 Packet *Player::getPacket() const {
-    auto *packet = new Packet();
-    auto *element = new Element();
+    std::unique_ptr<Packet> packet = std::make_unique<Packet>();
+    std::unique_ptr<Element> element = std::make_unique<Element>();
     element->x = 0;
     element->y = 0;
     element->width = 0;
@@ -22,6 +22,7 @@ Packet *Player::getPacket() const {
 
     packet->code = ELEMENT;
     packet->data_size = sizeof(Element);
-    packet->data = element;
-    return packet;
+    packet->data = malloc(packet->data_size);
+    memcpy(packet->data, element.get(), packet->data_size);
+    return packet.release();
 }

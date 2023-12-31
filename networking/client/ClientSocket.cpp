@@ -80,6 +80,7 @@ void ClientSocket::send(Packet *packet, struct sockaddr_in dest) {
 }
 
 std::tuple<std::unique_ptr<Packet>, int> ClientSocket::receive() {
+    bool packet_corrupted = false;
     Packet packet{};
     packet.code = UNDEFINED;
     struct sockaddr_in cli_addr_code{};
@@ -89,7 +90,7 @@ std::tuple<std::unique_ptr<Packet>, int> ClientSocket::receive() {
             throw std::runtime_error("Failed to read from socket");
         }
         if (packet.code == UNDEFINED) {
-            throw std::runtime_error("Failed to read from socket");
+            packet_corrupted = true;
         }
     } else {
         return std::make_tuple(nullptr, 0);
