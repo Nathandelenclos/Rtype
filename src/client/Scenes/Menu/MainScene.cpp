@@ -117,5 +117,6 @@ void MainScene::receiveData()
                 }
             }
         }
+        free(p->data);
     }
 }

@@ -109,5 +109,6 @@ void MenuScene::receiveData() {
                 }
             }
         }
+        free(p->data);
     }
 }

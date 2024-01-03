@@ -63,6 +63,7 @@ bool ClientSocket::init_client(const std::string& ip, int port) {
     memcpy(packet.data, "connection", packet.data_size);
 
     send(&packet, serv_addr);
+    free(packet.data);
 
     return true;
 }
@@ -79,6 +80,7 @@ void ClientSocket::sendPacket(SplitPacket *packet, struct sockaddr_in dest) {
     if (sendto(sockfd, reinterpret_cast<const char *>(buffer), sizeof(SplitPacket), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
         throw std::runtime_error("Failed to send packet");
     }
+    free(buffer);
 }
 
 void ClientSocket::receivePacketAndAddToBuffer() {
@@ -372,5 +374,6 @@ void ClientSocket::splitAndSend(Packet *packet, struct sockaddr_in dest) {
             memcpy(splitPacket->data, (char *)packet->data + i * 1024 + 1, rest);
             sendPacket(splitPacket.get(), dest);
         }
+        free(packet->data);
     }
 }

@@ -71,6 +71,7 @@ void ClientCore::sendHeartBeat(sf::RenderWindow& window)
         _socket->send(packet.get(), _socket->serv_addr);
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
+    free(packet->data);
 }
 
 std::shared_ptr<IScene> ClientCore::getCurrentScene() const

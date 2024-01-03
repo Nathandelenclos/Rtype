@@ -83,6 +83,7 @@ void Server::run() {
                 std::cout << "Ping: " << _packetHeartBeatData.tv_sec * 1000 + _packetHeartBeatData.tv_usec / 1000 << "ms" << std::endl;
                 memcpy(_packetHeartBeat->data, &_currentTime, _packetHeartBeat->data_size);
                 _serverSocket->send(_packetHeartBeat.get(), _serverSocket->getClientAddress(std::get<1>(_packetClientId)));
+                free(_packetHeartBeat->data);
             }
             if (_packet->code == MESSAGE) {
                 std::cout << "Message: " << static_cast<char *>(_packet->data) << std::endl;

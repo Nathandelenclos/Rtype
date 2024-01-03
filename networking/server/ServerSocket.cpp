@@ -61,6 +61,7 @@ void ServerSocket::sendPacket(SplitPacket *packet, struct sockaddr_in dest) {
     if (sendto(sockfd, reinterpret_cast<const char *>(buffer), sizeof(SplitPacket), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
         throw std::runtime_error("Failed to send packet");
     }
+    free(buffer);
 }
 
 void ServerSocket::addClient(struct sockaddr_in client) {
