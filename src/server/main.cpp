@@ -9,7 +9,7 @@
 #include "Server.hpp"
 
 int main() {
-    Server server("127.0.0.1", 4242);
+    Server server("10.17.72.28", 4242);
     server.run();
     return 0;
 }

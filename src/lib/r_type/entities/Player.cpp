@@ -11,7 +11,7 @@ Player::Player(ServerSocket *socket) : socket(socket) {
     gettimeofday(&_annimationTime, nullptr);
     _positionX = 100;
     _positionY = 100;
-    _direction = 5;
+    _direction = 0.1;
 }
 
 void Player::draw() {
@@ -21,12 +21,11 @@ void Player::draw() {
 
     gettimeofday(&now, nullptr);
     timersub(&now, &_annimationTime, &diff);
-    std::cout << _positionX + 200 << std::endl;
-    if (_positionX + 200 == 800)
-        _direction = -5;
-    if (_positionX == 0)
-        _direction = 5;
-    if (diff.tv_usec > 100000) {
+    if (_positionX + 200 >= 800)
+        _direction = -0.1;
+    if (_positionX <= 0)
+        _direction = 0.1;
+    if (diff.tv_usec > 100) {
         _positionX += _direction;
         _annimationTime = now;
         packet = getPacket();

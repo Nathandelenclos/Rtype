@@ -19,6 +19,10 @@ void GameScene::init_scene()
 {
     std::shared_ptr<TextComponent> text_ping = std::make_shared<TextComponent>(_clientCore, _socket);
     std::shared_ptr<SpriteComponent> sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
+    std::shared_ptr<MusicComponent> music = std::make_shared<MusicComponent>(_clientCore, _socket);
+
+    music->setSound("../src/client/assets/musics/thisgirl.ogg");
+    music->setVolume(10);
 
     text_ping->setAttribute("text ping");
     text_ping->setText("");
@@ -28,6 +32,7 @@ void GameScene::init_scene()
 
     addComponent(text_ping);
     addComponent(sprite);
+    addComponent(music);
 }
 
 void GameScene::receiveData() {

@@ -22,7 +22,7 @@ public:
 private:
     ServerSocket *socket;
     timeval _annimationTime{};
-    int _positionX;
-    int _positionY;
-    short _direction;
+    float _positionX;
+    float _positionY;
+    float _direction;
 };
