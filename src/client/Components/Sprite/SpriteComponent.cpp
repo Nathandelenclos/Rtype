@@ -13,6 +13,7 @@ SpriteComponent::SpriteComponent(ClientCore* core, std::shared_ptr<ClientSocket>
     _sprite.setPosition(_position);
     setSize(sf::Vector2f(200, 200));
     _sprite.setTextureRect(_rect);
+    _type = ComponentType::SPRITE;
 }
 
 void SpriteComponent::action()

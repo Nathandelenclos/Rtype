@@ -15,10 +15,14 @@ class Player: public Drawable, public IObject {
 public:
     explicit Player(ServerSocket *socket);
     ~Player() override = default;
-    [[nodiscard]] Packet *getPacket() const override;
+    [[nodiscard]] Packet *getPacket() override;
 
     void draw() override;
 
 private:
     ServerSocket *socket;
+    timeval _annimationTime{};
+    int _positionX;
+    int _positionY;
+    short _direction;
 };

@@ -165,6 +165,13 @@ void ButtonComponent::handleClickAccessGame()
         }
     }
     _clientCore->setCurrentScene("game");
+    Packet packet{};
+    packet.code = CODE::MESSAGE;
+    packet.data_size = 10;
+    packet.data = malloc(packet.data_size);
+    memcpy(packet.data, "enter game", packet.data_size);
+    _socket->send(&packet, _socket->serv_addr);
+    free(packet.data);
 }
 
 void ButtonComponent::defaultCallback()

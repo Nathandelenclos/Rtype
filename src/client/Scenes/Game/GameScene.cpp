@@ -18,12 +18,16 @@ GameScene::GameScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socke
 void GameScene::init_scene()
 {
     std::shared_ptr<TextComponent> text_ping = std::make_shared<TextComponent>(_clientCore, _socket);
+    std::shared_ptr<SpriteComponent> sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
 
     text_ping->setAttribute("text ping");
     text_ping->setText("");
     text_ping->setPosition(sf::Vector2f(0, 550));
 
+    sprite->setAttribute("sprite player");
+
     addComponent(text_ping);
+    addComponent(sprite);
 }
 
 void GameScene::receiveData() {
@@ -32,11 +36,22 @@ void GameScene::receiveData() {
 
     if (p != nullptr) {
         if (p->code == ELEMENT) {
-            std::shared_ptr<SpriteComponent> sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
             auto *element = static_cast<Element*>(p->data);
-            //sprite->setTexture(getTextureByType(element->type));
-            sprite->setPosition(element->x, element->y);
-            addComponent(sprite);
+            std::cout << "element: " << element->x << " " << element->y << std::endl;
+            for (auto &component: _components) {
+                if (component->getType() == ComponentType::SPRITE) {
+                    if (component->getAttribute() == "sprite player") {
+                        //sprite->setTexture(getTextureByType(element->type));
+                        dynamic_cast<SpriteComponent *>(component.get())->setPosition(element->x, element->y);
+                    }
+                    if (component->getAttribute() == "sprite enemy") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::ENEMY));
+                    }
+                    if (component->getAttribute() == "sprite bullet") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BULLET));
+                    }
+                }
+            }
         }
         if (p->code == HEARTBEAT) {
             timeval timerecv{};

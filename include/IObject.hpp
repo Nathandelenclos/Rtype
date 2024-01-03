@@ -15,5 +15,5 @@
 class IObject {
 public:
     virtual ~IObject() = default;
-    virtual Packet *getPacket() const = 0;
+    virtual Packet *getPacket() = 0;
 };

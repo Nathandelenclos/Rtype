@@ -58,19 +58,22 @@ std::ostream &operator<<(std::ostream &os, std::unique_ptr<Packet> &packet) {
 Packet packet{};
 
 void Server::run() {
+    bool send_broadcast = false;
     while (true) {
         _serverSocket->init_fd_set();
         _packetClientId = _serverSocket->receive();
         _packet = std::move(std::get<0>(_packetClientId));
 
-        /*for (auto service: _game->getServices()) {
+        for (auto service: _game->getServices()) {
             IService *service1 = dynamic_cast<IService *>(service);
             std::vector<IObject *> objects = _game->getObjects();
             IGame *game = _game.get();
             service1->update(game, _game->getObjects());
-        }*/
-        for (auto object: _game->getObjects()) {
-            _serverSocket->broadcast(object->getPacket());
+        }
+        if (send_broadcast) {
+            for (auto object: _game->getObjects()) {
+                _serverSocket->broadcast(object->getPacket());
+            }
         }
         if (_packet) {
             if (_packet->code == HEARTBEAT) {
@@ -86,6 +89,7 @@ void Server::run() {
                 free(_packetHeartBeat->data);
             }
             if (_packet->code == MESSAGE) {
+                std::string message = "Message: " + std::string(static_cast<char *>(_packet->data));
                 std::cout << "Message: " << static_cast<char *>(_packet->data) << std::endl;
                 auto *packetConnectionAccepted = new Packet();
                 packetConnectionAccepted->code = MESSAGE;

@@ -255,6 +255,7 @@ void ServerSocket::receivePacketAndAddToBuffer() {
     timeval recvTime{};
     socklen_t len = sizeof(cli_addr);
     char *buffer = static_cast<char *>(malloc(sizeof(SplitPacket)));
+    memset(buffer, 0, sizeof(SplitPacket));
     if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) < 0) {
         free(buffer);
         throw std::runtime_error("Failed to read from socket");
@@ -301,6 +302,7 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::manageClientsBuffer() {
                 packet->code = splitPacket->code;
                 packet->data_size = strlen(splitPacket->data);
                 packet->data = malloc(packet->data_size + 1);
+                memset(packet->data, 0, packet->data_size + 1);
                 memcpy(packet->data, splitPacket->data, packet->data_size);
                 it = splitPackets.erase(it);
                 return std::make_tuple(std::move(packet), id);
