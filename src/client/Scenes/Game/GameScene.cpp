@@ -31,12 +31,13 @@ void GameScene::receiveData() {
     std::unique_ptr<Packet> p = std::move(std::get<0>(packet));
 
     if (p != nullptr) {
-//        if (p->code == ELEMENT) {
-//            std::shared_ptr<SpriteComponent> sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
-//            auto *element = static_cast<Element*>(p->data);
-//            sprite->setTexture(getTextureByType(element->type));
-//            sprite->setPosition(element->x, element->y);
-//        }
+        if (p->code == ELEMENT) {
+            std::shared_ptr<SpriteComponent> sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
+            auto *element = static_cast<Element*>(p->data);
+            //sprite->setTexture(getTextureByType(element->type));
+            sprite->setPosition(element->x, element->y);
+            addComponent(sprite);
+        }
         if (p->code == HEARTBEAT) {
             timeval timerecv{};
             timeval now{};

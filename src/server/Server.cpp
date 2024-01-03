@@ -69,9 +69,9 @@ void Server::run() {
             IGame *game = _game.get();
             service1->update(game, _game->getObjects());
         }*/
-        /*for (auto object: _game->getObjects()) {
+        for (auto object: _game->getObjects()) {
             _serverSocket->broadcast(object->getPacket());
-        }*/
+        }
         if (_packet) {
             if (_packet->code == HEARTBEAT) {
                 gettimeofday(&_currentTime, nullptr);

@@ -19,8 +19,8 @@ void Player::draw() {
 Packet *Player::getPacket() const {
     std::unique_ptr<Packet> packet = std::make_unique<Packet>();
     std::unique_ptr<Element> element = std::make_unique<Element>();
-    element->x = 0;
-    element->y = 0;
+    element->x = 100;
+    element->y = 100;
     element->width = 1;
     element->height = 1;
     element->type = PLAYER;
