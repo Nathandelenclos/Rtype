@@ -35,6 +35,8 @@ ClientSocket::ClientSocket() {
 
     loop = true;
 
+    _isInit = false;
+
     std::cout << "Socket created successfully (fd: " << sockfd << ")" << std::endl;
 }
 
@@ -66,22 +68,118 @@ bool ClientSocket::init_client(const std::string& ip, int port) {
 }
 
 void ClientSocket::send(Packet *packet, struct sockaddr_in dest) {
-    //std::cout << "ClientSocket send" << std::endl;
-    if (sendto(sockfd, reinterpret_cast<const char *>(&packet->code), sizeof(int), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
-        throw std::runtime_error("Failed to send message");
-    }
-    if (sendto(sockfd, reinterpret_cast<const char *>(&packet->data_size), sizeof(int), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
-        throw std::runtime_error("Failed to send message");
-    }
-    char *buffer = static_cast<char *>(packet->data);
-    if (sendto(sockfd, buffer, packet->data_size, 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
-        throw std::runtime_error("Failed to send message");
+    splitAndSend(packet, dest);
+}
+
+void ClientSocket::sendPacket(SplitPacket *packet, struct sockaddr_in dest) {
+    char *buffer = static_cast<char *>(malloc(sizeof(SplitPacket)));
+    memset(buffer, 0, sizeof(SplitPacket));
+    //strcpy(buffer, "test");
+    memcpy(buffer, packet, sizeof(SplitPacket));
+    if (sendto(sockfd, reinterpret_cast<const char *>(buffer), sizeof(SplitPacket), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
+        throw std::runtime_error("Failed to send packet");
     }
 }
 
-Packet packet_test{};
+void ClientSocket::receivePacketAndAddToBuffer() {
+    SplitPacket splitPacket{};
+    struct sockaddr_in cli_addr{};
+    timeval receveidTime{};
+    socklen_t len = sizeof(cli_addr);
+    char *buffer = static_cast<char *>(malloc(sizeof(SplitPacket)));
+    memset(buffer, 0, sizeof(SplitPacket));
+    if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) > 0) {
+        if (recvfrom(sockfd, buffer, sizeof(SplitPacket), 0, (struct sockaddr*)&cli_addr, &len) < 0) {
+            throw std::runtime_error("Failed to read from socket");
+        }
+        std::cout << "Received packet from " << inet_ntoa(cli_addr.sin_addr) << ":" << ntohs(cli_addr.sin_port) << std::endl;
+    } else {
+        free(buffer);
+        return;
+    }
+    memcpy(&splitPacket, buffer, sizeof(SplitPacket));
+
+    gettimeofday(&receveidTime, nullptr);
+    _packetBuffer.push_back(std::make_tuple(std::make_unique<SplitPacket>(splitPacket), receveidTime));
+
+    free(buffer);
+}
+
+std::unique_ptr<Packet> ClientSocket::getPacketFromBuffer() {
+    std::unique_ptr<Packet> packet = std::make_unique<Packet>();
+    int counter = 0;
+    long long int size = 0;
+    std::unique_ptr<struct timeval> currentTime = std::make_unique<struct timeval>();
+    std::unique_ptr<struct timeval> diffTime = std::make_unique<struct timeval>();
+
+    auto it2 = _packetBuffer.begin();
+    while (it2 != _packetBuffer.end()) {
+        auto &[splitPacketInBuffer, receveidTimeInBuffer] = *it2;
+        if (splitPacketInBuffer->packet_id == 0 && splitPacketInBuffer->max_packet_id == 0) {
+            packet->code = splitPacketInBuffer->code;
+            packet->data_size = splitPacketInBuffer->max_packet_id * 1024;
+            if (packet->data_size == 0) {
+                packet->data_size = 1024;
+            }
+            packet->data = malloc(packet->data_size);
+            memcpy(packet->data, splitPacketInBuffer->data, packet->data_size);
+            it2 = _packetBuffer.erase(it2);
+            return packet;
+        } else {
+            if (splitPacketInBuffer->packet_id == counter) {
+                size += strlen(splitPacketInBuffer->data);
+                counter++;
+                if (counter == splitPacketInBuffer->max_packet_id) {
+                    packet->code = splitPacketInBuffer->code;
+                    packet->data_size = size;
+                    packet->data = malloc(packet->data_size);
+                    memset(packet->data, 0, packet->data_size);
+                    int counterAssign = 0;
+                    auto it = _packetBuffer.begin();
+                    while (it != _packetBuffer.end()) {
+                        auto &[splitPacketInBufferAssign, receveidTimeInBufferAssign] = *it;
+                        if (splitPacketInBufferAssign->packet_id == counterAssign) {
+                            memcpy((char *)packet->data + counterAssign * 1024, splitPacketInBufferAssign->data, strlen(splitPacketInBufferAssign->data));
+                            it = _packetBuffer.erase(it);
+                            counterAssign++;
+                        } else {
+                            ++it;
+                        }
+                    }
+                    return packet;
+                }
+            } else {
+                counter = 0;
+                size = 0;
+            }
+        }
+    }
+    free(packet->data);
+
+    auto it = _packetBuffer.begin();
+    while (it != _packetBuffer.end()) {
+        auto &[splitPacketInBuffer, receveidTimeInBuffer] = *it;
+        gettimeofday(currentTime.get(), nullptr);
+        timersub(currentTime.get(), &receveidTimeInBuffer, diffTime.get());
+        if (diffTime->tv_sec > 0 || diffTime->tv_usec > 100000) {
+            it = _packetBuffer.erase(it);
+        } else {
+            ++it;
+        }
+    }
+    return nullptr;
+}
 
 std::tuple<std::unique_ptr<Packet>, int> ClientSocket::receive() {
+    receivePacketAndAddToBuffer();
+    std::unique_ptr<Packet> packet = getPacketFromBuffer();
+    if (packet != nullptr) {
+        return std::make_tuple(std::move(packet), 0);
+    }
+    return std::make_tuple(nullptr, 0);
+}
+
+/*std::tuple<std::unique_ptr<Packet>, int> ClientSocket::receive() {
     bool packet_corrupted = false;
     packet_test.code = UNDEFINED;
     struct sockaddr_in cli_addr_code{};
@@ -138,7 +236,7 @@ std::tuple<std::unique_ptr<Packet>, int> ClientSocket::receive() {
     }
     lastMessage = message;
     return std::make_tuple(std::make_unique<Packet>(packet_test), -1);
-}
+}*/
 
 #ifdef _WIN32
     void ClientSocket::read_input() {
@@ -245,4 +343,34 @@ bool ClientSocket::isInit() const {
 
 void ClientSocket::setInit(bool init) {
     _isInit = init;
+}
+
+void ClientSocket::splitAndSend(Packet *packet, struct sockaddr_in dest) {
+    std::unique_ptr<SplitPacket> splitPacket = std::make_unique<SplitPacket>();
+    splitPacket->code = packet->code;
+    int i;
+
+    if (packet->data_size < 1024) {
+        splitPacket->packet_id = 0;
+        splitPacket->max_packet_id = 0;
+        splitPacket->data[0] = '\0';
+        memset(splitPacket->data, 0, 1024);
+        memcpy(splitPacket->data, packet->data, packet->data_size);
+        sendPacket(splitPacket.get(), dest);
+    } else {
+        splitPacket->max_packet_id = packet->data_size / 1024 + 1;
+        for (i = 0; i < packet->data_size / 1024; i++) {
+            splitPacket->packet_id = i;
+            memset(splitPacket->data, 0, 1024);
+            memcpy(splitPacket->data, (char *)packet->data + i * 1024, 1024);
+            sendPacket(splitPacket.get(), dest);
+        }
+        int rest = packet->data_size % 1024;
+        if (rest > 0) {
+            splitPacket->packet_id = i;
+            memset(splitPacket->data, 0, 1024);
+            memcpy(splitPacket->data, (char *)packet->data + i * 1024 + 1, rest);
+            sendPacket(splitPacket.get(), dest);
+        }
+    }
 }

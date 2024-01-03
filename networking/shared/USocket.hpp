@@ -7,6 +7,7 @@
 
 #include <string>
 #include <memory>
+#include <sys/time.h>
 
 #ifdef _WIN32
     #include <winsock2.h>
@@ -52,14 +53,25 @@ typedef struct element {
     Type type;
 } Element;
 
+typedef struct split_packet {
+    CODE code;
+    int packet_id;
+    int max_packet_id;
+    char data[1024];
+} SplitPacket;
+
 class USocket {
-public:
-    virtual ~USocket() = default;
+    public:
+        virtual ~USocket() = default;
 
-    virtual void send(Packet *packet, struct sockaddr_in dest) = 0;
-    virtual std::tuple<std::unique_ptr<Packet>, int> receive() = 0;
+        virtual void send(Packet *packet, struct sockaddr_in dest) = 0;
+        virtual std::tuple<std::unique_ptr<Packet>, int> receive() = 0;
 
-    virtual void run() = 0;
+        virtual void splitAndSend(Packet *packet, struct sockaddr_in dest) = 0;
+
+        virtual void run() = 0;
+
+        virtual void sendPacket(SplitPacket *packet, struct sockaddr_in dest) = 0;
 };
 
 

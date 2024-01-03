@@ -19,6 +19,7 @@ public:
 
     void init_server(std::string ip, int port);
     void send(Packet *packet, struct sockaddr_in dest) override;
+    void sendPacket(SplitPacket *packet, struct sockaddr_in dest) override;
     void broadcast(Packet *packet);
     std::tuple<std::unique_ptr<Packet>, int> receive() override;
 
@@ -29,14 +30,19 @@ public:
 
     void init_fd_set();
 
-    [[nodiscard]] std::map<int, struct sockaddr_in> getClients() const;
+    void splitAndSend(Packet *packet, struct sockaddr_in dest) override;
+    void receivePacketAndAddToBuffer();
 
-    std::string test = "test";
+
+    [[nodiscard]] std::vector<std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>>>& getClients();
+
+    std::tuple<std::unique_ptr<Packet>, int> manageClientsBuffer();
+
 private:
     unsigned long long sockfd;
     struct sockaddr_in serv_addr{};
     std::string lastMessage;
-    std::map<int, struct sockaddr_in> clients;
+    std::vector<std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>>> clients;
     struct sockaddr_in lastClientAddress{};
     std::unique_ptr<struct timeval> timeout;
     fd_set _readfds;

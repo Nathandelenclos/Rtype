@@ -9,6 +9,7 @@
 #include <cstring>
 #include <mutex>
 #include <thread>
+#include <vector>
 #include "../shared/USocket.hpp"
 
 class ClientSocket : public USocket {
@@ -18,6 +19,7 @@ class ClientSocket : public USocket {
 
         bool init_client(const std::string& ip, int port);
         void send(Packet *packet, struct sockaddr_in dest) override;
+        void sendPacket(SplitPacket *packet, struct sockaddr_in dest) override;
         std::tuple<std::unique_ptr<Packet>, int> receive() override;
 
         void run() override;
@@ -28,18 +30,24 @@ class ClientSocket : public USocket {
         bool isInit() const;
         void setInit(bool init);
 
+        void splitAndSend(Packet *packet, struct sockaddr_in dest) override;
+
+        void receivePacketAndAddToBuffer();
+        std::unique_ptr<Packet> getPacketFromBuffer();
+
         #ifdef _WIN32
             void read_input();
         #endif
 
         struct sockaddr_in serv_addr;
-    int sockfd;
-private:
-    std::string lastMessage;
+        int sockfd;
+    private:
+        std::string lastMessage;
         fd_set _readfds;
         bool loop;
         std::unique_ptr<struct timeval> timeout;
         bool _isInit;
+        std::vector<std::tuple<std::unique_ptr<SplitPacket>, timeval>> _packetBuffer;
         #ifdef _WIN32
             std::string input;
             std::mutex mtx;

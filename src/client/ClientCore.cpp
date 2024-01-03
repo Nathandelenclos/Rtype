@@ -80,5 +80,7 @@ std::shared_ptr<IScene> ClientCore::getCurrentScene() const
 
 void ClientCore::startHeartBeat()
 {
+    if (_heartBeatThread.joinable())
+        _heartBeatThread.join();
     _heartBeatThread = std::thread(&ClientCore::sendHeartBeat, this, std::ref(_window));
 }

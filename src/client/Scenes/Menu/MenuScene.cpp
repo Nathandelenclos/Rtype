@@ -90,6 +90,8 @@ void MenuScene::receiveData() {
                         }
                     }
                 }
+            } else {
+                std::cout << "Message: " << message << std::endl;
             }
         }
         if (p->code == HEARTBEAT) {

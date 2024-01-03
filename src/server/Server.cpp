@@ -84,7 +84,18 @@ void Server::run() {
                 memcpy(_packetHeartBeat->data, &_currentTime, _packetHeartBeat->data_size);
                 _serverSocket->send(_packetHeartBeat.get(), _serverSocket->getClientAddress(std::get<1>(_packetClientId)));
             }
-            std::cout << "Packet received " << _packet << std::endl;
+            if (_packet->code == MESSAGE) {
+                std::cout << "Message: " << static_cast<char *>(_packet->data) << std::endl;
+                auto *packetConnectionAccepted = new Packet();
+                packetConnectionAccepted->code = MESSAGE;
+                packetConnectionAccepted->data_size = 19;
+                packetConnectionAccepted->data = malloc(packetConnectionAccepted->data_size);
+                memcpy(packetConnectionAccepted->data, "connection accepted", packetConnectionAccepted->data_size);
+                _serverSocket->send(packetConnectionAccepted, _serverSocket->getClientAddress(std::get<1>(_packetClientId)));
+                free(packetConnectionAccepted->data);
+                delete packetConnectionAccepted;
+            }
+            free(_packet->data);
             _packet.reset();
             _packetClientId = std::tuple<std::unique_ptr<Packet>, int>(nullptr, 0);
         }

@@ -13,7 +13,7 @@ Player::Player(ServerSocket *socket) : socket(socket) {
 void Player::draw() {
     Packet *packet = getPacket();
     for (auto &client : socket->getClients())
-        socket->send(packet, client.second);
+        socket->send(packet, std::get<1>(client));
 }
 
 Packet *Player::getPacket() const {

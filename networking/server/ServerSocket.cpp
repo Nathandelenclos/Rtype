@@ -51,30 +51,35 @@ void ServerSocket::init_server(std::string ip, int port) {
 }
 
 void ServerSocket::send(Packet *packet, struct sockaddr_in client) {
-    std::cout << "ClientSocket send" << std::endl;
-    std::cout << "packet->code: " << packet->code << std::endl;
-    std::cout << "packet->data_size: " << packet->data_size << std::endl;
-    if (sendto(sockfd, reinterpret_cast<const char *>(&packet->code), sizeof(int), 0, (struct sockaddr*)&client, sizeof(client)) < 0) {
-        throw std::runtime_error("Failed to send message");
-    }
-    if (sendto(sockfd, reinterpret_cast<const char *>(&packet->data_size), sizeof(int), 0, (struct sockaddr*)&client, sizeof(client)) < 0) {
-        throw std::runtime_error("Failed to send message");
-    }
-    if (sendto(sockfd, reinterpret_cast<const char *>(packet->data), packet->data_size, 0, (struct sockaddr*)&client, sizeof(client)) < 0) {
-        throw std::runtime_error("Failed to send message");
+    splitAndSend(packet, client);
+}
+
+void ServerSocket::sendPacket(SplitPacket *packet, struct sockaddr_in dest) {
+    char *buffer = static_cast<char *>(malloc(sizeof(SplitPacket)));
+    memset(buffer, 0, sizeof(SplitPacket));
+    memcpy(buffer, packet, sizeof(SplitPacket));
+    if (sendto(sockfd, reinterpret_cast<const char *>(buffer), sizeof(SplitPacket), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
+        throw std::runtime_error("Failed to send packet");
     }
 }
 
 void ServerSocket::addClient(struct sockaddr_in client) {
     int id = 1;
-    while (clients.find(id) != clients.end()) {
-        id++;
+    for (auto& [i, cli, splitPackets] : clients) {
+        if (i == id) {
+            id++;
+        } else {
+            break;
+        }
     }
-    clients[id] = client;
+    clients.emplace_back(id, client, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>());
 }
 
 int ServerSocket::getClientId(struct sockaddr_in client) {
-    for (auto& [id, cli] : clients) {
+    if (clients.empty()) {
+        return -1;
+    }
+    for (auto& [id, cli, splitPackets] : clients) {
         if (cli.sin_addr.s_addr == client.sin_addr.s_addr && cli.sin_port == client.sin_port) {
             return id;
         }
@@ -82,10 +87,13 @@ int ServerSocket::getClientId(struct sockaddr_in client) {
     return -1;
 }
 
-Packet packet_last{};
-
-
 std::tuple<std::unique_ptr<Packet>, int> ServerSocket::receive() {
+    receivePacketAndAddToBuffer();
+    return manageClientsBuffer();
+}
+
+
+/*std::tuple<std::unique_ptr<Packet>, int> ServerSocket::receive() {
     packet_last.code = UNDEFINED;
 
 
@@ -166,7 +174,7 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::receive() {
     }
     send(cli_addr_packet.get(), cli_addr_data);
     return std::make_tuple(std::move(std::make_unique<Packet>(packet_last)), id);
-}
+}*/
 
 void ServerSocket::init_fd_set() {
     FD_ZERO(&_readfds);
@@ -190,16 +198,152 @@ void ServerSocket::run() {
     }
 }
 
-std::map<int, struct sockaddr_in> ServerSocket::getClients() const {
+std::vector<std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>>>& ServerSocket::getClients() {
     return clients;
 }
 
 struct sockaddr_in ServerSocket::getClientAddress(int id) {
-    return clients[id];
+    for (auto& [i, cli, splitPackets] : clients) {
+        if (i == id) {
+            return cli;
+        }
+    }
+    throw std::runtime_error("Client not found");
 }
 
 void ServerSocket::broadcast(Packet *packet) {
-    for (auto& [id, client] : clients) {
-        send(packet, client);
+    for (auto& [id, cli, splitPackets] : clients) {
+        splitAndSend(packet, cli);
     }
+}
+
+void ServerSocket::splitAndSend(Packet *packet, struct sockaddr_in dest) {
+    std::unique_ptr<SplitPacket> splitPacket = std::make_unique<SplitPacket>();
+    splitPacket->code = packet->code;
+    int i;
+
+    if (packet->data_size < 1024) {
+        splitPacket->data[0] = '\0';
+        splitPacket->packet_id = 0;
+        splitPacket->max_packet_id = 0;
+        memset(splitPacket->data, 0, 1024);
+        memcpy(splitPacket->data, packet->data, packet->data_size);
+        sendPacket(splitPacket.get(), dest);
+    } else {
+        splitPacket->max_packet_id = packet->data_size / 1024 + 1;
+        for (i = 0; i < packet->data_size / 1024; i++) {
+            splitPacket->packet_id = i;
+            memset(splitPacket->data, 0, 1024);
+            memcpy(splitPacket->data, (char *)packet->data + i * 1024, 1024);
+            sendPacket(splitPacket.get(), dest);
+        }
+        int rest = packet->data_size % 1024;
+        if (rest > 0) {
+            splitPacket->packet_id = i + 1;
+            memset(splitPacket->data, 0, 1024);
+            memcpy(splitPacket->data, (char *)packet->data + i * 1024 + 1, rest);
+            sendPacket(splitPacket.get(), dest);
+        }
+    }
+}
+
+void ServerSocket::receivePacketAndAddToBuffer() {
+    struct sockaddr_in cli_addr{};
+
+    std::shared_ptr<SplitPacket> packet = std::make_shared<SplitPacket>();
+    timeval recvTime{};
+    socklen_t len = sizeof(cli_addr);
+    char *buffer = static_cast<char *>(malloc(sizeof(SplitPacket)));
+    if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) < 0) {
+        free(buffer);
+        throw std::runtime_error("Failed to read from socket");
+    } else if (FD_ISSET(sockfd, &_readfds)) {
+        if (recvfrom(sockfd, buffer, sizeof(SplitPacket), 0, (struct sockaddr*)&cli_addr, &len) < 0) {
+            throw std::runtime_error("Failed to read from socket");
+        }
+        for (int i = 0; i < sizeof(SplitPacket); i++) {
+            std::cout << buffer[i];
+        }
+        memcpy(packet.get(), buffer, sizeof(SplitPacket));
+    } else {
+        free(buffer);
+        return;
+    }
+
+
+    int id = getClientId(cli_addr);
+    if (id == -1) {
+        addClient(cli_addr);
+        id = getClientId(cli_addr);
+    }
+    for (auto& [i, cli, splitPackets] : clients) {
+        if (i == id) {
+            gettimeofday(&recvTime, nullptr);
+            splitPackets.emplace_back(packet, recvTime);
+        }
+    }
+    free(buffer);
+}
+
+std::tuple<std::unique_ptr<Packet>, int> ServerSocket::manageClientsBuffer() {
+    std::unique_ptr<Packet> packet = std::make_unique<Packet>();
+    int counter = 0;
+    long long int size = 0;
+    std::unique_ptr<struct timeval> now = std::make_unique<struct timeval>();
+    std::unique_ptr<struct timeval> diff = std::make_unique<struct timeval>();
+
+    for (auto& [id, cli, splitPackets] : getClients()) {
+        auto it = splitPackets.begin();
+        while (it != splitPackets.end()) {
+            auto& [splitPacket, recvTime] = *it;
+            if (splitPacket->packet_id == 0 && splitPacket->max_packet_id == 0) {
+                packet->code = splitPacket->code;
+                packet->data_size = strlen(splitPacket->data);
+                packet->data = malloc(packet->data_size + 1);
+                memcpy(packet->data, splitPacket->data, packet->data_size);
+                it = splitPackets.erase(it);
+                return std::make_tuple(std::move(packet), id);
+            } else {
+                if (splitPacket->packet_id == counter) {
+                    counter++;
+                    size += strlen(splitPacket->data);
+                    if (splitPacket->packet_id == splitPacket->max_packet_id) {
+                        packet->code = splitPacket->code;
+                        packet->data_size = size;
+                        packet->data = malloc(packet->data_size + 1);
+                        memset(packet->data, 0, packet->data_size + 1);
+                        int counterAssign = 0;
+                        auto itAssign = splitPackets.begin();
+                        while (itAssign != splitPackets.end()) {
+                            auto& [splitPacketAssign, recvTimeAssign] = *itAssign;
+                            memcpy((char *)packet->data + counterAssign * 1024, splitPacketAssign->data, strlen(splitPacketAssign->data));
+                            counterAssign++;
+                            itAssign = splitPackets.erase(itAssign);
+                        }
+                        return std::make_tuple(std::move(packet), id);
+                    }
+                } else {
+                    counter = 0;
+                    size = 0;
+                }
+            }
+            ++it;
+        }
+    }
+
+    free(packet->data);
+    for (auto& [idtimeout, clitimeout, splitPacketstimeout] : getClients()) {
+        auto ittimeout = splitPacketstimeout.begin();
+        while (ittimeout != splitPacketstimeout.end()) {
+            auto& [splitPackettimeout, recvTimetimeout] = *ittimeout;
+            gettimeofday(now.get(), nullptr);
+            timersub(now.get(), &recvTimetimeout, diff.get());
+            if (diff->tv_sec > 1) {
+                ittimeout = splitPacketstimeout.erase(ittimeout);
+            } else {
+                ++ittimeout;
+            }
+        }
+    }
+    return std::make_tuple(nullptr, 0);
 }
