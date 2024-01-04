@@ -42,7 +42,7 @@ void GameScene::receiveData() {
     if (p != nullptr) {
         if (p->code == ELEMENT) {
             auto *drawable = static_cast<DrawablePacket *>(p->data);
-            std::cout << "element: " << drawable->x << " " << drawable->y << std::endl;
+            //std::cout << "element: " << drawable->x << " " << drawable->y << std::endl;
             for (auto &component: _components) {
                 if (component->getType() == ComponentType::SPRITE) {
                     if (component->getAttribute() == "sprite player") {
@@ -107,6 +107,32 @@ void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {
                 }
             }
             return;
+        }
+        if (event.key.code == sf::Keyboard::Up) {
+            std::cout << "Up" << std::endl;
+            Packet packet{};
+            Event event1{};
+            packet.code = CODE::EVENT;
+            packet.data_size = sizeof(Event);
+            packet.data = malloc(packet.data_size);
+            event1.key = static_cast<int>(sf::Keyboard::Up);
+            event1.eventType = static_cast<int>(sf::Event::KeyPressed);
+            memcpy(packet.data, &event1, packet.data_size);
+            _socket->send(&packet, _socket->serv_addr);
+            free(packet.data);
+        }
+        if (event.key.code == sf::Keyboard::Down) {
+            std::cout << "Down" << std::endl;
+            Packet packet{};
+            Event event1{};
+            packet.code = CODE::EVENT;
+            packet.data_size = sizeof(Event);
+            packet.data = malloc(packet.data_size);
+            event1.key = static_cast<int>(sf::Keyboard::Down);
+            event1.eventType = static_cast<int>(sf::Event::KeyReleased);
+            memcpy(packet.data, &event1, packet.data_size);
+            _socket->send(&packet, _socket->serv_addr);
+            free(packet.data);
         }
     }
     for (auto &component: _components) {

@@ -9,6 +9,7 @@
 #include <memory>
 #include <sys/time.h>
 
+
 #ifdef _WIN32
     #include <winsock2.h>
     #include <ws2tcpip.h>
@@ -19,6 +20,8 @@
     #include <netinet/in.h>
     #include <arpa/inet.h>
     #include <unistd.h>
+    #include <SFML/Window/Event.hpp>
+
 #endif
 
 typedef enum code {
@@ -43,10 +46,8 @@ typedef struct mouse {
 } Mouse;
 
 typedef struct event {
-    union {
-        Key key;
-        Mouse mouse;
-    };
+    int eventType;
+    int key;
 } Event;
 
 typedef struct packet {

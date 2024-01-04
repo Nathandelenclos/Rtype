@@ -103,7 +103,7 @@ void ClientSocket::receivePacketAndAddToBuffer() {
 
     gettimeofday(&receveidTime, nullptr);
     _packetBuffer.push_back(std::make_tuple(std::make_unique<SplitPacket>(splitPacket), receveidTime));
-    std::cout << "Received packet type: " << splitPacket.code << std::endl;
+    //std::cout << "Received packet type: " << splitPacket.code << std::endl;
     free(buffer);
 }
 
