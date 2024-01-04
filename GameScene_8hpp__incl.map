@@ -1,0 +1,22 @@
+<map id="src/client/Scenes/Game/GameScene.hpp" name="src/client/Scenes/Game/GameScene.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="442,5,616,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="322,95,402,121"/>
+<area shape="rect" id="node3" href="$client_2Scenes_2AScene_8hpp.html" title=" " alt="" coords="427,95,538,121"/>
+<area shape="rect" id="node15" href="$USocket_8hpp.html" title=" " alt="" coords="554,572,717,599"/>
+<area shape="rect" id="node20" href="$SpriteComponent_8hpp.html" title=" " alt="" coords="482,244,670,285"/>
+<area shape="rect" id="node4" href="$client_2Scenes_2IScene_8hpp.html" title=" " alt="" coords="397,169,490,196"/>
+<area shape="rect" id="node5" title=" " alt="" coords="467,572,530,599"/>
+<area shape="rect" id="node6" title=" " alt="" coords="48,647,125,673"/>
+<area shape="rect" id="node7" title=" " alt="" coords="652,647,742,673"/>
+<area shape="rect" id="node8" href="$client_2Components_2IComponent_8hpp.html" title=" " alt="" coords="352,408,578,435"/>
+<area shape="rect" id="node16" href="$SoundComponent_8hpp.html" title=" " alt="" coords="236,244,406,285"/>
+<area shape="rect" id="node19" href="$MusicComponent_8hpp.html" title=" " alt="" coords="46,244,212,285"/>
+<area shape="rect" id="node9" title=" " alt="" coords="513,490,660,517"/>
+<area shape="rect" id="node10" href="$ClientSocket_8hpp.html" title=" " alt="" coords="180,483,358,524"/>
+<area shape="rect" id="node11" title=" " alt="" coords="394,647,453,673"/>
+<area shape="rect" id="node12" title=" " alt="" coords="288,572,354,599"/>
+<area shape="rect" id="node13" title=" " alt="" coords="378,572,442,599"/>
+<area shape="rect" id="node14" title=" " alt="" coords="149,572,213,599"/>
+<area shape="rect" id="node17" title=" " alt="" coords="54,333,180,360"/>
+<area shape="rect" id="node18" href="$AComponent_8hpp.html" title=" " alt="" coords="204,333,424,360"/>
+</map>

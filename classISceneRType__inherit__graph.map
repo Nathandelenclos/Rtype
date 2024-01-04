@@ -1,0 +1,8 @@
+<map id="ISceneRType" name="ISceneRType">
+<area shape="rect" id="node1" title=" " alt="" coords="188,5,291,32"/>
+<area shape="rect" id="node2" href="$classAScene.html" title=" " alt="" coords="204,80,275,107"/>
+<area shape="rect" id="node3" href="$classGameScene.html" title=" " alt="" coords="5,155,105,181"/>
+<area shape="rect" id="node4" href="$classLobbyScene.html" title=" " alt="" coords="129,155,229,181"/>
+<area shape="rect" id="node5" href="$classMainScene.html" title=" " alt="" coords="254,155,347,181"/>
+<area shape="rect" id="node6" href="$classMenuScene.html" title=" " alt="" coords="372,155,469,181"/>
+</map>

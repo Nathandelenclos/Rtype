@@ -1,0 +1,10 @@
+<map id="AComponent" name="AComponent">
+<area shape="rect" id="node1" title=" " alt="" coords="155,132,261,159"/>
+<area shape="rect" id="node3" href="$classButtonComponent.html" title=" " alt="" coords="309,5,449,32"/>
+<area shape="rect" id="node4" href="$classInputComponent.html" title=" " alt="" coords="314,56,445,83"/>
+<area shape="rect" id="node5" href="$classMusicComponent.html" title=" " alt="" coords="312,107,447,133"/>
+<area shape="rect" id="node6" href="$classSoundComponent.html" title=" " alt="" coords="311,157,448,184"/>
+<area shape="rect" id="node7" href="$classSpriteComponent.html" title=" " alt="" coords="312,208,447,235"/>
+<area shape="rect" id="node8" href="$classTextComponent.html" title=" " alt="" coords="317,259,441,285"/>
+<area shape="rect" id="node2" href="$classIComponent.html" title=" " alt="" coords="5,132,107,159"/>
+</map>

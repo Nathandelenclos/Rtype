@@ -1,0 +1,13 @@
+<map id="networking/client/main.cpp" name="networking/client/main.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="27,5,226,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="22,80,102,107"/>
+<area shape="rect" id="node3" href="$ClientSocket_8hpp.html" title=" " alt="" coords="126,80,257,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="149,229,208,256"/>
+<area shape="rect" id="node5" title=" " alt="" coords="25,155,92,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="116,155,180,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="204,155,268,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="292,155,355,181"/>
+<area shape="rect" id="node9" href="$USocket_8hpp.html" title=" " alt="" coords="380,155,542,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="368,229,445,256"/>
+<area shape="rect" id="node11" title=" " alt="" coords="469,229,560,256"/>
+</map>
