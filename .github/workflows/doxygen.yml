@@ -1,0 +1,15 @@
+on:
+  push:
+    branches-ignore:
+      - 'ga-ignore-*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: DenverCoder1/doxygen-github-pages-action@v1.3.0
+        with:
+          github_token: ${{ secrets.GITHUBTOKEN }}
+          branch: gh-pages
+          folder: html
+          config_file: Doxyfile
