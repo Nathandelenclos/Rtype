@@ -8,10 +8,10 @@
 #include <sys/time.h>
 
 Server::Server(std::string const &ip, int port) {
-    _serverSocket = std::make_unique<ServerSocket>();
+    _serverSocket = std::make_shared<ServerSocket>();
     _gameLoader = std::make_unique<DLLoader>("../lib_r_type.so");
     _serverSocket->init_server(ip, port);
-    _game = std::unique_ptr<IGame>(_gameLoader->getInstance("create", _serverSocket.get()));
+    _game = std::unique_ptr<IGame>(_gameLoader->getInstance("create", _serverSocket));
     _packetHeartBeat = std::make_unique<Packet>();
 }
 
@@ -64,17 +64,8 @@ void Server::run() {
         _packetClientId = _serverSocket->receive();
         _packet = std::move(std::get<0>(_packetClientId));
 
-        for (auto service: _game->getServices()) {
-            IService *service1 = dynamic_cast<IService *>(service);
-            std::vector<IObject *> objects = _game->getObjects();
-            IGame *game = _game.get();
-            service1->update(game, _game->getObjects());
-        }
-        if (send_broadcast) {
-            for (auto object: _game->getObjects()) {
-                _serverSocket->broadcast(object->getPacket());
-            }
-        }
+        _game->update(nullptr);
+
         if (_packet) {
             if (_packet->code == HEARTBEAT) {
                 gettimeofday(&_currentTime, nullptr);

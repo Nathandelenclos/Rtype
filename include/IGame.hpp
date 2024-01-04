@@ -8,8 +8,8 @@
 #pragma once
 
 #include <vector>
-#include "IObject.hpp"
-#include "IService.hpp"
+#include <memory>
+#include "networking/shared/USocket.hpp"
 
 class IService;
 
@@ -17,6 +17,5 @@ class IGame {
 public:
     virtual ~IGame() = default;
 
-    virtual std::vector<IObject*> getObjects() const = 0;
-    virtual std::vector<IService*> getServices() const = 0;
+    virtual void update(std::shared_ptr<Event> event) = 0;
 };

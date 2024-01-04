@@ -7,6 +7,8 @@
 
 #include "RType.hpp"
 
-extern "C" RType* create(ServerSocket *socket) {
-    return new RType(socket);
+#include <utility>
+
+extern "C" RType* create(std::shared_ptr<ServerSocket> socket) {
+    return new RType(std::move(socket));
 }

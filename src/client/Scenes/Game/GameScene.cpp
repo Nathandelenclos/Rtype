@@ -41,13 +41,16 @@ void GameScene::receiveData() {
 
     if (p != nullptr) {
         if (p->code == ELEMENT) {
-            auto *element = static_cast<Element*>(p->data);
-            std::cout << "element: " << element->x << " " << element->y << std::endl;
+            auto *drawable = static_cast<DrawablePacket *>(p->data);
+            std::cout << "element: " << drawable->x << " " << drawable->y << std::endl;
             for (auto &component: _components) {
                 if (component->getType() == ComponentType::SPRITE) {
                     if (component->getAttribute() == "sprite player") {
                         //sprite->setTexture(getTextureByType(element->type));
-                        dynamic_cast<SpriteComponent *>(component.get())->setPosition(element->x, element->y);
+                        auto *sprite = dynamic_cast<SpriteComponent *>(component.get());
+                        sprite->setPosition({drawable->x, drawable->y});
+                        sprite->setSize({drawable->sizeHorizontal, drawable->sizeVertical});
+                        sprite->setRect({drawable->rectLeft, drawable->rectTop, drawable->rectWidth, drawable->rectHeight});
                     }
                     if (component->getAttribute() == "sprite enemy") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::ENEMY));

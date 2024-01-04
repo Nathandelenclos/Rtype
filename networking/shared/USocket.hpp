@@ -31,12 +31,43 @@ typedef enum code {
     ELEMENT,
 } CODE;
 
+typedef struct key {
+    int key;
+    int type;
+} Key;
+
+typedef struct mouse {
+    int x;
+    int y;
+    int type;
+} Mouse;
+
+typedef struct event {
+    union {
+        Key key;
+        Mouse mouse;
+    };
+} Event;
+
 typedef struct packet {
     CODE code;
     int data_size;
     void *data;
 } Packet;
 
+typedef struct drawable {
+    int id;
+    float x;
+    float y;
+    float sizeHorizontal;
+    float sizeVertical;
+    int rectLeft;
+    int rectTop;
+    int rectWidth;
+    int rectHeight;
+} DrawablePacket;
+
+//obsolete
 typedef enum type {
     PLAYER,
     ENEMY,
@@ -44,6 +75,7 @@ typedef enum type {
     BACKGROUND,
 } Type;
 
+//obsolete
 typedef struct element {
     int id;
     float x;

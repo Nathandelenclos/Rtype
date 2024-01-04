@@ -9,13 +9,22 @@ add_library(lib_r_type SHARED
         src/lib/r_type/RType.hpp
         src/lib/r_type/services/Graphic.cpp
         src/lib/r_type/services/Graphic.hpp
-        src/lib/r_type/entities/Player.cpp
-        src/lib/r_type/entities/Player.hpp
+        #src/lib/r_type/entities/Player.cpp
+        #src/lib/r_type/entities/Player.hpp
         src/lib/r_type/components/Drawable.cpp
         src/lib/r_type/components/Drawable.hpp
         networking/server/ServerSocket.cpp
-        networking/server/ServerSocket.hpp)
-
+        networking/server/ServerSocket.hpp
+        src/lib/r_type/Scenes/IScene.hpp
+        src/lib/r_type/Scenes/AScene.cpp
+        src/lib/r_type/Scenes/AScene.hpp
+        src/lib/r_type/components/IComponent.hpp
+        src/lib/r_type/Scenes/Lobby/Lobby.cpp
+        src/lib/r_type/Scenes/Lobby/Lobby.hpp
+        src/lib/r_type/services/IService.hpp
+        src/lib/r_type/services/AService.cpp
+        src/lib/r_type/services/AService.hpp
+        src/lib/r_type/entities/IEntity.hpp)
 target_compile_options(lib_r_type PRIVATE -fPIC)
 
 set_target_properties(lib_r_type PROPERTIES PREFIX "" SUFFIX .so LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})

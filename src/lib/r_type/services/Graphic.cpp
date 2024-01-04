@@ -8,11 +8,13 @@
 #include "Graphic.hpp"
 #include "Drawable.hpp"
 
-void Graphic::update(IGame *game, std::vector<IObject*> objects) {
-    for (auto &object : objects) {
-        auto drawable = dynamic_cast<Drawable*>(object);
-        if (drawable) {
-            drawable->draw();
+void Graphic::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component)
+{
+    auto drawable = std::dynamic_pointer_cast<Drawable>(component);
+    if (drawable)
+        //braodcast event to all clients
+        for (auto &[id, address, buffer] : _serverSocket->getClients()) {
+            auto packet = drawable->getPacket();
+            _serverSocket->send(packet.get(), address);
         }
-    }
 }

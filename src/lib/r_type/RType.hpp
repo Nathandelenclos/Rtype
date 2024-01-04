@@ -8,32 +8,48 @@
 #pragma once
 
 #include <iostream>
-#include "../../../include/IGame.hpp"
-#include "./entities/Player.hpp"
+#include <utility>
+#include "IGame.hpp"
 #include "./services/Graphic.hpp"
+#include "./Scenes/IScene.hpp"
+#include "./Scenes/Lobby/Lobby.hpp"
 
 class RType : public IGame {
 public:
-    RType(ServerSocket *socket) {
-        objects.push_back(new Player(socket));
-        services.push_back(new Graphic());
+    explicit RType(std::shared_ptr<ServerSocket> socket) {
+        _socket = std::move(socket);
+        _scenes["Lobby"] = std::make_shared<LobbyScene>(_socket);
+        _currentScene = _scenes["Lobby"];
+        gettimeofday(&_chrono, nullptr);
     }
 
-    ~RType() override {
-        for (auto &object : objects)
-            delete object;
-        for (auto &service : services)
-            delete service;
+    ~RType() override = default;
+
+    void update(std::shared_ptr<Event> event) override {
+        timeval now{};
+        timeval diff{};
+        gettimeofday(&now, nullptr);
+        timersub(&now, &_chrono, &diff);
+        if (diff.tv_usec >= 1000) {
+            for (auto entity : _currentScene->getEntities())
+                for (auto component : entity->getComponents()) {
+                    auto draw = std::dynamic_pointer_cast<Drawable>(component);
+                    auto [x, y] = draw->getPosition();
+                    if (x + 200 >= 800)
+                        direction = -0.5;
+                    else if (x <= 0)
+                        direction = 0.5;
+                    if (draw)
+                        draw->setPosition({x + direction, y});
+                }
+            _currentScene->update(event);
+            _chrono = now;
+        }
     }
 
-    [[nodiscard]] std::vector<IObject*> getObjects() const override {
-        return objects;
-    }
-
-    [[nodiscard]] std::vector<IService*> getServices() const override {
-        return services;
-    }
-
-    std::vector<IObject*> objects;
-    std::vector<IService*> services;
+    std::shared_ptr<ServerSocket> _socket;
+    std::map<std::string, std::shared_ptr<ISceneRType>> _scenes;
+    std::shared_ptr<ISceneRType> _currentScene;
+    timeval _chrono;
+    float direction = 0.5;
 };
