@@ -28,11 +28,11 @@ void GameScene::init_scene()
     text_ping->setText("");
     text_ping->setPosition(sf::Vector2f(0, 550));
 
-    sprite->setAttribute("sprite player");
+    sprite->setAttribute("Player");
 
-    addComponent(text_ping);
     addComponent(sprite);
     addComponent(music);
+    addComponent(text_ping);
 }
 
 void GameScene::receiveData() {
@@ -45,7 +45,8 @@ void GameScene::receiveData() {
             //std::cout << "element: " << drawable->x << " " << drawable->y << std::endl;
             for (auto &component: _components) {
                 if (component->getType() == ComponentType::SPRITE) {
-                    if (component->getAttribute() == "sprite player") {
+                    char *attribute = reinterpret_cast<char *>(&drawable->attribute);
+                    if (component->getAttribute() == attribute) {
                         //sprite->setTexture(getTextureByType(element->type));
                         auto *sprite = dynamic_cast<SpriteComponent *>(component.get());
                         sprite->setPosition({drawable->x, drawable->y});

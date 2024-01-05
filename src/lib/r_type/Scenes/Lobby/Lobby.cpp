@@ -22,6 +22,7 @@ void LobbyScene::initEntities()
 
     std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
     sprite->setPosition({50, 50});
+    sprite->setAttribute("Player");
     player->setAttribute("Player");
     player->addComponent(sprite);
 
