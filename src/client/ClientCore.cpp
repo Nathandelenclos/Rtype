@@ -69,7 +69,7 @@ void ClientCore::sendHeartBeat(sf::RenderWindow& window)
     while (window.isOpen()) {
         gettimeofday((timeval*)packet->data, nullptr);
         _socket->send(packet.get(), _socket->serv_addr);
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
     free(packet->data);
 }

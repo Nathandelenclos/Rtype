@@ -66,21 +66,21 @@ void ServerSocket::sendPacket(SplitPacket *packet, struct sockaddr_in dest) {
 
 void ServerSocket::addClient(struct sockaddr_in client) {
     int id = 1;
-    for (auto& [i, cli, splitPackets] : clients) {
+    for (auto& [i, cli, splitPackets, lastReceived] : clients) {
         if (i == id) {
             id++;
         } else {
             break;
         }
     }
-    clients.emplace_back(id, client, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>());
+    clients.emplace_back(id, client, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>(), timeval());
 }
 
 int ServerSocket::getClientId(struct sockaddr_in client) {
     if (clients.empty()) {
         return -1;
     }
-    for (auto& [id, cli, splitPackets] : clients) {
+    for (auto& [id, cli, splitPackets, lastReceived] : clients) {
         if (cli.sin_addr.s_addr == client.sin_addr.s_addr && cli.sin_port == client.sin_port) {
             return id;
         }
@@ -199,12 +199,12 @@ void ServerSocket::run() {
     }
 }
 
-std::vector<std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>>>& ServerSocket::getClients() {
+std::vector<std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>, timeval>>& ServerSocket::getClients() {
     return clients;
 }
 
 struct sockaddr_in ServerSocket::getClientAddress(int id) {
-    for (auto& [i, cli, splitPackets] : clients) {
+    for (auto& [i, cli, splitPackets, lastReceived] : clients) {
         if (i == id) {
             return cli;
         }
@@ -213,8 +213,8 @@ struct sockaddr_in ServerSocket::getClientAddress(int id) {
 }
 
 void ServerSocket::broadcast(Packet *packet) {
-    for (auto& [id, cli, splitPackets] : clients) {
-        splitAndSend(packet, cli);
+    for (auto& [id, cli, splitPackets, lastReceived] : clients) {
+        send(packet, cli);
     }
 }
 
@@ -275,9 +275,10 @@ void ServerSocket::receivePacketAndAddToBuffer() {
         addClient(cli_addr);
         id = getClientId(cli_addr);
     }
-    for (auto& [i, cli, splitPackets] : clients) {
+    for (auto& [i, cli, splitPackets, lastReceived] : clients) {
         if (i == id) {
             gettimeofday(&recvTime, nullptr);
+            gettimeofday(&lastReceived, nullptr);
             splitPackets.emplace_back(packet, recvTime);
         }
     }
@@ -291,7 +292,7 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::manageClientsBuffer() {
     std::unique_ptr<struct timeval> now = std::make_unique<struct timeval>();
     std::unique_ptr<struct timeval> diff = std::make_unique<struct timeval>();
 
-    for (auto& [id, cli, splitPackets] : getClients()) {
+    for (auto& [id, cli, splitPackets, lastReceived] : getClients()) {
         auto it = splitPackets.begin();
         while (it != splitPackets.end()) {
             auto& [splitPacket, recvTime] = *it;
@@ -334,7 +335,7 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::manageClientsBuffer() {
     }
 
     free(packet->data);
-    for (auto& [idtimeout, clitimeout, splitPacketstimeout] : getClients()) {
+    for (auto& [idtimeout, clitimeout, splitPacketstimeout, lastReceivedtimeout] : getClients()) {
         auto ittimeout = splitPacketstimeout.begin();
         while (ittimeout != splitPacketstimeout.end()) {
             auto& [splitPackettimeout, recvTimetimeout] = *ittimeout;
@@ -348,4 +349,30 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::manageClientsBuffer() {
         }
     }
     return std::make_tuple(nullptr, 0);
+}
+
+void ServerSocket::checkClientsDeconnection() {
+    timeval now{};
+    timeval diff{};
+    gettimeofday(&now, nullptr);
+    for (auto& [id, cli, splitPackets, lastReceived] : getClients()) {
+        timersub(&now, &lastReceived, &diff);
+        if (diff.tv_sec > 1) {
+            std::shared_ptr<Packet> packet = std::make_shared<Packet>();
+            packet->code = EVENT;
+            packet->data_size = strlen("player left");
+            packet->data = malloc(packet->data_size);
+            memcpy(packet->data, "player left", packet->data_size);
+            broadcast(packet.get());
+            auto it = getClients().begin();
+            while (it != getClients().end()) {
+                auto& [iddel, clidel, splitPacketsdel, lastReceiveddel] = *it;
+                if (id == iddel) {
+                    it = getClients().erase(it);
+                } else {
+                    ++it;
+                }
+            }
+        }
+    }
 }

@@ -34,15 +34,17 @@ public:
     void receivePacketAndAddToBuffer();
 
 
-    [[nodiscard]] std::vector<std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>>>& getClients();
+    [[nodiscard]] std::vector<std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>, timeval>>& getClients();
 
     std::tuple<std::unique_ptr<Packet>, int> manageClientsBuffer();
+
+    void checkClientsDeconnection();
 
 private:
     unsigned long long sockfd;
     struct sockaddr_in serv_addr{};
     std::string lastMessage;
-    std::vector<std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>>> clients;
+    std::vector<std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>, timeval>> clients;
     struct sockaddr_in lastClientAddress{};
     std::unique_ptr<struct timeval> timeout;
     fd_set _readfds;

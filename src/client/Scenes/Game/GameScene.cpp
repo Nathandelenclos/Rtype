@@ -20,6 +20,8 @@ void GameScene::init_scene()
     std::shared_ptr<TextComponent> text_ping = std::make_shared<TextComponent>(_clientCore, _socket);
     std::shared_ptr<SpriteComponent> sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
     std::shared_ptr<MusicComponent> music = std::make_shared<MusicComponent>(_clientCore, _socket);
+    std::shared_ptr<SoundComponent> sound_new_player = std::make_shared<SoundComponent>(_clientCore, _socket);
+    std::shared_ptr<SoundComponent> sound_player_left = std::make_shared<SoundComponent>(_clientCore, _socket);
 
     music->setSound("../src/client/assets/musics/thisgirl.ogg");
     music->setVolume(10);
@@ -30,9 +32,15 @@ void GameScene::init_scene()
 
     sprite->setAttribute("Player");
 
+    sound_new_player->setAttribute("new player");
+
+    sound_player_left->setAttribute("player left");
+
     addComponent(sprite);
     addComponent(music);
     addComponent(text_ping);
+    addComponent(sound_new_player);
+    addComponent(sound_player_left);
 }
 
 void GameScene::receiveData() {
@@ -94,6 +102,27 @@ void GameScene::receiveData() {
             if (newComponent->type == ComponentType::MUSIC) {
                 auto music = std::make_shared<MusicComponent>(_clientCore, _socket);
                 addComponent(music);
+            }
+        }
+        if (p->code == EVENT) {
+            auto *data = static_cast<char *>(p->data);
+            std::string message(data);
+            if (message == "new player") {
+                for (auto &component: _components) {
+                    if (component->getType() == ComponentType::SOUND) {
+                        if (component->getAttribute() == "new player") {
+                            dynamic_cast<SoundComponent *>(component.get())->action();
+                        }
+                    }
+                }
+            } else if (message == "player left") {
+                for (auto &component: _components) {
+                    if (component->getType() == ComponentType::SOUND) {
+                        if (component->getAttribute() == "player left") {
+                            dynamic_cast<SoundComponent *>(component.get())->action();
+                        }
+                    }
+                }
             }
         }
         free(p->data);
