@@ -8,6 +8,7 @@
 #include <string>
 #include <memory>
 #include <sys/time.h>
+#include <cstdint>
 
 
 #ifdef _WIN32
