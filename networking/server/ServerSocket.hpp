@@ -17,7 +17,7 @@ public:
     ServerSocket();
     ~ServerSocket() override;
 
-    void init_server(std::string ip, int port);
+    void init_server(int port);
     void send(Packet *packet, struct sockaddr_in dest) override;
     void sendPacket(SplitPacket *packet, struct sockaddr_in dest) override;
     void broadcast(Packet *packet);

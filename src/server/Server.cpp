@@ -7,10 +7,10 @@
 #include <utility>
 #include <sys/time.h>
 
-Server::Server(std::string const &ip, int port) {
+Server::Server(int port) {
     _serverSocket = std::make_shared<ServerSocket>();
     _gameLoader = std::make_unique<DLLoader>("../lib_r_type.so");
-    _serverSocket->init_server(ip, port);
+    _serverSocket->init_server(port);
     _game = std::unique_ptr<IGame>(_gameLoader->getInstance("create", _serverSocket));
     _packetHeartBeat = std::make_unique<Packet>();
 }

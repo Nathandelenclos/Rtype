@@ -18,7 +18,7 @@
 
 class Server {
 public:
-    Server(std::string const& ip, int port);
+    Server(int port);
     ~Server() = default;
     void run();
 
