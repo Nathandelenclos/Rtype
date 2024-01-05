@@ -38,13 +38,11 @@ ServerSocket::~ServerSocket() {
     #endif
 }
 
-void ServerSocket::init_server(std::string ip, int port) {
+void ServerSocket::init_server(int port) {
     memset(&serv_addr, 0, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(port);
-    if (inet_pton(AF_INET, ip.c_str(), &serv_addr.sin_addr) <= 0) {
-        throw std::runtime_error("Invalid address");
-    }
+    serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
     if (bind(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0) {
         throw std::runtime_error("Failed to bind socket");
     }
