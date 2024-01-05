@@ -8,8 +8,9 @@
 #include <iostream>
 #include "Server.hpp"
 
-int main() {
-    Server server("10.17.72.28", 4242);
+int main(int ac, char **av) {
+    int port = av[1] ? atoi(av[1]) : 4242;
+    Server server(port);
     server.run();
     return 0;
 }
