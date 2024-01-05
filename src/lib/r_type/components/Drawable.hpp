@@ -16,7 +16,7 @@
 class Drawable : public IComponentRType {
     public:
         Drawable();
-        std::string getAttribute() const override;
+        [[nodiscard]] char *getAttribute() const override;
         void setAttribute(std::string attribute) override;
 
         std::tuple<float, float> getPosition() const;
@@ -35,5 +35,4 @@ class Drawable : public IComponentRType {
         std::tuple<float, float> _size;
         std::tuple<int, int, int, int> _rect;
         int _textureId;
-
 };

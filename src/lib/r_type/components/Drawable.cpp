@@ -12,21 +12,23 @@
 
 Drawable::Drawable()
 {
-    setAttribute("");
     setPosition({0, 0});
     setSize({200, 200});
     setRect({0, 0, 200, 200});
+    _attribute = new char[128];
+    std::memset(_attribute, 0, 128);
     _textureId = 0;
 }
 
-std::string Drawable::getAttribute() const
+char *Drawable::getAttribute() const
 {
     return _attribute;
 }
 
 void Drawable::setAttribute(std::string attribute)
 {
-    _attribute = attribute;
+    std::memset(_attribute, 0, 128);
+    std::memcpy(_attribute, attribute.c_str(), attribute.size());
 }
 
 std::tuple<float, float> Drawable::getPosition() const

@@ -18,12 +18,20 @@ void LobbyScene::initScene()
 void LobbyScene::initEntities()
 {
     std::shared_ptr<IEntity> player = std::make_shared<IEntity>();
+    std::shared_ptr<IEntity> background = std::make_shared<IEntity>();
 
     std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
     sprite->setPosition({50, 50});
+    player->setAttribute("Player");
     player->addComponent(sprite);
 
+    std::shared_ptr<Drawable> backgroundSprite = std::make_shared<Drawable>();
+    backgroundSprite->setPosition({0, 0});
+    background->setAttribute("Background");
+    background->addComponent(backgroundSprite);
+
     addEntity(player);
+    addEntity(background);
 }
 
 void LobbyScene::initServices()
