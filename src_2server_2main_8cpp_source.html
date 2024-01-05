@@ -79,11 +79,12 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">iostream</span><span class="preprocessor">&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="Server_8hpp.html">&quot;Server.hpp&quot;</a></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="src_2server_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   11</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="networking_2client_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classServer.html">Server</a> server(<span class="stringliteral">&quot;127.0.0.1&quot;</span>, 4242);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    server<a class="code" href="classServer.html#abb27d30b40a94326e3fd629d3b30b7d5">.</a><a class="code" href="classServer.html#abb27d30b40a94326e3fd629d3b30b7d5">run</a><a class="code" href="classServer.html#abb27d30b40a94326e3fd629d3b30b7d5">(</a><a class="code" href="classServer.html#abb27d30b40a94326e3fd629d3b30b7d5">)</a>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="src_2server_2main_8cpp.html#a0c99d968a34e803d378692bde2e3f18f">   11</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="src_2server_2main_8cpp.html#a0c99d968a34e803d378692bde2e3f18f">main</a>(<span class="keywordtype">int</span> ac, <span class="keywordtype">char</span> **av) {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">int</span> port = av[1] ? atoi(av[1]) : 4242;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classServer.html">Server</a> server<a class="code" href="classServer.html#a7d1fe6ba5f0fe9190a4f039662ea0e85">(</a>port<a class="code" href="classServer.html#a7d1fe6ba5f0fe9190a4f039662ea0e85">)</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    server<a class="code" href="classServer.html#abb27d30b40a94326e3fd629d3b30b7d5">.</a><a class="code" href="classServer.html#abb27d30b40a94326e3fd629d3b30b7d5">run</a><a class="code" href="classServer.html#abb27d30b40a94326e3fd629d3b30b7d5">(</a><a class="code" href="classServer.html#abb27d30b40a94326e3fd629d3b30b7d5">)</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

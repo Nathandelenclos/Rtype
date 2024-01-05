@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['splitpacket_540',['SplitPacket',['../USocket_8hpp.html#a77e642261c850546a789f257b1d03e98',1,'USocket.hpp']]]
+  ['newcomponent_562',['NewComponent',['../USocket_8hpp.html#aa94eda72535700b290e4f094dc85dca8',1,'USocket.hpp']]]
 ];

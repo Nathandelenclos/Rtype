@@ -86,15 +86,15 @@ Inheritance diagram for IComponentRType:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3068f6363ca5fdf4c708b9391b2fa692"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIComponentRType.html#a3068f6363ca5fdf4c708b9391b2fa692">~IComponentRType</a> ()=default</td></tr>
 <tr class="separator:a3068f6363ca5fdf4c708b9391b2fa692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab060a958fde4f3691f20a7fb2fcea0b8"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIComponentRType.html#ab060a958fde4f3691f20a7fb2fcea0b8">getAttribute</a> () const =0</td></tr>
-<tr class="separator:ab060a958fde4f3691f20a7fb2fcea0b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b9d75fa5aba378838de64ce7125c9d3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIComponentRType.html#a9b9d75fa5aba378838de64ce7125c9d3">setAttribute</a> (std::string attribute)=0</td></tr>
+<tr class="memitem:a5f4bb178508dc938832d9bc3deb7b3fb"><td class="memItemLeft" align="right" valign="top">virtual char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIComponentRType.html#a5f4bb178508dc938832d9bc3deb7b3fb">getAttribute</a> () const =0</td></tr>
+<tr class="separator:a5f4bb178508dc938832d9bc3deb7b3fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b9d75fa5aba378838de64ce7125c9d3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIComponentRType.html#a9b9d75fa5aba378838de64ce7125c9d3">setAttribute</a> (std::string <a class="el" href="unionattribute.html">attribute</a>)=0</td></tr>
 <tr class="separator:a9b9d75fa5aba378838de64ce7125c9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ab994a506caf45a4a27f9acc04bdc3899"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIComponentRType.html#ab994a506caf45a4a27f9acc04bdc3899">_attribute</a></td></tr>
-<tr class="separator:ab994a506caf45a4a27f9acc04bdc3899"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cbb455ef81e79a4ad72253621586405"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a></td></tr>
+<tr class="separator:a0cbb455ef81e79a4ad72253621586405"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -126,8 +126,8 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab060a958fde4f3691f20a7fb2fcea0b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab060a958fde4f3691f20a7fb2fcea0b8">&#9670;&nbsp;</a></span>getAttribute()</h2>
+<a id="a5f4bb178508dc938832d9bc3deb7b3fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f4bb178508dc938832d9bc3deb7b3fb">&#9670;&nbsp;</a></span>getAttribute()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,7 +136,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual std::string IComponentRType::getAttribute </td>
+          <td class="memname">virtual char* IComponentRType::getAttribute </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -149,7 +149,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classDrawable.html#a6241843cf69567adf8a8741e35ade7b4">Drawable</a>.</p>
+<p>Implemented in <a class="el" href="classDrawable.html#a3eda55dea2b18a69fc072e76af9dbc3f">Drawable</a>.</p>
 
 </div>
 </div>
@@ -182,8 +182,8 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ab994a506caf45a4a27f9acc04bdc3899"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab994a506caf45a4a27f9acc04bdc3899">&#9670;&nbsp;</a></span>_attribute</h2>
+<a id="a0cbb455ef81e79a4ad72253621586405"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cbb455ef81e79a4ad72253621586405">&#9670;&nbsp;</a></span>_attribute</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -192,7 +192,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string IComponentRType::_attribute</td>
+          <td class="memname">char* IComponentRType::_attribute</td>
         </tr>
       </table>
   </td>
@@ -204,7 +204,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html#l00015">15</a> of file <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html">IComponent.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="Drawable_8cpp_source.html#l00022">Drawable::getAttribute()</a>, and <a class="el" href="Drawable_8cpp_source.html#l00027">Drawable::setAttribute()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="Drawable_8cpp_source.html#l00013">Drawable::Drawable()</a>, <a class="el" href="Drawable_8cpp_source.html#l00023">Drawable::getAttribute()</a>, <a class="el" href="Drawable_8cpp_source.html#l00065">Drawable::getPacket()</a>, and <a class="el" href="Drawable_8cpp_source.html#l00028">Drawable::setAttribute()</a>.</p>
 
 </div>
 </div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['packet_539',['Packet',['../USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8',1,'USocket.hpp']]]
+  ['mouse_561',['Mouse',['../USocket_8hpp.html#ac6b65cbf29c87ea8104800f5b2aeeab5',1,'USocket.hpp']]]
 ];

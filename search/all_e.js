@@ -1,15 +1,12 @@
 var searchData=
 [
-  ['receive_170',['receive',['../classClientSocket.html#aff92fc80281e0ec1fae4431f123c267c',1,'ClientSocket::receive()'],['../classUSocket.html#a8312f7a58b520dd9041aa63c29432124',1,'USocket::receive()'],['../classServerSocket.html#ac6cbd1ed77ce812b1d9b07718fc557db',1,'ServerSocket::receive()']]],
-  ['receivedata_171',['receiveData',['../classIScene.html#a5e2d057c961ce85475b3be3a0263008b',1,'IScene::receiveData()'],['../classMenuScene.html#a26c4ab794b5d85fbd3b60c32fd65f321',1,'MenuScene::receiveData()'],['../classMainScene.html#a018b9ae71036e43e6c9cf1eb4f5c492e',1,'MainScene::receiveData()'],['../classGameScene.html#a96f9195c04703eaacb82c8fc07ef557d',1,'GameScene::receiveData()']]],
-  ['receivepacketandaddtobuffer_172',['receivePacketAndAddToBuffer',['../classClientSocket.html#ac41ecb4f14a0db6cbf9c856f2f781440',1,'ClientSocket::receivePacketAndAddToBuffer()'],['../classServerSocket.html#ae1b1e978c5e06777bfb8a240a294bdeb',1,'ServerSocket::receivePacketAndAddToBuffer()']]],
-  ['rectheight_173',['rectHeight',['../structdrawable.html#a8aa9da19dbaf6380ca9b499c0921380f',1,'drawable']]],
-  ['rectleft_174',['rectLeft',['../structdrawable.html#af20d64f891d1663ec681a18e1c869c01',1,'drawable']]],
-  ['recttop_175',['rectTop',['../structdrawable.html#a9fd22deac6f9562cf1b16078eadeddfb',1,'drawable']]],
-  ['rectwidth_176',['rectWidth',['../structdrawable.html#a748e31bb92c11acc31f44b2b555620b7',1,'drawable']]],
-  ['resumescene_177',['resumeScene',['../classISceneRType.html#a11ef3b4c6ed60943dce6670902c93719',1,'ISceneRType::resumeScene()'],['../classAScene.html#a52a5fdd3b7e64a229431c940492f9722',1,'AScene::resumeScene() override'],['../classAScene.html#a52a5fdd3b7e64a229431c940492f9722',1,'AScene::resumeScene() override'],['../classIScene.html#aa403c32d1a454e80d7efd8968653712f',1,'IScene::resumeScene()']]],
-  ['rtype_178',['RType',['../classRType.html#a3cc317156a17353c8ee42a3ac383c185',1,'RType::RType()'],['../classRType.html',1,'RType']]],
-  ['rtype_2ecpp_179',['RType.cpp',['../RType_8cpp.html',1,'']]],
-  ['rtype_2ehpp_180',['RType.hpp',['../RType_8hpp.html',1,'']]],
-  ['run_181',['run',['../classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1',1,'ClientSocket::run()'],['../classUSocket.html#a7923bfb7cb56158cf193823c9a9dc15d',1,'USocket::run()'],['../classServerSocket.html#af288e86fa50894b11d7eecdc3e20bad3',1,'ServerSocket::run()'],['../classClientCore.html#a31ef7bc664ead4100a736bef5f4eb1af',1,'ClientCore::run()'],['../classServer.html#abb27d30b40a94326e3fd629d3b30b7d5',1,'Server::run()']]]
+  ['packet_174',['packet',['../structpacket.html',1,'']]],
+  ['packet_175',['Packet',['../USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8',1,'USocket.hpp']]],
+  ['packet_176',['packet',['../Server_8cpp.html#aa437fd3616c00ce4dde639ea92de910b',1,'Server.cpp']]],
+  ['packet_5fid_177',['packet_id',['../structsplit__packet.html#a1d39cb0ad62b53af5da470ca484665a9',1,'split_packet']]],
+  ['pausescene_178',['pauseScene',['../classIScene.html#a3c9ff4ff7f152e5adb5ab5470a1b4efc',1,'IScene::pauseScene()'],['../classAScene.html#ac84c87170a6a0563e50e9c5ed2d85cdd',1,'AScene::pauseScene() override'],['../classAScene.html#ac84c87170a6a0563e50e9c5ed2d85cdd',1,'AScene::pauseScene() override'],['../classISceneRType.html#aee401aba9f0c1732c638977d140cc250',1,'ISceneRType::pauseScene()']]],
+  ['player_179',['Player',['../classPlayer.html',1,'Player'],['../classPlayer.html#a8a21ea10a2a555a30adc5dcf241ad702',1,'Player::Player()']]],
+  ['player_180',['PLAYER',['../USocket_8hpp.html#a7aead736a07eaf25623ad7bfa1f0ee2dade5dc3e0dbd007d995ed3e37bde5ce7e',1,'USocket.hpp']]],
+  ['player_2ecpp_181',['Player.cpp',['../Player_8cpp.html',1,'']]],
+  ['player_2ehpp_182',['Player.hpp',['../Player_8hpp.html',1,'']]]
 ];

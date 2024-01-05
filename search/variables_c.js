@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['type_529',['type',['../structkey.html#a7c87a76a18d4712a12f08aa7824ab4b8',1,'key::type()'],['../structmouse.html#a49def5130cfab0940aa72779df737cb9',1,'mouse::type()'],['../structelement.html#a8a01016da9360823e69dd32976b4a886',1,'element::type()']]]
+  ['serv_5faddr_546',['serv_addr',['../classClientSocket.html#a61e3619e45f1a06fd541a9c3f2e5c815',1,'ClientSocket']]],
+  ['sizehorizontal_547',['sizeHorizontal',['../structdrawable.html#a533b5ce4cc643df23dc9c25c216df6a5',1,'drawable']]],
+  ['sizevertical_548',['sizeVertical',['../structdrawable.html#a34aca89552f8a3fde08884a6afb9376f',1,'drawable']]],
+  ['sockfd_549',['sockfd',['../classClientSocket.html#ac30644514eb0c798e89736f42afe86ae',1,'ClientSocket']]],
+  ['sub_5fcomponents_550',['sub_components',['../classIComponent.html#a04c7fabb3e3060a6a8fc4c3e19bacb38',1,'IComponent']]]
 ];
