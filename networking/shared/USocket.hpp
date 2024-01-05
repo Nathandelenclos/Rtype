@@ -8,6 +8,7 @@
 #include <string>
 #include <memory>
 #include <sys/time.h>
+#include <cstdint>
 
 
 #ifdef _WIN32
@@ -32,7 +33,18 @@ typedef enum code {
     LOGOUT,
     HEARTBEAT,
     ELEMENT,
+    NEW_COMPONENT,
 } CODE;
+
+typedef enum {
+    TEXTSOCKET,
+    SPRITESOCKET,
+    BUTTONSOCKET,
+    INPUTSOCKET,
+    VARIABLESOCKET,
+    MUSICSOCKET,
+    SOUNDSOCKET,
+} ComponentTypeSocket;
 
 typedef struct key {
     int key;
@@ -56,6 +68,11 @@ typedef struct packet {
     void *data;
 } Packet;
 
+typedef union attribute {
+    char data;
+    std::uint64_t number;
+}attribute_t;
+
 typedef struct drawable {
     int id;
     float x;
@@ -66,7 +83,14 @@ typedef struct drawable {
     int rectTop;
     int rectWidth;
     int rectHeight;
+    std::uint64_t attribute;
 } DrawablePacket;
+
+typedef struct newComponent {
+    int id;
+    std::uint64_t attribute;
+    ComponentTypeSocket type;
+} NewComponent;
 
 //obsolete
 typedef enum type {

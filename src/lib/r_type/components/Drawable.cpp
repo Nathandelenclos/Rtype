@@ -12,21 +12,24 @@
 
 Drawable::Drawable()
 {
-    setAttribute("");
     setPosition({0, 0});
     setSize({200, 200});
     setRect({0, 0, 200, 200});
+    _attribute = new char[64];
+    std::memset(_attribute, 0, 64);
     _textureId = 0;
 }
 
-std::string Drawable::getAttribute() const
+char *Drawable::getAttribute() const
 {
     return _attribute;
 }
 
 void Drawable::setAttribute(std::string attribute)
 {
-    _attribute = attribute;
+    std::memset(_attribute, 0, 0);
+    std::memcpy(_attribute, attribute.c_str(), attribute.size());
+    std::cout << "attribute: " << _attribute << std::endl;
 }
 
 std::tuple<float, float> Drawable::getPosition() const
@@ -76,6 +79,8 @@ std::shared_ptr<Packet> Drawable::getPacket()
     drawablePacket.rectTop = std::get<1>(_rect);
     drawablePacket.rectWidth = std::get<2>(_rect);
     drawablePacket.rectHeight = std::get<3>(_rect);
+    std::memcpy(&drawablePacket.attribute, _attribute, std::strlen(_attribute));
+
     memcpy(packet->data, &drawablePacket, sizeof(DrawablePacket));
     return packet;
 }

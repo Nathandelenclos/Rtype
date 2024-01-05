@@ -10,7 +10,7 @@
 #include <mutex>
 #include <thread>
 #include <vector>
-#include "../shared/USocket.hpp"
+#include "networking/shared/USocket.hpp"
 
 class ClientSocket : public USocket {
     public:

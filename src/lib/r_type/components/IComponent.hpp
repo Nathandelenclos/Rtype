@@ -8,9 +8,9 @@ class IComponentRType {
     public:
         virtual ~IComponentRType() = default;
 
-        virtual std::string getAttribute() const = 0;
+        [[nodiscard]] virtual char *getAttribute() const = 0;
         virtual void setAttribute(std::string attribute) = 0;
 
     protected:
-        std::string _attribute;
+        char *_attribute;
 };

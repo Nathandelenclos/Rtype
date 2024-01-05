@@ -16,7 +16,7 @@ typedef enum {
     INPUT,
     VARIABLE,
     MUSIC,
-    SOUND
+    SOUND,
 } ComponentType;
 
 class ClientCore;

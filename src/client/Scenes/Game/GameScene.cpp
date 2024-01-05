@@ -28,11 +28,11 @@ void GameScene::init_scene()
     text_ping->setText("");
     text_ping->setPosition(sf::Vector2f(0, 550));
 
-    sprite->setAttribute("sprite player");
+    sprite->setAttribute("Player");
 
-    addComponent(text_ping);
     addComponent(sprite);
     addComponent(music);
+    addComponent(text_ping);
 }
 
 void GameScene::receiveData() {
@@ -45,7 +45,8 @@ void GameScene::receiveData() {
             //std::cout << "element: " << drawable->x << " " << drawable->y << std::endl;
             for (auto &component: _components) {
                 if (component->getType() == ComponentType::SPRITE) {
-                    if (component->getAttribute() == "sprite player") {
+                    char *attribute = reinterpret_cast<char *>(&drawable->attribute);
+                    if (component->getAttribute() == attribute) {
                         //sprite->setTexture(getTextureByType(element->type));
                         auto *sprite = dynamic_cast<SpriteComponent *>(component.get());
                         sprite->setPosition({drawable->x, drawable->y});
@@ -76,6 +77,23 @@ void GameScene::receiveData() {
                                 std::to_string(_pingTime.tv_usec % 1000) + "ms");
                     }
                 }
+            }
+        }
+        if (p->code == NEW_COMPONENT) {
+            auto *newComponent = static_cast<NewComponent *>(p->data);
+            std::cout << "new component: " << newComponent->type << std::endl;
+            std::cout << "new component: " << reinterpret_cast<char *>(&newComponent->attribute) << std::endl;
+            if (newComponent->type == ComponentType::SPRITE) {
+                auto sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
+                addComponent(sprite);
+            }
+            if (newComponent->type == ComponentType::TEXT) {
+                auto text = std::make_shared<TextComponent>(_clientCore, _socket);
+                addComponent(text);
+            }
+            if (newComponent->type == ComponentType::MUSIC) {
+                auto music = std::make_shared<MusicComponent>(_clientCore, _socket);
+                addComponent(music);
             }
         }
         free(p->data);
@@ -130,6 +148,19 @@ void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {
             packet.data = malloc(packet.data_size);
             event1.key = static_cast<int>(sf::Keyboard::Down);
             event1.eventType = static_cast<int>(sf::Event::KeyReleased);
+            memcpy(packet.data, &event1, packet.data_size);
+            _socket->send(&packet, _socket->serv_addr);
+            free(packet.data);
+        }
+        if (event.key.code == sf::Keyboard::Space) {
+            std::cout << "Space" << std::endl;
+            Packet packet{};
+            Event event1{};
+            packet.code = CODE::EVENT;
+            packet.data_size = sizeof(Event);
+            packet.data = malloc(packet.data_size);
+            event1.key = static_cast<int>(sf::Keyboard::Space);
+            event1.eventType = static_cast<int>(sf::Event::KeyPressed);
             memcpy(packet.data, &event1, packet.data_size);
             _socket->send(&packet, _socket->serv_addr);
             free(packet.data);
