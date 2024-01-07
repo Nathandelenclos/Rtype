@@ -145,55 +145,62 @@ void GameScene::initTextures() {
 }
 
 void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {
-    if (event.type == sf::Event::KeyPressed) {
-        if (event.key.code == sf::Keyboard::Escape) {
-            _clientCore->setCurrentScene("main");
-            for (auto &component: _clientCore->getCurrentScene()->getComponents()) {
-                if (component->getType() == ComponentType::MUSIC) {
-                    dynamic_cast<MusicComponent *>(component.get())->action();
-                }
-            }
+    while (window.pollEvent(const_cast<sf::Event &>(event))) {
+        if (event.type == sf::Event::Closed) {
+            window.close();
             return;
         }
-        if (event.key.code == sf::Keyboard::Up) {
-            std::cout << "Up" << std::endl;
-            Packet packet{};
-            Event event1{};
-            packet.code = CODE::EVENT;
-            packet.data_size = sizeof(Event);
-            packet.data = malloc(packet.data_size);
-            event1.key = static_cast<int>(sf::Keyboard::Up);
-            event1.eventType = static_cast<int>(sf::Event::KeyPressed);
-            memcpy(packet.data, &event1, packet.data_size);
-            _socket->send(&packet, _socket->serv_addr);
-            free(packet.data);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Escape)) {
+        _clientCore->setCurrentScene("main");
+        for (auto &component: _clientCore->getCurrentScene()->getComponents()) {
+            if (component->getType() == ComponentType::MUSIC) {
+                dynamic_cast<MusicComponent *>(component.get())->action();
+            }
         }
-        if (event.key.code == sf::Keyboard::Down) {
-            std::cout << "Down" << std::endl;
-            Packet packet{};
-            Event event1{};
-            packet.code = CODE::EVENT;
-            packet.data_size = sizeof(Event);
-            packet.data = malloc(packet.data_size);
-            event1.key = static_cast<int>(sf::Keyboard::Down);
-            event1.eventType = static_cast<int>(sf::Event::KeyReleased);
-            memcpy(packet.data, &event1, packet.data_size);
-            _socket->send(&packet, _socket->serv_addr);
-            free(packet.data);
-        }
-        if (event.key.code == sf::Keyboard::Space) {
-            std::cout << "Space" << std::endl;
-            Packet packet{};
-            Event event1{};
-            packet.code = CODE::EVENT;
-            packet.data_size = sizeof(Event);
-            packet.data = malloc(packet.data_size);
-            event1.key = static_cast<int>(sf::Keyboard::Space);
-            event1.eventType = static_cast<int>(sf::Event::KeyPressed);
-            memcpy(packet.data, &event1, packet.data_size);
-            _socket->send(&packet, _socket->serv_addr);
-            free(packet.data);
-        }
+        return;
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Up)) {
+        std::cout << "Up" << std::endl;
+        Packet packet{};
+        Event event1{};
+        packet.code = CODE::EVENT;
+        packet.data_size = sizeof(Event);
+        packet.data = malloc(packet.data_size);
+        event1.key = static_cast<int>(sf::Keyboard::Up);
+        event1.eventType = static_cast<int>(sf::Event::KeyPressed);
+        memcpy(packet.data, &event1, packet.data_size);
+        _socket->send(&packet, _socket->serv_addr);
+        free(packet.data);
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Down)) {
+        std::cout << "Down" << std::endl;
+        Packet packet{};
+        Event event1{};
+        packet.code = CODE::EVENT;
+        packet.data_size = sizeof(Event);
+        packet.data = malloc(packet.data_size);
+        event1.key = static_cast<int>(sf::Keyboard::Down);
+        event1.eventType = static_cast<int>(sf::Event::KeyReleased);
+        memcpy(packet.data, &event1, packet.data_size);
+        _socket->send(&packet, _socket->serv_addr);
+        free(packet.data);
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Space)) {
+        std::cout << "Space" << std::endl;
+        Packet packet{};
+        Event event1{};
+        packet.code = CODE::EVENT;
+        packet.data_size = sizeof(Event);
+        packet.data = malloc(packet.data_size);
+        event1.key = static_cast<int>(sf::Keyboard::Space);
+        event1.eventType = static_cast<int>(sf::Event::KeyPressed);
+        memcpy(packet.data, &event1, packet.data_size);
+        _socket->send(&packet, _socket->serv_addr);
+        free(packet.data);
     }
     for (auto &component: _components) {
         component->handleEvent(event, window);

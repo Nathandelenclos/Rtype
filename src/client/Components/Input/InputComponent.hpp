@@ -27,7 +27,8 @@ class InputComponent : public AComponent {
         std::string getText();
 
 
-    private:
+    std::string _textEntry;
+private:
         sf::Texture _texture;
         sf::Text _text;
         sf::Font _font;
@@ -36,7 +37,6 @@ class InputComponent : public AComponent {
         sf::Vector2f _size;
         sf::IntRect _rect;
         std::function<void()> _callback;
-        std::string _textEntry;
-        bool _isClicked;
+    bool _isClicked;
         std::shared_ptr<ClientSocket> _socket;
 };

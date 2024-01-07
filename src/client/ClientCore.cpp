@@ -31,11 +31,7 @@ void ClientCore::run()
     while (_window.isOpen()) {
         _window.clear();
         _socket->init_fd_set();
-        while (_window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                _window.close();
-            _currentScene->handleEvent(event, _window);
-        }
+        _currentScene->handleEvent(event, _window);
         _currentScene->receiveData();
         _currentScene->update();
         _currentScene->display(_window);

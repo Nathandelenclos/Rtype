@@ -38,7 +38,9 @@ public:
 
     std::tuple<std::unique_ptr<Packet>, int> manageClientsBuffer();
 
-    void checkClientsDeconnection();
+    void setNewClientConnected(int newClientConnected);
+    int getNewClientId();
+    int checkClientsDeconnection();
 
 private:
     unsigned long long sockfd;
@@ -48,6 +50,8 @@ private:
     struct sockaddr_in lastClientAddress{};
     std::unique_ptr<struct timeval> timeout;
     fd_set _readfds;
+    bool newClientConnected;
+    int newClientId;
 };
 
 #endif //R_TYPE_SERVER_SERVERSOCKET_HPP

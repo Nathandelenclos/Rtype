@@ -69,7 +69,7 @@ void LobbyScene::update(std::shared_ptr<Event> event)
                 auto draw = std::dynamic_pointer_cast<Drawable>(component);
                 auto [x, y] = draw->getPosition();
                 if (draw)
-                    draw->setPosition({x, y - 10});
+                    draw->setPosition({x, y - 0.5});
             }
     }
     if (event->key == sf::Keyboard::Key::Down) {
@@ -78,7 +78,7 @@ void LobbyScene::update(std::shared_ptr<Event> event)
                 auto draw = std::dynamic_pointer_cast<Drawable>(component);
                 auto [x, y] = draw->getPosition();
                 if (draw)
-                    draw->setPosition({x, y + 10});
+                    draw->setPosition({x, y + 0.5});
             }
     }
 

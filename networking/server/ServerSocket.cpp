@@ -272,6 +272,7 @@ void ServerSocket::receivePacketAndAddToBuffer() {
     if (id == -1) {
         addClient(cli_addr);
         id = getClientId(cli_addr);
+        setNewClientConnected(id);
     }
     for (auto& [i, cli, splitPackets, lastReceived] : clients) {
         if (i == id) {
@@ -349,9 +350,11 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::manageClientsBuffer() {
     return std::make_tuple(nullptr, 0);
 }
 
-void ServerSocket::checkClientsDeconnection() {
+int ServerSocket::checkClientsDeconnection() {
     timeval now{};
     timeval diff{};
+    int idClient = -1;
+
     gettimeofday(&now, nullptr);
     for (auto& [id, cli, splitPackets, lastReceived] : getClients()) {
         timersub(&now, &lastReceived, &diff);
@@ -366,6 +369,7 @@ void ServerSocket::checkClientsDeconnection() {
             while (it != getClients().end()) {
                 auto& [iddel, clidel, splitPacketsdel, lastReceiveddel] = *it;
                 if (id == iddel) {
+                    idClient = id;
                     it = getClients().erase(it);
                 } else {
                     ++it;
@@ -373,4 +377,18 @@ void ServerSocket::checkClientsDeconnection() {
             }
         }
     }
+    return idClient;
+}
+
+void ServerSocket::setNewClientConnected(int id) {
+    newClientConnected = true;
+    newClientId = id;
+}
+
+int ServerSocket::getNewClientId() {
+    if (!newClientConnected) {
+        return -1;
+    }
+    newClientConnected = false;
+    return newClientId;
 }
