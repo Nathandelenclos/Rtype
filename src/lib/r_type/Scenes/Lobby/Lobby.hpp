@@ -15,9 +15,11 @@ class LobbyScene : public AScene {
 
         void initScene();
 
+        void update(std::shared_ptr<Event> event) override;
+
         void initEntities();
         void initServices();
 
     private:
-
+        timeval _chrono;
 };

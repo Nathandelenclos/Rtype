@@ -80,7 +80,6 @@ std::shared_ptr<Packet> Drawable::getPacket()
     drawablePacket.rectWidth = std::get<2>(_rect);
     drawablePacket.rectHeight = std::get<3>(_rect);
     std::memcpy(&drawablePacket.attribute, _attribute, std::strlen(_attribute));
-
     memcpy(packet->data, &drawablePacket, sizeof(DrawablePacket));
     return packet;
 }

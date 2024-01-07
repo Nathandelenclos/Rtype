@@ -36,17 +36,6 @@ void AScene::display()
 
 }
 
-void AScene::update(std::shared_ptr<Event> event)
-{
-    for (auto &entity : _entities) {
-        for (auto &component : entity->getComponents()) {
-            for (auto &service : _services) {
-                service->update(event, component);
-            }
-        }
-    }
-}
-
 void AScene::pauseScene()
 {
 }

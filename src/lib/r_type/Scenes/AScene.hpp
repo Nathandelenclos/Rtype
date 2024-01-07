@@ -5,6 +5,8 @@
 #pragma once
 
 #include "IScene.hpp"
+#include "../components/IComponent.hpp"
+#include "../components/Drawable.hpp"
 
 class AScene : public ISceneRType {
     public:
@@ -18,7 +20,6 @@ class AScene : public ISceneRType {
         std::vector<std::shared_ptr<IService>> getServices() override;
 
         void display() override;
-        void update(std::shared_ptr<Event> event) override;
 
         void pauseScene() override;
         void resumeScene() override;
