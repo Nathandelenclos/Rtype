@@ -7,11 +7,14 @@
 
 #pragma once
 
+#include <utility>
 #include <vector>
-#include "IService.hpp"
+#include "AService.hpp"
+#include "IComponent.hpp"
 
-class Graphic : public IService {
+class Graphic : public AService {
 public:
-    Graphic() = default;
-    void update(IGame *game, std::vector<IObject*> objects) override;
+    explicit Graphic(std::shared_ptr<ServerSocket> serverSocket) : AService(std::move(serverSocket)) {};
+
+    void update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component) override;
 };

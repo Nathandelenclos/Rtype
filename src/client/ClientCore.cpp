@@ -31,11 +31,7 @@ void ClientCore::run()
     while (_window.isOpen()) {
         _window.clear();
         _socket->init_fd_set();
-        while (_window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                _window.close();
-            _currentScene->handleEvent(event, _window);
-        }
+        _currentScene->handleEvent(event, _window);
         _currentScene->receiveData();
         _currentScene->update();
         _currentScene->display(_window);
@@ -69,7 +65,7 @@ void ClientCore::sendHeartBeat(sf::RenderWindow& window)
     while (window.isOpen()) {
         gettimeofday((timeval*)packet->data, nullptr);
         _socket->send(packet.get(), _socket->serv_addr);
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
     free(packet->data);
 }

@@ -96,7 +96,7 @@ void ClientSocket::receivePacketAndAddToBuffer() {
         if (recvfrom(sockfd, buffer, sizeof(SplitPacket), 0, (struct sockaddr*)&cli_addr, &len) < 0) {
             throw std::runtime_error("Failed to read from socket");
         }
-        //std::cout << "Received packet from " << inet_ntoa(cli_addr.sin_addr) << ":" << ntohs(cli_addr.sin_port) << std::endl;
+        std::cout << "Received packet from " << inet_ntoa(cli_addr.sin_addr) << ":" << ntohs(cli_addr.sin_port) << std::endl;
     } else {
         free(buffer);
         return;
@@ -104,8 +104,8 @@ void ClientSocket::receivePacketAndAddToBuffer() {
     memcpy(&splitPacket, buffer, sizeof(SplitPacket));
 
     gettimeofday(&receveidTime, nullptr);
-    _packetBuffer.push_back(std::make_tuple(std::make_unique<SplitPacket>(splitPacket), receveidTime));
-    std::cout << "Received packet type: " << splitPacket.code << std::endl;
+    _packetBuffer.emplace_back(std::make_unique<SplitPacket>(splitPacket), receveidTime);
+    //std::cout << "Received packet type: " << splitPacket.code << std::endl;
     free(buffer);
 }
 

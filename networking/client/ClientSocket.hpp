@@ -11,7 +11,8 @@
 #include <thread>
 #include <vector>
 #include <netinet/in.h>
-#include "../shared/USocket.hpp"
+
+#include "networking/shared/USocket.hpp"
 
 class ClientSocket : public USocket {
     public:

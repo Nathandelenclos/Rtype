@@ -82,10 +82,16 @@ void MainScene::init_scene()
 
 void MainScene::handleEvent(const sf::Event& event, sf::RenderWindow& window)
 {
-    for (auto &component : _components) {
-        if (!continueScene)
+    while (window.pollEvent(const_cast<sf::Event &>(event))) {
+        if (event.type == sf::Event::Closed) {
+            window.close();
             return;
-        component->handleEvent(event, window);
+        }
+        for (auto &component: _components) {
+            if (!continueScene)
+                return;
+            component->handleEvent(event, window);
+        }
     }
 }
 

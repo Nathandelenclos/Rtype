@@ -11,6 +11,7 @@
 #include <iostream>
 #include "DLLoader.hpp"
 #include "IGame.hpp"
+#include "networking/server/ServerSocket.hpp"
 
 class DLLoader {
 public:
@@ -29,9 +30,9 @@ public:
         }
     }
 
-    IGame* getInstance(const std::string& functionName, ServerSocket *socket) {
+    IGame* getInstance(const std::string& functionName, const std::shared_ptr<ServerSocket>& socket) {
         dlerror();
-        create_t* create = (create_t*) dlsym(handle, functionName.c_str());
+        auto* create = (create_t*) dlsym(handle, functionName.c_str());
         const char* dlsym_error = dlerror();
         if (dlsym_error) {
             std::cerr << "Cannot load symbol '" << functionName << "': " << dlsym_error << '\n';
@@ -46,6 +47,6 @@ public:
     }
 
 private:
-    typedef IGame* create_t(ServerSocket *socket);
+    typedef IGame* create_t(std::shared_ptr<ServerSocket>);
     void* handle = nullptr;
 };

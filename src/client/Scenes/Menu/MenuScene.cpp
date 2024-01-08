@@ -43,7 +43,11 @@ void MenuScene::init_scene()
     port_input->addActionTarget(address_input);
 
     address_input->setAttribute("address");
+    address_input->_textEntry = "127.0.0.1";
+    address_input->setText();
     port_input->setAttribute("port");
+    port_input->_textEntry = "4242";
+    port_input->setText();
     text->setAttribute("text add serv");
 
     text_ping->setAttribute("text ping");
@@ -62,14 +66,20 @@ void MenuScene::init_scene()
 
 void MenuScene::handleEvent(const sf::Event& event, sf::RenderWindow& window)
 {
-    if (event.type == sf::Event::KeyPressed) {
-        if (event.key.code == sf::Keyboard::Escape) {
-            _clientCore->setCurrentScene("main");
+    while (window.pollEvent(const_cast<sf::Event &>(event))) {
+        if (event.type == sf::Event::Closed) {
+            window.close();
             return;
         }
-    }
-    for (auto &component : _components) {
-        component->handleEvent(event, window);
+        if (event.type == sf::Event::KeyPressed) {
+            if (event.key.code == sf::Keyboard::Escape) {
+                _clientCore->setCurrentScene("main");
+                return;
+            }
+        }
+        for (auto &component : _components) {
+            component->handleEvent(event, window);
+        }
     }
 }
 

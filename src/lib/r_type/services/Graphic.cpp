@@ -8,11 +8,12 @@
 #include "Graphic.hpp"
 #include "Drawable.hpp"
 
-void Graphic::update(IGame *game, std::vector<IObject*> objects) {
-    for (auto &object : objects) {
-        auto drawable = dynamic_cast<Drawable*>(object);
-        if (drawable) {
-            drawable->draw();
-        }
+void Graphic::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component)
+{
+    auto drawable = std::dynamic_pointer_cast<Drawable>(component);
+    if (drawable)
+    {
+        auto packetdraw = drawable->getPacket();
+        _serverSocket->broadcast(packetdraw.get());
     }
 }
