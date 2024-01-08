@@ -30,9 +30,15 @@ class Drawable : public IComponentRType {
 
         std::shared_ptr<Packet> getPacket();
 
-    protected:
+        void storeStringInAttributes(std::string str, DrawablePacket *drawablePacket);
+
+        void setHasChanged(bool hasChanged);
+        bool getHasChanged() const;
+
+    int _textureId;
+protected:
         std::tuple<float, float> _position;
         std::tuple<float, float> _size;
         std::tuple<int, int, int, int> _rect;
-        int _textureId;
+        bool hasChanged = false;
 };

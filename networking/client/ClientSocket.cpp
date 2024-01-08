@@ -5,6 +5,8 @@
 #include "ClientSocket.hpp"
 #include <stdexcept>
 #include <iostream>
+#include <arpa/inet.h>
+#include <unistd.h>
 
 ClientSocket::ClientSocket() {
     std::cout << "ClientSocket constructor" << std::endl;
@@ -21,7 +23,7 @@ ClientSocket::ClientSocket() {
             WSACleanup();
             throw std::runtime_error("Failed to create socket");
         }
-    #elif defined(__unix__) || defined(__unix__)
+    #elif defined(__unix__) || defined(__unix__) || defined(__APPLE__) && defined(__MACH__)
         sockfd = socket(AF_INET, SOCK_DGRAM, 0);
         if (sockfd < 0) {
             std::cout << "Error sockfd < 0 sockfd : " << sockfd << std::endl;
@@ -43,7 +45,7 @@ ClientSocket::ClientSocket() {
 ClientSocket::~ClientSocket() {
     #ifdef _WIN32
         closesocket(sockfd);
-    #elif defined(__unix__) || defined(__unix__)
+    #elif defined(__unix__) || defined(__unix__) || defined(__APPLE__) && defined(__MACH__)
         close(sockfd);
     #endif
 }
@@ -94,7 +96,7 @@ void ClientSocket::receivePacketAndAddToBuffer() {
         if (recvfrom(sockfd, buffer, sizeof(SplitPacket), 0, (struct sockaddr*)&cli_addr, &len) < 0) {
             throw std::runtime_error("Failed to read from socket");
         }
-        //std::cout << "Received packet from " << inet_ntoa(cli_addr.sin_addr) << ":" << ntohs(cli_addr.sin_port) << std::endl;
+        std::cout << "Received packet from " << inet_ntoa(cli_addr.sin_addr) << ":" << ntohs(cli_addr.sin_port) << std::endl;
     } else {
         free(buffer);
         return;
@@ -290,7 +292,7 @@ void ClientSocket::run() {
         }
 
         inputThread.join();
-    #elif defined(__unix__) || defined(__unix__)
+    #elif defined(__unix__) || defined(__unix__) || defined(__APPLE__) && defined(__MACH__)
         while (loop) {
             init_fd_set();
             listen_server();
@@ -310,8 +312,8 @@ std::tuple<std::unique_ptr<Packet>, int> ClientSocket::listen_server() {
     } else if (action == 0) {
         throw std::runtime_error("Error: select timeout");
     } else {
-        std::cout << "FD_ISSET(STDIN_FILENO, &_readfds): " << FD_ISSET(STDIN_FILENO, &_readfds) << std::endl;
-        if (FD_ISSET(STDIN_FILENO, &_readfds)) {
+        std::cout << "FD_ISSET(STDIN_FILENO, &_readfds): " << FD_ISSET(0, &_readfds) << std::endl;
+        if (FD_ISSET(0, &_readfds)) {
             std::string message;
             if (!std::getline(std::cin, message)) {
                 loop = false;
@@ -334,7 +336,7 @@ std::tuple<std::unique_ptr<Packet>, int> ClientSocket::listen_server() {
 void ClientSocket::init_fd_set() {
     FD_ZERO(&_readfds);
     #ifndef _WIN32
-        FD_SET(STDIN_FILENO, &_readfds);
+        FD_SET(0, &_readfds);
     #endif
     FD_SET(sockfd, &_readfds);
 }

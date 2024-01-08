@@ -31,8 +31,7 @@ class ClientCore {
         void sendHeartBeat(sf::RenderWindow& window);
         void startHeartBeat();
 
-
-    private:
+private:
         std::shared_ptr<ClientSocket> _socket;
         sf::RenderWindow _window;
         std::map<std::string, std::shared_ptr<IScene>> _scenes;

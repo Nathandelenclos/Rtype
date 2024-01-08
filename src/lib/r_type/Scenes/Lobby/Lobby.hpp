@@ -6,6 +6,7 @@
 
 #include "../AScene.hpp"
 #include "../components/Drawable.hpp"
+#include <SFML/Window/Keyboard.hpp>
 
 
 class LobbyScene : public AScene {
@@ -15,9 +16,11 @@ class LobbyScene : public AScene {
 
         void initScene();
 
+        void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet, int id) override;
+
         void initEntities();
         void initServices();
 
     private:
-
+        timeval _chrono;
 };

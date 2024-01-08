@@ -1,6 +1,8 @@
 #include "ServerSocket.hpp"
 #include <stdexcept>
 #include <iostream>
+#include <arpa/inet.h>
+#include <unistd.h>
 
 ServerSocket::ServerSocket() {
     std::cout << "ServerSocket constructor" << std::endl;
@@ -17,8 +19,9 @@ ServerSocket::ServerSocket() {
             WSACleanup();
             throw std::runtime_error("Failed to create socket");
         }
-    #elif defined(__unix__) || defined(__unix__)
+    #elif defined(__unix__) || defined(__unix__) || defined(__APPLE__) || defined(__MACH__)
         sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+        std::cout << "coucou "<< std::endl;
         if (sockfd < 0) {
             std::cout << "Error sockfd < 0 sockfd : " << sockfd << std::endl;
             throw std::runtime_error("Failed to create socket");
@@ -33,7 +36,7 @@ ServerSocket::ServerSocket() {
 ServerSocket::~ServerSocket() {
     #ifdef _WIN32
         closesocket(sockfd);
-    #elif defined(__unix__) || defined(__unix__)
+    #elif defined(__unix__) || defined(__unix__) || defined(__APPLE__) || defined(__MACH__)
         close(sockfd);
     #endif
 }
@@ -64,21 +67,21 @@ void ServerSocket::sendPacket(SplitPacket *packet, struct sockaddr_in dest) {
 
 void ServerSocket::addClient(struct sockaddr_in client) {
     int id = 1;
-    for (auto& [i, cli, splitPackets] : clients) {
+    for (auto& [i, cli, splitPackets, lastReceived] : clients) {
         if (i == id) {
             id++;
         } else {
             break;
         }
     }
-    clients.emplace_back(id, client, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>());
+    clients.emplace_back(id, client, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>(), timeval());
 }
 
 int ServerSocket::getClientId(struct sockaddr_in client) {
     if (clients.empty()) {
         return -1;
     }
-    for (auto& [id, cli, splitPackets] : clients) {
+    for (auto& [id, cli, splitPackets, lastReceived] : clients) {
         if (cli.sin_addr.s_addr == client.sin_addr.s_addr && cli.sin_port == client.sin_port) {
             return id;
         }
@@ -197,12 +200,12 @@ void ServerSocket::run() {
     }
 }
 
-std::vector<std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>>>& ServerSocket::getClients() {
+std::vector<std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>, timeval>>& ServerSocket::getClients() {
     return clients;
 }
 
 struct sockaddr_in ServerSocket::getClientAddress(int id) {
-    for (auto& [i, cli, splitPackets] : clients) {
+    for (auto& [i, cli, splitPackets, lastReceived] : clients) {
         if (i == id) {
             return cli;
         }
@@ -211,8 +214,8 @@ struct sockaddr_in ServerSocket::getClientAddress(int id) {
 }
 
 void ServerSocket::broadcast(Packet *packet) {
-    for (auto& [id, cli, splitPackets] : clients) {
-        splitAndSend(packet, cli);
+    for (auto& [id, cli, splitPackets, lastReceived] : clients) {
+        send(packet, cli);
     }
 }
 
@@ -272,10 +275,12 @@ void ServerSocket::receivePacketAndAddToBuffer() {
     if (id == -1) {
         addClient(cli_addr);
         id = getClientId(cli_addr);
+        setNewClientConnected(id);
     }
-    for (auto& [i, cli, splitPackets] : clients) {
+    for (auto& [i, cli, splitPackets, lastReceived] : clients) {
         if (i == id) {
             gettimeofday(&recvTime, nullptr);
+            gettimeofday(&lastReceived, nullptr);
             splitPackets.emplace_back(packet, recvTime);
         }
     }
@@ -289,7 +294,7 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::manageClientsBuffer() {
     std::unique_ptr<struct timeval> now = std::make_unique<struct timeval>();
     std::unique_ptr<struct timeval> diff = std::make_unique<struct timeval>();
 
-    for (auto& [id, cli, splitPackets] : getClients()) {
+    for (auto& [id, cli, splitPackets, lastReceived] : getClients()) {
         auto it = splitPackets.begin();
         while (it != splitPackets.end()) {
             auto& [splitPacket, recvTime] = *it;
@@ -332,7 +337,7 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::manageClientsBuffer() {
     }
 
     free(packet->data);
-    for (auto& [idtimeout, clitimeout, splitPacketstimeout] : getClients()) {
+    for (auto& [idtimeout, clitimeout, splitPacketstimeout, lastReceivedtimeout] : getClients()) {
         auto ittimeout = splitPacketstimeout.begin();
         while (ittimeout != splitPacketstimeout.end()) {
             auto& [splitPackettimeout, recvTimetimeout] = *ittimeout;
@@ -346,4 +351,47 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::manageClientsBuffer() {
         }
     }
     return std::make_tuple(nullptr, 0);
+}
+
+int ServerSocket::checkClientsDeconnection() {
+    timeval now{};
+    timeval diff{};
+    int idClient = -1;
+
+    gettimeofday(&now, nullptr);
+    for (auto& [id, cli, splitPackets, lastReceived] : getClients()) {
+        timersub(&now, &lastReceived, &diff);
+        if (diff.tv_sec > 1) {
+            std::shared_ptr<Packet> packet = std::make_shared<Packet>();
+            packet->code = EVENT;
+            packet->data_size = strlen("player left");
+            packet->data = malloc(packet->data_size);
+            memcpy(packet->data, "player left", packet->data_size);
+            broadcast(packet.get());
+            auto it = getClients().begin();
+            while (it != getClients().end()) {
+                auto& [iddel, clidel, splitPacketsdel, lastReceiveddel] = *it;
+                if (id == iddel) {
+                    idClient = id;
+                    it = getClients().erase(it);
+                } else {
+                    ++it;
+                }
+            }
+        }
+    }
+    return idClient;
+}
+
+void ServerSocket::setNewClientConnected(int id) {
+    newClientConnected = true;
+    newClientId = id;
+}
+
+int ServerSocket::getNewClientId() {
+    if (!newClientConnected) {
+        return -1;
+    }
+    newClientConnected = false;
+    return newClientId;
 }

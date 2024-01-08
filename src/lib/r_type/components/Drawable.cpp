@@ -27,9 +27,10 @@ char *Drawable::getAttribute() const
 
 void Drawable::setAttribute(std::string attribute)
 {
-    std::memset(_attribute, 0, 0);
+    std::memset(_attribute, 0, 64);
     std::memcpy(_attribute, attribute.c_str(), attribute.size());
     std::cout << "attribute: " << _attribute << std::endl;
+    hasChanged = true;
 }
 
 std::tuple<float, float> Drawable::getPosition() const
@@ -40,6 +41,7 @@ std::tuple<float, float> Drawable::getPosition() const
 void Drawable::setPosition(std::tuple<float, float> position)
 {
     _position = position;
+    hasChanged = true;
 }
 
 std::tuple<float, float> Drawable::getSize() const
@@ -50,6 +52,7 @@ std::tuple<float, float> Drawable::getSize() const
 void Drawable::setSize(std::tuple<float, float> size)
 {
     _size = size;
+    hasChanged = true;
 }
 
 std::tuple<int, int, int, int> Drawable::getRect() const
@@ -60,6 +63,7 @@ std::tuple<int, int, int, int> Drawable::getRect() const
 void Drawable::setRect(std::tuple<int, int, int, int> rect)
 {
     _rect = rect;
+    hasChanged = true;
 }
 
 std::shared_ptr<Packet> Drawable::getPacket()
@@ -79,8 +83,16 @@ std::shared_ptr<Packet> Drawable::getPacket()
     drawablePacket.rectTop = std::get<1>(_rect);
     drawablePacket.rectWidth = std::get<2>(_rect);
     drawablePacket.rectHeight = std::get<3>(_rect);
-    std::memcpy(&drawablePacket.attribute, _attribute, std::strlen(_attribute));
-
+    std::memcpy(&drawablePacket.attribute, _attribute, 8);
+    std::memcpy(&drawablePacket.attribute2, _attribute + 8, 8);
     memcpy(packet->data, &drawablePacket, sizeof(DrawablePacket));
     return packet;
+}
+
+void Drawable::setHasChanged(bool hasChanged) {
+    this->hasChanged = hasChanged;
+}
+
+bool Drawable::getHasChanged() const {
+    return hasChanged;
 }

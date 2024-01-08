@@ -26,7 +26,7 @@ private:
     std::unique_ptr<DLLoader> _gameLoader;
     std::unique_ptr<IGame> _game;
     std::shared_ptr<ServerSocket> _serverSocket;
-    std::unique_ptr<Packet> _packet;
+    std::shared_ptr<Packet> _packet;
     std::tuple<std::unique_ptr<Packet>, int> _packetClientId;
     std::unique_ptr<Packet> _packetHeartBeat;
     timeval _receveidTime{};

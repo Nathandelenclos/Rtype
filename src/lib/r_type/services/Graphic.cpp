@@ -12,9 +12,12 @@ void Graphic::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRTy
 {
     auto drawable = std::dynamic_pointer_cast<Drawable>(component);
     if (drawable)
-        //braodcast event to all clients
-        for (auto &[id, address, buffer] : _serverSocket->getClients()) {
-            auto packet = drawable->getPacket();
-            _serverSocket->send(packet.get(), address);
+    {
+        auto packetdraw = drawable->getPacket();
+        if (drawable->getHasChanged()) {
+            _serverSocket->broadcast(packetdraw.get());
+            drawable->setHasChanged(false);
         }
+
+    }
 }
