@@ -142,7 +142,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                     auto draw = std::dynamic_pointer_cast<Drawable>(component);
                     auto [x, y] = draw->getPosition();
                     if (draw)
-                        draw->setPosition({x, y - 0.5});
+                        draw->setPosition({x, y - 5});
                 }
             }
     }
@@ -153,7 +153,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                     auto draw = std::dynamic_pointer_cast<Drawable>(component);
                     auto [x, y] = draw->getPosition();
                     if (draw)
-                        draw->setPosition({x, y + 0.5});
+                        draw->setPosition({x, y + 5});
                 }
             }
     }

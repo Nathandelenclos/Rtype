@@ -28,6 +28,8 @@ void ClientCore::run()
     _window.create(sf::VideoMode(800, 600), "R-Type");
     sf::Event event{};
 
+    _window.setFramerateLimit(60);
+
     while (_window.isOpen()) {
         _window.clear();
         _socket->init_fd_set();
