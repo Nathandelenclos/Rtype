@@ -10,6 +10,7 @@
 #include <vector>
 #include <map>
 #include <memory>
+#include <netinet/in.h>
 #include "../shared/USocket.hpp"
 
 class ServerSocket : public USocket {

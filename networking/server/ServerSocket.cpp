@@ -1,6 +1,8 @@
 #include "ServerSocket.hpp"
 #include <stdexcept>
 #include <iostream>
+#include <arpa/inet.h>
+#include <unistd.h>
 
 ServerSocket::ServerSocket() {
     std::cout << "ServerSocket constructor" << std::endl;
@@ -17,8 +19,9 @@ ServerSocket::ServerSocket() {
             WSACleanup();
             throw std::runtime_error("Failed to create socket");
         }
-    #elif defined(__unix__) || defined(__unix__)
+    #elif defined(__unix__) || defined(__unix__) || defined(__APPLE__) || defined(__MACH__)
         sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+        std::cout << "coucou "<< std::endl;
         if (sockfd < 0) {
             std::cout << "Error sockfd < 0 sockfd : " << sockfd << std::endl;
             throw std::runtime_error("Failed to create socket");
@@ -33,7 +36,7 @@ ServerSocket::ServerSocket() {
 ServerSocket::~ServerSocket() {
     #ifdef _WIN32
         closesocket(sockfd);
-    #elif defined(__unix__) || defined(__unix__)
+    #elif defined(__unix__) || defined(__unix__) || defined(__APPLE__) || defined(__MACH__)
         close(sockfd);
     #endif
 }
