@@ -49,7 +49,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
     gettimeofday(&now, nullptr);
     timersub(&now, &_chrono, &diff);
 
-    if (diff.tv_usec >= 1000) {
+    if (diff.tv_usec >= 25000) {
         for (auto &entity : _entities) {
             for (auto &component : entity->getComponents()) {
                 for (auto &service : _services) {
