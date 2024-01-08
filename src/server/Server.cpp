@@ -79,30 +79,32 @@ void Server::run() {
                 free(_packetHeartBeat->data);
             }
             if (_packet->code == MESSAGE) {
-                //std::string message = "Message: " + std::string(static_cast<char *>(_packet->data));
-                //std::cout << "Message: " << static_cast<char *>(_packet->data) << std::endl;
-                auto *packetConnectionAccepted = new Packet();
-                packetConnectionAccepted->code = MESSAGE;
-                packetConnectionAccepted->data_size = 19;
-                packetConnectionAccepted->data = malloc(packetConnectionAccepted->data_size);
-                memcpy(packetConnectionAccepted->data, "connection accepted", packetConnectionAccepted->data_size);
-                _serverSocket->send(packetConnectionAccepted, _serverSocket->getClientAddress(std::get<1>(_packetClientId)));
-                free(packetConnectionAccepted->data);
-                delete packetConnectionAccepted;
+                if (std::string(static_cast<char *>(_packet->data)) == "connection") {
+                    //std::string message = "Message: " + std::string(static_cast<char *>(_packet->data));
+                    //std::cout << "Message: " << static_cast<char *>(_packet->data) << std::endl;
+                    auto *packetConnectionAccepted = new Packet();
+                    packetConnectionAccepted->code = MESSAGE;
+                    packetConnectionAccepted->data_size = 19;
+                    packetConnectionAccepted->data = malloc(packetConnectionAccepted->data_size);
+                    memcpy(packetConnectionAccepted->data, "connection accepted", packetConnectionAccepted->data_size);
+                    _serverSocket->send(packetConnectionAccepted, _serverSocket->getClientAddress(std::get<1>(_packetClientId)));
+                    free(packetConnectionAccepted->data);
+                    delete packetConnectionAccepted;
+                }
             }
             if (_packet->code == EVENT) {
-                std::cout << "size: " << _packet->data_size << std::endl;
                 Event event1{};
                 memset(&event1, 0, sizeof(Event));
                 memcpy(&event1, _packet->data, sizeof(Event));
-                std::cout << "Event: " << event1.key << " " << event1.eventType << std::endl;
                 event = std::make_shared<Event>(event1);
             }
+        }
+        _game->update(event, _packet, std::get<1>(_packetClientId));
+        if (_packet) {
             free(_packet->data);
             _packet.reset();
             _packetClientId = std::tuple<std::unique_ptr<Packet>, int>(nullptr, 0);
         }
-        _game->update(event);
         //test (ça fonctionne ici mais pas ailleurs (reçois UNDEFINED packet sur le client depuis un send à un autre endroit qu'ici))
         /*packet.code = LOGIN;
         packet.data_size = 4;

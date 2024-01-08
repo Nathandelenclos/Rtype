@@ -25,5 +25,8 @@ class AScene : public ISceneRType {
         void resumeScene() override;
         void stopScene() override;
 
+        void sendGameState(int clientID) override;
+        void broadcastGameState() override;
+
     protected:
 };

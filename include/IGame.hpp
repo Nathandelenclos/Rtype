@@ -17,5 +17,5 @@ class IGame {
 public:
     virtual ~IGame() = default;
 
-    virtual void update(std::shared_ptr<Event> event) = 0;
+    virtual void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet, int id) = 0;
 };

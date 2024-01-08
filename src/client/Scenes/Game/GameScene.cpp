@@ -36,7 +36,7 @@ void GameScene::init_scene()
 
     sound_player_left->setAttribute("player left");
 
-    addComponent(sprite);
+    //addComponent(sprite);
     addComponent(music);
     addComponent(text_ping);
     addComponent(sound_new_player);
@@ -50,11 +50,16 @@ void GameScene::receiveData() {
     if (p != nullptr) {
         if (p->code == ELEMENT) {
             auto *drawable = static_cast<DrawablePacket *>(p->data);
-            //std::cout << "element: " << drawable->x << " " << drawable->y << std::endl;
             for (auto &component: _components) {
                 if (component->getType() == ComponentType::SPRITE) {
-                    char *attribute = reinterpret_cast<char *>(&drawable->attribute);
-                    if (component->getAttribute() == attribute) {
+                    char *attributechar = static_cast<char *>(malloc(16));
+                    std::memset(attributechar, 0, 16);
+                    std::memcpy(attributechar, &drawable->attribute, 8);
+                    std::memcpy(attributechar + 8, &drawable->attribute2, 8);
+                    std::string attributeString(attributechar);
+                    std::string componentAttribute = component->getAttribute();
+                    if (component->getAttribute() == attributeString) {
+                        std::cout << "element: " << drawable->x << " " << drawable->y << std::endl;
                         //sprite->setTexture(getTextureByType(element->type));
                         auto *sprite = dynamic_cast<SpriteComponent *>(component.get());
                         sprite->setPosition({drawable->x, drawable->y});
@@ -89,10 +94,25 @@ void GameScene::receiveData() {
         }
         if (p->code == NEW_COMPONENT) {
             auto *newComponent = static_cast<NewComponent *>(p->data);
-            std::cout << "new component: " << newComponent->type << std::endl;
-            std::cout << "new component: " << reinterpret_cast<char *>(&newComponent->attribute) << std::endl;
+            newComponent->type = static_cast<ComponentTypeSocket>(ComponentType::SPRITE);
+            char *attributechar = static_cast<char *>(malloc(16));
+            std::memset(attributechar, 0, 16);
+            std::memcpy(attributechar, &newComponent->attribute, 8);
+            std::memcpy(attributechar + 8, &newComponent->attribute2, 8);
+            std::string attributeString(attributechar);
+            attributeString = attributeString.substr(0, attributeString.find('\001'));
+            for (auto &component: _components) {
+                if (component->getType() == ComponentType::SPRITE) {
+                    if (component->getAttribute() == reinterpret_cast<char *>(&newComponent->attribute)) {
+                        _components.erase(std::remove(_components.begin(), _components.end(), component), _components.end());
+                        break;
+                    }
+                }
+            }
+
             if (newComponent->type == ComponentType::SPRITE) {
                 auto sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
+                sprite->setAttribute(attributeString);
                 addComponent(sprite);
             }
             if (newComponent->type == ComponentType::TEXT) {
@@ -103,6 +123,17 @@ void GameScene::receiveData() {
                 auto music = std::make_shared<MusicComponent>(_clientCore, _socket);
                 addComponent(music);
             }
+        }
+        if (p->code == DELETE_COMPONENT) {
+            std::string attribute = static_cast<char *>(p->data);
+            for (auto &component: _components) {
+                if (component->getAttribute() == attribute) {
+                    _components.erase(std::remove(_components.begin(), _components.end(), component),
+                                      _components.end());
+                    break;
+                }
+            }
+            std::cout << "delete component: " << attribute << std::endl;
         }
         if (p->code == EVENT) {
             auto *data = static_cast<char *>(p->data);
@@ -150,19 +181,40 @@ void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {
             window.close();
             return;
         }
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Escape)) {
-        _clientCore->setCurrentScene("main");
-        for (auto &component: _clientCore->getCurrentScene()->getComponents()) {
-            if (component->getType() == ComponentType::MUSIC) {
-                dynamic_cast<MusicComponent *>(component.get())->action();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Escape)) {
+            _clientCore->setCurrentScene("main");
+            for (auto &component: _clientCore->getCurrentScene()->getComponents()) {
+                if (component->getType() == ComponentType::MUSIC) {
+                    dynamic_cast<MusicComponent *>(component.get())->action();
+                }
             }
+            Packet packet{};
+            packet.code = MESSAGE;
+            packet.data_size = 9;
+            packet.data = malloc(packet.data_size);
+            memcpy(packet.data, "exit game", packet.data_size);
+            _socket->send(&packet, _socket->serv_addr);
+            return;
         }
+    }
+
+    if (!window.hasFocus())
         return;
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Space)) {
+        Packet packet{};
+        Event event1{};
+        packet.code = CODE::EVENT;
+        packet.data_size = sizeof(Event);
+        packet.data = malloc(packet.data_size);
+        event1.key = static_cast<int>(sf::Keyboard::Space);
+        event1.eventType = static_cast<int>(sf::Event::KeyPressed);
+        memcpy(packet.data, &event1, packet.data_size);
+        _socket->send(&packet, _socket->serv_addr);
+        free(packet.data);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Up)) {
-        std::cout << "Up" << std::endl;
         Packet packet{};
         Event event1{};
         packet.code = CODE::EVENT;
@@ -176,7 +228,6 @@ void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Down)) {
-        std::cout << "Down" << std::endl;
         Packet packet{};
         Event event1{};
         packet.code = CODE::EVENT;
@@ -189,19 +240,6 @@ void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {
         free(packet.data);
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Space)) {
-        std::cout << "Space" << std::endl;
-        Packet packet{};
-        Event event1{};
-        packet.code = CODE::EVENT;
-        packet.data_size = sizeof(Event);
-        packet.data = malloc(packet.data_size);
-        event1.key = static_cast<int>(sf::Keyboard::Space);
-        event1.eventType = static_cast<int>(sf::Event::KeyPressed);
-        memcpy(packet.data, &event1, packet.data_size);
-        _socket->send(&packet, _socket->serv_addr);
-        free(packet.data);
-    }
     for (auto &component: _components) {
         component->handleEvent(event, window);
     }

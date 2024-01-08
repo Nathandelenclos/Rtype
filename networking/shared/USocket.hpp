@@ -34,6 +34,7 @@ typedef enum code {
     HEARTBEAT,
     ELEMENT,
     NEW_COMPONENT,
+    DELETE_COMPONENT,
 } CODE;
 
 typedef enum {
@@ -84,11 +85,13 @@ typedef struct drawable {
     int rectWidth;
     int rectHeight;
     std::uint64_t attribute;
+    std::uint64_t attribute2;
 } DrawablePacket;
 
 typedef struct newComponent {
     int id;
     std::uint64_t attribute;
+    std::uint64_t attribute2;
     ComponentTypeSocket type;
 } NewComponent;
 
@@ -129,6 +132,7 @@ class USocket {
         virtual void run() = 0;
 
         virtual void sendPacket(SplitPacket *packet, struct sockaddr_in dest) = 0;
+
 };
 
 
