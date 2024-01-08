@@ -67,10 +67,9 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 std::shared_ptr<IEntity> entity = std::make_shared<IEntity>();
                 std::shared_ptr<Drawable> drawable = std::make_shared<Drawable>();
 
-                sendGameState(id);
-
                 drawable->setAttribute("player " + std::to_string(id));
                 drawable->setPosition({100 * id, 100 * id});
+                drawable->setHasChanged(true);
                 entity->addComponent(drawable);
                 entity->setAttribute("player " + std::to_string(id));
                 addEntity(entity);
@@ -91,6 +90,8 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 memcpy(sendpacket->data, &newComponent, sendpacket->data_size);
                 _serverSocket->broadcast(sendpacket.get());
                 free(sendpacket->data);
+
+                sendGameState(id);
             }
             if (std::string(static_cast<char *>(packet->data)) == "exit game") {
                 std::cout << "exit game player id " << id << std::endl;
@@ -137,7 +138,6 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
     if (event->key == sf::Keyboard::Key::Up) {
         for (const auto& entity : getEntities())
             for (const auto& component : entity->getComponents()) {
-                std::cout << "component: " << component->getAttribute() << std::endl;
                 if (component->getAttribute() == "player " + std::to_string(id)) {
                     auto draw = std::dynamic_pointer_cast<Drawable>(component);
                     auto [x, y] = draw->getPosition();
@@ -149,7 +149,6 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
     if (event->key == sf::Keyboard::Key::Down) {
         for (const auto& entity : getEntities())
             for (const auto& component : entity->getComponents()) {
-                std::cout << "component: " << component->getAttribute() << std::endl;
                 if (component->getAttribute() == "player " + std::to_string(id)) {
                     auto draw = std::dynamic_pointer_cast<Drawable>(component);
                     auto [x, y] = draw->getPosition();

@@ -14,6 +14,10 @@ void Graphic::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRTy
     if (drawable)
     {
         auto packetdraw = drawable->getPacket();
-        _serverSocket->broadcast(packetdraw.get());
+        if (drawable->getHasChanged()) {
+            _serverSocket->broadcast(packetdraw.get());
+            drawable->setHasChanged(false);
+        }
+
     }
 }

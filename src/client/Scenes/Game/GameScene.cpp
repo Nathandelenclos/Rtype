@@ -113,6 +113,10 @@ void GameScene::receiveData() {
             if (newComponent->type == ComponentType::SPRITE) {
                 auto sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
                 sprite->setAttribute(attributeString);
+                //sprite->setTexture(getTextureByType(Type::PLAYER));
+                sprite->setPosition({newComponent->x, newComponent->y});
+                sprite->setSize({newComponent->sizeHorizontal, newComponent->sizeVertical});
+                sprite->setRect({newComponent->rectLeft, newComponent->rectTop, newComponent->rectWidth, newComponent->rectHeight});
                 addComponent(sprite);
             }
             if (newComponent->type == ComponentType::TEXT) {

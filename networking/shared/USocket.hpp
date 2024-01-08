@@ -90,6 +90,14 @@ typedef struct drawable {
 
 typedef struct newComponent {
     int id;
+    float x;
+    float y;
+    float sizeHorizontal;
+    float sizeVertical;
+    int rectLeft;
+    int rectTop;
+    int rectWidth;
+    int rectHeight;
     std::uint64_t attribute;
     std::uint64_t attribute2;
     ComponentTypeSocket type;

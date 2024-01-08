@@ -86,6 +86,14 @@ void AScene::broadcastGameState()
                 newComponent.id = drawable->_textureId;
                 std::memcpy(&newComponent.attribute, drawable->getAttribute(), std::strlen(drawable->getAttribute()));
                 newComponent.type = ComponentTypeSocket ::SPRITESOCKET;
+                newComponent.x = std::get<0>(drawable->getPosition());
+                newComponent.y = std::get<1>(drawable->getPosition());
+                newComponent.sizeHorizontal = std::get<0>(drawable->getSize());
+                newComponent.sizeVertical = std::get<1>(drawable->getSize());
+                newComponent.rectLeft = std::get<0>(drawable->getRect());
+                newComponent.rectTop = std::get<1>(drawable->getRect());
+                newComponent.rectWidth = std::get<2>(drawable->getRect());
+                newComponent.rectHeight = std::get<3>(drawable->getRect());
                 packet->code = NEW_COMPONENT;
                 packet->data_size = sizeof(NewComponent);
                 packet->data = malloc(packet->data_size);
