@@ -6,6 +6,7 @@
 
 #include "../AScene.hpp"
 #include "../components/Drawable.hpp"
+#include <SFML/Window/Keyboard.hpp>
 
 
 class LobbyScene : public AScene {

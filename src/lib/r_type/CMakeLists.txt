@@ -25,6 +25,15 @@ add_library(lib_r_type SHARED
         src/lib/r_type/services/AService.cpp
         src/lib/r_type/services/AService.hpp
         src/lib/r_type/entities/IEntity.hpp)
-target_compile_options(lib_r_type PRIVATE -fPIC)
+
+if (UNIX OR APPLE)
+    include(FetchContent)
+    FetchContent_Declare(SFML
+            GIT_REPOSITORY https://github.com/SFML/SFML.git
+            GIT_TAG 2.6.x)
+    FetchContent_MakeAvailable(SFML)
+    target_link_libraries(lib_r_type PRIVATE sfml-graphics sfml-audio sfml-system sfml-window -fPIC)
+
+endif (UNIX OR APPLE)
 
 set_target_properties(lib_r_type PROPERTIES PREFIX "" SUFFIX .so LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})

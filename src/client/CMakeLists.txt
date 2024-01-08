@@ -3,8 +3,6 @@ project(r-type-client)
 
 set(CMAKE_CXX_STANDARD 17)
 
-find_package(SFML 2.5 COMPONENTS graphics audio system window REQUIRED)
-
 include_directories(src/client .)
 add_executable(r-type_client
         src/client/main.cpp
@@ -36,6 +34,15 @@ add_executable(r-type_client
         src/client/Scenes/Game/GameScene.hpp
         src/client/Components/Sprite/SpriteComponent.cpp
         src/client/Components/Sprite/SpriteComponent.hpp)
-target_link_libraries(r-type_client sfml-graphics sfml-audio sfml-system sfml-window)
+
+if (UNIX OR APPLE)
+    include(FetchContent)
+    FetchContent_Declare(SFML
+            GIT_REPOSITORY https://github.com/SFML/SFML.git
+            GIT_TAG 2.6.x)
+    FetchContent_MakeAvailable(SFML)
+        target_link_libraries(r-type_client PRIVATE sfml-graphics sfml-audio sfml-system sfml-window)
+
+endif (UNIX OR APPLE)
 
 set_target_properties(r-type_client PROPERTIES EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR})
