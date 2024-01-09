@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['docker_20image_20availability_20post_20project_20linking_645',['Docker Image Availability Post Project Linking',['../md_devops_doc_docker_image.html',1,'']]]
+  ['r_2dtype_20_5bepitech_20project_5d_20_5bdocumentation_5d_642',['R-TYPE [EPITECH PROJECT] [DOCUMENTATION]',['../md_readme.html',1,'']]],
+  ['required_20resources_643',['Required Resources',['../md_devops_doc_required_ressources.html',1,'']]]
 ];
