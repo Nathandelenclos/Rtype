@@ -1,0 +1,148 @@
+- name: Install Java 17
+  apt:
+    name: openjdk-17-jdk
+    state: present
+
+- name: Download GPG key
+  ansible.builtin.get_url:
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    dest: /usr/share/keyrings/jenkins-keyring.asc
+    mode: '0644'
+
+- name: Add repo apt
+  ansible.builtin.lineinfile:
+    path: /etc/apt/sources.list.d/jenkins.list
+    create: yes
+    line: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/"
+    state: present
+
+- name: Update cache
+  ansible.builtin.apt:
+    update_cache: true
+
+- name: Install Jenkins
+  register: install
+  ansible.builtin.apt:
+    name: jenkins
+    state: present
+
+- name: Start Jenkins
+  when: install is changed
+  ansible.builtin.service:
+    name: jenkins
+    state: started
+
+- name: Get default admin password
+  when: install is changed
+  ansible.builtin.command: "cat /var/lib/jenkins/secrets/initialAdminPassword"
+  register: jenkins_password
+
+- name: Install plugins
+  when: install is changed
+  community.general.jenkins_plugin:
+    name: "{{ item }}"
+    url_username: "admin"
+    url_password: "{{ jenkins_password.stdout }}"
+  loop:
+    - git
+    - docker-plugin
+    - configuration-as-code
+    - cloudbees-folder
+    - credentials
+    - github
+    - instance-identity
+    - job-dsl
+    - script-security
+    - structs
+    - role-strategy
+    - ws-cleanup
+    - permissive-script-security
+  register: jenkins_plugins
+  until: jenkins_plugins is succeeded
+  retries: 5
+  delay: 10
+
+- name: Add JVM property to Jenkins config
+  lineinfile:
+    path: /etc/default/jenkins
+    regexp: '^JENKINS_JAVA_OPTIONS='
+    line: 'JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Dpermissive-script-security.enabled=true"'
+    state: present
+
+- name: Upload config
+  template:
+    src: ../files/config.yml
+    dest: /var/lib/jenkins/jenkins.yaml
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Add jenkins user to docker group
+  ansible.builtin.user:
+    name: jenkins
+    groups: docker
+    append: yes
+
+- name: Ensure a directory is present
+  become_user: jenkins
+  file:
+    path: /var/lib/jenkins/.ssh
+    state: directory
+    mode: '0755'
+
+- name: Check if SSH key exist
+  become_user: jenkins
+  stat:
+    path: "/var/lib/jenkins/.ssh/id_rsa"
+  register: ssh_key
+
+- name: Check if know_hosts exist
+  become_user: jenkins
+  stat:
+    path: "/var/lib/jenkins/.ssh/known_hosts"
+  register: known_hosts
+
+- name: Create SSH key
+  become_user: jenkins
+  ansible.builtin.command: ssh-keygen -b 2048 -t rsa -f /var/lib/jenkins/.ssh/id_rsa -q -N ""
+  when: not ssh_key.stat.exists
+
+- name: Get ssh key
+  become_user: jenkins
+  ansible.builtin.command: "cat /var/lib/jenkins/.ssh/id_rsa.pub"
+  register: ssh_key
+
+- name: Upload Jobs
+  vars:
+    public_key: "{{ssh_key.stdout}}"
+  template:
+    src: ../files/jobs/main.groovy
+    dest: /var/lib/jenkins/jobs/main.groovy
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Upload deploy.sh
+  copy:
+    src: ../files/deploy.sh
+    dest: /var/lib/jenkins/deploy.sh
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Ensure a directory is present
+  file:
+    path: /var/lib/jenkins/init.groovy.d
+    state: directory
+    mode: '0755'
+
+- name: Add init jobs
+  template:
+    src: "../files/jobs/{{item}}"
+    dest: "/var/lib/jenkins/init.groovy.d/{{item}}"
+    owner: jenkins
+    group: jenkins
+    mode: '0644'
+  loop:
+    - "approve.groovy"
+    - "setup_jenkins_conf.groovy"

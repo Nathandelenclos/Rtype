@@ -1,7 +1,7 @@
-FROM alpine:3.12
+FROM alpine:latest
 
 RUN apk update && apk upgrade
-RUN apk add build-base cmake git make
+RUN apk add build-base git make cmake wget libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev mesa-dev eudev-dev openal-soft-dev freetype-dev sfml-dev
 
 COPY . /rtype
 
@@ -13,4 +13,4 @@ RUN cmake .. && make
 
 EXPOSE 4242
 
-CMD ["./rtype_server"]
+CMD ["./r-type_server"]
