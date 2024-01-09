@@ -66,6 +66,7 @@ void Server::run() {
         std::shared_ptr<Event> event = nullptr;
 
         if (_packet) {
+            _serverSocket->clientDump();
             if (_packet->code == HEARTBEAT) {
                 gettimeofday(&_currentTime, nullptr);
                 _receveidTime = *static_cast<timeval *>(_packet->data);
