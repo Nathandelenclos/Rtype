@@ -183,6 +183,12 @@ void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {
     while (window.pollEvent(const_cast<sf::Event &>(event))) {
         if (event.type == sf::Event::Closed) {
             window.close();
+            Packet packet{};
+            packet.code = MESSAGE;
+            packet.data_size = 9;
+            packet.data = malloc(packet.data_size);
+            memcpy(packet.data, "exit game", packet.data_size);
+            _socket->send(&packet, _socket->serv_addr);
             return;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Escape)) {
