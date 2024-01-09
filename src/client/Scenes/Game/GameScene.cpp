@@ -11,7 +11,7 @@
 
 GameScene::GameScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket) : AScene(clientCore),
                                                                                      _socket(std::move(socket)) {
-//    initTextures();
+    initTextures();
     init_scene();
 }
 
@@ -170,14 +170,16 @@ sf::Texture GameScene::getTextureByType(Type type) const {
 }
 
 void GameScene::initTextures() {
+    _textures[Type::MISSINGTXT] = sf::Texture();
+    _textures[Type::MISSINGTXT].loadFromFile("../src/client/assets/missing.png");
     _textures[Type::PLAYER] = sf::Texture();
-    _textures[Type::PLAYER].loadFromFile("assets/sprite/player.png");
+    _textures[Type::PLAYER].loadFromFile("../src/client/assets/missing.png");
     _textures[Type::ENEMY] = sf::Texture();
-    _textures[Type::ENEMY].loadFromFile("../sprites/r-typesheet5.png");
+    _textures[Type::ENEMY].loadFromFile("../sprites/r-typesheet5.gif");
     _textures[Type::BULLET] = sf::Texture();
-    _textures[Type::BULLET].loadFromFile("assets/sprite/bullet.png");
+    _textures[Type::BULLET].loadFromFile("../src/client/assets/bullet.png");
     _textures[Type::BACKGROUND] = sf::Texture();
-    _textures[Type::BACKGROUND].loadFromFile("assets/sprite/background.png");
+    _textures[Type::BACKGROUND].loadFromFile("../src/client/assets/background.png");
 }
 
 void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {

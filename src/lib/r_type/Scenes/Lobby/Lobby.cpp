@@ -19,12 +19,14 @@ void LobbyScene::initEntities()
 {
     std::shared_ptr<IEntity> enemy1 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
+    sprite->setRect({0, 0, 33, 36});
+    sprite->setSize({33 * 10, 36 * 10});
     sprite->setPosition({50, 50});
     sprite->setAttribute("sprite enemy");
-    sprite->setRect({0, 0, 33, 36});
-    sprite->setSize({533, 36});
     enemy1->setAttribute("sprite enemy");
     enemy1->addComponent(sprite);
+
+    addEntity(enemy1);
 
     // addEntity(enemy1);
 
