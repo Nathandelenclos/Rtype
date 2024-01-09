@@ -244,6 +244,32 @@ void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {
         free(packet.data);
     }
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Left)) {
+        Packet packet{};
+        Event event1{};
+        packet.code = CODE::EVENT;
+        packet.data_size = sizeof(Event);
+        packet.data = malloc(packet.data_size);
+        event1.key = static_cast<int>(sf::Keyboard::Left);
+        event1.eventType = static_cast<int>(sf::Event::KeyPressed);
+        memcpy(packet.data, &event1, packet.data_size);
+        _socket->send(&packet, _socket->serv_addr);
+        free(packet.data);
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Right)) {
+        Packet packet{};
+        Event event1{};
+        packet.code = CODE::EVENT;
+        packet.data_size = sizeof(Event);
+        packet.data = malloc(packet.data_size);
+        event1.key = static_cast<int>(sf::Keyboard::Right);
+        event1.eventType = static_cast<int>(sf::Event::KeyPressed);
+        memcpy(packet.data, &event1, packet.data_size);
+        _socket->send(&packet, _socket->serv_addr);
+        free(packet.data);
+    }
+
     for (auto &component: _components) {
         component->handleEvent(event, window);
     }
