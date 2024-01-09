@@ -8,5 +8,5 @@ if [[ -f Dockerfile ]]; then
 fi
 
 if [[ -f deploy.sh ]]; then
-    ./deploy.sh $image_name
+    ./deploy.sh "$image_name"
 fi
