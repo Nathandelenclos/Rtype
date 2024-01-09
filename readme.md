@@ -72,7 +72,7 @@ On this page, click on the "Init Server Connection", you will come to this page:
 On this page, you can enter the IP address of the server and the port you want to connect to.
 Once the connection is established, you will see it on the page like this
 
-![ScreenGame](docs/assets/connection_server_done.png)
+![ScreenGame](https://github.com/Nathandelenclos/Rtype/blob/master/docs/assets/connection_server_done.png)
 
 Now you can click on "esc" on your keyboard to go back to the main menu and click on "Access Game" to join the server and you will come to this page and enjoy the game.
 
