@@ -1,7 +1,7 @@
+name: Doxygen & Github Page CI
+
 on:
   push:
-    branches-ignore:
-      - 'ga-ignore-*'
 
 jobs:
   deploy:

@@ -32,7 +32,7 @@ freeStyleJob("link-project") {
 						preBuildCleanup()
 					}
 					steps {
-						shell("/var/lib/jenkins/deploy.sh \\"$PROJECT_NAME\\"")
+						shell("/var/lib/jenkins/deploy.sh \\"$PROJECT_NAME\\" \\"$REGISTRY_URL\\"")
 					}
 				}
 			''')

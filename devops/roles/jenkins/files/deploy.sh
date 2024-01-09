@@ -1,6 +1,6 @@
 #! /bin/bash
 
-image_name="jenkins/$1"
+image_name="$2/$1"
 
 if [[ -f Dockerfile ]]; then
     docker build . -t "$image_name"
@@ -8,5 +8,5 @@ if [[ -f Dockerfile ]]; then
 fi
 
 if [[ -f deploy.sh ]]; then
-    ./deploy.sh
+    ./deploy.sh $image_name
 fi
