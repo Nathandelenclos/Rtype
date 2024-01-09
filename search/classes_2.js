@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['clientcore_314',['ClientCore',['../classClientCore.html',1,'']]],
-  ['clientsocket_315',['ClientSocket',['../classClientSocket.html',1,'']]]
+  ['clientcore_316',['ClientCore',['../classClientCore.html',1,'']]],
+  ['clientsocket_317',['ClientSocket',['../classClientSocket.html',1,'']]]
 ];
