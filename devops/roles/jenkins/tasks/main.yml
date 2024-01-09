@@ -1,0 +1,8 @@
+- name: Install Jenkins, setup users and roles
+  include_tasks: install.yml
+  
+- name: restart Jenkins
+  ansible.builtin.service:
+    name: jenkins
+    state: restarted
+
