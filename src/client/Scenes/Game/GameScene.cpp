@@ -113,7 +113,8 @@ void GameScene::receiveData() {
             if (newComponent->type == ComponentType::SPRITE) {
                 auto sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
                 sprite->setAttribute(attributeString);
-                //sprite->setTexture(getTextureByType(Type::PLAYER));
+                std::cout << "new component: " << newComponent->id << std::endl;
+                sprite->setTexture(getTextureByType((Type)newComponent->id));
                 sprite->setPosition({newComponent->x, newComponent->y});
                 sprite->setSize({newComponent->sizeHorizontal, newComponent->sizeVertical});
                 sprite->setRect({newComponent->rectLeft, newComponent->rectTop, newComponent->rectWidth, newComponent->rectHeight});
@@ -172,7 +173,7 @@ void GameScene::initTextures() {
     _textures[Type::PLAYER] = sf::Texture();
     _textures[Type::PLAYER].loadFromFile("assets/sprite/player.png");
     _textures[Type::ENEMY] = sf::Texture();
-    _textures[Type::ENEMY].loadFromFile("assets/sprite/enemy.png");
+    _textures[Type::ENEMY].loadFromFile("../sprites/r-typesheet5.png");
     _textures[Type::BULLET] = sf::Texture();
     _textures[Type::BULLET].loadFromFile("assets/sprite/bullet.png");
     _textures[Type::BACKGROUND] = sf::Texture();

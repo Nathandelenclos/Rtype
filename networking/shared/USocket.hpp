@@ -105,6 +105,7 @@ typedef struct newComponent {
 
 //obsolete
 typedef enum type {
+    MISSINGTXT,
     PLAYER,
     ENEMY,
     BULLET,
