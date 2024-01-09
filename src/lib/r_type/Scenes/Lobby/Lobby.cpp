@@ -158,6 +158,30 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
             }
     }
 
+    if (event->key == sf::Keyboard::Key::Left) {
+        for (const auto& entity : getEntities())
+            for (const auto& component : entity->getComponents()) {
+                if (component->getAttribute() == "player " + std::to_string(id)) {
+                    auto draw = std::dynamic_pointer_cast<Drawable>(component);
+                    auto [x, y] = draw->getPosition();
+                    if (draw)
+                        draw->setPosition({x - 5, y});
+                }
+            }
+    }
+
+    if (event->key == sf::Keyboard::Key::Right) {
+        for (const auto& entity : getEntities())
+            for (const auto& component : entity->getComponents()) {
+                if (component->getAttribute() == "player " + std::to_string(id)) {
+                    auto draw = std::dynamic_pointer_cast<Drawable>(component);
+                    auto [x, y] = draw->getPosition();
+                    if (draw)
+                        draw->setPosition({x + 5, y});
+                }
+            }
+    }
+
     if (event->key == sf::Keyboard::Key::Space) {
         std::shared_ptr<IEntity> entity = std::make_shared<IEntity>();
         std::shared_ptr<Drawable> drawable = std::make_shared<Drawable>();
