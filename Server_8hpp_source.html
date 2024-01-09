@@ -97,7 +97,7 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::unique_ptr&lt;DLLoader&gt; _gameLoader;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::unique_ptr&lt;IGame&gt; _game;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::shared_ptr&lt;<a class="code" href="classServerSocket.html">ServerSocket</a>&gt; _serverSocket;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::unique_ptr&lt;Packet&gt; _packet;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::shared_ptr&lt;Packet&gt; _packet;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    std::tuple&lt;std::unique_ptr&lt;Packet&gt;, <span class="keywordtype">int</span>&gt; _packetClientId;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    std::unique_ptr&lt;Packet&gt; _packetHeartBeat;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    timeval _receveidTime{};</div>

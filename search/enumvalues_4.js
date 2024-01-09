@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['login_580',['LOGIN',['../USocket_8hpp.html#afb9ed1b8a27eb20854efe6e23e297683a7ef5b81d60084ffcb2d5cb0faf9c64ff',1,'USocket.hpp']]],
-  ['logout_581',['LOGOUT',['../USocket_8hpp.html#afb9ed1b8a27eb20854efe6e23e297683a86d6ca369e69a3a0f0c9bd063dd39a70',1,'USocket.hpp']]]
+  ['input_620',['INPUT',['../client_2Components_2IComponent_8hpp.html#a81f78fc173dedefe5a049c0aa3eed2c0ae310c909d76b003d016bef8bdf16936a',1,'IComponent.hpp']]],
+  ['inputsocket_621',['INPUTSOCKET',['../USocket_8hpp.html#a53ac520e65486b4727f9e55be92d9ee8a6145fb5dc170e038ab7990bb577bdaf4',1,'USocket.hpp']]]
 ];

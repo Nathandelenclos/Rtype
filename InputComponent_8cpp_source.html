@@ -88,7 +88,7 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    _sprite.setScale(_size);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    _rect = sf::IntRect(0, 0, 701, 301);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    _sprite.setTextureRect(_rect);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    _textEntry = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classInputComponent.html#a80b47ff40a73954a2e80731b9c9e3d50">_textEntry</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    _text.setString(_textEntry);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    _font.loadFromFile(<span class="stringliteral">&quot;../src/client/assets/fonts/DecemberShow.ttf&quot;</span>);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    _text.setFont(_font);</div>
@@ -152,7 +152,7 @@ $(function() {
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classInputComponent.html#af69b4fd09ca4c5f9c8a5fec9b53e1830">   82</a></span>&#160;std::string <a class="code" href="classInputComponent.html">InputComponent</a>::<a class="code" href="classInputComponent.html#af69b4fd09ca4c5f9c8a5fec9b53e1830">getText</a>()</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> _textEntry;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classInputComponent.html#a80b47ff40a73954a2e80731b9c9e3d50">_textEntry</a>;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
 <div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classInputComponent.html#ad7c2eca50aa4d0e541b1ed1d783fa30f">   87</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classInputComponent.html">InputComponent</a>::<a class="code" href="classInputComponent.html#ad7c2eca50aa4d0e541b1ed1d783fa30f">setIsClicked</a>(<span class="keywordtype">bool</span> isClicked)</div>
@@ -166,8 +166,8 @@ $(function() {
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">if</span> (_isClicked) {</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">if</span> (event.text.unicode &lt; 128) {</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordflow">if</span> (event.text.unicode == 8) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    <span class="keywordflow">if</span> (!_textEntry.empty()) {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                        _textEntry.erase(_textEntry.size() - 1);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    <span class="keywordflow">if</span> (!<a class="code" href="classInputComponent.html#a80b47ff40a73954a2e80731b9c9e3d50">_textEntry</a>.empty()) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                        <a class="code" href="classInputComponent.html#a80b47ff40a73954a2e80731b9c9e3d50">_textEntry</a>.erase(<a class="code" href="classInputComponent.html#a80b47ff40a73954a2e80731b9c9e3d50">_textEntry</a>.size() - 1);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                        <a class="code" href="classInputComponent.html#a1fae41e6b7de0075e8b6aaa61dfc39c0">setText</a><a class="code" href="classInputComponent.html#a1fae41e6b7de0075e8b6aaa61dfc39c0">(</a><a class="code" href="classInputComponent.html#a1fae41e6b7de0075e8b6aaa61dfc39c0">)</a>;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                    }</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                } <span class="keywordflow">else</span> {</div>

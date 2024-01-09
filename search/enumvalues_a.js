@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['undefined_593',['UNDEFINED',['../USocket_8hpp.html#afb9ed1b8a27eb20854efe6e23e297683a605159e8a4c32319fd69b5d151369d93',1,'USocket.hpp']]]
+  ['text_633',['TEXT',['../client_2Components_2IComponent_8hpp.html#a81f78fc173dedefe5a049c0aa3eed2c0a9a4a47c1606e295076055a9cc4373197',1,'IComponent.hpp']]],
+  ['textsocket_634',['TEXTSOCKET',['../USocket_8hpp.html#a53ac520e65486b4727f9e55be92d9ee8adb6ca6500523c845223f56fc5982c42c',1,'USocket.hpp']]]
 ];

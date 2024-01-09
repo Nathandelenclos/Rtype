@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['max_5fpacket_5fid_538',['max_packet_id',['../structsplit__packet.html#a270e08f1ff750cc68e404155d44f7346',1,'split_packet']]]
+  ['last_5fclient_5fnb_578',['last_client_nb',['../classRType.html#ae90966b067eb543bad2a6cec4000bc55',1,'RType']]]
 ];

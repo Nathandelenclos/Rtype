@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['usocket_324',['USocket',['../classUSocket.html',1,'']]]
+  ['usocket_347',['USocket',['../classUSocket.html',1,'']]]
 ];

@@ -84,8 +84,8 @@ Inheritance diagram for IGame:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a91b14c1b6019364120d5c5e4d4c64414"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIGame.html#a91b14c1b6019364120d5c5e4d4c64414">~IGame</a> ()=default</td></tr>
 <tr class="separator:a91b14c1b6019364120d5c5e4d4c64414"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adebe35aedc916113698869ba7bfed9c2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIGame.html#adebe35aedc916113698869ba7bfed9c2">update</a> (std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#ab2f494a6b60c0f52e6c2a96fbe4d010c">Event</a> &gt; <a class="el" href="structevent.html">event</a>)=0</td></tr>
-<tr class="separator:adebe35aedc916113698869ba7bfed9c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae73486c01bbb6b82c75f62ad49972ceb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIGame.html#ae73486c01bbb6b82c75f62ad49972ceb">update</a> (std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#ab2f494a6b60c0f52e6c2a96fbe4d010c">Event</a> &gt; <a class="el" href="structevent.html">event</a>, std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> &gt; <a class="el" href="structpacket.html">packet</a>, int id)=0</td></tr>
+<tr class="separator:ae73486c01bbb6b82c75f62ad49972ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -117,8 +117,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="adebe35aedc916113698869ba7bfed9c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adebe35aedc916113698869ba7bfed9c2">&#9670;&nbsp;</a></span>update()</h2>
+<a id="ae73486c01bbb6b82c75f62ad49972ceb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae73486c01bbb6b82c75f62ad49972ceb">&#9670;&nbsp;</a></span>update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -130,8 +130,24 @@ Public Member Functions</h2></td></tr>
           <td class="memname">virtual void IGame::update </td>
           <td>(</td>
           <td class="paramtype">std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#ab2f494a6b60c0f52e6c2a96fbe4d010c">Event</a> &gt;&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> &gt;&#160;</td>
+          <td class="paramname"><em>packet</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -141,7 +157,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classRType.html#a822e7bc3d20b93720e26cd77fb69c2a4">RType</a>.</p>
+<p>Implemented in <a class="el" href="classRType.html#a71bf06873fd71f920549464b5528b14d">RType</a>.</p>
 
 </div>
 </div>

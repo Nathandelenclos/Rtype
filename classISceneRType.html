@@ -91,8 +91,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5bb278dd9dd7db05e7410567e48fad18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74cc29fa28611415ced1e0e114f455f4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classISceneRType.html#a74cc29fa28611415ced1e0e114f455f4">display</a> ()=0</td></tr>
 <tr class="separator:a74cc29fa28611415ced1e0e114f455f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afae4255c13243918f18ead917c5336b1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classISceneRType.html#afae4255c13243918f18ead917c5336b1">update</a> (std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#ab2f494a6b60c0f52e6c2a96fbe4d010c">Event</a> &gt; <a class="el" href="structevent.html">event</a>)=0</td></tr>
-<tr class="separator:afae4255c13243918f18ead917c5336b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a635b8b3ef79514dcc9d98a0aa0cea84e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classISceneRType.html#a635b8b3ef79514dcc9d98a0aa0cea84e">update</a> (std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#ab2f494a6b60c0f52e6c2a96fbe4d010c">Event</a> &gt; <a class="el" href="structevent.html">event</a>, std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> &gt; <a class="el" href="structpacket.html">packet</a>, int id)=0</td></tr>
+<tr class="separator:a635b8b3ef79514dcc9d98a0aa0cea84e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee401aba9f0c1732c638977d140cc250"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classISceneRType.html#aee401aba9f0c1732c638977d140cc250">pauseScene</a> ()=0</td></tr>
 <tr class="separator:aee401aba9f0c1732c638977d140cc250"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11ef3b4c6ed60943dce6670902c93719"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classISceneRType.html#a11ef3b4c6ed60943dce6670902c93719">resumeScene</a> ()=0</td></tr>
@@ -107,6 +107,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4dfa1d52486d71d1f31a1e02ea8bcaf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae15e67521118b7e10ed546fc3d6e56e3"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::shared_ptr&lt; <a class="el" href="classIService.html">IService</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classISceneRType.html#ae15e67521118b7e10ed546fc3d6e56e3">getServices</a> ()=0</td></tr>
 <tr class="separator:ae15e67521118b7e10ed546fc3d6e56e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3d6471cf1a3fc096fb574aa66c7fcc2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classISceneRType.html#af3d6471cf1a3fc096fb574aa66c7fcc2">sendGameState</a> (int clientId)=0</td></tr>
+<tr class="separator:af3d6471cf1a3fc096fb574aa66c7fcc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a487d5e7a7e98e0a9164f69a572fc6101"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classISceneRType.html#a487d5e7a7e98e0a9164f69a572fc6101">broadcastGameState</a> ()=0</td></tr>
+<tr class="separator:a487d5e7a7e98e0a9164f69a572fc6101"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -200,6 +204,33 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="classAScene.html#a3684e5afe1240a433c2d89f18b77bbb2">AScene</a>.</p>
+
+</div>
+</div>
+<a id="a487d5e7a7e98e0a9164f69a572fc6101"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a487d5e7a7e98e0a9164f69a572fc6101">&#9670;&nbsp;</a></span>broadcastGameState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ISceneRType::broadcastGameState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classAScene.html#ab439df212b6630bcda7f2cae7de14157">AScene</a>.</p>
 
 </div>
 </div>
@@ -338,6 +369,34 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="af3d6471cf1a3fc096fb574aa66c7fcc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3d6471cf1a3fc096fb574aa66c7fcc2">&#9670;&nbsp;</a></span>sendGameState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ISceneRType::sendGameState </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>clientId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classAScene.html#a04756252779480e19871b162ed0aea8a">AScene</a>.</p>
+
+</div>
+</div>
 <a id="aeebc3a41be1265df7d26e1bbc1b4ef05"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeebc3a41be1265df7d26e1bbc1b4ef05">&#9670;&nbsp;</a></span>stopScene()</h2>
 
@@ -365,8 +424,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="afae4255c13243918f18ead917c5336b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afae4255c13243918f18ead917c5336b1">&#9670;&nbsp;</a></span>update()</h2>
+<a id="a635b8b3ef79514dcc9d98a0aa0cea84e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a635b8b3ef79514dcc9d98a0aa0cea84e">&#9670;&nbsp;</a></span>update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -378,8 +437,24 @@ Protected Attributes</h2></td></tr>
           <td class="memname">virtual void ISceneRType::update </td>
           <td>(</td>
           <td class="paramtype">std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#ab2f494a6b60c0f52e6c2a96fbe4d010c">Event</a> &gt;&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> &gt;&#160;</td>
+          <td class="paramname"><em>packet</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -389,7 +464,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classAScene.html#a4d5a87857af76e70becd3c898e9e871a">AScene</a>.</p>
+<p>Implemented in <a class="el" href="classLobbyScene.html#a09f8a034e554832964a263216989b849">LobbyScene</a>.</p>
 
 </div>
 </div>
@@ -414,7 +489,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lib_2r__type_2Scenes_2IScene_8hpp_source.html#l00032">32</a> of file <a class="el" href="lib_2r__type_2Scenes_2IScene_8hpp_source.html">IScene.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="lib_2r__type_2Scenes_2IScene_8hpp_source.html#l00035">35</a> of file <a class="el" href="lib_2r__type_2Scenes_2IScene_8hpp_source.html">IScene.hpp</a>.</p>
 
 </div>
 </div>
@@ -438,7 +513,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lib_2r__type_2Scenes_2IScene_8hpp_source.html#l00034">34</a> of file <a class="el" href="lib_2r__type_2Scenes_2IScene_8hpp_source.html">IScene.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="lib_2r__type_2Scenes_2IScene_8hpp_source.html#l00037">37</a> of file <a class="el" href="lib_2r__type_2Scenes_2IScene_8hpp_source.html">IScene.hpp</a>.</p>
 
 </div>
 </div>
@@ -462,7 +537,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lib_2r__type_2Scenes_2IScene_8hpp_source.html#l00033">33</a> of file <a class="el" href="lib_2r__type_2Scenes_2IScene_8hpp_source.html">IScene.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="lib_2r__type_2Scenes_2IScene_8hpp_source.html#l00036">36</a> of file <a class="el" href="lib_2r__type_2Scenes_2IScene_8hpp_source.html">IScene.hpp</a>.</p>
 
 </div>
 </div>

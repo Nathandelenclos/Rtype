@@ -1,15 +1,16 @@
 <map id="src/client/Components/AComponent.hpp" name="src/client/Components/AComponent.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,172,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="89,259,152,285"/>
-<area shape="rect" id="node3" title=" " alt="" coords="151,333,229,360"/>
-<area shape="rect" id="node4" href="$client_2Components_2IComponent_8hpp.html" title=" " alt="" coords="127,95,256,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="445,177,591,203"/>
-<area shape="rect" id="node6" href="$ClientSocket_8hpp.html" title=" " alt="" coords="243,169,420,211"/>
-<area shape="rect" id="node7" title=" " alt="" coords="401,333,459,360"/>
-<area shape="rect" id="node8" title=" " alt="" coords="707,259,774,285"/>
-<area shape="rect" id="node9" title=" " alt="" coords="227,259,291,285"/>
-<area shape="rect" id="node10" title=" " alt="" coords="315,259,379,285"/>
-<area shape="rect" id="node11" href="$USocket_8hpp.html" title=" " alt="" coords="455,259,683,285"/>
-<area shape="rect" id="node12" title=" " alt="" coords="510,333,601,360"/>
-<area shape="rect" id="node13" title=" " alt="" coords="625,333,691,360"/>
+<area shape="rect" id="node1" title=" " alt="" coords="383,5,550,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="771,259,834,285"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,333,83,360"/>
+<area shape="rect" id="node4" href="$client_2Components_2IComponent_8hpp.html" title=" " alt="" coords="402,95,531,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="487,177,633,203"/>
+<area shape="rect" id="node6" href="$ClientSocket_8hpp.html" title=" " alt="" coords="285,169,462,211"/>
+<area shape="rect" id="node7" title=" " alt="" coords="312,333,371,360"/>
+<area shape="rect" id="node8" title=" " alt="" coords="340,259,407,285"/>
+<area shape="rect" id="node9" title=" " alt="" coords="431,259,495,285"/>
+<area shape="rect" id="node10" title=" " alt="" coords="132,259,196,285"/>
+<area shape="rect" id="node11" title=" " alt="" coords="220,259,316,285"/>
+<area shape="rect" id="node12" href="$USocket_8hpp.html" title=" " alt="" coords="519,259,747,285"/>
+<area shape="rect" id="node13" title=" " alt="" coords="639,333,729,360"/>
+<area shape="rect" id="node14" title=" " alt="" coords="548,333,615,360"/>
 </map>

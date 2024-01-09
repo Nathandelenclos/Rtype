@@ -98,63 +98,75 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classDrawable.html#a3f1e884b28638274afe5b8ff7c17b74f">   28</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#a3f1e884b28638274afe5b8ff7c17b74f">setAttribute</a>(std::string attribute)</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    std::memset(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, 0, 0);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    std::memset(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, 0, 64);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    std::memcpy(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, attribute.c_str(), attribute.size());</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;attribute: &quot;</span> &lt;&lt; <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classDrawable.html#a4b68e3a8b07bedf881464f8fb9ac070e">   35</a></span>&#160;std::tuple&lt;<span class="keywordtype">float</span>, <span class="keywordtype">float</span>&gt; <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#a4b68e3a8b07bedf881464f8fb9ac070e">getPosition</a>() <span class="keyword">const</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> _position;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classDrawable.html#addb6142ea3eaa69348a8ed319ae3e804">   40</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#addb6142ea3eaa69348a8ed319ae3e804">setPosition</a>(std::tuple&lt;<span class="keywordtype">float</span>, <span class="keywordtype">float</span>&gt; position)</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    _position = position;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classDrawable.html#adf9bf187f66fe672877bc9b2721e03c9">   45</a></span>&#160;std::tuple&lt;<span class="keywordtype">float</span>, <span class="keywordtype">float</span>&gt; <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#adf9bf187f66fe672877bc9b2721e03c9">getSize</a>() <span class="keyword">const</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> _size;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classDrawable.html#a42d13e97b29b5c3bb5d2e23f80eb62f3">   50</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#a42d13e97b29b5c3bb5d2e23f80eb62f3">setSize</a>(std::tuple&lt;<span class="keywordtype">float</span>, <span class="keywordtype">float</span>&gt; size)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    _size = size;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classDrawable.html#a51804a3ab5cd166b2b4bcdac34d7b2e0">   55</a></span>&#160;std::tuple&lt;<span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>&gt; <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#a51804a3ab5cd166b2b4bcdac34d7b2e0">getRect</a>() <span class="keyword">const</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> _rect;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classDrawable.html#a7298142d4efc1dc877a0f4296f1a50bc">   60</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#a7298142d4efc1dc877a0f4296f1a50bc">setRect</a>(std::tuple&lt;<span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>&gt; rect)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    _rect = rect;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classDrawable.html#ac1525eecfb697af6da09a389b34b3d2b">   65</a></span>&#160;std::shared_ptr&lt;Packet&gt; <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#ac1525eecfb697af6da09a389b34b3d2b">getPacket</a>()</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">auto</span> packet = std::make_shared&lt;Packet&gt;();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    DrawablePacket drawablePacket;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    packet-&gt;code = ELEMENT;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    packet-&gt;data_size = <span class="keyword">sizeof</span>(Drawable);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    packet-&gt;data = std::malloc(<span class="keyword">sizeof</span>(Drawable));</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    memset(packet-&gt;data, 0, <span class="keyword">sizeof</span>(Drawable));</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    drawablePacket<a class="code" href="structdrawable.html#a78b9b497f556b94677ba22d2cad55a6d">.</a><a class="code" href="structdrawable.html#a78b9b497f556b94677ba22d2cad55a6d">id</a> = <a class="code" href="classDrawable.html#aa081925ea9f0149fbc7e1c531f47d69d">_textureId</a>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    drawablePacket.x = std::get&lt;0&gt;(_position);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    drawablePacket.y = std::get&lt;1&gt;(_position);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    drawablePacket.sizeHorizontal = std::get&lt;0&gt;(_size);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    drawablePacket.sizeVertical = std::get&lt;1&gt;(_size);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    drawablePacket.rectLeft = std::get&lt;0&gt;(_rect);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    drawablePacket.rectTop = std::get&lt;1&gt;(_rect);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    drawablePacket.rectWidth = std::get&lt;2&gt;(_rect);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    drawablePacket.rectHeight = std::get&lt;3&gt;(_rect);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::memcpy(&amp;drawablePacket<a class="code" href="structdrawable.html#af79726a6a06ac9285e25c1a0ec322f22">.</a><a class="code" href="structdrawable.html#af79726a6a06ac9285e25c1a0ec322f22">attribute</a>, <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, std::strlen(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>));</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    memcpy(packet-&gt;data, &amp;drawablePacket, <span class="keyword">sizeof</span>(DrawablePacket));</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> packet;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classDrawable.html#a68d34d1ef9c6cdd03041278d07102ac1">hasChanged</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classDrawable.html#a4b68e3a8b07bedf881464f8fb9ac070e">   36</a></span>&#160;std::tuple&lt;<span class="keywordtype">float</span>, <span class="keywordtype">float</span>&gt; <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#a4b68e3a8b07bedf881464f8fb9ac070e">getPosition</a>() <span class="keyword">const</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">return</span> _position;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classDrawable.html#addb6142ea3eaa69348a8ed319ae3e804">   41</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#addb6142ea3eaa69348a8ed319ae3e804">setPosition</a>(std::tuple&lt;<span class="keywordtype">float</span>, <span class="keywordtype">float</span>&gt; position)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    _position = position;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classDrawable.html#a68d34d1ef9c6cdd03041278d07102ac1">hasChanged</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classDrawable.html#adf9bf187f66fe672877bc9b2721e03c9">   47</a></span>&#160;std::tuple&lt;<span class="keywordtype">float</span>, <span class="keywordtype">float</span>&gt; <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#adf9bf187f66fe672877bc9b2721e03c9">getSize</a>() <span class="keyword">const</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> _size;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classDrawable.html#a42d13e97b29b5c3bb5d2e23f80eb62f3">   52</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#a42d13e97b29b5c3bb5d2e23f80eb62f3">setSize</a>(std::tuple&lt;<span class="keywordtype">float</span>, <span class="keywordtype">float</span>&gt; size)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    _size = size;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classDrawable.html#a68d34d1ef9c6cdd03041278d07102ac1">hasChanged</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classDrawable.html#a51804a3ab5cd166b2b4bcdac34d7b2e0">   58</a></span>&#160;std::tuple&lt;<span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>&gt; <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#a51804a3ab5cd166b2b4bcdac34d7b2e0">getRect</a>() <span class="keyword">const</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> _rect;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classDrawable.html#a7298142d4efc1dc877a0f4296f1a50bc">   63</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#a7298142d4efc1dc877a0f4296f1a50bc">setRect</a>(std::tuple&lt;<span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>&gt; rect)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    _rect = rect;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="classDrawable.html#a68d34d1ef9c6cdd03041278d07102ac1">hasChanged</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classDrawable.html#ac1525eecfb697af6da09a389b34b3d2b">   69</a></span>&#160;std::shared_ptr&lt;Packet&gt; <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#ac1525eecfb697af6da09a389b34b3d2b">getPacket</a>()</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">auto</span> packet = std::make_shared&lt;Packet&gt;();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    DrawablePacket drawablePacket;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    packet-&gt;code = ELEMENT;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    packet-&gt;data_size = <span class="keyword">sizeof</span>(Drawable);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    packet-&gt;data = std::malloc(<span class="keyword">sizeof</span>(Drawable));</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    memset(packet-&gt;data, 0, <span class="keyword">sizeof</span>(Drawable));</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    drawablePacket<a class="code" href="structdrawable.html#a78b9b497f556b94677ba22d2cad55a6d">.</a><a class="code" href="structdrawable.html#a78b9b497f556b94677ba22d2cad55a6d">id</a> = <a class="code" href="classDrawable.html#aa081925ea9f0149fbc7e1c531f47d69d">_textureId</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    drawablePacket.x = std::get&lt;0&gt;(_position);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    drawablePacket.y = std::get&lt;1&gt;(_position);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    drawablePacket.sizeHorizontal = std::get&lt;0&gt;(_size);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    drawablePacket.sizeVertical = std::get&lt;1&gt;(_size);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    drawablePacket.rectLeft = std::get&lt;0&gt;(_rect);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    drawablePacket.rectTop = std::get&lt;1&gt;(_rect);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    drawablePacket.rectWidth = std::get&lt;2&gt;(_rect);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    drawablePacket.rectHeight = std::get&lt;3&gt;(_rect);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::memcpy(&amp;drawablePacket<a class="code" href="structdrawable.html#af79726a6a06ac9285e25c1a0ec322f22">.</a><a class="code" href="structdrawable.html#af79726a6a06ac9285e25c1a0ec322f22">attribute</a>, <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, 8);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    std::memcpy(&amp;drawablePacket<a class="code" href="structdrawable.html#a8a685d84befa12cc73acf7ce9851ac78">.</a><a class="code" href="structdrawable.html#a8a685d84befa12cc73acf7ce9851ac78">attribute2</a>, <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a> + 8, 8);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    memcpy(packet-&gt;data, &amp;drawablePacket, <span class="keyword">sizeof</span>(DrawablePacket));</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> packet;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classDrawable.html#ad40e9cf8225afa7b7fc723680d65f232">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#ad40e9cf8225afa7b7fc723680d65f232">setHasChanged</a>(<span class="keywordtype">bool</span> hasChanged) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">this</span><a class="code" href="classDrawable.html#a68d34d1ef9c6cdd03041278d07102ac1">-&gt;</a><a class="code" href="classDrawable.html#a68d34d1ef9c6cdd03041278d07102ac1">hasChanged</a> = hasChanged;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classDrawable.html#aa4fe0b4a96eee60fed3a933e51fe372f">   96</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#aa4fe0b4a96eee60fed3a933e51fe372f">getHasChanged</a>() <span class="keyword">const</span> {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classDrawable.html#a68d34d1ef9c6cdd03041278d07102ac1">hasChanged</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

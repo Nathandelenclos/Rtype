@@ -96,8 +96,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3cc317156a17353c8ee42a3ac383c185"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a5126ef861c704803819299cc9e43c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType.html#a5a5126ef861c704803819299cc9e43c7">~RType</a> () override=default</td></tr>
 <tr class="separator:a5a5126ef861c704803819299cc9e43c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a822e7bc3d20b93720e26cd77fb69c2a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType.html#a822e7bc3d20b93720e26cd77fb69c2a4">update</a> (std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#ab2f494a6b60c0f52e6c2a96fbe4d010c">Event</a> &gt; <a class="el" href="structevent.html">event</a>) override</td></tr>
-<tr class="separator:a822e7bc3d20b93720e26cd77fb69c2a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71bf06873fd71f920549464b5528b14d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType.html#a71bf06873fd71f920549464b5528b14d">update</a> (std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#ab2f494a6b60c0f52e6c2a96fbe4d010c">Event</a> &gt; <a class="el" href="structevent.html">event</a>, std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> &gt; <a class="el" href="structpacket.html">packet</a>, int id) override</td></tr>
+<tr class="separator:a71bf06873fd71f920549464b5528b14d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classIGame"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classIGame')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classIGame.html">IGame</a></td></tr>
 <tr class="memitem:a91b14c1b6019364120d5c5e4d4c64414 inherit pub_methods_classIGame"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIGame.html#a91b14c1b6019364120d5c5e4d4c64414">~IGame</a> ()=default</td></tr>
 <tr class="separator:a91b14c1b6019364120d5c5e4d4c64414 inherit pub_methods_classIGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,10 +110,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a6eaf7628784b8631abf83006a27d2861"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ca8389fac1276129252578b085ee8b6"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classISceneRType.html">ISceneRType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType.html#a8ca8389fac1276129252578b085ee8b6">_currentScene</a></td></tr>
 <tr class="separator:a8ca8389fac1276129252578b085ee8b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae91b56d97eb9ca0d81cd32d126fe8805"><td class="memItemLeft" align="right" valign="top">timeval&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType.html#ae91b56d97eb9ca0d81cd32d126fe8805">_chrono</a></td></tr>
-<tr class="separator:ae91b56d97eb9ca0d81cd32d126fe8805"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2430e9b0ca84c80112e9e482dbcfb9ae"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType.html#a2430e9b0ca84c80112e9e482dbcfb9ae">direction</a> = 0.5</td></tr>
 <tr class="separator:a2430e9b0ca84c80112e9e482dbcfb9ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae90966b067eb543bad2a6cec4000bc55"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType.html#ae90966b067eb543bad2a6cec4000bc55">last_client_nb</a> = 0</td></tr>
+<tr class="separator:ae90966b067eb543bad2a6cec4000bc55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d6895206ebdf055573009e2369dfaf9"><td class="memItemLeft" align="right" valign="top">timeval&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType.html#a0d6895206ebdf055573009e2369dfaf9">_broadcastGameState</a> {}</td></tr>
+<tr class="separator:a0d6895206ebdf055573009e2369dfaf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -145,7 +147,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00021">21</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="RType_8hpp_source.html#l00116">_chrono</a>.</p>
+<p class="reference">References <a class="el" href="RType_8hpp_source.html#l00059">_broadcastGameState</a>.</p>
 
 </div>
 </div>
@@ -175,8 +177,8 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a822e7bc3d20b93720e26cd77fb69c2a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a822e7bc3d20b93720e26cd77fb69c2a4">&#9670;&nbsp;</a></span>update()</h2>
+<a id="a71bf06873fd71f920549464b5528b14d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71bf06873fd71f920549464b5528b14d">&#9670;&nbsp;</a></span>update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,8 +190,24 @@ Public Attributes</h2></td></tr>
           <td class="memname">void RType::update </td>
           <td>(</td>
           <td class="paramtype">std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#ab2f494a6b60c0f52e6c2a96fbe4d010c">Event</a> &gt;&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> &gt;&#160;</td>
+          <td class="paramname"><em>packet</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -199,28 +217,28 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classIGame.html#adebe35aedc916113698869ba7bfed9c2">IGame</a>.</p>
+<p>Implements <a class="el" href="classIGame.html#ae73486c01bbb6b82c75f62ad49972ceb">IGame</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00030">30</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="RType_8hpp_source.html#l00116">_chrono</a>, <a class="el" href="USocket_8hpp_source.html#l00090">newComponent::id</a>, <a class="el" href="USocket_8hpp_source.html#l00041">SPRITESOCKET</a>, and <a class="el" href="USocket_8hpp_source.html#l00092">newComponent::type</a>.</p>
+<p class="reference">References <a class="el" href="RType_8hpp_source.html#l00059">_broadcastGameState</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ae91b56d97eb9ca0d81cd32d126fe8805"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae91b56d97eb9ca0d81cd32d126fe8805">&#9670;&nbsp;</a></span>_chrono</h2>
+<a id="a0d6895206ebdf055573009e2369dfaf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d6895206ebdf055573009e2369dfaf9">&#9670;&nbsp;</a></span>_broadcastGameState</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">timeval RType::_chrono</td>
+          <td class="memname">timeval RType::_broadcastGameState {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00116">116</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00059">59</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="RType_8hpp_source.html#l00021">RType()</a>, and <a class="el" href="RType_8hpp_source.html#l00030">update()</a>.</p>
 
@@ -238,7 +256,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00115">115</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00056">56</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
 </div>
 </div>
@@ -254,7 +272,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00114">114</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00055">55</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
 </div>
 </div>
@@ -270,7 +288,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00113">113</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00054">54</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
 </div>
 </div>
@@ -286,7 +304,23 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00117">117</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00057">57</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ae90966b067eb543bad2a6cec4000bc55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae90966b067eb543bad2a6cec4000bc55">&#9670;&nbsp;</a></span>last_client_nb</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int RType::last_client_nb = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00058">58</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
 </div>
 </div>

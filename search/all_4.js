@@ -1,17 +1,19 @@
 var searchData=
 [
-  ['data_56',['data',['../structpacket.html#ad3115ffc58cc55bae08635ed965c4768',1,'packet::data()'],['../unionattribute.html#a2be1e8a225de01175647111f64d3edd0',1,'attribute::data()'],['../structsplit__packet.html#a21ac245c374a33450364fad3d3f356ff',1,'split_packet::data()']]],
-  ['data_5fsize_57',['data_size',['../structpacket.html#a5f1142d25ace74ffc4ddd1966e94d7ef',1,'packet']]],
-  ['defaultcallback_58',['defaultCallback',['../classButtonComponent.html#a2b98455a44f101370a0076ebbef6339a',1,'ButtonComponent']]],
-  ['direction_59',['direction',['../classRType.html#a2430e9b0ca84c80112e9e482dbcfb9ae',1,'RType']]],
-  ['display_60',['display',['../classISceneRType.html#a74cc29fa28611415ced1e0e114f455f4',1,'ISceneRType::display()'],['../classAScene.html#a70a045bb0f8108394d437dc3ade4724c',1,'AScene::display() override'],['../classAScene.html#a2867fb106de1e86a55b679dacbbfff4b',1,'AScene::display(sf::RenderWindow &amp;window) override'],['../classIComponent.html#a14c8c65f67a3d82f69835180ccee5c4d',1,'IComponent::display()'],['../classTextComponent.html#a90dca772c625f55acb5bbe6cbc4cd760',1,'TextComponent::display()'],['../classSpriteComponent.html#aea71cee3ad455b6e7080b327e2b041fd',1,'SpriteComponent::display()'],['../classSoundComponent.html#a31d19ea91fa2862b0fe0eb7cdfbff852',1,'SoundComponent::display()'],['../classMusicComponent.html#a78f1ffadeb6dca532e8c9592df7a11df',1,'MusicComponent::display()'],['../classInputComponent.html#a1945035328dd6d788c75ed4d0525725f',1,'InputComponent::display()'],['../classIScene.html#ad396de90d15c0b4ba006e12278fd552c',1,'IScene::display()'],['../classButtonComponent.html#acffbe8f01f7ceb4321fbbce5c759b6bc',1,'ButtonComponent::display()']]],
-  ['dlloader_61',['DLLoader',['../classDLLoader.html#a6f964da81e48275394d08239e5707368',1,'DLLoader::DLLoader()'],['../classDLLoader.html',1,'DLLoader']]],
-  ['dlloader_2ehpp_62',['DLLoader.hpp',['../DLLoader_8hpp.html',1,'']]],
-  ['draw_63',['draw',['../classPlayer.html#a7abe0fbf95b42b9ff4a2c0c7d334bc68',1,'Player']]],
-  ['drawable_64',['Drawable',['../classDrawable.html#aac88608db6081da479c772c96636acb1',1,'Drawable']]],
-  ['drawable_65',['drawable',['../structdrawable.html',1,'']]],
-  ['drawable_66',['Drawable',['../classDrawable.html',1,'']]],
-  ['drawable_2ecpp_67',['Drawable.cpp',['../Drawable_8cpp.html',1,'']]],
-  ['drawable_2ehpp_68',['Drawable.hpp',['../Drawable_8hpp.html',1,'']]],
-  ['drawablepacket_69',['DrawablePacket',['../USocket_8hpp.html#a28df2ab77a89df83a0f5c6ecd905f75a',1,'USocket.hpp']]]
+  ['checkclientsdeconnection_47',['checkClientsDeconnection',['../classServerSocket.html#a1ca5e621d28a647a2b3cdbaca94bc164',1,'ServerSocket']]],
+  ['clientcore_48',['ClientCore',['../classClientCore.html',1,'ClientCore'],['../classClientCore.html#ac281fb0e3214a5dde1b4b0c825820cd7',1,'ClientCore::ClientCore()']]],
+  ['clientcore_2ecpp_49',['ClientCore.cpp',['../ClientCore_8cpp.html',1,'']]],
+  ['clientcore_2ehpp_50',['ClientCore.hpp',['../ClientCore_8hpp.html',1,'']]],
+  ['clientsocket_51',['ClientSocket',['../classClientSocket.html',1,'ClientSocket'],['../classClientSocket.html#aa452c26d330984ce23eb98fba8e59c6a',1,'ClientSocket::ClientSocket()']]],
+  ['clientsocket_2ecpp_52',['ClientSocket.cpp',['../ClientSocket_8cpp.html',1,'']]],
+  ['clientsocket_2ehpp_53',['ClientSocket.hpp',['../ClientSocket_8hpp.html',1,'']]],
+  ['code_54',['code',['../structpacket.html#aff3e706dcd9a6715f174d61b6923ff1c',1,'packet::code()'],['../structsplit__packet.html#aa96694fb7cab66ee7e63b9626cf0d95b',1,'split_packet::code()']]],
+  ['code_55',['CODE',['../USocket_8hpp.html#a8e22a884288123a0a5555b1379132e3d',1,'USocket.hpp']]],
+  ['code_56',['code',['../USocket_8hpp.html#afb9ed1b8a27eb20854efe6e23e297683',1,'USocket.hpp']]],
+  ['componenttype_57',['ComponentType',['../client_2Components_2IComponent_8hpp.html#a81f78fc173dedefe5a049c0aa3eed2c0',1,'IComponent.hpp']]],
+  ['componenttypesocket_58',['ComponentTypeSocket',['../USocket_8hpp.html#a53ac520e65486b4727f9e55be92d9ee8',1,'USocket.hpp']]],
+  ['config_5ffiles_2emd_59',['config_files.md',['../config__files_8md.html',1,'']]],
+  ['configs_20files_60',['Configs files',['../md_devops_doc_config_files.html',1,'']]],
+  ['continuescene_61',['continueScene',['../classIScene.html#af02d7d7ce071b195534d5e19d3ccb694',1,'IScene']]],
+  ['create_62',['create',['../RType_8cpp.html#a74f3d57d0e7a885c77d734b39c904d64',1,'RType.cpp']]]
 ];
