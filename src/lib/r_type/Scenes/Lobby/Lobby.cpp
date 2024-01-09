@@ -17,22 +17,36 @@ void LobbyScene::initScene()
 
 void LobbyScene::initEntities()
 {
-    /*std::shared_ptr<IEntity> player = std::make_shared<IEntity>();
-    std::shared_ptr<IEntity> background = std::make_shared<IEntity>();
-
+    std::shared_ptr<IEntity> enemy1 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
+    sprite->setRect({0, 0, 33, 36});
+    sprite->setSize({533 * 10, 36 * 10});
     sprite->setPosition({50, 50});
-    sprite->setAttribute("Player");
-    player->setAttribute("Player");
-    player->addComponent(sprite);
+    sprite->setAttribute("sprite enemy");
+    sprite->_textureId = ENEMY;
+    enemy1->setAttribute("sprite enemy");
+    enemy1->addComponent(sprite);
 
-    std::shared_ptr<Drawable> backgroundSprite = std::make_shared<Drawable>();
-    backgroundSprite->setPosition({0, 0});
-    background->setAttribute("Background");
-    background->addComponent(backgroundSprite);
+    addEntity(enemy1);
 
-    addEntity(player);
-    addEntity(background);*/
+    // addEntity(enemy1);
+
+    // std::shared_ptr<IEntity> player = std::make_shared<IEntity>();
+    // std::shared_ptr<IEntity> background = std::make_shared<IEntity>();
+
+    // std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
+    // sprite->setPosition({50, 50});
+    // sprite->setAttribute("Player");
+    // player->setAttribute("Player");
+    // player->addComponent(sprite);
+
+    // std::shared_ptr<Drawable> backgroundSprite = std::make_shared<Drawable>();
+    // backgroundSprite->setPosition({0, 0});
+    // background->setAttribute("Background");
+    // background->addComponent(backgroundSprite);
+
+    // addEntity(player);
+    // addEntity(background);
 }
 
 void LobbyScene::initServices()
@@ -70,6 +84,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 drawable->setAttribute("player " + std::to_string(id));
                 drawable->setPosition({100 * id, 100 * id});
                 drawable->setHasChanged(true);
+                drawable->_textureId = PLAYER;
                 entity->addComponent(drawable);
                 entity->setAttribute("player " + std::to_string(id));
                 addEntity(entity);
@@ -83,7 +98,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 sendpacket->data = malloc(sendpacket->data_size);
                 NewComponent newComponent{};
                 newComponent.type = ComponentTypeSocket ::SPRITESOCKET;
-                newComponent.id = 0;
+                newComponent.id = PLAYER;
                 std::cout << "attribute: " << drawable->getAttribute() << std::endl;
                 std::memcpy(&newComponent.attribute, entity->getAttribute().c_str(), 8);
                 std::memcpy(&newComponent.attribute2, entity->getAttribute().c_str() + 8, 8);
@@ -92,6 +107,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 free(sendpacket->data);
 
                 sendGameState(id);
+                broadcastGameState();
             }
             if (std::string(static_cast<char *>(packet->data)) == "exit game") {
                 std::cout << "exit game player id " << id << std::endl;
@@ -204,4 +220,8 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
         _serverSocket->broadcast(packet.get());
         free(packet->data);
     }
+
+    // if (event->key == sf::Keyboard::Key::Enter) {
+    //     pauseScene();
+    // }
 }

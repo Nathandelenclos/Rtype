@@ -11,7 +11,7 @@
 
 GameScene::GameScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket) : AScene(clientCore),
                                                                                      _socket(std::move(socket)) {
-//    initTextures();
+    initTextures();
     init_scene();
 }
 
@@ -97,10 +97,13 @@ void GameScene::receiveData() {
             newComponent->type = static_cast<ComponentTypeSocket>(ComponentType::SPRITE);
             char *attributechar = static_cast<char *>(malloc(16));
             std::memset(attributechar, 0, 16);
-            std::memcpy(attributechar, &newComponent->attribute, 8);
-            std::memcpy(attributechar + 8, &newComponent->attribute2, 8);
+            std::memcpy(attributechar, &newComponent->attribute, 16);
+            //std::memcpy(attributechar + 8, &newComponent->attribute2, 8);
+            std::cout << "attribute: " << reinterpret_cast<char *>(&newComponent->attribute) << std::endl;
+            std::cout << "attribute2: " << reinterpret_cast<char *>(&newComponent->attribute2) << std::endl;
             std::string attributeString(attributechar);
             attributeString = attributeString.substr(0, attributeString.find('\001'));
+            std::cout << "newComponent: " << attributeString << " " << newComponent->x << " " << newComponent->y << " id: " << newComponent->id << std::endl;
             for (auto &component: _components) {
                 if (component->getType() == ComponentType::SPRITE) {
                     if (component->getAttribute() == reinterpret_cast<char *>(&newComponent->attribute)) {
@@ -113,7 +116,8 @@ void GameScene::receiveData() {
             if (newComponent->type == ComponentType::SPRITE) {
                 auto sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
                 sprite->setAttribute(attributeString);
-                //sprite->setTexture(getTextureByType(Type::PLAYER));
+                std::cout << "new component: " << newComponent->id << std::endl;
+                sprite->setTexture(getTextureByType((Type)newComponent->id));
                 sprite->setPosition({newComponent->x, newComponent->y});
                 sprite->setSize({newComponent->sizeHorizontal, newComponent->sizeVertical});
                 sprite->setRect({newComponent->rectLeft, newComponent->rectTop, newComponent->rectWidth, newComponent->rectHeight});
@@ -169,14 +173,16 @@ sf::Texture GameScene::getTextureByType(Type type) const {
 }
 
 void GameScene::initTextures() {
+    _textures[Type::MISSINGTXT] = sf::Texture();
+    _textures[Type::MISSINGTXT].loadFromFile("../src/client/assets/missing.png");
     _textures[Type::PLAYER] = sf::Texture();
-    _textures[Type::PLAYER].loadFromFile("assets/sprite/player.png");
+    _textures[Type::PLAYER].loadFromFile("../src/client/assets/missing.png");
     _textures[Type::ENEMY] = sf::Texture();
-    _textures[Type::ENEMY].loadFromFile("assets/sprite/enemy.png");
+    _textures[Type::ENEMY].loadFromFile("../sprites/r-typesheet5.gif");
     _textures[Type::BULLET] = sf::Texture();
-    _textures[Type::BULLET].loadFromFile("assets/sprite/bullet.png");
+    _textures[Type::BULLET].loadFromFile("../src/client/assets/bullet.png");
     _textures[Type::BACKGROUND] = sf::Texture();
-    _textures[Type::BACKGROUND].loadFromFile("assets/sprite/background.png");
+    _textures[Type::BACKGROUND].loadFromFile("../src/client/assets/background.png");
 }
 
 void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {

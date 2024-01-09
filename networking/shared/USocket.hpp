@@ -76,6 +76,7 @@ typedef union attribute {
 
 typedef struct drawable {
     int id;
+
     float x;
     float y;
     float sizeHorizontal;
@@ -105,6 +106,7 @@ typedef struct newComponent {
 
 //obsolete
 typedef enum type {
+    MISSINGTXT,
     PLAYER,
     ENEMY,
     BULLET,
