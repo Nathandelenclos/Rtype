@@ -43,6 +43,8 @@ public:
     int getNewClientId();
     int checkClientsDeconnection();
 
+    void clientDump();
+
 private:
     unsigned long long sockfd;
     struct sockaddr_in serv_addr{};
@@ -53,6 +55,7 @@ private:
     fd_set _readfds;
     bool newClientConnected;
     int newClientId;
+    int nextClientId = 1;
 };
 
 #endif //R_TYPE_SERVER_SERVERSOCKET_HPP

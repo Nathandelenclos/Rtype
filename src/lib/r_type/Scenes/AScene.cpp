@@ -75,7 +75,6 @@ void AScene::sendGameState(int clientID)
 
 void AScene::broadcastGameState()
 {
-    std::cout << "Broadcasting game state" << std::endl;
     std::shared_ptr<Packet> packet = std::make_shared<Packet>();
     NewComponent newComponent{};
 

@@ -374,6 +374,7 @@ int ServerSocket::checkClientsDeconnection() {
                 if (id == iddel) {
                     idClient = id;
                     it = getClients().erase(it);
+                    break;
                 } else {
                     ++it;
                 }
@@ -395,3 +396,18 @@ int ServerSocket::getNewClientId() {
     newClientConnected = false;
     return newClientId;
 }
+
+void ServerSocket::clientDump() {
+    std::cout << "Clients dump:" << std::endl;
+    for (auto& [id, cli, splitPackets, lastReceived] : getClients()) {
+        std::cout << "id: " << id;
+        std::cout << " cli.sin_family: " << cli.sin_family;
+        std::cout << " cli.sin_port: " << cli.sin_port;
+        std::cout << " cli.sin_addr.s_addr: " << cli.sin_addr.s_addr;
+        std::cout << " splitPackets.size(): " << splitPackets.size();
+        std::cout << " lastReceived.tv_sec: " << lastReceived.tv_sec;
+        std::cout << " lastReceived.tv_usec: " << lastReceived.tv_usec << std::endl;
+    }
+}
+
+
