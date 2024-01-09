@@ -76,6 +76,7 @@ typedef union attribute {
 
 typedef struct drawable {
     int id;
+
     float x;
     float y;
     float sizeHorizontal;

@@ -59,7 +59,9 @@ void AScene::sendGameState(int clientID)
             auto drawable = std::dynamic_pointer_cast<Drawable>(component);
             if (drawable) {
                 newComponent.id = drawable->_textureId;
-                std::memcpy(&newComponent.attribute, drawable->getAttribute(), std::strlen(drawable->getAttribute()));
+                std::memset(&newComponent.attribute, 0, 16);
+                std::memcpy(&newComponent.attribute, entity->getAttribute().c_str(), 16);
+                //std::memcpy(&newComponent.attribute2, entity->getAttribute().c_str() + 8, 8);
                 newComponent.type = ComponentTypeSocket ::SPRITESOCKET;
                 packet->code = NEW_COMPONENT;
                 packet->data_size = sizeof(NewComponent);
@@ -83,6 +85,7 @@ void AScene::broadcastGameState()
             auto drawable = std::dynamic_pointer_cast<Drawable>(component);
             if (drawable) {
                 newComponent.id = drawable->_textureId;
+                std::memset(&newComponent.attribute, 0, 16);
                 std::memcpy(&newComponent.attribute, drawable->getAttribute(), std::strlen(drawable->getAttribute()));
                 newComponent.type = ComponentTypeSocket ::SPRITESOCKET;
                 newComponent.x = std::get<0>(drawable->getPosition());

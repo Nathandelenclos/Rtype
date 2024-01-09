@@ -20,9 +20,10 @@ void LobbyScene::initEntities()
     std::shared_ptr<IEntity> enemy1 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
     sprite->setRect({0, 0, 33, 36});
-    sprite->setSize({33 * 10, 36 * 10});
+    sprite->setSize({533 * 10, 36 * 10});
     sprite->setPosition({50, 50});
     sprite->setAttribute("sprite enemy");
+    sprite->_textureId = ENEMY;
     enemy1->setAttribute("sprite enemy");
     enemy1->addComponent(sprite);
 
@@ -83,6 +84,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 drawable->setAttribute("player " + std::to_string(id));
                 drawable->setPosition({100 * id, 100 * id});
                 drawable->setHasChanged(true);
+                drawable->_textureId = PLAYER;
                 entity->addComponent(drawable);
                 entity->setAttribute("player " + std::to_string(id));
                 addEntity(entity);
@@ -105,6 +107,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 free(sendpacket->data);
 
                 sendGameState(id);
+                broadcastGameState();
             }
             if (std::string(static_cast<char *>(packet->data)) == "exit game") {
                 std::cout << "exit game player id " << id << std::endl;

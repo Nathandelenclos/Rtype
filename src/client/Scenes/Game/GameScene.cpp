@@ -97,10 +97,13 @@ void GameScene::receiveData() {
             newComponent->type = static_cast<ComponentTypeSocket>(ComponentType::SPRITE);
             char *attributechar = static_cast<char *>(malloc(16));
             std::memset(attributechar, 0, 16);
-            std::memcpy(attributechar, &newComponent->attribute, 8);
-            std::memcpy(attributechar + 8, &newComponent->attribute2, 8);
+            std::memcpy(attributechar, &newComponent->attribute, 16);
+            //std::memcpy(attributechar + 8, &newComponent->attribute2, 8);
+            std::cout << "attribute: " << reinterpret_cast<char *>(&newComponent->attribute) << std::endl;
+            std::cout << "attribute2: " << reinterpret_cast<char *>(&newComponent->attribute2) << std::endl;
             std::string attributeString(attributechar);
             attributeString = attributeString.substr(0, attributeString.find('\001'));
+            std::cout << "newComponent: " << attributeString << " " << newComponent->x << " " << newComponent->y << " id: " << newComponent->id << std::endl;
             for (auto &component: _components) {
                 if (component->getType() == ComponentType::SPRITE) {
                     if (component->getAttribute() == reinterpret_cast<char *>(&newComponent->attribute)) {
