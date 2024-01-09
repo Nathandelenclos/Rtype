@@ -67,4 +67,13 @@ Once the binary is launched, you will come to this page:
 
 On this page, click on the "Init Server Connection", you will come to this page:
 
-![ScreenMenu](docs/assets/init_connection.png)
+![InitConnection](docs/assets/init_connection.png)
+
+On this page, you can enter the IP address of the server and the port you want to connect to.
+Once the connection is established, you will see it on the page like this
+
+![ScreenGame](docs/assets/connection_server_done.png)
+
+Now you can click on "esc" on your keyboard to go back to the main menu and click on "Access Game" to join the server and you will come to this page and enjoy the game.
+
+![ScreenGame](docs/assets/game.png)
