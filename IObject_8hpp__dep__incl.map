@@ -1,6 +1,8 @@
 <map id="include/IObject.hpp" name="include/IObject.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="101,5,247,32"/>
-<area shape="rect" id="node2" href="$Player_8hpp.html" title=" " alt="" coords="5,80,164,121"/>
-<area shape="rect" id="node4" href="$include_2IService_8hpp.html" title=" " alt="" coords="188,87,341,114"/>
-<area shape="rect" id="node3" href="$Player_8cpp.html" title=" " alt="" coords="5,169,164,211"/>
+<area shape="rect" id="node1" title=" " alt="" coords="226,5,373,32"/>
+<area shape="rect" id="node2" href="$Controlable_8hpp.html" title=" " alt="" coords="5,80,196,121"/>
+<area shape="rect" id="node4" href="$Player_8hpp.html" title=" " alt="" coords="220,80,379,121"/>
+<area shape="rect" id="node6" href="$include_2IService_8hpp.html" title=" " alt="" coords="403,87,556,114"/>
+<area shape="rect" id="node3" href="$Controlable_8cpp.html" title=" " alt="" coords="5,169,196,211"/>
+<area shape="rect" id="node5" href="$Player_8cpp.html" title=" " alt="" coords="220,169,379,211"/>
 </map>
