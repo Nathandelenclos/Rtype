@@ -145,15 +145,15 @@ $(function() {
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    <span class="keywordflow">if</span> (component-&gt;getAttribute() == <span class="stringliteral">&quot;sprite bg1&quot;</span>) {</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        <span class="keyword">dynamic_cast</span>&lt;SpriteComponent *&gt;(component.get())-&gt;setTexture(getTextureByType(Type::BACKGROUND1));</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    <span class="comment">// if (component-&gt;getAttribute() == &quot;sprite bg2&quot;) {</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    <span class="comment">//     dynamic_cast&lt;SpriteComponent *&gt;(component.get())-&gt;setTexture(getTextureByType(Type::BACKGROUND2));</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    <span class="comment">// }</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    <span class="comment">// if (component-&gt;getAttribute() == &quot;sprite bg3&quot;) {</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    <span class="comment">//     dynamic_cast&lt;SpriteComponent *&gt;(component.get())-&gt;setTexture(getTextureByType(Type::BACKGROUND3));</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    <span class="comment">// }</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    <span class="comment">// if (component-&gt;getAttribute() == &quot;sprite bg4&quot;) {</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    <span class="comment">//     dynamic_cast&lt;SpriteComponent *&gt;(component.get())-&gt;setTexture(getTextureByType(Type::BACKGROUND4));</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    <span class="comment">// }</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    <span class="keywordflow">if</span> (component-&gt;getAttribute() == <span class="stringliteral">&quot;sprite bg2&quot;</span>) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        <span class="keyword">dynamic_cast</span>&lt;SpriteComponent *&gt;(component.get())-&gt;setTexture(getTextureByType(Type::BACKGROUND2));</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    <span class="keywordflow">if</span> (component-&gt;getAttribute() == <span class="stringliteral">&quot;sprite bg3&quot;</span>) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        <span class="keyword">dynamic_cast</span>&lt;SpriteComponent *&gt;(component.get())-&gt;setTexture(getTextureByType(Type::BACKGROUND3));</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    <span class="keywordflow">if</span> (component-&gt;getAttribute() == <span class="stringliteral">&quot;sprite bg4&quot;</span>) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        <span class="keyword">dynamic_cast</span>&lt;SpriteComponent *&gt;(component.get())-&gt;setTexture(getTextureByType(Type::BACKGROUND4));</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    }</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                }</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            }</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
@@ -262,9 +262,9 @@ $(function() {
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    _textures[Type::PLAYER] = sf::Texture();</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    _textures[Type::PLAYER].loadFromFile(<span class="stringliteral">&quot;../sprites/r-typesheet1.gif&quot;</span>);</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    _textures[Type::ENEMY] = sf::Texture();</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    _textures[Type::ENEMY].loadFromFile(<span class="stringliteral">&quot;../testsprites/r-typesheet5.png&quot;</span>);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    _textures[Type::ENEMY].loadFromFile(<span class="stringliteral">&quot;../testsprites/r-typesheet5_invert.png&quot;</span>);</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    _textures[Type::BULLET] = sf::Texture();</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    _textures[Type::BULLET].loadFromFile(<span class="stringliteral">&quot;../sprites/r-typesheet1.gif&quot;</span>);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    _textures[Type::BULLET].loadFromFile(<span class="stringliteral">&quot;../src/client/assets/missing.png&quot;</span>);</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    _textures[Type::BACKGROUND1] = sf::Texture();</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    _textures[Type::BACKGROUND1].loadFromFile(<span class="stringliteral">&quot;../testsprites/bg_800_600/background_1.png&quot;</span>);</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    _textures[Type::BACKGROUND2] = sf::Texture();</div>

@@ -144,46 +144,6 @@ $(function() {
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;Now you can click on &quot;esc&quot; on your keyboard to go back to the main menu and click on &quot;Access Game&quot; to join the server and you will come to this page and enjoy the game.</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;![ScreenGame](https://github.com/Nathandelenclos/Rtype/blob/master/docs/assets/game.png)</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;## Architecture</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;Now, let’s get to the heart of the matter with the architecture of our project,</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;Our project is divided into 3 main parts, the server, the client and the ECS (Entity Component System) engine.</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;to illustrate our architecture, we made a schema:</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;![ScreenGame](https://github.com/Nathandelenclos/Rtype/blob/master/docs/assets/Architecture.png)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;We can see on this diagram the 3 main parts of our project as well as how they communicate with each other, </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;where the C represents the customer, the S the server and GE the game engine</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;![ScreenGame](https://github.com/Nathandelenclos/Rtype/blob/master/docs/assets/Server_Client_UDP.png)</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;On our Project, the server and the client are two separate programs, they communicate with each other using the UDP protocol,</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;the server is responsible for managing the game rooms and the client is responsible for displaying the game and sending the player&#39;s actions to the server.</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;## ECS Engine</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;Entity Component System (ECS) is a software architectural pattern mostly used in video game development for the representation of game world objects.</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;An ECS comprises entities composed from components of data, with systems which operate on entities&#39; components.</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;ECS follows the principle of composition over inheritance, meaning that every entity is defined not by a type hierarchy, but by the components that are associated with it.</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;Systems act globally over all entities which have the required components.</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;## Network UDP Protocol</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;The User Datagram Protocol (UDP) is one of the core members of the Internet protocol suite.</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;The protocol was designed by David P. Reed in 1980 and formally defined in RFC 768.</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;The role of this protocol is to allow the transmission of data (as datagrams) in a very simple way between two entities, each being defined by an IP address and a port number. </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;No prior communication is required to establish the connection</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;Then the UDP protocol is used to communicate between the server and the client,</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;the server sends the client the information it needs to display the game and the client sends the server the actions of the player.</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;If you want to know more about the UDP protocol, you can read it here:</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;- [DOCUMENTATION RFC PROTOCOL R-TYPE 69007](docs/rfc69420.txt)</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
