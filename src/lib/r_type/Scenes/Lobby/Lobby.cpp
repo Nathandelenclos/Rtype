@@ -223,7 +223,6 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                  std::cout << "enter game player id " << id << std::endl;
                  std::shared_ptr<IEntity> entity = std::make_shared<IEntity>();
                  std::shared_ptr<Drawable> drawable = std::make_shared<Drawable>();
-                 std::shared_ptr<Animatable> animation = std::make_shared<Animatable>();
 
                 drawable->setAttribute("player " + std::to_string(id));
                 drawable->setPosition({100 * id, 100 * id});
@@ -240,16 +239,9 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                         }
                     }
                 }
-                 drawable->setRect({101, 0, 33, 17});
-                 drawable->setScale(5);
-                 drawable->setSize({532, 372});
-                 animation->setTarget(drawable);
-                 animation->setTime({0, 500000});
-                 animation->_frameIndex = 0;
-                 animation->_numberFrameToAnim = 0;
-                 animation->_numberFrame = 0;
-                 animation->_startFrameIndex = 0;
-                 animation->_frameForOnePicture = 0;
+                drawable->setRect({101, 0, 33, 17});
+                drawable->setScale(2);
+                drawable->setSize({532 * drawable->getScale(), 372 * drawable->getScale()});
                 entity->addComponent(drawable);
                 entity->setAttribute("player " + std::to_string(id));
                 addEntity(entity);
