@@ -13,6 +13,8 @@ add_library(lib_r_type SHARED
         #src/lib/r_type/entities/Player.hpp
         src/lib/r_type/components/Drawable.cpp
         src/lib/r_type/components/Drawable.hpp
+        src/lib/r_type/components/Animatable.cpp
+        src/lib/r_type/components/Animatable.hpp
         networking/server/ServerSocket.cpp
         networking/server/ServerSocket.hpp
         src/lib/r_type/Scenes/IScene.hpp
@@ -23,12 +25,19 @@ add_library(lib_r_type SHARED
         src/lib/r_type/Scenes/Lobby/Lobby.hpp
         src/lib/r_type/services/IService.hpp
         src/lib/r_type/services/AService.cpp
+        src/lib/r_type/services/Animation.hpp
+        src/lib/r_type/services/Animation.cpp
         src/lib/r_type/services/AService.hpp
         src/lib/r_type/entities/IEntity.hpp
         src/lib/r_type/services/Collision.cpp
         src/lib/r_type/services/Collision.hpp
         src/lib/r_type/services/Move.cpp
-        src/lib/r_type/services/Move.hpp)
+        src/lib/r_type/services/Move.hpp
+        src/lib/r_type/components/Timer.cpp
+        src/lib/r_type/components/Timer.hpp
+        src/lib/r_type/services/TimeManagement.cpp
+        src/lib/r_type/services/TimeManagement.hpp)
+
 
 if (UNIX OR APPLE)
     include(FetchContent)

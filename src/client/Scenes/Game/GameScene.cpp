@@ -18,7 +18,7 @@ GameScene::GameScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socke
 void GameScene::init_scene()
 {
     std::shared_ptr<TextComponent> text_ping = std::make_shared<TextComponent>(_clientCore, _socket);
-    std::shared_ptr<SpriteComponent> sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
+    // std::shared_ptr<SpriteComponent> sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
     std::shared_ptr<MusicComponent> music = std::make_shared<MusicComponent>(_clientCore, _socket);
     std::shared_ptr<SoundComponent> sound_new_player = std::make_shared<SoundComponent>(_clientCore, _socket);
     std::shared_ptr<SoundComponent> sound_player_left = std::make_shared<SoundComponent>(_clientCore, _socket);
@@ -30,7 +30,7 @@ void GameScene::init_scene()
     text_ping->setText("");
     text_ping->setPosition(sf::Vector2f(0, 550));
 
-    sprite->setAttribute("Player");
+    // sprite->setAttribute("Player");
 
     sound_new_player->setAttribute("new player");
 
@@ -46,8 +46,7 @@ void GameScene::init_scene()
 void GameScene::receiveData() {
     std::tuple<std::unique_ptr<Packet>, int> packet = _socket->receive();
     std::unique_ptr<Packet> p = std::move(std::get<0>(packet));
-
-    if (p != nullptr) {
+    while (p != nullptr) {
         if (p->code == ELEMENT) {
             auto *drawable = static_cast<DrawablePacket *>(p->data);
             for (auto &component: _components) {
@@ -59,7 +58,7 @@ void GameScene::receiveData() {
                     std::string attributeString(attributechar);
                     std::string componentAttribute = component->getAttribute();
                     if (component->getAttribute() == attributeString) {
-                        std::cout << "element: " << drawable->x << " " << drawable->y << std::endl;
+                        std::cout << "element: " << drawable->rectLeft << " " << drawable->rectTop << " " << drawable->rectWidth << " " << drawable->rectHeight << std::endl;
                         //sprite->setTexture(getTextureByType(element->type));
                         auto *sprite = dynamic_cast<SpriteComponent *>(component.get());
                         sprite->setPosition({drawable->x, drawable->y});
@@ -72,6 +71,18 @@ void GameScene::receiveData() {
                     if (component->getAttribute() == "sprite bullet") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BULLET));
                     }
+                    if (component->getAttribute() == "sprite bg1") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND1));
+                    }
+                    // if (component->getAttribute() == "sprite bg2") {
+                    //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND2));
+                    // }
+                    // if (component->getAttribute() == "sprite bg3") {
+                    //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND3));
+                    // }
+                    // if (component->getAttribute() == "sprite bg4") {
+                    //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND4));
+                    // }
                 }
             }
         }
@@ -165,6 +176,8 @@ void GameScene::receiveData() {
             }
         }
         free(p->data);
+        packet = _socket->receive();
+        p = std::move(std::get<0>(packet));
     }
 }
 
@@ -178,11 +191,17 @@ void GameScene::initTextures() {
     _textures[Type::PLAYER] = sf::Texture();
     _textures[Type::PLAYER].loadFromFile("../src/client/assets/missing.png");
     _textures[Type::ENEMY] = sf::Texture();
-    _textures[Type::ENEMY].loadFromFile("../sprites/r-typesheet5.gif");
+    _textures[Type::ENEMY].loadFromFile("../testsprites/r-typesheet5.png");
     _textures[Type::BULLET] = sf::Texture();
-    _textures[Type::BULLET].loadFromFile("../src/client/assets/bullet.png");
-    _textures[Type::BACKGROUND] = sf::Texture();
-    _textures[Type::BACKGROUND].loadFromFile("../src/client/assets/background.png");
+    _textures[Type::BULLET].loadFromFile("../src/client/assets/missing.png");
+    _textures[Type::BACKGROUND1] = sf::Texture();
+    _textures[Type::BACKGROUND1].loadFromFile("../testsprites/bg_800_600/background_1.png");
+    _textures[Type::BACKGROUND2] = sf::Texture();
+    _textures[Type::BACKGROUND2].loadFromFile("../testsprites/bg_800_600/background_2.png");
+    _textures[Type::BACKGROUND3] = sf::Texture();
+    _textures[Type::BACKGROUND3].loadFromFile("../testsprites/bg_800_600/background_3.png");
+    _textures[Type::BACKGROUND4] = sf::Texture();
+    _textures[Type::BACKGROUND4].loadFromFile("../testsprites/bg_800_600/background_4.png");
 }
 
 void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {

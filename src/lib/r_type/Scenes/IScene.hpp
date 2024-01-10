@@ -10,6 +10,8 @@
 #include "../components/IComponent.hpp"
 #include "../services/IService.hpp"
 #include "../services/Graphic.hpp"
+#include "../services/TimeManagement.hpp"
+#include "../services/Animation.hpp"
 #include "../entities/IEntity.hpp"
 
 class ISceneRType {
@@ -21,6 +23,7 @@ class ISceneRType {
         virtual void pauseScene() = 0;
         virtual void resumeScene() = 0;
         virtual void stopScene() = 0;
+        virtual void restartScene() = 0;
 
         virtual void addEntity(std::shared_ptr<IEntity> entity) = 0;
         virtual std::vector<std::shared_ptr<IEntity>> getEntities() = 0;
@@ -30,6 +33,9 @@ class ISceneRType {
 
         virtual void sendGameState(int clientId) = 0;
         virtual void broadcastGameState() = 0;
+
+        virtual void initEntities() = 0;
+        virtual void initServices() = 0;
 
     protected:
         std::vector<std::shared_ptr<IEntity>> _entities;

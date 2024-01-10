@@ -29,6 +29,8 @@ class Drawable : public IComponentRType {
 
         [[nodiscard]] Size getSize() const;
         void setSize(std::tuple<float, float> size);
+        [[nodiscard]] float getScale() const;
+        void setScale(float scale);
 
         [[nodiscard]] Rect getRect() const;
         void setRect(std::tuple<int, int, int, int> rect);
@@ -48,6 +50,7 @@ protected:
         Position _position;
         Size _size;
         Rect _rect;
+        float _scale;
         bool hasChanged = false;
         std::vector<std::shared_ptr<Drawable>> _drawablesCollision;
 };

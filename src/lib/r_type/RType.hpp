@@ -21,7 +21,7 @@ public:
     explicit RType(std::shared_ptr<ServerSocket> socket) {
         _socket = std::move(socket);
         _scenes["Lobby"] = std::make_shared<LobbyScene>(_socket);
-        _currentScene = _scenes["Lobby"];
+        _currentScene = nullptr;
         gettimeofday(&_broadcastGameState, nullptr);
     }
 
@@ -32,6 +32,18 @@ public:
         timeval elapsedTime{};
         gettimeofday(&currentTime, nullptr);
         timersub(&currentTime, &_broadcastGameState, &elapsedTime);
+
+        if (!_socket->getClients().empty()) {
+            if (_currentScene == nullptr) {
+                _currentScene = _scenes["Lobby"];
+                _currentScene->restartScene();
+            }
+        } else {
+            _currentScene = nullptr;
+        }
+
+        if (_currentScene == nullptr)
+            return;
         _currentScene->update(event, packet);
 
         if (_socket->getClients().size() != last_client_nb) {

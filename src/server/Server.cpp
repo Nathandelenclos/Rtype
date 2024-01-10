@@ -69,7 +69,6 @@ void Server::run() {
         event->key = sf::Keyboard::Key::Unknown;
 
         if (_packet) {
-//            _serverSocket->clientDump();
             if (_packet->code == HEARTBEAT) {
                 gettimeofday(&_currentTime, nullptr);
                 _receveidTime = *static_cast<timeval *>(_packet->data);
