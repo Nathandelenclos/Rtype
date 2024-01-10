@@ -1,9 +1,7 @@
 <map id="AService" name="AService">
-<area shape="rect" id="node1" title=" " alt="" coords="219,80,297,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="116,80,195,107"/>
 <area shape="rect" id="node3" href="$classAnimation.html" title=" " alt="" coords="5,155,95,181"/>
-<area shape="rect" id="node4" href="$classCollision.html" title=" " alt="" coords="119,155,197,181"/>
-<area shape="rect" id="node5" href="$classGraphic.html" title=" " alt="" coords="222,155,294,181"/>
-<area shape="rect" id="node6" href="$classMove.html" title=" " alt="" coords="318,155,377,181"/>
-<area shape="rect" id="node7" href="$classTimeManagement.html" title=" " alt="" coords="401,155,542,181"/>
-<area shape="rect" id="node2" href="$classIService.html" title=" " alt="" coords="221,5,295,32"/>
+<area shape="rect" id="node4" href="$classGraphic.html" title=" " alt="" coords="119,155,191,181"/>
+<area shape="rect" id="node5" href="$classTimeManagement.html" title=" " alt="" coords="215,155,357,181"/>
+<area shape="rect" id="node2" href="$classIService.html" title=" " alt="" coords="118,5,193,32"/>
 </map>
