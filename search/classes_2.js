@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['clientcore_389',['ClientCore',['../classClientCore.html',1,'']]],
-  ['clientsocket_390',['ClientSocket',['../classClientSocket.html',1,'']]],
-  ['controlable_391',['Controlable',['../classControlable.html',1,'']]]
+  ['clientcore_404',['ClientCore',['../classClientCore.html',1,'']]],
+  ['clientsocket_405',['ClientSocket',['../classClientSocket.html',1,'']]],
+  ['collision_406',['Collision',['../classCollision.html',1,'']]],
+  ['controlable_407',['Controlable',['../classControlable.html',1,'']]]
 ];
