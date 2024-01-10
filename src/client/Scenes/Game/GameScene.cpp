@@ -59,7 +59,7 @@ void GameScene::receiveData() {
                     std::string attributeString(attributechar);
                     std::string componentAttribute = component->getAttribute();
                     if (component->getAttribute() == attributeString) {
-                        std::cout << "element: " << drawable->x << " " << drawable->y << std::endl;
+                        std::cout << "element: " << drawable->rectLeft << " " << drawable->rectTop << " " << drawable->rectWidth << " " << drawable->rectHeight << std::endl;
                         //sprite->setTexture(getTextureByType(element->type));
                         auto *sprite = dynamic_cast<SpriteComponent *>(component.get());
                         sprite->setPosition({drawable->x, drawable->y});
@@ -192,7 +192,7 @@ void GameScene::initTextures() {
     _textures[Type::ENEMY] = sf::Texture();
     _textures[Type::ENEMY].loadFromFile("../testsprites/r-typesheet5.png");
     _textures[Type::BULLET] = sf::Texture();
-    _textures[Type::BULLET].loadFromFile("../src/client/assets/bullet.png");
+    _textures[Type::BULLET].loadFromFile("../src/client/assets/missing.png");
     _textures[Type::BACKGROUND1] = sf::Texture();
     _textures[Type::BACKGROUND1].loadFromFile("../testsprites/bg_800_600/background_1.png");
     _textures[Type::BACKGROUND2] = sf::Texture();

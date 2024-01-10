@@ -20,9 +20,13 @@ class LobbyScene : public AScene {
 
         void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet, int id) override;
 
+        void checkBulletDeletion();
+
         void initEntities();
         void initServices();
 
     private:
         timeval _chrono;
+        timeval _bulletTriggerLimiter;
+        int _nbBullets;
 };
