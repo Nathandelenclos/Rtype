@@ -61,6 +61,7 @@ typedef struct mouse {
 typedef struct event {
     int eventType;
     int key;
+    int id;
 } Event;
 
 typedef struct packet {

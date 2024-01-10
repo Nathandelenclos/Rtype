@@ -63,7 +63,10 @@ void Server::run() {
         _serverSocket->init_fd_set();
         _packetClientId = _serverSocket->receive();
         _packet = std::move(std::get<0>(_packetClientId));
-        std::shared_ptr<Event> event = nullptr;
+        std::shared_ptr<Event> event = std::make_shared<Event>();
+        event->id = std::get<1>(_packetClientId);
+        event->eventType = 0;
+        event->key = sf::Keyboard::Key::Unknown;
 
         if (_packet) {
 //            _serverSocket->clientDump();
@@ -98,9 +101,10 @@ void Server::run() {
                 memset(&event1, 0, sizeof(Event));
                 memcpy(&event1, _packet->data, sizeof(Event));
                 event = std::make_shared<Event>(event1);
+                event->id = std::get<1>(_packetClientId);
             }
         }
-        _game->update(event, _packet, std::get<1>(_packetClientId));
+        _game->update(event, _packet);
         if (_packet) {
             free(_packet->data);
             _packet.reset();

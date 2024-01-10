@@ -16,7 +16,7 @@ class LobbyScene : public AScene {
 
         void initScene();
 
-        void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet, int id) override;
+        void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet) override;
 
         void initEntities();
         void initServices();

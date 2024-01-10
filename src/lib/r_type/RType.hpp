@@ -27,12 +27,12 @@ public:
 
     ~RType() override = default;
 
-    void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet, int id) override {
+    void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet) override {
         timeval currentTime{};
         timeval elapsedTime{};
         gettimeofday(&currentTime, nullptr);
         timersub(&currentTime, &_broadcastGameState, &elapsedTime);
-        _currentScene->update(event, packet, id);
+        _currentScene->update(event, packet);
 
         if (_socket->getClients().size() != last_client_nb) {
             last_client_nb = _socket->getClients().size();

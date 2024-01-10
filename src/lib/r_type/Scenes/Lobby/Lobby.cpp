@@ -4,6 +4,8 @@
 
 #include "Lobby.hpp"
 #include "Collision.hpp"
+#include "Graphic.hpp"
+#include "Move.hpp"
 
 LobbyScene::LobbyScene(std::shared_ptr<ServerSocket> serverSocket) : AScene(std::move(serverSocket))
 {
@@ -55,19 +57,21 @@ void LobbyScene::initServices()
 {
     std::shared_ptr<Graphic> graphic = std::make_shared<Graphic>(_serverSocket);
     std::shared_ptr<Collision> collision = std::make_shared<Collision>(_serverSocket);
+    std::shared_ptr<Move> move = std::make_shared<Move>(_serverSocket);
 
     addService(graphic);
     addService(collision);
+    addService(move);
 }
 
-void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet, int id)
+void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet)
 {
     timeval now{};
     timeval diff{};
     gettimeofday(&now, nullptr);
     timersub(&now, &_chrono, &diff);
 
-    if (event != nullptr)
+    if (event->key != sf::Keyboard::Key::Unknown)
         _lastEvent = event;
 
     if (diff.tv_usec >= 25000) {
@@ -78,11 +82,11 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 }
             }
         }
-        _lastEvent = nullptr;
         _chrono = now;
     }
 
     if (packet != nullptr) {
+        int id = event->id;
         if (packet->code == MESSAGE) {
             if (std::string(static_cast<char *>(packet->data)) == "enter game") {
                 std::cout << "enter game player id " << id << std::endl;
@@ -167,56 +171,6 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
         free(sendpacket->data);
     }
 
-    if (event == nullptr)
-        return;
-
-    if (event->key == sf::Keyboard::Key::Up) {
-        for (const auto& entity : getEntities())
-            for (const auto& component : entity->getComponents()) {
-                if (component->getAttribute() == "player " + std::to_string(id)) {
-                    auto draw = std::dynamic_pointer_cast<Drawable>(component);
-                    auto [x, y] = draw->getPosition();
-                    if (draw)
-                        draw->setPosition({x, y - 5});
-                }
-            }
-    }
-    if (event->key == sf::Keyboard::Key::Down) {
-        for (const auto& entity : getEntities())
-            for (const auto& component : entity->getComponents()) {
-                if (component->getAttribute() == "player " + std::to_string(id)) {
-                    auto draw = std::dynamic_pointer_cast<Drawable>(component);
-                    auto [x, y] = draw->getPosition();
-                    if (draw)
-                        draw->setPosition({x, y + 5});
-                }
-            }
-    }
-
-    if (event->key == sf::Keyboard::Key::Left) {
-        for (const auto& entity : getEntities())
-            for (const auto& component : entity->getComponents()) {
-                if (component->getAttribute() == "player " + std::to_string(id)) {
-                    auto draw = std::dynamic_pointer_cast<Drawable>(component);
-                    auto [x, y] = draw->getPosition();
-                    if (draw)
-                        draw->setPosition({x - 5, y});
-                }
-            }
-    }
-
-    if (event->key == sf::Keyboard::Key::Right) {
-        for (const auto& entity : getEntities())
-            for (const auto& component : entity->getComponents()) {
-                if (component->getAttribute() == "player " + std::to_string(id)) {
-                    auto draw = std::dynamic_pointer_cast<Drawable>(component);
-                    auto [x, y] = draw->getPosition();
-                    if (draw)
-                        draw->setPosition({x + 5, y});
-                }
-            }
-    }
-
     if (event->key == sf::Keyboard::Key::Space) {
         std::shared_ptr<IEntity> entity = std::make_shared<IEntity>();
         std::shared_ptr<Drawable> drawable = std::make_shared<Drawable>();
@@ -240,7 +194,4 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
         free(packet->data);
     }
 
-    // if (event->key == sf::Keyboard::Key::Enter) {
-    //     pauseScene();
-    // }
 }

@@ -17,7 +17,7 @@ class ISceneRType {
         virtual ~ISceneRType() = default;
 
         virtual void display() = 0;
-        virtual void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet, int id) = 0;
+        virtual void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet) = 0;
         virtual void pauseScene() = 0;
         virtual void resumeScene() = 0;
         virtual void stopScene() = 0;
