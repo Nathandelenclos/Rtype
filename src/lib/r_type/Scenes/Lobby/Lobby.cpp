@@ -8,6 +8,7 @@ LobbyScene::LobbyScene(std::shared_ptr<ServerSocket> serverSocket) : AScene(std:
 {
     initScene();
     gettimeofday(&_chrono, nullptr);
+    _bulletTriggerLimiter = {0, 0};
 }
 
 void LobbyScene::initScene()
@@ -95,6 +96,8 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
         }
         _chrono = now;
     }
+
+    checkBulletDeletion();
 
     if (packet != nullptr) {
         if (packet->code == MESSAGE) {
@@ -221,6 +224,19 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
     }
 
     if (event->key == sf::Keyboard::Key::Space) {
+        timeval nowbullet{};
+        timeval diffbullet{};
+        gettimeofday(&nowbullet, nullptr);
+        timersub(&nowbullet, &_bulletTriggerLimiter, &diffbullet);
+
+        if (_bulletTriggerLimiter.tv_sec != 0 && _bulletTriggerLimiter.tv_usec != 0)
+            if (diffbullet.tv_sec <= 0 && diffbullet.tv_usec < 500000)
+                return;
+
+        _bulletTriggerLimiter = {0, 0};
+
+        gettimeofday(&_bulletTriggerLimiter, nullptr);
+
         std::shared_ptr<IEntity> bullet = std::make_shared<IEntity>();
         std::shared_ptr<Drawable> bullet_sprite = std::make_shared<Drawable>();
         std::shared_ptr<Timer> timer = std::make_shared<Timer>();
@@ -235,46 +251,72 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 }
             }
 
-        if (player == nullptr)
-            return;
+        if (player != nullptr) {
 
-        auto draw = std::dynamic_pointer_cast<Drawable>(player->getComponents()[0]);
+            auto draw = std::dynamic_pointer_cast<Drawable>(player->getComponents()[0]);
 
-        if (draw == nullptr)
-            return;
+            if (draw != nullptr) {
+                auto [x, y] = draw->getPosition();
 
-        auto [x, y] = draw->getPosition();
+                bullet_sprite->setPosition({x, y});
+                bullet_sprite->setAttribute("bullet" + std::to_string(_nbBullets));
+                _nbBullets++;
+                bullet_sprite->_textureId = BULLET;
+                bullet_sprite->setSize({200, 200});
+                bullet_sprite->setScale(0.5);
+                bullet->addComponent(bullet_sprite);
+                bullet->setAttribute("bullet" + std::to_string(_nbBullets));
+                timer->_targetTime.tv_sec = 0;
+                timer->_targetTime.tv_usec = 5000;
+                timer->setTarget(bullet_sprite);
+                timer->setActive(true);
+                bullet->addComponent(timer);
+                addEntity(bullet);
 
-        bullet_sprite->setPosition({x, y});
-        bullet_sprite->setAttribute("bullet");
-        bullet_sprite->_textureId = BULLET;
-        bullet_sprite->setSize({200, 200});
-        bullet_sprite->setScale(0.5);
-        bullet->addComponent(bullet_sprite);
-        bullet->setAttribute("bullet");
-        timer->_targetTime.tv_sec = 0;
-        timer->_targetTime.tv_usec = 500000;
-        timer->setTarget(bullet_sprite);
-        timer->setActive(true);
-        bullet->addComponent(timer);
-        addEntity(bullet);
+                std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
+                sendpacket->code = NEW_COMPONENT;
+                sendpacket->data_size = sizeof(NewComponent);
+                sendpacket->data = malloc(sendpacket->data_size);
+                NewComponent newComponent{};
+                newComponent.type = ComponentTypeSocket::SPRITESOCKET;
+                newComponent.id = BULLET;
+                std::memcpy(&newComponent.attribute, bullet->getAttribute().c_str(), 16);
+                memcpy(sendpacket->data, &newComponent, sendpacket->data_size);
+                _serverSocket->broadcast(sendpacket.get());
+                free(sendpacket->data);
 
-        std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
-        sendpacket->code = NEW_COMPONENT;
-        sendpacket->data_size = sizeof(NewComponent);
-        sendpacket->data = malloc(sendpacket->data_size);
-        NewComponent newComponent{};
-        newComponent.type = ComponentTypeSocket ::SPRITESOCKET;
-        newComponent.id = BULLET;
-        std::memcpy(&newComponent.attribute, bullet->getAttribute().c_str(), 16);
-        memcpy(sendpacket->data, &newComponent, sendpacket->data_size);
-        _serverSocket->broadcast(sendpacket.get());
-        free(sendpacket->data);
-
-        broadcastGameState();
+                broadcastGameState();
+            }
+        }
     }
 
     // if (event->key == sf::Keyboard::Key::Enter) {
     //     pauseScene();
     // }
+}
+
+void LobbyScene::checkBulletDeletion()
+{
+    for (auto &entity : getEntities()) {
+        for (auto &component : entity->getComponents()) {
+            //std::cout << "component: " << component->getAttribute() << std::endl;
+            if (std::string(component->getAttribute()).find("bullet") != std::string::npos) {
+                //std::cout << "bullet x position: " << std::get<0>(std::dynamic_pointer_cast<Drawable>(component)->getPosition()) << " y position: " << std::get<1>(std::dynamic_pointer_cast<Drawable>(component)->getPosition()) << std::endl;
+                auto draw = std::dynamic_pointer_cast<Drawable>(component);
+                auto [x, y] = draw->getPosition();
+                if (x > 900) {
+                    std::cout << "delete " << component->getAttribute() << std::endl;
+                    _entities.erase(std::remove(_entities.begin(), _entities.end(), entity), _entities.end());
+                    _nbBullets--;
+                    std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
+                    sendpacket->code = DELETE_COMPONENT;
+                    sendpacket->data_size = std::string(component->getAttribute()).size();
+                    sendpacket->data = malloc(sendpacket->data_size);
+                    std::memcpy(sendpacket->data, component->getAttribute(), sendpacket->data_size);
+                    _serverSocket->broadcast(sendpacket.get());
+                    free(sendpacket->data);
+                }
+            }
+        }
+    }
 }

@@ -67,7 +67,7 @@ void AScene::sendGameState(int clientID)
                 packet->data_size = sizeof(NewComponent);
                 packet->data = malloc(packet->data_size);
                 std::memcpy(packet->data, &newComponent, packet->data_size);
-                std::cout << "Sending component " << static_cast<char *>(packet->data) << " to client " << clientID << std::endl;
+                //std::cout << "Sending component " << static_cast<char *>(packet->data) << " to client " << clientID << std::endl;
                 _serverSocket->send(packet.get(), _serverSocket->getClientAddress(clientID));
                 free(packet->data);
             }
@@ -100,7 +100,7 @@ void AScene::broadcastGameState()
                 packet->data_size = sizeof(NewComponent);
                 packet->data = malloc(packet->data_size);
                 std::memcpy(packet->data, &newComponent, packet->data_size);
-                std::cout << "Sending component " << static_cast<char *>(packet->data) << " to all clients" << std::endl;
+                //std::cout << "Sending component " << static_cast<char *>(packet->data) << " to all clients" << std::endl;
                 _serverSocket->broadcast(packet.get());
                 free(packet->data);
             }
