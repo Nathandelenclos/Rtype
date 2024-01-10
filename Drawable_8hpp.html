@@ -66,8 +66,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
 <div class="title">Drawable.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -75,7 +74,6 @@ $(function() {
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;tuple&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;../networking/shared/USocket.hpp&quot;</code><br />
 <code>#include &quot;<a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html">IComponent.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -83,13 +81,12 @@ Include dependency graph for Drawable.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="Drawable_8hpp__incl.png" border="0" usemap="#asrc_2lib_2r__type_2components_2Drawable_8hpp" alt=""/></div>
 <map name="asrc_2lib_2r__type_2components_2Drawable_8hpp" id="asrc_2lib_2r__type_2components_2Drawable_8hpp">
-<area shape="rect" title=" " alt="" coords="179,5,370,47"/>
+<area shape="rect" title=" " alt="" coords="133,5,323,47"/>
 <area shape="rect" title=" " alt="" coords="5,102,85,129"/>
 <area shape="rect" title=" " alt="" coords="110,102,165,129"/>
 <area shape="rect" title=" " alt="" coords="189,102,267,129"/>
-<area shape="rect" title=" " alt="" coords="291,102,354,129"/>
-<area shape="rect" title=" " alt="" coords="379,95,533,136"/>
-<area shape="rect" href="lib_2r__type_2components_2IComponent_8hpp.html" title=" " alt="" coords="558,102,687,129"/>
+<area shape="rect" title=" " alt="" coords="291,95,445,136"/>
+<area shape="rect" href="lib_2r__type_2components_2IComponent_8hpp.html" title=" " alt="" coords="470,102,599,129"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -97,21 +94,23 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="Drawable_8hpp__dep__incl.png" border="0" usemap="#asrc_2lib_2r__type_2components_2Drawable_8hppdep" alt=""/></div>
 <map name="asrc_2lib_2r__type_2components_2Drawable_8hppdep" id="asrc_2lib_2r__type_2components_2Drawable_8hppdep">
-<area shape="rect" title=" " alt="" coords="569,5,760,47"/>
-<area shape="rect" href="Drawable_8cpp.html" title=" " alt="" coords="5,95,196,136"/>
-<area shape="rect" href="Player_8hpp.html" title=" " alt="" coords="220,95,379,136"/>
-<area shape="rect" href="lib_2r__type_2Scenes_2AScene_8hpp.html" title=" " alt="" coords="403,95,559,136"/>
-<area shape="rect" href="Collision_8hpp.html" title=" " alt="" coords="583,95,747,136"/>
-<area shape="rect" href="Collision_8cpp.html" title=" " alt="" coords="703,184,867,225"/>
-<area shape="rect" href="Move_8hpp.html" title=" " alt="" coords="823,95,987,136"/>
-<area shape="rect" href="Graphic_8cpp.html" title=" " alt="" coords="1011,95,1175,136"/>
-<area shape="rect" href="Player_8cpp.html" title=" " alt="" coords="108,184,267,225"/>
-<area shape="rect" href="lib_2r__type_2Scenes_2AScene_8cpp.html" title=" " alt="" coords="291,184,447,225"/>
-<area shape="rect" href="Lobby_8hpp.html" title=" " alt="" coords="471,184,627,225"/>
-<area shape="rect" href="RType_8hpp.html" title=" " alt="" coords="423,281,599,307"/>
-<area shape="rect" href="Lobby_8cpp.html" title=" " alt="" coords="624,273,780,315"/>
-<area shape="rect" href="RType_8cpp.html" title=" " alt="" coords="424,363,599,389"/>
-<area shape="rect" href="Move_8cpp.html" title=" " alt="" coords="943,184,1107,225"/>
+<area shape="rect" title=" " alt="" coords="723,5,913,47"/>
+<area shape="rect" href="Animatable_8hpp.html" title=" " alt="" coords="195,95,385,136"/>
+<area shape="rect" href="Drawable_8cpp.html" title=" " alt="" coords="409,95,600,136"/>
+<area shape="rect" href="Timer_8hpp.html" title=" " alt="" coords="624,95,815,136"/>
+<area shape="rect" href="Player_8hpp.html" title=" " alt="" coords="839,95,997,136"/>
+<area shape="rect" href="lib_2r__type_2Scenes_2AScene_8hpp.html" title=" " alt="" coords="1021,95,1177,136"/>
+<area shape="rect" href="Graphic_8cpp.html" title=" " alt="" coords="1201,95,1365,136"/>
+<area shape="rect" href="Animatable_8cpp.html" title=" " alt="" coords="5,184,196,225"/>
+<area shape="rect" href="Animation_8cpp.html" title=" " alt="" coords="220,184,384,225"/>
+<area shape="rect" href="Timer_8cpp.html" title=" " alt="" coords="424,184,615,225"/>
+<area shape="rect" href="TimeManagement_8cpp.html" title=" " alt="" coords="639,184,811,225"/>
+<area shape="rect" href="Player_8cpp.html" title=" " alt="" coords="839,184,997,225"/>
+<area shape="rect" href="lib_2r__type_2Scenes_2AScene_8cpp.html" title=" " alt="" coords="1021,184,1177,225"/>
+<area shape="rect" href="Lobby_8hpp.html" title=" " alt="" coords="1201,184,1357,225"/>
+<area shape="rect" href="RType_8hpp.html" title=" " alt="" coords="1095,281,1271,307"/>
+<area shape="rect" href="Lobby_8cpp.html" title=" " alt="" coords="1296,273,1452,315"/>
+<area shape="rect" href="RType_8cpp.html" title=" " alt="" coords="1096,363,1271,389"/>
 </map>
 </div>
 </div>
@@ -121,65 +120,7 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawable.html">Drawable</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ac121d963f036d3ca9a61642014c3fcce"><td class="memItemLeft" align="right" valign="top">typedef std::tuple&lt; float, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Drawable_8hpp.html#ac121d963f036d3ca9a61642014c3fcce">Position</a></td></tr>
-<tr class="separator:ac121d963f036d3ca9a61642014c3fcce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab612d3d3173054bfdf27412db190f427"><td class="memItemLeft" align="right" valign="top">typedef std::tuple&lt; float, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Drawable_8hpp.html#ab612d3d3173054bfdf27412db190f427">Size</a></td></tr>
-<tr class="separator:ab612d3d3173054bfdf27412db190f427"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af83d6e3a9e7382fe3bd25ebcb9cc5069"><td class="memItemLeft" align="right" valign="top">typedef std::tuple&lt; int, int, int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Drawable_8hpp.html#af83d6e3a9e7382fe3bd25ebcb9cc5069">Rect</a></td></tr>
-<tr class="separator:af83d6e3a9e7382fe3bd25ebcb9cc5069"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="ac121d963f036d3ca9a61642014c3fcce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac121d963f036d3ca9a61642014c3fcce">&#9670;&nbsp;</a></span>Position</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::tuple&lt;float, float&gt; <a class="el" href="Drawable_8hpp.html#ac121d963f036d3ca9a61642014c3fcce">Position</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00017">17</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
-
-</div>
-</div>
-<a id="af83d6e3a9e7382fe3bd25ebcb9cc5069"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af83d6e3a9e7382fe3bd25ebcb9cc5069">&#9670;&nbsp;</a></span>Rect</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::tuple&lt;int, int, int, int&gt; <a class="el" href="Drawable_8hpp.html#af83d6e3a9e7382fe3bd25ebcb9cc5069">Rect</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00019">19</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ab612d3d3173054bfdf27412db190f427"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab612d3d3173054bfdf27412db190f427">&#9670;&nbsp;</a></span>Size</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::tuple&lt;float, float&gt; <a class="el" href="Drawable_8hpp.html#ab612d3d3173054bfdf27412db190f427">Size</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00018">18</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

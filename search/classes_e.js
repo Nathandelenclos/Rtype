@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['textcomponent_396',['TextComponent',['../classTextComponent.html',1,'']]]
+  ['textcomponent_422',['TextComponent',['../classTextComponent.html',1,'']]],
+  ['timemanagement_423',['TimeManagement',['../classTimeManagement.html',1,'']]],
+  ['timer_424',['Timer',['../classTimer.html',1,'']]]
 ];
