@@ -137,7 +137,7 @@ $(function() {
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::shared_ptr&lt;Event&gt; event = <span class="keywordtype">nullptr</span>;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">if</span> (_packet) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            _serverSocket-&gt;clientDump();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">//            _serverSocket-&gt;clientDump();</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">if</span> (_packet-&gt;code == HEARTBEAT) {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                gettimeofday(&amp;_currentTime, <span class="keywordtype">nullptr</span>);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                _receveidTime = *<span class="keyword">static_cast</span>&lt;timeval *&gt;(_packet-&gt;data);</div>
