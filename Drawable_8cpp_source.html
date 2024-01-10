@@ -177,6 +177,14 @@ $(function() {
 <div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classDrawable.html#aa4fe0b4a96eee60fed3a933e51fe372f">  106</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#aa4fe0b4a96eee60fed3a933e51fe372f">getHasChanged</a>() <span class="keyword">const</span> {</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classDrawable.html#a68d34d1ef9c6cdd03041278d07102ac1">hasChanged</a>;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classDrawable.html#ab82d03f84d52e7deb21d2b04ed47d4b1">  110</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#ab82d03f84d52e7deb21d2b04ed47d4b1">addDrawableCollision</a>(std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; drawableCollision) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    _drawablesCollision.push_back(std::move(drawableCollision));</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="classDrawable.html#adef7bfdb31530bd4238bb67456f097f2">  114</a></span>&#160;<a class="code" href="classDrawable.html#adef7bfdb31530bd4238bb67456f097f2">std</a>::<a class="code" href="classDrawable.html#adef7bfdb31530bd4238bb67456f097f2">vector</a>&lt;<a class="code" href="classDrawable.html#adef7bfdb31530bd4238bb67456f097f2">std</a>::<a class="code" href="classDrawable.html#adef7bfdb31530bd4238bb67456f097f2">shared_ptr</a>&lt;<a class="code" href="classDrawable.html#adef7bfdb31530bd4238bb67456f097f2">Drawable</a>&gt;&gt; <a class="code" href="classDrawable.html">Drawable</a>::<a class="code" href="classDrawable.html#adef7bfdb31530bd4238bb67456f097f2">getDrawablesCollision</a>() <span class="keyword">const</span> {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> _drawablesCollision;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
