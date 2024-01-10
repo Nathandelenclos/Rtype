@@ -77,25 +77,30 @@ $(function() {
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../AScene.hpp&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../components/Drawable.hpp&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">SFML</span><span class="preprocessor">/</span><span class="preprocessor">Window</span><span class="preprocessor">/</span><span class="preprocessor">Keyboard</span><span class="preprocessor">.</span><span class="preprocessor">hpp</span><span class="preprocessor">&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classLobbyScene.html">   12</a></span>&#160;<span class="keyword">class</span> <a class="code" href="classLobbyScene.html">LobbyScene</a> : <span class="keyword">public</span> <a class="code" href="classAScene.html">AScene</a> {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classLobbyScene.html#ab492d5d030ae5fbd542a8a818f53823a">LobbyScene</a>(std::shared_ptr&lt;<a class="code" href="classServerSocket.html">ServerSocket</a>&gt; serverSocket);</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classLobbyScene.html#a2609bc3a4720003b42db4f5fe999c573">   15</a></span>&#160;        ~<a class="code" href="classLobbyScene.html#a2609bc3a4720003b42db4f5fe999c573">LobbyScene</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html#a1ce6c014d26503baf2f31b479b47ef1a">initScene</a>();</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../components/Timer.hpp&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../components/Animatable.hpp&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">SFML</span><span class="preprocessor">/</span><span class="preprocessor">Window</span><span class="preprocessor">/</span><span class="preprocessor">Keyboard</span><span class="preprocessor">.</span><span class="preprocessor">hpp</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classLobbyScene.html">   14</a></span>&#160;<span class="keyword">class</span> <a class="code" href="classLobbyScene.html">LobbyScene</a> : <span class="keyword">public</span> <a class="code" href="classAScene.html">AScene</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classLobbyScene.html#ab492d5d030ae5fbd542a8a818f53823a">LobbyScene</a>(std::shared_ptr&lt;<a class="code" href="classServerSocket.html">ServerSocket</a>&gt; serverSocket);</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classLobbyScene.html#a2609bc3a4720003b42db4f5fe999c573">   17</a></span>&#160;        ~<a class="code" href="classLobbyScene.html#a2609bc3a4720003b42db4f5fe999c573">LobbyScene</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html#a09f8a034e554832964a263216989b849">update</a>(std::shared_ptr&lt;Event&gt; event, std::shared_ptr&lt;Packet&gt; packet, <span class="keywordtype">int</span> id) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html#a1ce6c014d26503baf2f31b479b47ef1a">initScene</a>();</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html#a09f0fc2675f9bc81b55e51cb0e47c6ec">initEntities</a>();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html#a874a64ce00d437a6301a17c25acbf824">initServices</a>();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        timeval _chrono;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        std::shared_ptr&lt;Event&gt; _lastEvent;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html#a09f8a034e554832964a263216989b849">update</a>(std::shared_ptr&lt;Event&gt; event, std::shared_ptr&lt;Packet&gt; packet, <span class="keywordtype">int</span> id) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html#ac871ad60458f007e63df2213eb6b3767">checkBulletDeletion</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html#a09f0fc2675f9bc81b55e51cb0e47c6ec">initEntities</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html#a874a64ce00d437a6301a17c25acbf824">initServices</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        timeval _chrono;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        timeval _bulletTriggerLimiter;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">int</span> _nbBullets;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
