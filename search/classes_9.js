@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['mainscene_410',['MainScene',['../classMainScene.html',1,'']]],
-  ['menuscene_411',['MenuScene',['../classMenuScene.html',1,'']]],
-  ['mouse_412',['mouse',['../structmouse.html',1,'']]],
-  ['musiccomponent_413',['MusicComponent',['../classMusicComponent.html',1,'']]]
+  ['mainscene_435',['MainScene',['../classMainScene.html',1,'']]],
+  ['menuscene_436',['MenuScene',['../classMenuScene.html',1,'']]],
+  ['mouse_437',['mouse',['../structmouse.html',1,'']]],
+  ['move_438',['Move',['../classMove.html',1,'']]],
+  ['musiccomponent_439',['MusicComponent',['../classMusicComponent.html',1,'']]]
 ];
