@@ -1,0 +1,20 @@
+jenkins:
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: admin
+          name: {{username}}
+          password: {{password}}
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+          - name: "Admin"
+            permissions:
+              - "Overall/Administer"
+            entries:
+              - user: "admin"
+
+jobs:
+  - file: "/var/lib/jenkins/jobs/main.groovy"

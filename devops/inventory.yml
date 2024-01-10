@@ -1,0 +1,7 @@
+all:
+  children:
+    redis:
+      hosts:
+        main:
+          ansible_user: root
+          ansible_host: 85.31.239.149

@@ -7,3 +7,6 @@ RType/
 *lib_r_type.so
 r-type_server
 build
+html
+.DS_Store
+
