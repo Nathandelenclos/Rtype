@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['usage_2emd_493',['usage.md',['../usage_8md.html',1,'']]],
-  ['usocket_2ehpp_494',['USocket.hpp',['../USocket_8hpp.html',1,'']]]
+  ['usage_2emd_464',['usage.md',['../usage_8md.html',1,'']]],
+  ['usocket_2ehpp_465',['USocket.hpp',['../USocket_8hpp.html',1,'']]]
 ];
