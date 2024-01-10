@@ -71,18 +71,24 @@ void GameScene::receiveData() {
                     if (component->getAttribute() == "sprite bullet") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BULLET));
                     }
+                    if (component->getAttribute() == "sprite floor bg") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::FLOOR_BACKGROUND));
+                    }
+                    if (component->getAttribute() == "sprite roof bg") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::ROOF_BACKGROUND));
+                    }
                     if (component->getAttribute() == "sprite bg1") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND1));
                     }
-                    // if (component->getAttribute() == "sprite bg2") {
-                    //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND2));
-                    // }
-                    // if (component->getAttribute() == "sprite bg3") {
-                    //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND3));
-                    // }
-                    // if (component->getAttribute() == "sprite bg4") {
-                    //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND4));
-                    // }
+                     if (component->getAttribute() == "sprite bg2") {
+                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND2));
+                     }
+                     if (component->getAttribute() == "sprite bg3") {
+                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND3));
+                     }
+                     if (component->getAttribute() == "sprite bg4") {
+                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND4));
+                     }
                 }
             }
         }
@@ -202,6 +208,10 @@ void GameScene::initTextures() {
     _textures[Type::BACKGROUND3].loadFromFile("../testsprites/bg_800_600/background_3.png");
     _textures[Type::BACKGROUND4] = sf::Texture();
     _textures[Type::BACKGROUND4].loadFromFile("../testsprites/bg_800_600/background_4.png");
+    _textures[Type::FLOOR_BACKGROUND] = sf::Texture();
+    _textures[Type::FLOOR_BACKGROUND].loadFromFile("../testsprites/bg_800_600/ground_texture_bg.png");
+    _textures[Type::ROOF_BACKGROUND] = sf::Texture();
+    _textures[Type::ROOF_BACKGROUND].loadFromFile("../testsprites/bg_800_600/roof_texture_bg.png");
 }
 
 void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {

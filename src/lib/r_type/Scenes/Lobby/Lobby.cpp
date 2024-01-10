@@ -50,7 +50,47 @@ void LobbyScene::initEntities()
     enemy1->addComponent(timer);
     enemy1->addComponent(animation);
 
-    addEntity(enemy1);
+    std::shared_ptr<IEntity> floor_bg = std::make_shared<IEntity>();
+    std::shared_ptr<Drawable> sprite_floor_bg = std::make_shared<Drawable>();
+    std::shared_ptr<Animatable> animation_floor_bg = std::make_shared<Animatable>();
+    sprite_floor_bg->setRect({0, 0, 800, 30});
+    sprite_floor_bg->setSize({1600 * 4, 30 * 4});
+    sprite_floor_bg->setScale(4);
+    sprite_floor_bg->setPosition({0, 480});
+    sprite_floor_bg->setAttribute("sprite floor bg");
+    sprite_floor_bg->_textureId = FLOOR_BACKGROUND;
+    gettimeofday(&animation_floor_bg->_chrono, nullptr);
+    animation_floor_bg->setTarget(sprite_floor_bg);
+    animation_floor_bg->setTime({0, 10000});
+    animation_floor_bg->_frameIndex = 0;
+    animation_floor_bg->_numberFrameToAnim = 800 * 4;
+    animation_floor_bg->_numberFrame = 1600 * 4;
+    animation_floor_bg->_startFrameIndex = 0;
+    animation_floor_bg->_frameForOnePicture = 800 * 4;
+    floor_bg->setAttribute("sprite floor bg");
+    floor_bg->addComponent(sprite_floor_bg);
+    floor_bg->addComponent(animation_floor_bg);
+
+    std::shared_ptr<IEntity> roof_bg = std::make_shared<IEntity>();
+    std::shared_ptr<Drawable> sprite_roof_bg = std::make_shared<Drawable>();
+    std::shared_ptr<Animatable> animation_roof_bg = std::make_shared<Animatable>();
+    sprite_roof_bg->setRect({0, 0, 800, 30});
+    sprite_roof_bg->setSize({1600 * 4, 30 * 4});
+    sprite_roof_bg->setScale(4);
+    sprite_roof_bg->setPosition({0, 0});
+    sprite_roof_bg->setAttribute("sprite roof bg");
+    sprite_roof_bg->_textureId = ROOF_BACKGROUND;
+    gettimeofday(&animation_roof_bg->_chrono, nullptr);
+    animation_roof_bg->setTarget(sprite_roof_bg);
+    animation_roof_bg->setTime({0, 10000});
+    animation_roof_bg->_frameIndex = 0;
+    animation_roof_bg->_numberFrameToAnim = 800 * 4;
+    animation_roof_bg->_numberFrame = 1600 * 4;
+    animation_roof_bg->_startFrameIndex = 0;
+    animation_roof_bg->_frameForOnePicture = 800 * 4;
+    roof_bg->setAttribute("sprite roof bg");
+    roof_bg->addComponent(sprite_roof_bg);
+    roof_bg->addComponent(animation_roof_bg);
 
     std::shared_ptr<IEntity> bg1 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg1 = std::make_shared<Drawable>();
@@ -73,8 +113,6 @@ void LobbyScene::initEntities()
     bg1->addComponent(sprite_bg1);
     bg1->addComponent(animation_bg1);
 
-    addEntity(bg1);
-
     std::shared_ptr<IEntity> bg2 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg2 = std::make_shared<Drawable>();
     std::shared_ptr<Animatable> animation_bg2 = std::make_shared<Animatable>();
@@ -95,8 +133,6 @@ void LobbyScene::initEntities()
     bg2->setAttribute("sprite bg2");
     bg2->addComponent(sprite_bg2);
     bg2->addComponent(animation_bg2);
-
-    addEntity(bg2);
 
     std::shared_ptr<IEntity> bg3 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg3 = std::make_shared<Drawable>();
@@ -119,8 +155,6 @@ void LobbyScene::initEntities()
     bg3->addComponent(sprite_bg3);
     bg3->addComponent(animation_bg3);
 
-    addEntity(bg3);
-
     std::shared_ptr<IEntity> bg4 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg4 = std::make_shared<Drawable>();
     std::shared_ptr<Animatable> animation_bg4 = std::make_shared<Animatable>();
@@ -142,7 +176,13 @@ void LobbyScene::initEntities()
     bg4->addComponent(sprite_bg4);
     bg4->addComponent(animation_bg4);
 
+    addEntity(bg1);
+    addEntity(bg2);
+    addEntity(bg3);
     addEntity(bg4);
+    addEntity(floor_bg);
+    addEntity(roof_bg);
+    addEntity(enemy1);
 
     // std::shared_ptr<Drawable> sprite_bg2 = std::make_shared<Drawable>();
     // std::shared_ptr<Timer> timer_bg2 = std::make_shared<Timer>();
