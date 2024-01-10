@@ -98,7 +98,28 @@ Client</h2>
 <p>On this page, you can enter the IP address of the server and the port you want to connect to. Once the connection is established, you will see it on the page like this</p>
 <p><img src="https://github.com/Nathandelenclos/Rtype/blob/master/docs/assets/connection_server_done.png" alt="ScreenGame" class="inline"/></p>
 <p>Now you can click on "esc" on your keyboard to go back to the main menu and click on "Access Game" to join the server and you will come to this page and enjoy the game.</p>
-<p><img src="https://github.com/Nathandelenclos/Rtype/blob/master/docs/assets/game.png" alt="ScreenGame" class="inline"/> </p>
+<p><img src="https://github.com/Nathandelenclos/Rtype/blob/master/docs/assets/game.png" alt="ScreenGame" class="inline"/></p>
+<h1><a class="anchor" id="autotoc_md51"></a>
+Architecture</h1>
+<p>Now, let’s get to the heart of the matter with the architecture of our project, Our project is divided into 3 main parts, the server, the client and the ECS (Entity Component System) engine.</p>
+<p>to illustrate our architecture, we made a schema:</p>
+<p><img src="https://github.com/Nathandelenclos/Rtype/blob/master/docs/assets/Architecture.png" alt="ScreenGame" class="inline"/></p>
+<p>We can see on this diagram the 3 main parts of our project as well as how they communicate with each other, where the C represents the customer, the S the server and GE the game engine</p>
+<p><img src="https://github.com/Nathandelenclos/Rtype/blob/master/docs/assets/Server_Client_UDP.png" alt="ScreenGame" class="inline"/></p>
+<p>On our Project, the server and the client are two separate programs, they communicate with each other using the UDP protocol, the server is responsible for managing the game rooms and the client is responsible for displaying the game and sending the player's actions to the server.</p>
+<h1><a class="anchor" id="autotoc_md52"></a>
+ECS Engine</h1>
+<p>Entity Component System (ECS) is a software architectural pattern mostly used in video game development for the representation of game world objects. An ECS comprises entities composed from components of data, with systems which operate on entities' components.</p>
+<p>ECS follows the principle of composition over inheritance, meaning that every entity is defined not by a type hierarchy, but by the components that are associated with it. Systems act globally over all entities which have the required components.</p>
+<h1><a class="anchor" id="autotoc_md53"></a>
+Network UDP Protocol</h1>
+<p>The User Datagram Protocol (UDP) is one of the core members of the Internet protocol suite. The protocol was designed by David P. Reed in 1980 and formally defined in RFC 768.</p>
+<p>The role of this protocol is to allow the transmission of data (as datagrams) in a very simple way between two entities, each being defined by an IP address and a port number. No prior communication is required to establish the connection</p>
+<p>Then the UDP protocol is used to communicate between the server and the client, the server sends the client the information it needs to display the game and the client sends the server the actions of the player.</p>
+<p>If you want to know more about the UDP protocol, you can read it here:</p>
+<ul>
+<li><a href="docs/rfc69420.txt">DOCUMENTATION RFC PROTOCOL R-TYPE 69007</a> </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
