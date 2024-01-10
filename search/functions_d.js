@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['textcomponent_588',['TextComponent',['../classTextComponent.html#a2a5c7c8ab0a69ec2fac60fe651169ece',1,'TextComponent']]]
+  ['textcomponent_626',['TextComponent',['../classTextComponent.html#a2a5c7c8ab0a69ec2fac60fe651169ece',1,'TextComponent']]],
+  ['timemanagement_627',['TimeManagement',['../classTimeManagement.html#a50fdf034335c50a31c485ad420ef44d1',1,'TimeManagement']]],
+  ['timer_628',['Timer',['../classTimer.html#a5f16e8da27d2a5a5242dead46de05d97',1,'Timer']]]
 ];
