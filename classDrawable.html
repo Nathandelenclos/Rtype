@@ -108,6 +108,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:adf9bf187f66fe672877bc9b2721e03c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42d13e97b29b5c3bb5d2e23f80eb62f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawable.html#a42d13e97b29b5c3bb5d2e23f80eb62f3">setSize</a> (std::tuple&lt; float, float &gt; size)</td></tr>
 <tr class="separator:a42d13e97b29b5c3bb5d2e23f80eb62f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6976547bc1724ea5382b2c992c7f2de3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawable.html#a6976547bc1724ea5382b2c992c7f2de3">getScale</a> () const</td></tr>
+<tr class="separator:a6976547bc1724ea5382b2c992c7f2de3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fd846b5620b56f5cdfce5f06e070f81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawable.html#a2fd846b5620b56f5cdfce5f06e070f81">setScale</a> (float scale)</td></tr>
+<tr class="separator:a2fd846b5620b56f5cdfce5f06e070f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51804a3ab5cd166b2b4bcdac34d7b2e0"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; int, int, int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawable.html#a51804a3ab5cd166b2b4bcdac34d7b2e0">getRect</a> () const</td></tr>
 <tr class="separator:a51804a3ab5cd166b2b4bcdac34d7b2e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7298142d4efc1dc877a0f4296f1a50bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawable.html#a7298142d4efc1dc877a0f4296f1a50bc">setRect</a> (std::tuple&lt; int, int, int, int &gt; rect)</td></tr>
@@ -135,6 +139,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:aebb0e359f77f127e24817cfb1eaf2cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f624b97434f7d8c664e0d8a10cc72fe"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; float, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawable.html#a9f624b97434f7d8c664e0d8a10cc72fe">_size</a></td></tr>
 <tr class="separator:a9f624b97434f7d8c664e0d8a10cc72fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a3c8908a49b1736ee0a799af7c8f02e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawable.html#a9a3c8908a49b1736ee0a799af7c8f02e">_scale</a></td></tr>
+<tr class="separator:a9a3c8908a49b1736ee0a799af7c8f02e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad070f755a59f2e4d57c412d0664b2098"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; int, int, int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawable.html#ad070f755a59f2e4d57c412d0664b2098">_rect</a></td></tr>
 <tr class="separator:ad070f755a59f2e4d57c412d0664b2098"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68d34d1ef9c6cdd03041278d07102ac1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawable.html#a68d34d1ef9c6cdd03041278d07102ac1">hasChanged</a> = false</td></tr>
@@ -164,7 +170,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00013">13</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html#l00015">IComponentRType::_attribute</a>, <a class="el" href="Drawable_8hpp_source.html#l00038">_textureId</a>, <a class="el" href="Drawable_8cpp_source.html#l00041">setPosition()</a>, <a class="el" href="Drawable_8cpp_source.html#l00063">setRect()</a>, and <a class="el" href="Drawable_8cpp_source.html#l00052">setSize()</a>.</p>
+<p class="reference">References <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html#l00015">IComponentRType::_attribute</a>, <a class="el" href="Drawable_8hpp_source.html#l00041">_textureId</a>, <a class="el" href="Drawable_8cpp_source.html#l00041">setPosition()</a>, <a class="el" href="Drawable_8cpp_source.html#l00073">setRect()</a>, and <a class="el" href="Drawable_8cpp_source.html#l00057">setSize()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -226,9 +232,9 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00096">96</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00106">106</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Drawable_8hpp_source.html#l00043">hasChanged</a>.</p>
+<p class="reference">References <a class="el" href="Drawable_8hpp_source.html#l00047">hasChanged</a>.</p>
 
 </div>
 </div>
@@ -247,9 +253,9 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00069">69</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00079">79</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html#l00015">IComponentRType::_attribute</a>, <a class="el" href="Drawable_8hpp_source.html#l00038">_textureId</a>, <a class="el" href="USocket_8hpp_source.html#l00088">drawable::attribute</a>, <a class="el" href="USocket_8hpp_source.html#l00089">drawable::attribute2</a>, and <a class="el" href="USocket_8hpp_source.html#l00078">drawable::id</a>.</p>
+<p class="reference">References <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html#l00015">IComponentRType::_attribute</a>, <a class="el" href="Drawable_8hpp_source.html#l00041">_textureId</a>, <a class="el" href="USocket_8hpp_source.html#l00088">drawable::attribute</a>, <a class="el" href="USocket_8hpp_source.html#l00089">drawable::attribute2</a>, and <a class="el" href="USocket_8hpp_source.html#l00078">drawable::id</a>.</p>
 
 </div>
 </div>
@@ -287,7 +293,28 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00058">58</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00068">68</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6976547bc1724ea5382b2c992c7f2de3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6976547bc1724ea5382b2c992c7f2de3">&#9670;&nbsp;</a></span>getScale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Drawable::getScale </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00052">52</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="Drawable_8hpp_source.html#l00045">_scale</a>.</p>
 
 </div>
 </div>
@@ -338,7 +365,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00028">28</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html#l00015">IComponentRType::_attribute</a>, and <a class="el" href="Drawable_8hpp_source.html#l00043">hasChanged</a>.</p>
+<p class="reference">References <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html#l00015">IComponentRType::_attribute</a>, and <a class="el" href="Drawable_8hpp_source.html#l00047">hasChanged</a>.</p>
 
 </div>
 </div>
@@ -358,9 +385,9 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00092">92</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00102">102</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Drawable_8hpp_source.html#l00043">hasChanged</a>.</p>
+<p class="reference">References <a class="el" href="Drawable_8hpp_source.html#l00047">hasChanged</a>.</p>
 
 </div>
 </div>
@@ -382,7 +409,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00041">41</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Drawable_8hpp_source.html#l00043">hasChanged</a>.</p>
+<p class="reference">References <a class="el" href="Drawable_8hpp_source.html#l00047">hasChanged</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="Drawable_8cpp_source.html#l00013">Drawable()</a>.</p>
 <div class="dynheader">
@@ -413,9 +440,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00063">63</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00073">73</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Drawable_8hpp_source.html#l00043">hasChanged</a>.</p>
+<p class="reference">References <a class="el" href="Drawable_8hpp_source.html#l00047">hasChanged</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="Drawable_8cpp_source.html#l00013">Drawable()</a>.</p>
 <div class="dynheader">
@@ -427,6 +454,28 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="classDrawable.html#aac88608db6081da479c772c96636acb1" title=" " alt="" coords="5,5,160,32"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="a2fd846b5620b56f5cdfce5f06e070f81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fd846b5620b56f5cdfce5f06e070f81">&#9670;&nbsp;</a></span>setScale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Drawable::setScale </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>scale</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00063">63</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="Drawable_8hpp_source.html#l00045">_scale</a>.</p>
 
 </div>
 </div>
@@ -446,9 +495,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00052">52</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Drawable_8cpp_source.html#l00057">57</a> of file <a class="el" href="Drawable_8cpp_source.html">Drawable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Drawable_8hpp_source.html#l00043">hasChanged</a>.</p>
+<p class="reference">References <a class="el" href="Drawable_8hpp_source.html#l00047">hasChanged</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="Drawable_8cpp_source.html#l00013">Drawable()</a>.</p>
 <div class="dynheader">
@@ -512,7 +561,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00040">40</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00043">43</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
 
 </div>
 </div>
@@ -536,7 +585,33 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00042">42</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00046">46</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a9a3c8908a49b1736ee0a799af7c8f02e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a3c8908a49b1736ee0a799af7c8f02e">&#9670;&nbsp;</a></span>_scale</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Drawable::_scale</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00045">45</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Drawable_8cpp_source.html#l00052">getScale()</a>, and <a class="el" href="Drawable_8cpp_source.html#l00063">setScale()</a>.</p>
 
 </div>
 </div>
@@ -560,7 +635,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00041">41</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00044">44</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
 
 </div>
 </div>
@@ -576,9 +651,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00038">38</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00041">41</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="Drawable_8cpp_source.html#l00013">Drawable()</a>, and <a class="el" href="Drawable_8cpp_source.html#l00069">getPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="Drawable_8cpp_source.html#l00013">Drawable()</a>, and <a class="el" href="Drawable_8cpp_source.html#l00079">getPacket()</a>.</p>
 
 </div>
 </div>
@@ -602,9 +677,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00043">43</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Drawable_8hpp_source.html#l00047">47</a> of file <a class="el" href="Drawable_8hpp_source.html">Drawable.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="Drawable_8cpp_source.html#l00096">getHasChanged()</a>, <a class="el" href="Drawable_8cpp_source.html#l00028">setAttribute()</a>, <a class="el" href="Drawable_8cpp_source.html#l00092">setHasChanged()</a>, <a class="el" href="Drawable_8cpp_source.html#l00041">setPosition()</a>, <a class="el" href="Drawable_8cpp_source.html#l00063">setRect()</a>, and <a class="el" href="Drawable_8cpp_source.html#l00052">setSize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="Drawable_8cpp_source.html#l00106">getHasChanged()</a>, <a class="el" href="Drawable_8cpp_source.html#l00028">setAttribute()</a>, <a class="el" href="Drawable_8cpp_source.html#l00102">setHasChanged()</a>, <a class="el" href="Drawable_8cpp_source.html#l00041">setPosition()</a>, <a class="el" href="Drawable_8cpp_source.html#l00073">setRect()</a>, and <a class="el" href="Drawable_8cpp_source.html#l00057">setSize()</a>.</p>
 
 </div>
 </div>
