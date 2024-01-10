@@ -57,6 +57,7 @@
     - role-strategy
     - ws-cleanup
     - permissive-script-security
+    - Office-365-Connector
   register: jenkins_plugins
   until: jenkins_plugins is succeeded
   retries: 5
