@@ -18,7 +18,7 @@ void Animation::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentR
             auto spriteAnim = animatable->getTarget();
             int numberFrameToAnim = animatable->_numberFrameToAnim - 1;
             std::tuple<float, float> size = spriteAnim->getSize();
-            if (animatable->_frameIndex == numberFrameToAnim + animatable->_startFrameIndex) {
+            if (animatable->_frameIndex >= numberFrameToAnim + animatable->_startFrameIndex) {
                 animatable->_frameIndex = animatable->_startFrameIndex;
             } else {
                 animatable->_frameIndex++;

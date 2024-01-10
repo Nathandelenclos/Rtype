@@ -22,8 +22,8 @@ class LobbyScene : public AScene {
 
         void checkBulletDeletion();
 
-        void initEntities();
-        void initServices();
+        void initEntities() override;
+        void initServices() override;
 
     private:
         timeval _chrono;

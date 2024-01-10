@@ -46,8 +46,7 @@ void GameScene::init_scene()
 void GameScene::receiveData() {
     std::tuple<std::unique_ptr<Packet>, int> packet = _socket->receive();
     std::unique_ptr<Packet> p = std::move(std::get<0>(packet));
-
-    if (p != nullptr) {
+    while (p != nullptr) {
         if (p->code == ELEMENT) {
             auto *drawable = static_cast<DrawablePacket *>(p->data);
             for (auto &component: _components) {
@@ -177,6 +176,8 @@ void GameScene::receiveData() {
             }
         }
         free(p->data);
+        packet = _socket->receive();
+        p = std::move(std::get<0>(packet));
     }
 }
 

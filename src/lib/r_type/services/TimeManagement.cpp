@@ -23,7 +23,7 @@ void TimeManagement::update(std::shared_ptr<Event> event, std::shared_ptr<ICompo
 
             auto position = drawable->getPosition();
             if (std::string(drawable->getAttribute()).find("bullet") != std::string::npos)
-                drawable->setPosition(std::make_tuple(std::get<0>(position) + 50, std::get<1>(position)));
+                drawable->setPosition(std::make_tuple(std::get<0>(position) + 55, std::get<1>(position)));
             else
                 drawable->setPosition(std::make_tuple(std::get<0>(position) + 5, std::get<1>(position)));
             time->_startTime = time->_now;
