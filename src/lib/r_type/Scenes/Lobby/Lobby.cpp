@@ -40,7 +40,7 @@ void LobbyScene::initEntities()
     sprite->_textureId = ENEMY;
     enemy1->setAttribute("sprite enemy");
     enemy1->addComponent(sprite);
-    enemy1->addComponent(timer);
+    // enemy1->addComponent(timer);
     enemy1->addComponent(animation);
 
     addEntity(enemy1);
@@ -68,12 +68,12 @@ void LobbyScene::initEntities()
 void LobbyScene::initServices()
 {
     std::shared_ptr<Graphic> graphic = std::make_shared<Graphic>(_serverSocket);
-    std::shared_ptr<TimeManagement> timeManagement = std::make_shared<TimeManagement>(_serverSocket);
+    // std::shared_ptr<TimeManagement> timeManagement = std::make_shared<TimeManagement>(_serverSocket);
     std::shared_ptr<Animation> animation = std::make_shared<Animation>(_serverSocket);
 
     addService(graphic);
     addService(animation);
-    addService(timeManagement);
+    // addService(timeManagement);
 }
 
 void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet, int id)
