@@ -23,34 +23,37 @@ void LobbyScene::initScene()
 
 void LobbyScene::initEntities()
 {
-    std::shared_ptr<IEntity> enemy1 = std::make_shared<IEntity>();
-    std::shared_ptr<Timer> timer = std::make_shared<Timer>();
-    std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
-    std::shared_ptr<Animatable> animation = std::make_shared<Animatable>();
-    gettimeofday(&timer->_startTime, nullptr);
-    timer->_targetTime.tv_sec = 0;
-    timer->_targetTime.tv_usec = 100000;
-    timer->setTarget(sprite);
-    timer->setActive(true);
-    timer->setDirection(-1);
-    animation->setTarget(sprite);
-    animation->setTime({0, 200000});
-    animation->_frameIndex = 0;
-    animation->_numberFrameToAnim = 8;
-    animation->_numberFrame = 8;
-    animation->_startFrameIndex = 0;
-    animation->_frameForOnePicture = 1;
-    gettimeofday(&animation->_chrono, nullptr);
-    sprite->setRect({0, 0, 33, 36});
-    sprite->setSize({263 * 2, 36 * 2});
-    sprite->setScale(2);
-    sprite->setPosition({1000, 50});
-    sprite->setAttribute("sprite enemy");
-    sprite->_textureId = ENEMY;
-    enemy1->setAttribute("sprite enemy");
-    enemy1->addComponent(sprite);
-    enemy1->addComponent(timer);
-    enemy1->addComponent(animation);
+    // std::shared_ptr<IEntity> enemy1 = std::make_shared<IEntity>();
+    // std::shared_ptr<Timer> timer = std::make_shared<Timer>();
+    // std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
+    // std::shared_ptr<Animatable> animation = std::make_shared<Animatable>();
+    // gettimeofday(&timer->_startTime, nullptr);
+    // timer->_targetTime.tv_sec = 0;
+    // timer->_targetTime.tv_usec = 100000;
+    // timer->setTarget(sprite);
+    // timer->setActive(true);
+    // timer->setDirection(-1);
+    // animation->setTarget(sprite);
+    // animation->setTime({0, 200000});
+    // animation->_frameIndex = 0;
+    // animation->_numberFrameToAnim = 8;
+    // animation->_numberFrame = 8;
+    // animation->_startFrameIndex = 0;
+    // animation->_frameForOnePicture = 1;
+    // gettimeofday(&animation->_chrono, nullptr);
+    // sprite->setRect({0, 0, 33, 36});
+    // sprite->setSize({263 * 2, 36 * 2});
+    // sprite->setScale(2);
+    // sprite->setPosition({1000, 50});
+    // sprite->setAttribute("sprite enemy1");
+    // sprite->_textureId = ENEMY;
+    // enemy1->setAttribute("sprite enemy");
+    // enemy1->addComponent(sprite);
+    // enemy1->addComponent(timer);
+    // enemy1->addComponent(animation);
+
+    std::shared_ptr<IEntity> enemy1 = std::make_shared<Enemy>();
+
 
     std::shared_ptr<IEntity> enemy2 = std::make_shared<IEntity>();
     std::shared_ptr<Timer> timer2 = std::make_shared<Timer>();
@@ -74,7 +77,7 @@ void LobbyScene::initEntities()
     sprite2->setSize({263 * 2, 36 * 2});
     sprite2->setScale(2);
     sprite2->setPosition({1000, 150});
-    sprite2->setAttribute("sprite enemy");
+    sprite2->setAttribute("sprite enemy2");
     sprite2->_textureId = ENEMY;
     enemy2->setAttribute("sprite enemy");
     enemy2->addComponent(sprite2);
