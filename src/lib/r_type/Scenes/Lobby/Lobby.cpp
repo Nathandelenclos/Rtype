@@ -24,10 +24,10 @@ void LobbyScene::initEntities()
     timer->_targetTime.tv_sec = 1;
     timer->_targetTime.tv_usec = 0;
     timer->setTarget(sprite);
-    timer->setActive(true);
+    timer->setActive(false);
     std::shared_ptr<Animatable> animation = std::make_shared<Animatable>();
     animation->setTarget(sprite);
-    animation->setTime({0, 50000});
+    animation->setTime({1, 0});
     animation->_frameIndex = 0;
     animation->_numberFrameToAnim = 8;
     animation->_numberFrame = 8;
