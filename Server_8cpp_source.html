@@ -134,59 +134,62 @@ $(function() {
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        _serverSocket-&gt;init_fd_set();</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        _packetClientId = _serverSocket-&gt;receive();</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        _packet = std::move(std::get&lt;0&gt;(_packetClientId));</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::shared_ptr&lt;Event&gt; event = <span class="keywordtype">nullptr</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">if</span> (_packet) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="comment">//_serverSocket-&gt;clientDump();</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">if</span> (_packet-&gt;code == HEARTBEAT) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                gettimeofday(&amp;_currentTime, <span class="keywordtype">nullptr</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                _receveidTime = *<span class="keyword">static_cast</span>&lt;timeval *&gt;(_packet-&gt;data);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                _packetHeartBeat-&gt;code = HEARTBEAT;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                _packetHeartBeat-&gt;data_size = <span class="keyword">sizeof</span>(timeval);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                _packetHeartBeat-&gt;data = malloc(_packetHeartBeat-&gt;data_size);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                timersub(&amp;_currentTime, &amp;_receveidTime, &amp;_packetHeartBeatData);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="comment">//std::cout &lt;&lt; &quot;Ping: &quot; &lt;&lt; _packetHeartBeatData.tv_sec * 1000 + _packetHeartBeatData.tv_usec / 1000 &lt;&lt; &quot;ms&quot; &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                memcpy(_packetHeartBeat-&gt;data, &amp;_currentTime, _packetHeartBeat-&gt;data_size);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                _serverSocket-&gt;send(_packetHeartBeat.get(), _serverSocket-&gt;getClientAddress(std::get&lt;1&gt;(_packetClientId)));</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                free(_packetHeartBeat-&gt;data);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">if</span> (_packet-&gt;code == MESSAGE) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">if</span> (std::string(<span class="keyword">static_cast</span>&lt;<span class="keywordtype">char</span> *&gt;(_packet-&gt;data)) == <span class="stringliteral">&quot;connection&quot;</span>) {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    <span class="comment">//std::string message = &quot;Message: &quot; + std::string(static_cast&lt;char *&gt;(_packet-&gt;data));</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    <span class="comment">//std::cout &lt;&lt; &quot;Message: &quot; &lt;&lt; static_cast&lt;char *&gt;(_packet-&gt;data) &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    <span class="keyword">auto</span> *packetConnectionAccepted = <span class="keyword">new</span> Packet();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    packetConnectionAccepted<a class="code" href="structpacket.html#aff3e706dcd9a6715f174d61b6923ff1c">-&gt;</a><a class="code" href="structpacket.html#aff3e706dcd9a6715f174d61b6923ff1c">code</a> = <a class="code" href="USocket_8hpp.html#afb9ed1b8a27eb20854efe6e23e297683ab3e6d7e18839259526a01001f558200f">MESSAGE</a>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    packetConnectionAccepted<a class="code" href="structpacket.html#a5f1142d25ace74ffc4ddd1966e94d7ef">-&gt;</a><a class="code" href="structpacket.html#a5f1142d25ace74ffc4ddd1966e94d7ef">data_size</a> = 19;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    packetConnectionAccepted<a class="code" href="structpacket.html#ad3115ffc58cc55bae08635ed965c4768">-&gt;</a><a class="code" href="structpacket.html#ad3115ffc58cc55bae08635ed965c4768">data</a> = malloc(packetConnectionAccepted<a class="code" href="structpacket.html#a5f1142d25ace74ffc4ddd1966e94d7ef">-&gt;</a><a class="code" href="structpacket.html#a5f1142d25ace74ffc4ddd1966e94d7ef">data_size</a>);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    memcpy(packetConnectionAccepted<a class="code" href="structpacket.html#ad3115ffc58cc55bae08635ed965c4768">-&gt;</a><a class="code" href="structpacket.html#ad3115ffc58cc55bae08635ed965c4768">data</a>, <span class="stringliteral">&quot;connection accepted&quot;</span>, packetConnectionAccepted<a class="code" href="structpacket.html#a5f1142d25ace74ffc4ddd1966e94d7ef">-&gt;</a><a class="code" href="structpacket.html#a5f1142d25ace74ffc4ddd1966e94d7ef">data_size</a>);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    _serverSocket-&gt;send(packetConnectionAccepted, _serverSocket-&gt;getClientAddress(std::get&lt;1&gt;(_packetClientId)));</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    free(packetConnectionAccepted<a class="code" href="structpacket.html#ad3115ffc58cc55bae08635ed965c4768">-&gt;</a><a class="code" href="structpacket.html#ad3115ffc58cc55bae08635ed965c4768">data</a>);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                    <span class="keyword">delete</span> packetConnectionAccepted;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">if</span> (_packet-&gt;code == EVENT) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                Event event1{};</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                memset(&amp;event1, 0, <span class="keyword">sizeof</span>(Event));</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                memcpy(&amp;event1, _packet-&gt;data, <span class="keyword">sizeof</span>(Event));</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                event = std::make_shared&lt;Event&gt;(event1);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        _game-&gt;update(event, _packet, std::get&lt;1&gt;(_packetClientId));</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">if</span> (_packet) {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            free(_packet-&gt;data);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            _packet.reset();</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            _packetClientId = std::tuple&lt;std::unique_ptr&lt;Packet&gt;, <span class="keywordtype">int</span>&gt;(<span class="keywordtype">nullptr</span>, 0);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="comment">//test (ça fonctionne ici mais pas ailleurs (reçois UNDEFINED packet sur le client depuis un send à un autre endroit qu&#39;ici))</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment">/*packet.code = LOGIN;</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">        packet.data_size = 4;</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">        packet.data = malloc(packet.data_size);</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">        memcpy(packet.data, &quot;test&quot;, packet.data_size);</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">        if (!_serverSocket-&gt;getClients().empty())</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">            _serverSocket-&gt;send(&amp;packet, _serverSocket-&gt;getClientAddress(1));</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">        */</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::shared_ptr&lt;Event&gt; event = std::make_shared&lt;Event&gt;();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        event-&gt;id = std::get&lt;1&gt;(_packetClientId);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        event-&gt;eventType = 0;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        event-&gt;key = sf::Keyboard::Key::Unknown;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">if</span> (_packet) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">if</span> (_packet-&gt;code == HEARTBEAT) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                gettimeofday(&amp;_currentTime, <span class="keywordtype">nullptr</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                _receveidTime = *<span class="keyword">static_cast</span>&lt;timeval *&gt;(_packet-&gt;data);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                _packetHeartBeat-&gt;code = HEARTBEAT;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                _packetHeartBeat-&gt;data_size = <span class="keyword">sizeof</span>(timeval);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                _packetHeartBeat-&gt;data = malloc(_packetHeartBeat-&gt;data_size);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                timersub(&amp;_currentTime, &amp;_receveidTime, &amp;_packetHeartBeatData);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="comment">//std::cout &lt;&lt; &quot;Ping: &quot; &lt;&lt; _packetHeartBeatData.tv_sec * 1000 + _packetHeartBeatData.tv_usec / 1000 &lt;&lt; &quot;ms&quot; &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                memcpy(_packetHeartBeat-&gt;data, &amp;_currentTime, _packetHeartBeat-&gt;data_size);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                _serverSocket-&gt;send(_packetHeartBeat.get(), _serverSocket-&gt;getClientAddress(std::get&lt;1&gt;(_packetClientId)));</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                free(_packetHeartBeat-&gt;data);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">if</span> (_packet-&gt;code == MESSAGE) {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="keywordflow">if</span> (std::string(<span class="keyword">static_cast</span>&lt;<span class="keywordtype">char</span> *&gt;(_packet-&gt;data)) == <span class="stringliteral">&quot;connection&quot;</span>) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    <span class="comment">//std::string message = &quot;Message: &quot; + std::string(static_cast&lt;char *&gt;(_packet-&gt;data));</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    <span class="comment">//std::cout &lt;&lt; &quot;Message: &quot; &lt;&lt; static_cast&lt;char *&gt;(_packet-&gt;data) &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    <span class="keyword">auto</span> *packetConnectionAccepted = <span class="keyword">new</span> Packet();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    packetConnectionAccepted<a class="code" href="structpacket.html#aff3e706dcd9a6715f174d61b6923ff1c">-&gt;</a><a class="code" href="structpacket.html#aff3e706dcd9a6715f174d61b6923ff1c">code</a> = <a class="code" href="USocket_8hpp.html#afb9ed1b8a27eb20854efe6e23e297683ab3e6d7e18839259526a01001f558200f">MESSAGE</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    packetConnectionAccepted<a class="code" href="structpacket.html#a5f1142d25ace74ffc4ddd1966e94d7ef">-&gt;</a><a class="code" href="structpacket.html#a5f1142d25ace74ffc4ddd1966e94d7ef">data_size</a> = 19;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    packetConnectionAccepted<a class="code" href="structpacket.html#ad3115ffc58cc55bae08635ed965c4768">-&gt;</a><a class="code" href="structpacket.html#ad3115ffc58cc55bae08635ed965c4768">data</a> = malloc(packetConnectionAccepted<a class="code" href="structpacket.html#a5f1142d25ace74ffc4ddd1966e94d7ef">-&gt;</a><a class="code" href="structpacket.html#a5f1142d25ace74ffc4ddd1966e94d7ef">data_size</a>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    memcpy(packetConnectionAccepted<a class="code" href="structpacket.html#ad3115ffc58cc55bae08635ed965c4768">-&gt;</a><a class="code" href="structpacket.html#ad3115ffc58cc55bae08635ed965c4768">data</a>, <span class="stringliteral">&quot;connection accepted&quot;</span>, packetConnectionAccepted<a class="code" href="structpacket.html#a5f1142d25ace74ffc4ddd1966e94d7ef">-&gt;</a><a class="code" href="structpacket.html#a5f1142d25ace74ffc4ddd1966e94d7ef">data_size</a>);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                    _serverSocket-&gt;send(packetConnectionAccepted, _serverSocket-&gt;getClientAddress(std::get&lt;1&gt;(_packetClientId)));</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    free(packetConnectionAccepted<a class="code" href="structpacket.html#ad3115ffc58cc55bae08635ed965c4768">-&gt;</a><a class="code" href="structpacket.html#ad3115ffc58cc55bae08635ed965c4768">data</a>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    <span class="keyword">delete</span> packetConnectionAccepted;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">if</span> (_packet-&gt;code == EVENT) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                Event event1{};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                memset(&amp;event1, 0, <span class="keyword">sizeof</span>(Event));</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                memcpy(&amp;event1, _packet-&gt;data, <span class="keyword">sizeof</span>(Event));</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                event = std::make_shared&lt;Event&gt;(event1);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                event-&gt;id = std::get&lt;1&gt;(_packetClientId);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        _game-&gt;update(event, _packet);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">if</span> (_packet) {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            free(_packet-&gt;data);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            _packet.reset();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            _packetClientId = std::tuple&lt;std::unique_ptr&lt;Packet&gt;, <span class="keywordtype">int</span>&gt;(<span class="keywordtype">nullptr</span>, 0);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="comment">//test (ça fonctionne ici mais pas ailleurs (reçois UNDEFINED packet sur le client depuis un send à un autre endroit qu&#39;ici))</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="comment">/*packet.code = LOGIN;</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">        packet.data_size = 4;</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">        packet.data = malloc(packet.data_size);</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">        memcpy(packet.data, &quot;test&quot;, packet.data_size);</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">        if (!_serverSocket-&gt;getClients().empty())</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">            _serverSocket-&gt;send(&amp;packet, _serverSocket-&gt;getClientAddress(1));</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">        */</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
