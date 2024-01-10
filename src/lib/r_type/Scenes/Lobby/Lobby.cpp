@@ -30,7 +30,7 @@ void LobbyScene::initEntities()
     animation->setTime({1, 0});
     animation->_frameIndex = 0;
     animation->_numberFrameToAnim = 8;
-    animation->_numberFrame = 8;
+    animation->_numberFrame = 16;
     gettimeofday(&animation->_chrono, nullptr);
     sprite->setRect({0, 0, 33, 36});
     sprite->setSize({533 * 5, 36 * 5});
