@@ -19,12 +19,12 @@ void LobbyScene::initEntities()
 {
     std::shared_ptr<IEntity> enemy1 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
-    std::shared_ptr<Timer> timer = std::make_shared<Timer>();
-    gettimeofday(&timer->_startTime, nullptr);
-    timer->_targetTime.tv_sec = 1;
-    timer->_targetTime.tv_usec = 0;
-    timer->setTarget(sprite);
-    timer->setActive(false);
+    // std::shared_ptr<Timer> timer = std::make_shared<Timer>();
+    // gettimeofday(&timer->_startTime, nullptr);
+    // timer->_targetTime.tv_sec = 1;
+    // timer->_targetTime.tv_usec = 0;
+    // timer->setTarget(sprite);
+    // timer->setActive(false);
     std::shared_ptr<Animatable> animation = std::make_shared<Animatable>();
     animation->setTarget(sprite);
     animation->setTime({1, 0});
