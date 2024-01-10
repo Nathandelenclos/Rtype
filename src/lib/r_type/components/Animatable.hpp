@@ -31,6 +31,7 @@ class Animatable : public IComponentRType {
         int _numberFrameToAnim;
         int _frameIndex;
         int _numberFrame;
+        int _startFrameIndex;
 
     protected:
         std::shared_ptr<Drawable> sprite;
