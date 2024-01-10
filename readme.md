@@ -77,3 +77,43 @@ Once the connection is established, you will see it on the page like this
 Now you can click on "esc" on your keyboard to go back to the main menu and click on "Access Game" to join the server and you will come to this page and enjoy the game.
 
 ![ScreenGame](https://github.com/Nathandelenclos/Rtype/blob/master/docs/assets/game.png)
+
+## Architecture
+
+Now, let’s get to the heart of the matter with the architecture of our project,
+Our project is divided into 3 main parts, the server, the client and the ECS (Entity Component System) engine.
+
+to illustrate our architecture, we made a schema:
+
+![ScreenGame](https://github.com/Nathandelenclos/Rtype/blob/master/docs/assets/Architecture.png)
+
+We can see on this diagram the 3 main parts of our project as well as how they communicate with each other, 
+where the C represents the customer, the S the server and GE the game engine
+
+![ScreenGame](https://github.com/Nathandelenclos/Rtype/blob/master/docs/assets/Server_Client_UDP.png)
+
+On our Project, the server and the client are two separate programs, they communicate with each other using the UDP protocol,
+the server is responsible for managing the game rooms and the client is responsible for displaying the game and sending the player's actions to the server.
+
+## ECS Engine
+
+Entity Component System (ECS) is a software architectural pattern mostly used in video game development for the representation of game world objects.
+An ECS comprises entities composed from components of data, with systems which operate on entities' components.
+
+ECS follows the principle of composition over inheritance, meaning that every entity is defined not by a type hierarchy, but by the components that are associated with it.
+Systems act globally over all entities which have the required components.
+
+## Network UDP Protocol
+
+The User Datagram Protocol (UDP) is one of the core members of the Internet protocol suite.
+The protocol was designed by David P. Reed in 1980 and formally defined in RFC 768.
+
+The role of this protocol is to allow the transmission of data (as datagrams) in a very simple way between two entities, each being defined by an IP address and a port number. 
+No prior communication is required to establish the connection
+
+Then the UDP protocol is used to communicate between the server and the client,
+the server sends the client the information it needs to display the game and the client sends the server the actions of the player.
+
+If you want to know more about the UDP protocol, you can read it here:
+
+- [DOCUMENTATION RFC PROTOCOL R-TYPE 69007](docs/rfc69420.txt)
