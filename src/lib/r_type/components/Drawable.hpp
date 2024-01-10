@@ -25,6 +25,9 @@ class Drawable : public IComponentRType {
         std::tuple<float, float> getSize() const;
         void setSize(std::tuple<float, float> size);
 
+        float getScale() const;
+        void setScale(float scale);
+
         std::tuple<int, int, int, int> getRect() const;
         void setRect(std::tuple<int, int, int, int> rect);
 
@@ -39,6 +42,7 @@ class Drawable : public IComponentRType {
 protected:
         std::tuple<float, float> _position;
         std::tuple<float, float> _size;
+        float _scale;
         std::tuple<int, int, int, int> _rect;
         bool hasChanged = false;
 };

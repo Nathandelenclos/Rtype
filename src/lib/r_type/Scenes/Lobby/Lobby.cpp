@@ -34,6 +34,7 @@ void LobbyScene::initEntities()
     gettimeofday(&animation->_chrono, nullptr);
     sprite->setRect({0, 0, 33, 36});
     sprite->setSize({533 * 5, 36 * 5});
+    sprite->setScale(5);
     sprite->setPosition({50, 50});
     sprite->setAttribute("sprite enemy");
     sprite->_textureId = ENEMY;

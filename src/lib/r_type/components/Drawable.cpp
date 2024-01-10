@@ -49,10 +49,20 @@ std::tuple<float, float> Drawable::getSize() const
     return _size;
 }
 
+float Drawable::getScale() const
+{
+    return _scale;
+}
+
 void Drawable::setSize(std::tuple<float, float> size)
 {
     _size = size;
     hasChanged = true;
+}
+
+void Drawable::setScale(float scale)
+{
+    _scale = scale;
 }
 
 std::tuple<int, int, int, int> Drawable::getRect() const
