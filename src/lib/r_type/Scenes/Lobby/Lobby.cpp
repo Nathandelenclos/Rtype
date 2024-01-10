@@ -52,8 +52,6 @@ void LobbyScene::initEntities()
     enemy1->addComponent(timer);
     enemy1->addComponent(animation);
 
-    addEntity(enemy1);
-
     std::shared_ptr<IEntity> enemy2 = std::make_shared<IEntity>();
     std::shared_ptr<Timer> timer2 = std::make_shared<Timer>();
     std::shared_ptr<Drawable> sprite2 = std::make_shared<Drawable>();
@@ -83,9 +81,6 @@ void LobbyScene::initEntities()
     enemy2->addComponent(timer2);
     enemy2->addComponent(animation2);
 
-    addEntity(enemy2);
-
-
     std::shared_ptr<IEntity> bg1 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg1 = std::make_shared<Drawable>();
     std::shared_ptr<Animatable> animation_bg1 = std::make_shared<Animatable>();
@@ -106,7 +101,6 @@ void LobbyScene::initEntities()
     bg1->setAttribute("sprite bg1");
     bg1->addComponent(sprite_bg1);
     bg1->addComponent(animation_bg1);
-
 
     std::shared_ptr<IEntity> bg2 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg2 = std::make_shared<Drawable>();
@@ -129,7 +123,6 @@ void LobbyScene::initEntities()
     bg2->addComponent(sprite_bg2);
     bg2->addComponent(animation_bg2);
 
-
     std::shared_ptr<IEntity> bg3 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg3 = std::make_shared<Drawable>();
     std::shared_ptr<Animatable> animation_bg3 = std::make_shared<Animatable>();
@@ -150,7 +143,6 @@ void LobbyScene::initEntities()
     bg3->setAttribute("sprite bg3");
     bg3->addComponent(sprite_bg3);
     bg3->addComponent(animation_bg3);
-
 
     std::shared_ptr<IEntity> bg4 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg4 = std::make_shared<Drawable>();
@@ -178,6 +170,7 @@ void LobbyScene::initEntities()
     addEntity(bg3);
     addEntity(bg4);
     addEntity(enemy1);
+    addEntity(enemy2);
 }
 
 void LobbyScene::initServices()
