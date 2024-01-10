@@ -202,7 +202,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
     if (event->key != sf::Keyboard::Key::Unknown)
         _lastEvent = event;
 
-    if (diff.tv_usec >= 1000) {
+    if (diff.tv_usec >= 5000) {
         for (auto &entity : _entities) {
             for (auto &component : entity->getComponents()) {
                 for (auto &service : _services) {
