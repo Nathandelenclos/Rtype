@@ -10,6 +10,7 @@
 #include <iostream>
 #include <tuple>
 #include <memory>
+#include <vector>
 #include "../networking/shared/USocket.hpp"
 #include "IComponent.hpp"
 
@@ -35,10 +36,14 @@ class Drawable : public IComponentRType {
         void setHasChanged(bool hasChanged);
         bool getHasChanged() const;
 
+        void addDrawableCollision(std::shared_ptr<Drawable> drawableCollision);
+        std::vector<std::shared_ptr<Drawable>> getDrawablesCollision() const;
+
     int _textureId;
 protected:
         std::tuple<float, float> _position;
         std::tuple<float, float> _size;
         std::tuple<int, int, int, int> _rect;
         bool hasChanged = false;
+        std::vector<std::shared_ptr<Drawable>> _drawablesCollision;
 };

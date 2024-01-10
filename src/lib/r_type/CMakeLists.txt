@@ -24,7 +24,9 @@ add_library(lib_r_type SHARED
         src/lib/r_type/services/IService.hpp
         src/lib/r_type/services/AService.cpp
         src/lib/r_type/services/AService.hpp
-        src/lib/r_type/entities/IEntity.hpp)
+        src/lib/r_type/entities/IEntity.hpp
+        src/lib/r_type/services/Collision.cpp
+        src/lib/r_type/services/Collision.hpp)
 
 if (UNIX OR APPLE)
     include(FetchContent)

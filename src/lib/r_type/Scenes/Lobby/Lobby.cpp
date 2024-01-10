@@ -3,6 +3,7 @@
 //
 
 #include "Lobby.hpp"
+#include "Collision.hpp"
 
 LobbyScene::LobbyScene(std::shared_ptr<ServerSocket> serverSocket) : AScene(std::move(serverSocket))
 {
@@ -52,8 +53,10 @@ void LobbyScene::initEntities()
 void LobbyScene::initServices()
 {
     std::shared_ptr<Graphic> graphic = std::make_shared<Graphic>(_serverSocket);
+    std::shared_ptr<Collision> collision = std::make_shared<Collision>(_serverSocket);
 
     addService(graphic);
+    addService(collision);
 }
 
 void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet, int id)
@@ -85,6 +88,15 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 drawable->setPosition({100 * id, 100 * id});
                 drawable->setHasChanged(true);
                 drawable->_textureId = PLAYER;
+                for (auto e: getEntities()) {
+                    for (const auto& component: entity->getComponents()) {
+                        std::string attribute = component->getAttribute();
+                        auto drawablePlayer = std::dynamic_pointer_cast<Drawable>(component);
+                        if (attribute.find("player") && drawablePlayer) {
+                            drawable->addDrawableCollision(drawablePlayer);
+                        }
+                    }
+                }
                 entity->addComponent(drawable);
                 entity->setAttribute("player " + std::to_string(id));
                 addEntity(entity);

@@ -96,3 +96,11 @@ void Drawable::setHasChanged(bool hasChanged) {
 bool Drawable::getHasChanged() const {
     return hasChanged;
 }
+
+void Drawable::addDrawableCollision(std::shared_ptr<Drawable> drawableCollision) {
+    _drawablesCollision.push_back(std::move(drawableCollision));
+}
+
+std::vector<std::shared_ptr<Drawable>> Drawable::getDrawablesCollision() const {
+    return _drawablesCollision;
+}
