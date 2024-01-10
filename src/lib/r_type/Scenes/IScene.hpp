@@ -10,6 +10,7 @@
 #include "../components/IComponent.hpp"
 #include "../services/IService.hpp"
 #include "../services/Graphic.hpp"
+#include "../services/TimeManagement.hpp"
 #include "../services/Animation.hpp"
 #include "../entities/IEntity.hpp"
 

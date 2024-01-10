@@ -6,6 +6,7 @@
 
 #include "../AScene.hpp"
 #include "../components/Drawable.hpp"
+#include "../components/Timer.hpp"
 #include "../components/Animatable.hpp"
 #include <SFML/Window/Keyboard.hpp>
 

@@ -28,7 +28,11 @@ add_library(lib_r_type SHARED
         src/lib/r_type/services/Animation.hpp
         src/lib/r_type/services/Animation.cpp
         src/lib/r_type/services/AService.hpp
-        src/lib/r_type/entities/IEntity.hpp)
+        src/lib/r_type/entities/IEntity.hpp
+        src/lib/r_type/components/Timer.cpp
+        src/lib/r_type/components/Timer.hpp
+        src/lib/r_type/services/TimeManagement.cpp
+        src/lib/r_type/services/TimeManagement.hpp)
 
 if (UNIX OR APPLE)
     include(FetchContent)
