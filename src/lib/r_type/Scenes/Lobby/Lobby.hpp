@@ -23,4 +23,5 @@ class LobbyScene : public AScene {
 
     private:
         timeval _chrono;
+        std::shared_ptr<Event> _lastEvent;
 };

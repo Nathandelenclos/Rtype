@@ -8,7 +8,6 @@
 void Collision::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component) {
     auto drawable = std::dynamic_pointer_cast<Drawable>(component);
     if (!drawable) return;
-
     for (auto &other: drawable->getDrawablesCollision()) {
         if (Collision::checkCollision(drawable, other)) {
             Collision::cancelMove(event, drawable);
@@ -17,32 +16,40 @@ void Collision::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentR
 }
 
 bool Collision::checkCollision(const std::shared_ptr<Drawable>& drawable, const std::shared_ptr<Drawable>& other) {
-    std::tuple<float, float> pos1 = drawable->getPosition();
-    std::tuple<float, float> pos2 = other->getPosition();
-    std::tuple<int, int, int, int> size1 = drawable->getRect();
-    std::tuple<int, int, int, int> size2 = other->getRect();
+    Position pos1 = drawable->getPosition();
+    Position pos2 = other->getPosition();
+    Size size1 = drawable->getSize();
+    Size size2 = other->getSize();
 
-    return std::get<0>(pos1) < std::get<0>(pos2) + std::get<2>(size2) &&
-           std::get<0>(pos1) + std::get<2>(size1) > std::get<0>(pos2) &&
-           std::get<1>(pos1) < std::get<1>(pos2) + std::get<3>(size2) &&
-           std::get<1>(pos1) + std::get<3>(size1) > std::get<1>(pos2);
+    return std::get<0>(pos1) < std::get<0>(pos2) + std::get<0>(size2) &&
+           std::get<0>(pos1) + std::get<0>(size1) > std::get<0>(pos2) &&
+           std::get<1>(pos1) < std::get<1>(pos2) + std::get<1>(size2) &&
+           std::get<1>(pos1) + std::get<1>(size1) > std::get<1>(pos2);
 }
 
 void Collision::cancelMove(const std::shared_ptr<Event>& event, const std::shared_ptr<Drawable>& drawable) {
-    if (event->key == sf::Keyboard::Key::Left) {
-        std::tuple<float, float> pos = drawable->getPosition();
-        drawable->setPosition(std::make_tuple(std::get<0>(pos) + 5, std::get<1>(pos)));
-    }
-    if (event->key == sf::Keyboard::Key::Right) {
-        std::tuple<float, float> pos = drawable->getPosition();
-        drawable->setPosition(std::make_tuple(std::get<0>(pos) - 5, std::get<1>(pos)));
-    }
-    if (event->key == sf::Keyboard::Key::Up) {
-        std::tuple<float, float> pos = drawable->getPosition();
-        drawable->setPosition(std::make_tuple(std::get<0>(pos), std::get<1>(pos) + 5));
-    }
-    if (event->key == sf::Keyboard::Key::Down) {
-        std::tuple<float, float> pos = drawable->getPosition();
-        drawable->setPosition(std::make_tuple(std::get<0>(pos), std::get<1>(pos) - 5));
+    std::cout << "collision" << std::endl;
+    std::tuple<float, float> pos = drawable->getPosition();
+    std::cout << "pos: " << std::get<0>(pos) << " " << std::get<1>(pos) << std::endl;
+    if (event == nullptr) return;
+    switch (event->key) {
+        case sf::Keyboard::Key::Left:
+            std::cout << "left" << std::endl;
+            drawable->setPosition(std::make_tuple(std::get<0>(pos) + 5, std::get<1>(pos)));
+            break;
+        case sf::Keyboard::Key::Right:
+            std::cout << "Right" << std::endl;
+            drawable->setPosition(std::make_tuple(std::get<0>(pos) - 5, std::get<1>(pos)));
+            break;
+        case sf::Keyboard::Key::Up:
+            std::cout << "Up" << std::endl;
+            drawable->setPosition(std::make_tuple(std::get<0>(pos), std::get<1>(pos) - 5));
+            break;
+        case sf::Keyboard::Key::Down:
+            std::cout << "Down" << std::endl;
+            drawable->setPosition(std::make_tuple(std::get<0>(pos), std::get<1>(pos) + 5));
+            break;
+        default:
+            break;
     }
 }

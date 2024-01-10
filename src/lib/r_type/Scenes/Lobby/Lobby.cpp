@@ -7,6 +7,7 @@
 
 LobbyScene::LobbyScene(std::shared_ptr<ServerSocket> serverSocket) : AScene(std::move(serverSocket))
 {
+    gettimeofday(&_chrono, nullptr);
     initScene();
 }
 
@@ -66,14 +67,18 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
     gettimeofday(&now, nullptr);
     timersub(&now, &_chrono, &diff);
 
+    if (event != nullptr)
+        _lastEvent = event;
+
     if (diff.tv_usec >= 25000) {
         for (auto &entity : _entities) {
             for (auto &component : entity->getComponents()) {
                 for (auto &service : _services) {
-                    service->update(event, component);
+                    service->update(_lastEvent, component);
                 }
             }
         }
+        _lastEvent = nullptr;
         _chrono = now;
     }
 
@@ -88,12 +93,14 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 drawable->setPosition({100 * id, 100 * id});
                 drawable->setHasChanged(true);
                 drawable->_textureId = PLAYER;
-                for (auto e: getEntities()) {
-                    for (const auto& component: entity->getComponents()) {
+                for (const auto& e: getEntities()) {
+                    for (const auto& component: e->getComponents()) {
                         std::string attribute = component->getAttribute();
                         auto drawablePlayer = std::dynamic_pointer_cast<Drawable>(component);
-                        if (attribute.find("player") && drawablePlayer) {
+                        bool isPlayer = attribute.substr(0, 6) == "player";
+                        if (isPlayer && drawablePlayer) {
                             drawable->addDrawableCollision(drawablePlayer);
+                            drawablePlayer->addDrawableCollision(drawable);
                         }
                     }
                 }
