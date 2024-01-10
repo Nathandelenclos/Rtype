@@ -14,6 +14,7 @@ Timer::Timer() {
     _diff = {0, 0};
     _attribute = new char[64];
     _active = true;
+    _direction = 1;
     std::memset(_attribute, 0, 64);
 }
 
@@ -48,3 +49,12 @@ bool Timer::isActive() const
 {
     return _active;
 }
+
+void Timer::setDirection(int direction) {
+    _direction = direction;
+}
+
+int Timer::getDirection() const {
+    return _direction;
+}
+

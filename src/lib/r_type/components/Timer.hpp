@@ -22,6 +22,9 @@ class Timer : public IComponentRType {
         void setActive(bool active);
         bool isActive() const;
 
+        void setDirection(int direction);
+        int getDirection() const;
+
 
         timeval _startTime{};
         timeval _now{};
@@ -31,6 +34,7 @@ class Timer : public IComponentRType {
     protected:
         std::shared_ptr<Drawable> _target;
         bool _active;
+        int _direction;
 
 
 

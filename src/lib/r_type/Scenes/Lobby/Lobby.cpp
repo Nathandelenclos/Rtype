@@ -27,9 +27,10 @@ void LobbyScene::initEntities()
     std::shared_ptr<Timer> timer = std::make_shared<Timer>();
     gettimeofday(&timer->_startTime, nullptr);
     timer->_targetTime.tv_sec = 0;
-    timer->_targetTime.tv_usec = 50000;
+    timer->_targetTime.tv_usec = 100000;
     timer->setTarget(sprite);
     timer->setActive(true);
+    timer->setDirection(-1);
     std::shared_ptr<Animatable> animation = std::make_shared<Animatable>();
     animation->setTarget(sprite);
     animation->setTime({0, 200000});
@@ -42,7 +43,7 @@ void LobbyScene::initEntities()
     sprite->setRect({0, 0, 33, 36});
     sprite->setSize({263 * 5, 36 * 5});
     sprite->setScale(5);
-    sprite->setPosition({50, 50});
+    sprite->setPosition({500, 50});
     sprite->setAttribute("sprite enemy");
     sprite->_textureId = ENEMY;
     enemy1->setAttribute("sprite enemy");
@@ -50,7 +51,6 @@ void LobbyScene::initEntities()
     enemy1->addComponent(timer);
     enemy1->addComponent(animation);
 
-    addEntity(enemy1);
 
     std::shared_ptr<IEntity> bg1 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg1 = std::make_shared<Drawable>();
@@ -73,7 +73,6 @@ void LobbyScene::initEntities()
     bg1->addComponent(sprite_bg1);
     bg1->addComponent(animation_bg1);
 
-    addEntity(bg1);
 
     std::shared_ptr<IEntity> bg2 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg2 = std::make_shared<Drawable>();
@@ -96,7 +95,6 @@ void LobbyScene::initEntities()
     bg2->addComponent(sprite_bg2);
     bg2->addComponent(animation_bg2);
 
-    addEntity(bg2);
 
     std::shared_ptr<IEntity> bg3 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg3 = std::make_shared<Drawable>();
@@ -119,7 +117,6 @@ void LobbyScene::initEntities()
     bg3->addComponent(sprite_bg3);
     bg3->addComponent(animation_bg3);
 
-    addEntity(bg3);
 
     std::shared_ptr<IEntity> bg4 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg4 = std::make_shared<Drawable>();
@@ -142,7 +139,11 @@ void LobbyScene::initEntities()
     bg4->addComponent(sprite_bg4);
     bg4->addComponent(animation_bg4);
 
+    addEntity(bg1);
+    addEntity(bg2);
+    addEntity(bg3);
     addEntity(bg4);
+    addEntity(enemy1);
 
     // std::shared_ptr<Drawable> sprite_bg2 = std::make_shared<Drawable>();
     // std::shared_ptr<Timer> timer_bg2 = std::make_shared<Timer>();
