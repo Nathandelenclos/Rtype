@@ -342,12 +342,13 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 bullet_sprite->setAttribute("bullet" + std::to_string(_nbBullets));
                 _nbBullets++;
                 bullet_sprite->_textureId = BULLET;
-                bullet_sprite->setSize({200, 200});
-                bullet_sprite->setScale(0.5);
+                bullet_sprite->setRect({233, 120, 32, 12});
+                bullet_sprite->setScale(3);
+                bullet_sprite->setSize({532 * bullet_sprite->getScale(), 372 * bullet_sprite->getScale()});
                 bullet->addComponent(bullet_sprite);
                 bullet->setAttribute("bullet" + std::to_string(_nbBullets));
                 timer->_targetTime.tv_sec = 0;
-                timer->_targetTime.tv_usec = 2500;
+                timer->_targetTime.tv_usec = 25000;
                 timer->setTarget(bullet_sprite);
                 timer->setActive(true);
                 bullet->addComponent(timer);

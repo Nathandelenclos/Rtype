@@ -193,7 +193,7 @@ void GameScene::initTextures() {
     _textures[Type::ENEMY] = sf::Texture();
     _textures[Type::ENEMY].loadFromFile("../testsprites/r-typesheet5.png");
     _textures[Type::BULLET] = sf::Texture();
-    _textures[Type::BULLET].loadFromFile("../src/client/assets/missing.png");
+    _textures[Type::BULLET].loadFromFile("../sprites/r-typesheet1.gif");
     _textures[Type::BACKGROUND1] = sf::Texture();
     _textures[Type::BACKGROUND1].loadFromFile("../testsprites/bg_800_600/background_1.png");
     _textures[Type::BACKGROUND2] = sf::Texture();
