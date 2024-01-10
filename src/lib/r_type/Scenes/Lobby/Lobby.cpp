@@ -141,6 +141,46 @@ void LobbyScene::initEntities()
 
     addEntity(bg4);
 
+    std::shared_ptr<IEntity> bg_element1 = std::make_shared<IEntity>();
+    std::shared_ptr<Drawable> sprite_bg_element1 = std::make_shared<Drawable>();
+    std::shared_ptr<Timer> timer_element = std::make_shared<Timer>();
+    gettimeofday(&timer_element->_startTime, nullptr);
+    timer_element->_targetTime.tv_sec = 0;
+    timer_element->_targetTime.tv_usec = 100000;
+    timer_element->setTarget(sprite_bg_element1);
+    timer_element->setActive(true);
+    sprite_bg_element1->setRect({410, 34, 132, 27});
+    sprite_bg_element1->setSize({132 * 15, 27 * 15});
+    sprite_bg_element1->setScale(15);
+    sprite_bg_element1->setPosition({0, 550});
+    sprite_bg_element1->setAttribute("sprite bg element1");
+    sprite_bg_element1->_textureId = BACKGROUND_ELEMENT1;
+    bg_element1->setAttribute("sprite bg element1");
+    bg_element1->addComponent(sprite_bg_element1);
+    bg_element1->addComponent(timer_element);
+
+    addEntity(bg_element1);
+
+    std::shared_ptr<IEntity> bg_element1_flipped = std::make_shared<IEntity>();
+    std::shared_ptr<Drawable> sprite_bg_element1_flipped = std::make_shared<Drawable>();
+    std::shared_ptr<Timer> timer_element_flipped = std::make_shared<Timer>();
+    gettimeofday(&timer_element_flipped->_startTime, nullptr);
+    timer_element_flipped->_targetTime.tv_sec = 0;
+    timer_element_flipped->_targetTime.tv_usec = 100000;
+    timer_element_flipped->setTarget(sprite_bg_element1_flipped);
+    timer_element_flipped->setActive(true);
+    sprite_bg_element1_flipped->setRect({524, 45, 132, 27});
+    sprite_bg_element1_flipped->setSize({132 * 15, 27 * 15});
+    sprite_bg_element1_flipped->setScale(15);
+    sprite_bg_element1_flipped->setPosition({0, 0});
+    sprite_bg_element1_flipped->setAttribute("sprite bg element1 flipped");
+    sprite_bg_element1_flipped->_textureId = BACKGROUND_ELEMENT1_FLIPPED;
+    bg_element1_flipped->setAttribute("sprite bg element1 flipped");
+    bg_element1_flipped->addComponent(sprite_bg_element1_flipped);
+    bg_element1_flipped->addComponent(timer_element_flipped);
+
+    addEntity(bg_element1_flipped);
+
     // std::shared_ptr<Drawable> sprite_bg2 = std::make_shared<Drawable>();
     // std::shared_ptr<Timer> timer_bg2 = std::make_shared<Timer>();
     // sprite_bg2->setAttribute("sprite bg2");

@@ -74,6 +74,12 @@ void GameScene::receiveData() {
                     if (component->getAttribute() == "sprite bg1") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND1));
                     }
+                    if (component->getAttribute() == "sprite bg element1") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND_ELEMENT1));
+                    }
+                    if (component->getAttribute() == "sprite bg element1 flipped") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND_ELEMENT1_FLIPPED));
+                    }
                     // if (component->getAttribute() == "sprite bg2") {
                     //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND2));
                     // }
@@ -202,6 +208,10 @@ void GameScene::initTextures() {
     _textures[Type::BACKGROUND3].loadFromFile("../testsprites/bg_800_600/background_3.png");
     _textures[Type::BACKGROUND4] = sf::Texture();
     _textures[Type::BACKGROUND4].loadFromFile("../testsprites/bg_800_600/background_4.png");
+    _textures[Type::BACKGROUND_ELEMENT1] = sf::Texture();
+    _textures[Type::BACKGROUND_ELEMENT1].loadFromFile("../testsprites/bg_800_600/background_element_1.png");
+    _textures[Type::BACKGROUND_ELEMENT1_FLIPPED] = sf::Texture();
+    _textures[Type::BACKGROUND_ELEMENT1_FLIPPED].loadFromFile("../testsprites/bg_800_600/background_element_1_flipped.png");
 }
 
 void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {

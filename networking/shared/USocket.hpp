@@ -114,6 +114,8 @@ typedef enum type {
     BACKGROUND2,
     BACKGROUND3,
     BACKGROUND4,
+    BACKGROUND_ELEMENT1,
+    BACKGROUND_ELEMENT1_FLIPPED
 } Type;
 
 //obsolete
