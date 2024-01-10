@@ -2,7 +2,7 @@
 // Created by talleux on 1/4/24.
 //
 
-#include "Lobby.hpp"
+#include "Game.hpp"
 
 LobbyScene::LobbyScene(std::shared_ptr<ServerSocket> serverSocket) : AScene(std::move(serverSocket))
 {
@@ -17,22 +17,16 @@ void LobbyScene::initScene()
 
 void LobbyScene::initEntities()
 {
-    /*std::shared_ptr<IEntity> player = std::make_shared<IEntity>();
     std::shared_ptr<IEntity> background = std::make_shared<IEntity>();
-
-    std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
-    sprite->setPosition({50, 50});
-    sprite->setAttribute("Player");
-    player->setAttribute("Player");
-    player->addComponent(sprite);
-
     std::shared_ptr<Drawable> backgroundSprite = std::make_shared<Drawable>();
-    backgroundSprite->setPosition({0, 0});
-    background->setAttribute("Background");
+    backgroundSprite->setPosition({50, 50});
+    backgroundSprite->setSize({700, 500});
+    backgroundSprite->setAttribute("sprite background");
+    backgroundSprite->_textureId = BACKGROUND;
+    background->setAttribute("sprite background");
     background->addComponent(backgroundSprite);
 
-    addEntity(player);
-    addEntity(background);*/
+    addEntity(background);
 }
 
 void LobbyScene::initServices()

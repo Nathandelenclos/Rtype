@@ -20,6 +20,18 @@ Drawable::Drawable()
     _textureId = 0;
 }
 
+//Drawable::Drawable(sf::Vector2f position, sf::Vector2f size, sf::IntRect rect, std::string attribute)
+//{
+//    setPosition(position);
+//    setSize(size);
+//    setRect(rect);
+//    _attribute = new char[64];
+//    std::memset(_attribute, 0, 64);
+//    std::memcpy(_attribute, attribute.c_str(), attribute.size());
+//    _textureId = 0;
+//
+//}
+
 char *Drawable::getAttribute() const
 {
     return _attribute;

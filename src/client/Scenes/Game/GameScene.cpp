@@ -11,7 +11,7 @@
 
 GameScene::GameScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket) : AScene(clientCore),
                                                                                      _socket(std::move(socket)) {
-//    initTextures();
+    initTextures();
     init_scene();
 }
 
@@ -26,17 +26,16 @@ void GameScene::init_scene()
     music->setSound("../src/client/assets/musics/thisgirl.ogg");
     music->setVolume(10);
 
+    sprite->setAttribute("Player");
+
     text_ping->setAttribute("text ping");
     text_ping->setText("");
     text_ping->setPosition(sf::Vector2f(0, 550));
-
-    sprite->setAttribute("Player");
 
     sound_new_player->setAttribute("new player");
 
     sound_player_left->setAttribute("player left");
 
-    //addComponent(sprite);
     addComponent(music);
     addComponent(text_ping);
     addComponent(sound_new_player);
@@ -60,7 +59,8 @@ void GameScene::receiveData() {
                     std::string componentAttribute = component->getAttribute();
                     if (component->getAttribute() == attributeString) {
                         std::cout << "element: " << drawable->x << " " << drawable->y << std::endl;
-                        //sprite->setTexture(getTextureByType(element->type));
+//                        sprite->setTexture(getTextureByType(element->type));
+//                        sprite->setTexture(getTextureByType(element->type));
                         auto *sprite = dynamic_cast<SpriteComponent *>(component.get());
                         sprite->setPosition({drawable->x, drawable->y});
                         sprite->setSize({drawable->sizeHorizontal, drawable->sizeVertical});
@@ -71,6 +71,10 @@ void GameScene::receiveData() {
                     }
                     if (component->getAttribute() == "sprite bullet") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BULLET));
+                    }
+                    if (component->getAttribute() == "sprite background") {
+                        std::cout << "background" << std::endl;
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND));
                     }
                 }
             }
@@ -113,7 +117,7 @@ void GameScene::receiveData() {
             if (newComponent->type == ComponentType::SPRITE) {
                 auto sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
                 sprite->setAttribute(attributeString);
-                //sprite->setTexture(getTextureByType(Type::PLAYER));
+//                sprite->setTexture(getTextureByType(Type::PLAYER));
                 sprite->setPosition({newComponent->x, newComponent->y});
                 sprite->setSize({newComponent->sizeHorizontal, newComponent->sizeVertical});
                 sprite->setRect({newComponent->rectLeft, newComponent->rectTop, newComponent->rectWidth, newComponent->rectHeight});
@@ -170,13 +174,13 @@ sf::Texture GameScene::getTextureByType(Type type) const {
 
 void GameScene::initTextures() {
     _textures[Type::PLAYER] = sf::Texture();
-    _textures[Type::PLAYER].loadFromFile("assets/sprite/player.png");
+    _textures[Type::PLAYER].loadFromFile("../sprites/r-typesheet42.gif");
+    _textures[Type::BACKGROUND] = sf::Texture();
+    _textures[Type::BACKGROUND].loadFromFile("../sprites/background.png");
     _textures[Type::ENEMY] = sf::Texture();
     _textures[Type::ENEMY].loadFromFile("assets/sprite/enemy.png");
     _textures[Type::BULLET] = sf::Texture();
     _textures[Type::BULLET].loadFromFile("assets/sprite/bullet.png");
-    _textures[Type::BACKGROUND] = sf::Texture();
-    _textures[Type::BACKGROUND].loadFromFile("assets/sprite/background.png");
 }
 
 void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {

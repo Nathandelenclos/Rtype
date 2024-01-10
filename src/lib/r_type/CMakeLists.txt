@@ -19,8 +19,8 @@ add_library(lib_r_type SHARED
         src/lib/r_type/Scenes/AScene.cpp
         src/lib/r_type/Scenes/AScene.hpp
         src/lib/r_type/components/IComponent.hpp
-        src/lib/r_type/Scenes/Lobby/Lobby.cpp
-        src/lib/r_type/Scenes/Lobby/Lobby.hpp
+        src/lib/r_type/Scenes/Game/Game.cpp
+        src/lib/r_type/Scenes/Game/Game.hpp
         src/lib/r_type/services/IService.hpp
         src/lib/r_type/services/AService.cpp
         src/lib/r_type/services/AService.hpp

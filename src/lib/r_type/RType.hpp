@@ -14,7 +14,7 @@
 #include "IGame.hpp"
 #include "./services/Graphic.hpp"
 #include "./Scenes/IScene.hpp"
-#include "./Scenes/Lobby/Lobby.hpp"
+#include "./Scenes/Game/Game.hpp"
 
 class RType : public IGame {
 public:

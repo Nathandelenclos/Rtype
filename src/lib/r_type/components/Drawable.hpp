@@ -12,10 +12,12 @@
 #include <memory>
 #include "../networking/shared/USocket.hpp"
 #include "IComponent.hpp"
+#include <SFML/Graphics.hpp>
 
 class Drawable : public IComponentRType {
     public:
         Drawable();
+//        Drawable(sf::Vector2f position, sf::Vector2f size, sf::IntRect rect, std::string attribute);
         [[nodiscard]] char *getAttribute() const override;
         void setAttribute(std::string attribute) override;
 
