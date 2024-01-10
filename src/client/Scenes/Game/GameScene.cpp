@@ -71,14 +71,14 @@ void GameScene::receiveData() {
                     if (component->getAttribute() == "sprite bullet") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BULLET));
                     }
-                    if (component->getAttribute() == "sprite bg1") {
-                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND1));
-                    }
                     if (component->getAttribute() == "sprite bg element1") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND_ELEMENT1));
                     }
                     if (component->getAttribute() == "sprite bg element1 flipped") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND_ELEMENT1_FLIPPED));
+                    }
+                    if (component->getAttribute() == "sprite bg1") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND1));
                     }
                     // if (component->getAttribute() == "sprite bg2") {
                     //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND2));
