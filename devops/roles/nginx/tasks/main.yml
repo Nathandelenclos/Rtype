@@ -1,0 +1,59 @@
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: latest
+    update_cache: yes
+
+- name: Install Certbot
+  apt:
+    name: python3-certbot-nginx
+    state: latest
+
+- name: Check if registry domain exists
+  stat:
+    path: "/etc/nginx/sites-available/{{registry_domain}}"
+  register: registry
+
+- name: Template nginx conf registry
+  when: not registry.stat.exists
+  template:
+    src: ../files/nginx_registry.conf
+    dest: "/etc/nginx/sites-available/{{registry_domain}}"
+  notify: reload nginx
+
+- name: Enable registry domain
+  become: yes
+  when: not registry.stat.exists
+  file:
+    src: "/etc/nginx/sites-available/{{registry_domain}}"
+    dest: "/etc/nginx/sites-enabled/{{registry_domain}}"
+    state: link
+  notify: reload nginx
+
+- name: Check if jenkins domain exists
+  stat:
+    path: "/etc/nginx/sites-available/{{jenkins_domain}}"
+  register: jenkins
+
+- name: Template nginx conf jenkins
+  when: not jenkins.stat.exists
+  template:
+    src: ../files/nginx_jenkins.conf
+    dest: "/etc/nginx/sites-available/{{jenkins_domain}}"
+  notify: reload nginx
+
+- name: Enable jenkins domain
+  when: not jenkins.stat.exists
+  file:
+    src: "/etc/nginx/sites-available/{{jenkins_domain}}"
+    dest: "/etc/nginx/sites-enabled/{{jenkins_domain}}"
+    state: link
+  notify: reload nginx
+
+- name: SSL Certbot registry
+  shell: "certbot --nginx -d {{item}} --non-interactive --agree-tos -m {{mail_certbot}}"
+  args:
+    creates: "/etc/letsencrypt/live/{{item}}/fullchain.pem"
+  loop:
+    - "{{registry_domain}}"
+    - "{{jenkins_domain}}"
