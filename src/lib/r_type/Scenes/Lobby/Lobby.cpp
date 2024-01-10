@@ -82,6 +82,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 }
             }
         }
+        _lastEvent = nullptr;
         _chrono = now;
     }
 
