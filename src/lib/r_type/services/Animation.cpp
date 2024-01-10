@@ -23,7 +23,11 @@ void Animation::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentR
             } else {
                 animatable->_frameIndex++;
             }
-            spriteAnim->setRect(std::make_tuple((std::get<0>(size) / spriteAnim->getScale() / animatable->_numberFrame * animatable->_frameIndex), 0, (std::get<0>(size) / spriteAnim->getScale() / animatable->_numberFrame * (animatable->_frameIndex + 1)), std::get<1>(size)));
+            int frameWidth1 = std::get<0>(size) / spriteAnim->getScale() / animatable->_numberFrame * animatable->_frameIndex;
+            int frameWidth2 = std::get<0>(size) / spriteAnim->getScale() / animatable->_numberFrame * (animatable->_frameIndex + 1);
+            int frameHeight = std::get<1>(size) / spriteAnim->getScale();
+            // spriteAnim->setRect(std::make_tuple((std::get<0>(size) / spriteAnim->getScale() / animatable->_numberFrame * animatable->_frameIndex), 0, (std::get<0>(size) / spriteAnim->getScale() / animatable->_numberFrame * (animatable->_frameIndex + 1)), std::get<1>(size)));
+            spriteAnim->setRect(std::make_tuple(frameWidth1, 0, frameWidth2, frameHeight));
             animatable->_chrono = animatable->_now;
         }
     }
