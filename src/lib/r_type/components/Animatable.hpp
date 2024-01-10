@@ -30,6 +30,7 @@ class Animatable : public IComponentRType {
         timeval _chrono;
         int _numberFrameToAnim;
         int _frameIndex;
+        int _numberFrame;
 
     protected:
         std::shared_ptr<Drawable> sprite;
