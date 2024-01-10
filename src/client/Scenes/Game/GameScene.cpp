@@ -209,7 +209,7 @@ void GameScene::initTextures() {
     _textures[Type::BACKGROUND4] = sf::Texture();
     _textures[Type::BACKGROUND4].loadFromFile("../testsprites/bg_800_600/background_4.png");
     _textures[Type::BACKGROUND_ELEMENT1] = sf::Texture();
-    _textures[Type::BACKGROUND_ELEMENT1].loadFromFile("../testsprites/bg_800_600/background_element_1.png");
+    _textures[Type::BACKGROUND_ELEMENT1].loadFromFile("../testsprites/bg_800_600/ground_texture_bg.png");
     _textures[Type::BACKGROUND_ELEMENT1_FLIPPED] = sf::Texture();
     _textures[Type::BACKGROUND_ELEMENT1_FLIPPED].loadFromFile("../testsprites/bg_800_600/background_element_1_flipped.png");
 }

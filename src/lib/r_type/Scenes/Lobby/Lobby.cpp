@@ -47,27 +47,26 @@ void LobbyScene::initEntities()
     enemy1->addComponent(timer);
     enemy1->addComponent(animation);
 
-    addEntity(enemy1);
-
     std::shared_ptr<IEntity> bg_element1 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg_element1 = std::make_shared<Drawable>();
-    std::shared_ptr<Timer> timer_element = std::make_shared<Timer>();
-    gettimeofday(&timer_element->_startTime, nullptr);
-    timer_element->_targetTime.tv_sec = 0;
-    timer_element->_targetTime.tv_usec = 100000;
-    timer_element->setTarget(sprite_bg_element1);
-    timer_element->setActive(true);
-    sprite_bg_element1->setRect({410, 34, 132, 27});
-    sprite_bg_element1->setSize({132 * 15, 27 * 15});
-    sprite_bg_element1->setScale(15);
-    sprite_bg_element1->setPosition({0, 550});
+    std::shared_ptr<Animatable> animation_bg_element1 = std::make_shared<Animatable>();
+    sprite_bg_element1->setRect({0, 0, 800, 30});
+    sprite_bg_element1->setSize({1600, 30});
+    sprite_bg_element1->setScale(1);
+    sprite_bg_element1->setPosition({0, 570});
     sprite_bg_element1->setAttribute("sprite bg element1");
     sprite_bg_element1->_textureId = BACKGROUND_ELEMENT1;
+    gettimeofday(&animation_bg_element1->_chrono, nullptr);
+    animation_bg_element1->setTarget(sprite_bg_element1);
+    animation_bg_element1->setTime({0, 10000});
+    animation_bg_element1->_frameIndex = 0;
+    animation_bg_element1->_numberFrameToAnim = 800;
+    animation_bg_element1->_numberFrame = 1600;
+    animation_bg_element1->_startFrameIndex = 0;
+    animation_bg_element1->_frameForOnePicture = 800;
     bg_element1->setAttribute("sprite bg element1");
     bg_element1->addComponent(sprite_bg_element1);
-    bg_element1->addComponent(timer_element);
-
-    addEntity(bg_element1);
+    bg_element1->addComponent(animation_bg_element1);
 
     std::shared_ptr<IEntity> bg_element1_flipped = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg_element1_flipped = std::make_shared<Drawable>();
@@ -86,8 +85,6 @@ void LobbyScene::initEntities()
     bg_element1_flipped->setAttribute("sprite bg element1 flipped");
     bg_element1_flipped->addComponent(sprite_bg_element1_flipped);
     bg_element1_flipped->addComponent(timer_element_flipped);
-
-    addEntity(bg_element1_flipped);
     
     std::shared_ptr<IEntity> bg1 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg1 = std::make_shared<Drawable>();
@@ -110,8 +107,6 @@ void LobbyScene::initEntities()
     bg1->addComponent(sprite_bg1);
     bg1->addComponent(animation_bg1);
 
-    addEntity(bg1);
-
     std::shared_ptr<IEntity> bg2 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg2 = std::make_shared<Drawable>();
     std::shared_ptr<Animatable> animation_bg2 = std::make_shared<Animatable>();
@@ -132,8 +127,6 @@ void LobbyScene::initEntities()
     bg2->setAttribute("sprite bg2");
     bg2->addComponent(sprite_bg2);
     bg2->addComponent(animation_bg2);
-
-    addEntity(bg2);
 
     std::shared_ptr<IEntity> bg3 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg3 = std::make_shared<Drawable>();
@@ -156,8 +149,6 @@ void LobbyScene::initEntities()
     bg3->addComponent(sprite_bg3);
     bg3->addComponent(animation_bg3);
 
-    addEntity(bg3);
-
     std::shared_ptr<IEntity> bg4 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite_bg4 = std::make_shared<Drawable>();
     std::shared_ptr<Animatable> animation_bg4 = std::make_shared<Animatable>();
@@ -179,6 +170,12 @@ void LobbyScene::initEntities()
     bg4->addComponent(sprite_bg4);
     bg4->addComponent(animation_bg4);
 
+    addEntity(enemy1);
+    addEntity(bg_element1);
+    addEntity(bg_element1_flipped);
+    addEntity(bg1);
+    addEntity(bg2);
+    addEntity(bg3);
     addEntity(bg4);
 
     // std::shared_ptr<Drawable> sprite_bg2 = std::make_shared<Drawable>();
