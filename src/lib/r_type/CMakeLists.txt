@@ -13,6 +13,8 @@ add_library(lib_r_type SHARED
         #src/lib/r_type/entities/Player.hpp
         src/lib/r_type/components/Drawable.cpp
         src/lib/r_type/components/Drawable.hpp
+        src/lib/r_type/components/Animatable.cpp
+        src/lib/r_type/components/Animatable.hpp
         networking/server/ServerSocket.cpp
         networking/server/ServerSocket.hpp
         src/lib/r_type/Scenes/IScene.hpp
@@ -23,6 +25,8 @@ add_library(lib_r_type SHARED
         src/lib/r_type/Scenes/Lobby/Lobby.hpp
         src/lib/r_type/services/IService.hpp
         src/lib/r_type/services/AService.cpp
+        src/lib/r_type/services/Animation.hpp
+        src/lib/r_type/services/Animation.cpp
         src/lib/r_type/services/AService.hpp
         src/lib/r_type/entities/IEntity.hpp)
 

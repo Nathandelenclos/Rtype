@@ -19,13 +19,20 @@ void LobbyScene::initEntities()
 {
     std::shared_ptr<IEntity> enemy1 = std::make_shared<IEntity>();
     std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
+    std::shared_ptr<Animatable> animation = std::make_shared<Animatable>();
+    animation->setTarget(sprite);
+    animation->setTime({0, 50000});
+    animation->_frameIndex = 0;
+    animation->_numberFrameToAnim = 8;
+    gettimeofday(&animation->_chrono, nullptr);
     sprite->setRect({0, 0, 33, 36});
-    sprite->setSize({533 * 10, 36 * 10});
+    sprite->setSize({533, 36});
     sprite->setPosition({50, 50});
     sprite->setAttribute("sprite enemy");
     sprite->_textureId = ENEMY;
     enemy1->setAttribute("sprite enemy");
     enemy1->addComponent(sprite);
+    enemy1->addComponent(animation);
 
     addEntity(enemy1);
 
@@ -52,8 +59,10 @@ void LobbyScene::initEntities()
 void LobbyScene::initServices()
 {
     std::shared_ptr<Graphic> graphic = std::make_shared<Graphic>(_serverSocket);
+    std::shared_ptr<Animation> animation = std::make_shared<Animation>(_serverSocket);
 
     addService(graphic);
+    addService(animation);
 }
 
 void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet, int id)
