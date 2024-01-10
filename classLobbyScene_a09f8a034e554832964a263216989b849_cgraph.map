@@ -1,5 +1,6 @@
 <map id="LobbyScene::update" name="LobbyScene::update">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,159,57"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,159,83"/>
 <area shape="rect" id="node2" href="$classAScene.html#ab439df212b6630bcda7f2cae7de14157" title=" " alt="" coords="219,5,433,32"/>
 <area shape="rect" id="node3" href="$classLobbyScene.html#ac871ad60458f007e63df2213eb6b3767" title=" " alt="" coords="207,56,445,83"/>
+<area shape="rect" id="node4" href="$classAScene.html#a04756252779480e19871b162ed0aea8a" title=" " alt="" coords="235,107,417,133"/>
 </map>

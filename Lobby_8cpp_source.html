@@ -84,18 +84,18 @@ $(function() {
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classLobbyScene.html#a1ce6c014d26503baf2f31b479b47ef1a">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html">LobbyScene</a>::<a class="code" href="classLobbyScene.html#a1ce6c014d26503baf2f31b479b47ef1a">initScene</a>()</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classLobbyScene.html#a09f0fc2675f9bc81b55e51cb0e47c6ec">initEntities</a><a class="code" href="classLobbyScene.html#a09f0fc2675f9bc81b55e51cb0e47c6ec">(</a><a class="code" href="classLobbyScene.html#a09f0fc2675f9bc81b55e51cb0e47c6ec">)</a>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classLobbyScene.html#a874a64ce00d437a6301a17c25acbf824">initServices</a><a class="code" href="classLobbyScene.html#a874a64ce00d437a6301a17c25acbf824">(</a><a class="code" href="classLobbyScene.html#a874a64ce00d437a6301a17c25acbf824">)</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classLobbyScene.html#ad133afb36656e25e1193c423c971cb26">initEntities</a><a class="code" href="classLobbyScene.html#ad133afb36656e25e1193c423c971cb26">(</a><a class="code" href="classLobbyScene.html#ad133afb36656e25e1193c423c971cb26">)</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classLobbyScene.html#a55adeb02f875499bc6d100614428205e">initServices</a><a class="code" href="classLobbyScene.html#a55adeb02f875499bc6d100614428205e">(</a><a class="code" href="classLobbyScene.html#a55adeb02f875499bc6d100614428205e">)</a>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classLobbyScene.html#a09f0fc2675f9bc81b55e51cb0e47c6ec">   20</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html">LobbyScene</a>::<a class="code" href="classLobbyScene.html#a09f0fc2675f9bc81b55e51cb0e47c6ec">initEntities</a>()</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classLobbyScene.html#ad133afb36656e25e1193c423c971cb26">   20</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html">LobbyScene</a>::<a class="code" href="classLobbyScene.html#ad133afb36656e25e1193c423c971cb26">initEntities</a>()</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::shared_ptr&lt;<a class="code" href="classIEntity.html">IEntity</a>&gt; enemy1 = std::make_shared&lt;IEntity&gt;();</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; sprite = std::make_shared&lt;Drawable&gt;();</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    std::shared_ptr&lt;<a class="code" href="classTimer.html">Timer</a>&gt; timer = std::make_shared&lt;Timer&gt;();</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    gettimeofday(&amp;timer-&gt;_startTime, <span class="keywordtype">nullptr</span>);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    timer-&gt;_targetTime.tv_sec = 1;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    timer-&gt;_targetTime.tv_usec = 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    timer-&gt;_targetTime.tv_sec = 0;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    timer-&gt;_targetTime.tv_usec = 50000;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    timer-&gt;setTarget(sprite);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    timer-&gt;setActive(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    std::shared_ptr&lt;<a class="code" href="classAnimatable.html">Animatable</a>&gt; animation = std::make_shared&lt;Animatable&gt;();</div>
@@ -244,7 +244,7 @@ $(function() {
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="comment">// addEntity(background);</span></div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="classLobbyScene.html#a874a64ce00d437a6301a17c25acbf824">  176</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html">LobbyScene</a>::<a class="code" href="classLobbyScene.html#a874a64ce00d437a6301a17c25acbf824">initServices</a>()</div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="classLobbyScene.html#a55adeb02f875499bc6d100614428205e">  176</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classLobbyScene.html">LobbyScene</a>::<a class="code" href="classLobbyScene.html#a55adeb02f875499bc6d100614428205e">initServices</a>()</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;{</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    std::shared_ptr&lt;<a class="code" href="classGraphic.html">Graphic</a>&gt; graphic = std::make_shared&lt;Graphic&gt;(_serverSocket);</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    std::shared_ptr&lt;<a class="code" href="classTimeManagement.html">TimeManagement</a>&gt; timeManagement = std::make_shared&lt;TimeManagement&gt;(_serverSocket);</div>
@@ -277,56 +277,56 @@ $(function() {
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">if</span> (packet != <span class="keywordtype">nullptr</span>) {</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">if</span> (packet-&gt;code == MESSAGE) {</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="comment">// if (std::string(static_cast&lt;char *&gt;(packet-&gt;data)) == &quot;enter game&quot;) {</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="comment">//     std::cout &lt;&lt; &quot;enter game player id &quot; &lt;&lt; id &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="comment">//     std::shared_ptr&lt;IEntity&gt; entity = std::make_shared&lt;IEntity&gt;();</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="comment">//     std::shared_ptr&lt;Drawable&gt; drawable = std::make_shared&lt;Drawable&gt;();</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;             <span class="keywordflow">if</span> (std::string(<span class="keyword">static_cast</span>&lt;<span class="keywordtype">char</span> *&gt;(packet-&gt;data)) == <span class="stringliteral">&quot;enter game&quot;</span>) {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                 std::cout &lt;&lt; <span class="stringliteral">&quot;enter game player id &quot;</span> &lt;&lt; id &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                 std::shared_ptr&lt;<a class="code" href="classIEntity.html">IEntity</a>&gt; entity = std::make_shared&lt;IEntity&gt;();</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                 std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; drawable = std::make_shared&lt;Drawable&gt;();</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="comment">//     drawable-&gt;setAttribute(&quot;player &quot; + std::to_string(id));</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <span class="comment">//     drawable-&gt;setPosition({100 * id, 100 * id});</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="comment">//     drawable-&gt;setHasChanged(true);</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="comment">//     drawable-&gt;_textureId = PLAYER;</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="comment">//     entity-&gt;addComponent(drawable);</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="comment">//     entity-&gt;setAttribute(&quot;player &quot; + std::to_string(id));</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <span class="comment">//     addEntity(entity);</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="comment">//     std::cout &lt;&lt; &quot;Entity added&quot; &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                 drawable-&gt;setAttribute(<span class="stringliteral">&quot;player &quot;</span> + std::to_string(id));</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                 drawable-&gt;setPosition({100 * id, 100 * id});</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                 drawable-&gt;setHasChanged(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                 drawable-&gt;_textureId = PLAYER;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                 entity-&gt;addComponent(drawable);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                 entity-&gt;setAttribute(<span class="stringliteral">&quot;player &quot;</span> + std::to_string(id));</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                 addEntity(entity);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                 std::cout &lt;&lt; <span class="stringliteral">&quot;Entity added&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="comment">//     std::shared_ptr&lt;Packet&gt; sendpacket = std::make_shared&lt;Packet&gt;();</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="comment">//     sendpacket-&gt;code = NEW_COMPONENT;</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="comment">//     sendpacket-&gt;data_size = sizeof(NewComponent);</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="comment">//     sendpacket-&gt;data = malloc(sendpacket-&gt;data_size);</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="comment">//     NewComponent newComponent{};</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="comment">//     newComponent.type = ComponentTypeSocket ::SPRITESOCKET;</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <span class="comment">//     newComponent.id = PLAYER;</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="comment">//     std::cout &lt;&lt; &quot;attribute: &quot; &lt;&lt; drawable-&gt;getAttribute() &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="comment">//     std::memcpy(&amp;newComponent.attribute, entity-&gt;getAttribute().c_str(), 8);</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="comment">//     std::memcpy(&amp;newComponent.attribute2, entity-&gt;getAttribute().c_str() + 8, 8);</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="comment">//     memcpy(sendpacket-&gt;data, &amp;newComponent, sendpacket-&gt;data_size);</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <span class="comment">//     _serverSocket-&gt;broadcast(sendpacket.get());</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <span class="comment">//     free(sendpacket-&gt;data);</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                 std::shared_ptr&lt;Packet&gt; sendpacket = std::make_shared&lt;Packet&gt;();</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                 sendpacket-&gt;code = NEW_COMPONENT;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                 sendpacket-&gt;data_size = <span class="keyword">sizeof</span>(NewComponent);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                 sendpacket-&gt;data = malloc(sendpacket-&gt;data_size);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                 NewComponent newComponent{};</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                 newComponent<a class="code" href="structnewComponent.html#a374989fe4223ed796f18072a55e1474b">.</a><a class="code" href="structnewComponent.html#a374989fe4223ed796f18072a55e1474b">type</a> = ComponentTypeSocket <a class="code" href="USocket_8hpp.html#a53ac520e65486b4727f9e55be92d9ee8a16d62e2904a9b337a94b947eae343f54">::</a><a class="code" href="USocket_8hpp.html#a53ac520e65486b4727f9e55be92d9ee8a16d62e2904a9b337a94b947eae343f54">SPRITESOCKET</a>;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                 newComponent<a class="code" href="structnewComponent.html#a6eda639b7d0693cf6170127b9348212d">.</a><a class="code" href="structnewComponent.html#a6eda639b7d0693cf6170127b9348212d">id</a> = <a class="code" href="USocket_8hpp.html#a7aead736a07eaf25623ad7bfa1f0ee2dade5dc3e0dbd007d995ed3e37bde5ce7e">PLAYER</a>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                 std::cout &lt;&lt; <span class="stringliteral">&quot;attribute: &quot;</span> &lt;&lt; drawable-&gt;getAttribute() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                 std::memcpy(&amp;newComponent.attribute, entity-&gt;getAttribute().c_str(), 8);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                 std::memcpy(&amp;newComponent.attribute2, entity-&gt;getAttribute().c_str() + 8, 8);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                 memcpy(sendpacket-&gt;data, &amp;newComponent, sendpacket-&gt;data_size);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                 _serverSocket-&gt;broadcast(sendpacket.get());</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                 free(sendpacket-&gt;data);</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="comment">//     sendGameState(id);</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <span class="comment">//     broadcastGameState();</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="comment">// }</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <span class="comment">// if (std::string(static_cast&lt;char *&gt;(packet-&gt;data)) == &quot;exit game&quot;) {</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="comment">//     std::cout &lt;&lt; &quot;exit game player id &quot; &lt;&lt; id &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="comment">//     //delete Entity(&quot;player &quot; + std::to_string(id));</span></div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="comment">//     for (auto &amp;entity : _entities) {</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            <span class="comment">//         if (entity-&gt;getAttribute() == &quot;player &quot; + std::to_string(id)) {</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="comment">//             _entities.erase(std::remove(_entities.begin(), _entities.end(), entity), _entities.end());</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="comment">//             break;</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="comment">//         }</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="comment">//     }</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            <span class="comment">//     std::shared_ptr&lt;Packet&gt; sendpacket = std::make_shared&lt;Packet&gt;();</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <span class="comment">//     sendpacket-&gt;code = DELETE_COMPONENT;</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="comment">//     sendpacket-&gt;data_size = (&quot;player &quot; + std::to_string(id)).size();</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="comment">//     sendpacket-&gt;data = malloc(sendpacket-&gt;data_size);</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <span class="comment">//     std::memcpy(sendpacket-&gt;data, (&quot;player &quot; + std::to_string(id)).c_str(), sendpacket-&gt;data_size);</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="comment">//     _serverSocket-&gt;broadcast(sendpacket.get());</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="comment">//     free(sendpacket-&gt;data);</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="comment">// }</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                 <a class="code" href="classAScene.html#a04756252779480e19871b162ed0aea8a">sendGameState</a>(id);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                 <a class="code" href="classAScene.html#ab439df212b6630bcda7f2cae7de14157">broadcastGameState</a>();</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;             }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;             <span class="keywordflow">if</span> (std::string(<span class="keyword">static_cast</span>&lt;<span class="keywordtype">char</span> *&gt;(packet-&gt;data)) == <span class="stringliteral">&quot;exit game&quot;</span>) {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                 std::cout &lt;&lt; <span class="stringliteral">&quot;exit game player id &quot;</span> &lt;&lt; id &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                 <span class="comment">//delete Entity(&quot;player &quot; + std::to_string(id));</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                 <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;entity : _entities) {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                     <span class="keywordflow">if</span> (entity-&gt;getAttribute() == <span class="stringliteral">&quot;player &quot;</span> + std::to_string(id)) {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                         _entities.erase(std::remove(_entities.begin(), _entities.end(), entity), _entities.end());</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                         <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                     }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                 }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                 std::shared_ptr&lt;Packet&gt; sendpacket = std::make_shared&lt;Packet&gt;();</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                 sendpacket-&gt;code = DELETE_COMPONENT;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                 sendpacket-&gt;data_size = (<span class="stringliteral">&quot;player &quot;</span> + std::to_string(id)).size();</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                 sendpacket-&gt;data = malloc(sendpacket-&gt;data_size);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                 std::memcpy(sendpacket-&gt;data, (<span class="stringliteral">&quot;player &quot;</span> + std::to_string(id)).c_str(), sendpacket-&gt;data_size);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                 _serverSocket-&gt;broadcast(sendpacket.get());</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                 free(sendpacket-&gt;data);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;             }</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        }</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    }</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
@@ -443,7 +443,7 @@ $(function() {
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                bullet-&gt;addComponent(bullet_sprite);</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                bullet-&gt;setAttribute(<span class="stringliteral">&quot;bullet&quot;</span> + std::to_string(_nbBullets));</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                timer-&gt;_targetTime.tv_sec = 0;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                timer-&gt;_targetTime.tv_usec = 5000;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                timer-&gt;_targetTime.tv_usec = 2500;</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                timer-&gt;setTarget(bullet_sprite);</div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                timer-&gt;setActive(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                bullet-&gt;addComponent(timer);</div>

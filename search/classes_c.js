@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rtype_415',['RType',['../classRType.html',1,'']]]
+  ['rtype_416',['RType',['../classRType.html',1,'']]]
 ];
