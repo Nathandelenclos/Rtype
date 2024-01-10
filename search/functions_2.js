@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['checkclientsdeconnection_509',['checkClientsDeconnection',['../classServerSocket.html#a1ca5e621d28a647a2b3cdbaca94bc164',1,'ServerSocket']]],
-  ['clientcore_510',['ClientCore',['../classClientCore.html#ac281fb0e3214a5dde1b4b0c825820cd7',1,'ClientCore']]],
-  ['clientdump_511',['clientDump',['../classServerSocket.html#aeef487b7eae1e87cb19a75799afb1694',1,'ServerSocket']]],
-  ['clientsocket_512',['ClientSocket',['../classClientSocket.html#aa452c26d330984ce23eb98fba8e59c6a',1,'ClientSocket']]],
-  ['control_513',['control',['../classControlable.html#aad446fc49f645890dec152486c0c509e',1,'Controlable']]],
-  ['create_514',['create',['../RType_8cpp.html#a74f3d57d0e7a885c77d734b39c904d64',1,'RType.cpp']]]
+  ['checkclientsdeconnection_510',['checkClientsDeconnection',['../classServerSocket.html#a1ca5e621d28a647a2b3cdbaca94bc164',1,'ServerSocket']]],
+  ['clientcore_511',['ClientCore',['../classClientCore.html#ac281fb0e3214a5dde1b4b0c825820cd7',1,'ClientCore']]],
+  ['clientdump_512',['clientDump',['../classServerSocket.html#aeef487b7eae1e87cb19a75799afb1694',1,'ServerSocket']]],
+  ['clientsocket_513',['ClientSocket',['../classClientSocket.html#aa452c26d330984ce23eb98fba8e59c6a',1,'ClientSocket']]],
+  ['control_514',['control',['../classControlable.html#aad446fc49f645890dec152486c0c509e',1,'Controlable']]],
+  ['create_515',['create',['../RType_8cpp.html#a74f3d57d0e7a885c77d734b39c904d64',1,'RType.cpp']]]
 ];
