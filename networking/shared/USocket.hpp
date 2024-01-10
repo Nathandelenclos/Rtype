@@ -110,7 +110,10 @@ typedef enum type {
     PLAYER,
     ENEMY,
     BULLET,
-    BACKGROUND,
+    BACKGROUND1,
+    BACKGROUND2,
+    BACKGROUND3,
+    BACKGROUND4,
 } Type;
 
 //obsolete
