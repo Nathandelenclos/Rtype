@@ -48,6 +48,14 @@ void AScene::stopScene()
 {
 }
 
+void AScene::restartScene()
+{
+    _entities.clear();
+    _services.clear();
+    initEntities();
+    initServices();
+}
+
 void AScene::sendGameState(int clientID)
 {
     std::cout << "Sending game state to client " << clientID << std::endl;

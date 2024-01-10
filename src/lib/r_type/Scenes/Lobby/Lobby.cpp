@@ -23,8 +23,8 @@ void LobbyScene::initEntities()
     std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
     std::shared_ptr<Timer> timer = std::make_shared<Timer>();
     gettimeofday(&timer->_startTime, nullptr);
-    timer->_targetTime.tv_sec = 1;
-    timer->_targetTime.tv_usec = 0;
+    timer->_targetTime.tv_sec = 0;
+    timer->_targetTime.tv_usec = 50000;
     timer->setTarget(sprite);
     timer->setActive(true);
     std::shared_ptr<Animatable> animation = std::make_shared<Animatable>();
@@ -34,6 +34,7 @@ void LobbyScene::initEntities()
     animation->_numberFrameToAnim = 8;
     animation->_numberFrame = 8;
     animation->_startFrameIndex = 0;
+    animation->_frameForOnePicture = 1;
     gettimeofday(&animation->_chrono, nullptr);
     sprite->setRect({0, 0, 33, 36});
     sprite->setSize({263 * 5, 36 * 5});
@@ -47,6 +48,110 @@ void LobbyScene::initEntities()
     enemy1->addComponent(animation);
 
     addEntity(enemy1);
+    
+    std::shared_ptr<IEntity> bg1 = std::make_shared<IEntity>();
+    std::shared_ptr<Drawable> sprite_bg1 = std::make_shared<Drawable>();
+    std::shared_ptr<Animatable> animation_bg1 = std::make_shared<Animatable>();
+    sprite_bg1->setRect({0, 0, 800, 600});
+    sprite_bg1->setSize({1600, 600});
+    sprite_bg1->setScale(1);
+    sprite_bg1->setPosition({0, 0});
+    sprite_bg1->setAttribute("sprite bg1");
+    sprite_bg1->_textureId = BACKGROUND1;
+    gettimeofday(&animation_bg1->_chrono, nullptr);
+    animation_bg1->setTarget(sprite_bg1);
+    animation_bg1->setTime({0, 10000});
+    animation_bg1->_frameIndex = 0;
+    animation_bg1->_numberFrameToAnim = 800;
+    animation_bg1->_numberFrame = 1600;
+    animation_bg1->_startFrameIndex = 0;
+    animation_bg1->_frameForOnePicture = 800;
+    bg1->setAttribute("sprite bg1");
+    bg1->addComponent(sprite_bg1);
+    bg1->addComponent(animation_bg1);
+
+    addEntity(bg1);
+
+    std::shared_ptr<IEntity> bg2 = std::make_shared<IEntity>();
+    std::shared_ptr<Drawable> sprite_bg2 = std::make_shared<Drawable>();
+    std::shared_ptr<Animatable> animation_bg2 = std::make_shared<Animatable>();
+    sprite_bg2->setRect({0, 0, 800, 600});
+    sprite_bg2->setSize({1600, 600});
+    sprite_bg2->setScale(1);
+    sprite_bg2->setPosition({0, 0});
+    sprite_bg2->setAttribute("sprite bg2");
+    sprite_bg2->_textureId = BACKGROUND1;
+    gettimeofday(&animation_bg2->_chrono, nullptr);
+    animation_bg2->setTarget(sprite_bg2);
+    animation_bg2->setTime({0, 30000});
+    animation_bg2->_frameIndex = 0;
+    animation_bg2->_numberFrameToAnim = 800;
+    animation_bg2->_numberFrame = 1600;
+    animation_bg2->_startFrameIndex = 0;
+    animation_bg2->_frameForOnePicture = 800;
+    bg2->setAttribute("sprite bg2");
+    bg2->addComponent(sprite_bg2);
+    bg2->addComponent(animation_bg2);
+
+    addEntity(bg2);
+
+    std::shared_ptr<IEntity> bg3 = std::make_shared<IEntity>();
+    std::shared_ptr<Drawable> sprite_bg3 = std::make_shared<Drawable>();
+    std::shared_ptr<Animatable> animation_bg3 = std::make_shared<Animatable>();
+    sprite_bg3->setRect({0, 0, 800, 600});
+    sprite_bg3->setSize({1600, 600});
+    sprite_bg3->setScale(1);
+    sprite_bg3->setPosition({0, 0});
+    sprite_bg3->setAttribute("sprite bg3");
+    sprite_bg3->_textureId = BACKGROUND1;
+    gettimeofday(&animation_bg3->_chrono, nullptr);
+    animation_bg3->setTarget(sprite_bg3);
+    animation_bg3->setTime({0, 5000});
+    animation_bg3->_frameIndex = 0;
+    animation_bg3->_numberFrameToAnim = 800;
+    animation_bg3->_numberFrame = 1600;
+    animation_bg3->_startFrameIndex = 0;
+    animation_bg3->_frameForOnePicture = 800;
+    bg3->setAttribute("sprite bg3");
+    bg3->addComponent(sprite_bg3);
+    bg3->addComponent(animation_bg3);
+
+    addEntity(bg3);
+
+    std::shared_ptr<IEntity> bg4 = std::make_shared<IEntity>();
+    std::shared_ptr<Drawable> sprite_bg4 = std::make_shared<Drawable>();
+    std::shared_ptr<Animatable> animation_bg4 = std::make_shared<Animatable>();
+    sprite_bg4->setRect({0, 0, 800, 600});
+    sprite_bg4->setSize({1600, 600});
+    sprite_bg4->setScale(1);
+    sprite_bg4->setPosition({0, 0});
+    sprite_bg4->setAttribute("sprite bg4");
+    sprite_bg4->_textureId = BACKGROUND1;
+    gettimeofday(&animation_bg4->_chrono, nullptr);
+    animation_bg4->setTarget(sprite_bg4);
+    animation_bg4->setTime({0, 50000});
+    animation_bg4->_frameIndex = 0;
+    animation_bg4->_numberFrameToAnim = 800;
+    animation_bg4->_numberFrame = 1600;
+    animation_bg4->_startFrameIndex = 0;
+    animation_bg4->_frameForOnePicture = 800;
+    bg4->setAttribute("sprite bg4");
+    bg4->addComponent(sprite_bg4);
+    bg4->addComponent(animation_bg4);
+
+    addEntity(bg4);
+
+    // std::shared_ptr<Drawable> sprite_bg2 = std::make_shared<Drawable>();
+    // std::shared_ptr<Timer> timer_bg2 = std::make_shared<Timer>();
+    // sprite_bg2->setAttribute("sprite bg2");
+
+    // std::shared_ptr<Drawable> sprite_bg3 = std::make_shared<Drawable>();
+    // std::shared_ptr<Timer> timer_bg3 = std::make_shared<Timer>();
+    // sprite_bg3->setAttribute("sprite bg3");
+
+    // std::shared_ptr<Drawable> sprite_bg4 = std::make_shared<Drawable>();
+    // std::shared_ptr<Timer> timer_bg4 = std::make_shared<Timer>();
+    // sprite_bg4->setAttribute("sprite bg4");
 
     // addEntity(enemy1);
 
@@ -101,56 +206,56 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
 
     if (packet != nullptr) {
         if (packet->code == MESSAGE) {
-            if (std::string(static_cast<char *>(packet->data)) == "enter game") {
-                std::cout << "enter game player id " << id << std::endl;
-                std::shared_ptr<IEntity> entity = std::make_shared<IEntity>();
-                std::shared_ptr<Drawable> drawable = std::make_shared<Drawable>();
+             if (std::string(static_cast<char *>(packet->data)) == "enter game") {
+                 std::cout << "enter game player id " << id << std::endl;
+                 std::shared_ptr<IEntity> entity = std::make_shared<IEntity>();
+                 std::shared_ptr<Drawable> drawable = std::make_shared<Drawable>();
 
-                drawable->setAttribute("player " + std::to_string(id));
-                drawable->setPosition({100 * id, 100 * id});
-                drawable->setHasChanged(true);
-                drawable->_textureId = PLAYER;
-                entity->addComponent(drawable);
-                entity->setAttribute("player " + std::to_string(id));
-                addEntity(entity);
-                std::cout << "Entity added" << std::endl;
+                 drawable->setAttribute("player " + std::to_string(id));
+                 drawable->setPosition({100 * id, 100 * id});
+                 drawable->setHasChanged(true);
+                 drawable->_textureId = PLAYER;
+                 entity->addComponent(drawable);
+                 entity->setAttribute("player " + std::to_string(id));
+                 addEntity(entity);
+                 std::cout << "Entity added" << std::endl;
 
 
 
-                std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
-                sendpacket->code = NEW_COMPONENT;
-                sendpacket->data_size = sizeof(NewComponent);
-                sendpacket->data = malloc(sendpacket->data_size);
-                NewComponent newComponent{};
-                newComponent.type = ComponentTypeSocket ::SPRITESOCKET;
-                newComponent.id = PLAYER;
-                std::cout << "attribute: " << drawable->getAttribute() << std::endl;
-                std::memcpy(&newComponent.attribute, entity->getAttribute().c_str(), 8);
-                std::memcpy(&newComponent.attribute2, entity->getAttribute().c_str() + 8, 8);
-                memcpy(sendpacket->data, &newComponent, sendpacket->data_size);
-                _serverSocket->broadcast(sendpacket.get());
-                free(sendpacket->data);
+                 std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
+                 sendpacket->code = NEW_COMPONENT;
+                 sendpacket->data_size = sizeof(NewComponent);
+                 sendpacket->data = malloc(sendpacket->data_size);
+                 NewComponent newComponent{};
+                 newComponent.type = ComponentTypeSocket ::SPRITESOCKET;
+                 newComponent.id = PLAYER;
+                 std::cout << "attribute: " << drawable->getAttribute() << std::endl;
+                 std::memcpy(&newComponent.attribute, entity->getAttribute().c_str(), 8);
+                 std::memcpy(&newComponent.attribute2, entity->getAttribute().c_str() + 8, 8);
+                 memcpy(sendpacket->data, &newComponent, sendpacket->data_size);
+                 _serverSocket->broadcast(sendpacket.get());
+                 free(sendpacket->data);
 
-                sendGameState(id);
-                broadcastGameState();
-            }
-            if (std::string(static_cast<char *>(packet->data)) == "exit game") {
-                std::cout << "exit game player id " << id << std::endl;
-                //delete Entity("player " + std::to_string(id));
-                for (auto &entity : _entities) {
-                    if (entity->getAttribute() == "player " + std::to_string(id)) {
-                        _entities.erase(std::remove(_entities.begin(), _entities.end(), entity), _entities.end());
-                        break;
-                    }
-                }
-                std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
-                sendpacket->code = DELETE_COMPONENT;
-                sendpacket->data_size = ("player " + std::to_string(id)).size();
-                sendpacket->data = malloc(sendpacket->data_size);
-                std::memcpy(sendpacket->data, ("player " + std::to_string(id)).c_str(), sendpacket->data_size);
-                _serverSocket->broadcast(sendpacket.get());
-                free(sendpacket->data);
-            }
+                 sendGameState(id);
+                 broadcastGameState();
+             }
+             if (std::string(static_cast<char *>(packet->data)) == "exit game") {
+                 std::cout << "exit game player id " << id << std::endl;
+                 //delete Entity("player " + std::to_string(id));
+                 for (auto &entity : _entities) {
+                     if (entity->getAttribute() == "player " + std::to_string(id)) {
+                         _entities.erase(std::remove(_entities.begin(), _entities.end(), entity), _entities.end());
+                         break;
+                     }
+                 }
+                 std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
+                 sendpacket->code = DELETE_COMPONENT;
+                 sendpacket->data_size = ("player " + std::to_string(id)).size();
+                 sendpacket->data = malloc(sendpacket->data_size);
+                 std::memcpy(sendpacket->data, ("player " + std::to_string(id)).c_str(), sendpacket->data_size);
+                 _serverSocket->broadcast(sendpacket.get());
+                 free(sendpacket->data);
+             }
         }
     }
 
@@ -267,7 +372,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 bullet->addComponent(bullet_sprite);
                 bullet->setAttribute("bullet" + std::to_string(_nbBullets));
                 timer->_targetTime.tv_sec = 0;
-                timer->_targetTime.tv_usec = 5000;
+                timer->_targetTime.tv_usec = 2500;
                 timer->setTarget(bullet_sprite);
                 timer->setActive(true);
                 bullet->addComponent(timer);
