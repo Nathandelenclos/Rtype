@@ -219,26 +219,57 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
     }
 
     if (event->key == sf::Keyboard::Key::Space) {
-        std::shared_ptr<IEntity> entity = std::make_shared<IEntity>();
-        std::shared_ptr<Drawable> drawable = std::make_shared<Drawable>();
+        std::shared_ptr<IEntity> bullet = std::make_shared<IEntity>();
+        std::shared_ptr<Drawable> bullet_sprite = std::make_shared<Drawable>();
+        std::shared_ptr<Timer> timer = std::make_shared<Timer>();
 
-        drawable->setAttribute("test");
-        drawable->setPosition({100, 100});
-        entity->addComponent(drawable);
-        addEntity(entity);
-        std::cout << "Entity added" << std::endl;
+        std::shared_ptr<IEntity> player = nullptr;
 
-        std::shared_ptr<Packet> packet = std::make_shared<Packet>();
-        packet->code = NEW_COMPONENT;
-        packet->data_size = sizeof(NewComponent);
-        packet->data = malloc(packet->data_size);
+        for (const auto& entity : getEntities())
+            for (const auto& component : entity->getComponents()) {
+                if (component->getAttribute() == "player " + std::to_string(id)) {
+                    player = entity;
+                    break;
+                }
+            }
+
+        if (player == nullptr)
+            return;
+
+        auto draw = std::dynamic_pointer_cast<Drawable>(player->getComponents()[0]);
+
+        if (draw == nullptr)
+            return;
+
+        auto [x, y] = draw->getPosition();
+
+        bullet_sprite->setPosition({x, y});
+        bullet_sprite->setAttribute("bullet");
+        bullet_sprite->_textureId = BULLET;
+        bullet_sprite->setSize({200, 200});
+        bullet_sprite->setScale(0.5);
+        bullet->addComponent(bullet_sprite);
+        bullet->setAttribute("bullet");
+        timer->_targetTime.tv_sec = 0;
+        timer->_targetTime.tv_usec = 500000;
+        timer->setTarget(bullet_sprite);
+        timer->setActive(true);
+        bullet->addComponent(timer);
+        addEntity(bullet);
+
+        std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
+        sendpacket->code = NEW_COMPONENT;
+        sendpacket->data_size = sizeof(NewComponent);
+        sendpacket->data = malloc(sendpacket->data_size);
         NewComponent newComponent{};
         newComponent.type = ComponentTypeSocket ::SPRITESOCKET;
-        newComponent.id = 0;
-        std::memcpy(&newComponent.attribute, drawable->getAttribute(), std::strlen(drawable->getAttribute()));
-        memcpy(packet->data, &newComponent, packet->data_size);
-        _serverSocket->broadcast(packet.get());
-        free(packet->data);
+        newComponent.id = BULLET;
+        std::memcpy(&newComponent.attribute, bullet->getAttribute().c_str(), 16);
+        memcpy(sendpacket->data, &newComponent, sendpacket->data_size);
+        _serverSocket->broadcast(sendpacket.get());
+        free(sendpacket->data);
+
+        broadcastGameState();
     }
 
     // if (event->key == sf::Keyboard::Key::Enter) {

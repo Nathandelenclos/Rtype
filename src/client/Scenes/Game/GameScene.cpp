@@ -59,7 +59,7 @@ void GameScene::receiveData() {
                     std::string attributeString(attributechar);
                     std::string componentAttribute = component->getAttribute();
                     if (component->getAttribute() == attributeString) {
-                        std::cout << "element: " << drawable->x << " " << drawable->y << std::endl;
+                        std::cout << "element: " << drawable->rectLeft << " " << drawable->rectTop << " " << drawable->rectWidth << " " << drawable->rectHeight << std::endl;
                         //sprite->setTexture(getTextureByType(element->type));
                         auto *sprite = dynamic_cast<SpriteComponent *>(component.get());
                         sprite->setPosition({drawable->x, drawable->y});
