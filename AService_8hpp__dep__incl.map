@@ -1,13 +1,15 @@
 <map id="src/lib/r_type/services/AService.hpp" name="src/lib/r_type/services/AService.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="99,5,263,47"/>
-<area shape="rect" id="node2" href="$AService_8cpp.html" title=" " alt="" coords="5,95,169,136"/>
-<area shape="rect" id="node3" href="$Graphic_8hpp.html" title=" " alt="" coords="193,95,357,136"/>
-<area shape="rect" id="node4" href="$RType_8hpp.html" title=" " alt="" coords="186,459,362,486"/>
-<area shape="rect" id="node6" href="$Graphic_8cpp.html" title=" " alt="" coords="193,184,357,225"/>
-<area shape="rect" id="node7" href="$lib_2r__type_2Scenes_2IScene_8hpp.html" title=" " alt="" coords="381,184,537,225"/>
-<area shape="rect" id="node5" href="$RType_8cpp.html" title=" " alt="" coords="187,541,361,568"/>
-<area shape="rect" id="node8" href="$lib_2r__type_2Scenes_2AScene_8hpp.html" title=" " alt="" coords="381,273,537,315"/>
-<area shape="rect" id="node9" href="$lib_2r__type_2Scenes_2AScene_8cpp.html" title=" " alt="" coords="312,363,468,404"/>
-<area shape="rect" id="node10" href="$Lobby_8hpp.html" title=" " alt="" coords="492,363,648,404"/>
-<area shape="rect" id="node11" href="$Lobby_8cpp.html" title=" " alt="" coords="492,452,648,493"/>
+<area shape="rect" id="node1" title=" " alt="" coords="199,5,363,47"/>
+<area shape="rect" id="node2" href="$Animation_8hpp.html" title=" " alt="" coords="11,95,175,136"/>
+<area shape="rect" id="node11" href="$AService_8cpp.html" title=" " alt="" coords="199,95,363,136"/>
+<area shape="rect" id="node12" href="$Graphic_8hpp.html" title=" " alt="" coords="387,95,551,136"/>
+<area shape="rect" id="node3" href="$Animation_8cpp.html" title=" " alt="" coords="11,184,175,225"/>
+<area shape="rect" id="node4" href="$lib_2r__type_2Scenes_2IScene_8hpp.html" title=" " alt="" coords="211,184,367,225"/>
+<area shape="rect" id="node5" href="$RType_8hpp.html" title=" " alt="" coords="291,459,467,486"/>
+<area shape="rect" id="node7" href="$lib_2r__type_2Scenes_2AScene_8hpp.html" title=" " alt="" coords="185,273,341,315"/>
+<area shape="rect" id="node6" href="$RType_8cpp.html" title=" " alt="" coords="292,541,467,568"/>
+<area shape="rect" id="node8" href="$lib_2r__type_2Scenes_2AScene_8cpp.html" title=" " alt="" coords="185,363,341,404"/>
+<area shape="rect" id="node9" href="$Lobby_8hpp.html" title=" " alt="" coords="5,363,161,404"/>
+<area shape="rect" id="node10" href="$Lobby_8cpp.html" title=" " alt="" coords="5,452,161,493"/>
+<area shape="rect" id="node13" href="$Graphic_8cpp.html" title=" " alt="" coords="468,184,632,225"/>
 </map>
