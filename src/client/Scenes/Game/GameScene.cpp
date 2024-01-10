@@ -80,15 +80,15 @@ void GameScene::receiveData() {
                     if (component->getAttribute() == "sprite bg1") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND1));
                     }
-                    // if (component->getAttribute() == "sprite bg2") {
-                    //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND2));
-                    // }
-                    // if (component->getAttribute() == "sprite bg3") {
-                    //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND3));
-                    // }
-                    // if (component->getAttribute() == "sprite bg4") {
-                    //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND4));
-                    // }
+                     if (component->getAttribute() == "sprite bg2") {
+                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND2));
+                     }
+                     if (component->getAttribute() == "sprite bg3") {
+                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND3));
+                     }
+                     if (component->getAttribute() == "sprite bg4") {
+                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND4));
+                     }
                 }
             }
         }
