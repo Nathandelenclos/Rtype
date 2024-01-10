@@ -6,6 +6,7 @@
 #include "Collision.hpp"
 #include "Graphic.hpp"
 #include "Move.hpp"
+#include "Spawner.hpp"
 
 LobbyScene::LobbyScene(std::shared_ptr<ServerSocket> serverSocket) : AScene(std::move(serverSocket))
 {
@@ -23,15 +24,15 @@ void LobbyScene::initScene()
 void LobbyScene::initEntities()
 {
     std::shared_ptr<IEntity> enemy1 = std::make_shared<IEntity>();
-    std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
     std::shared_ptr<Timer> timer = std::make_shared<Timer>();
+    std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
+    std::shared_ptr<Animatable> animation = std::make_shared<Animatable>();
     gettimeofday(&timer->_startTime, nullptr);
     timer->_targetTime.tv_sec = 0;
     timer->_targetTime.tv_usec = 100000;
     timer->setTarget(sprite);
     timer->setActive(true);
     timer->setDirection(-1);
-    std::shared_ptr<Animatable> animation = std::make_shared<Animatable>();
     animation->setTarget(sprite);
     animation->setTime({0, 200000});
     animation->_frameIndex = 0;
@@ -41,15 +42,48 @@ void LobbyScene::initEntities()
     animation->_frameForOnePicture = 1;
     gettimeofday(&animation->_chrono, nullptr);
     sprite->setRect({0, 0, 33, 36});
-    sprite->setSize({263 * 5, 36 * 5});
-    sprite->setScale(5);
-    sprite->setPosition({500, 50});
+    sprite->setSize({263 * 2, 36 * 2});
+    sprite->setScale(2);
+    sprite->setPosition({1000, 50});
     sprite->setAttribute("sprite enemy");
     sprite->_textureId = ENEMY;
     enemy1->setAttribute("sprite enemy");
     enemy1->addComponent(sprite);
     enemy1->addComponent(timer);
     enemy1->addComponent(animation);
+
+    addEntity(enemy1);
+
+    std::shared_ptr<IEntity> enemy2 = std::make_shared<IEntity>();
+    std::shared_ptr<Timer> timer2 = std::make_shared<Timer>();
+    std::shared_ptr<Drawable> sprite2 = std::make_shared<Drawable>();
+    std::shared_ptr<Animatable> animation2 = std::make_shared<Animatable>();
+    gettimeofday(&timer2->_startTime, nullptr);
+    timer2->_targetTime.tv_sec = 0;
+    timer2->_targetTime.tv_usec = 100000;
+    timer2->setTarget(sprite2);
+    timer2->setActive(true);
+    timer2->setDirection(-1);
+    animation2->setTarget(sprite2);
+    animation2->setTime({0, 200000});
+    animation2->_frameIndex = 0;
+    animation2->_numberFrameToAnim = 8;
+    animation2->_numberFrame = 8;
+    animation2->_startFrameIndex = 0;
+    animation2->_frameForOnePicture = 1;
+    gettimeofday(&animation2->_chrono, nullptr);
+    sprite2->setRect({0, 0, 33, 36});
+    sprite2->setSize({263 * 2, 36 * 2});
+    sprite2->setScale(2);
+    sprite2->setPosition({1000, 150});
+    sprite2->setAttribute("sprite enemy");
+    sprite2->_textureId = ENEMY;
+    enemy2->setAttribute("sprite enemy");
+    enemy2->addComponent(sprite2);
+    enemy2->addComponent(timer2);
+    enemy2->addComponent(animation2);
+
+    addEntity(enemy2);
 
 
     std::shared_ptr<IEntity> bg1 = std::make_shared<IEntity>();
@@ -82,7 +116,7 @@ void LobbyScene::initEntities()
     sprite_bg2->setScale(1);
     sprite_bg2->setPosition({0, 0});
     sprite_bg2->setAttribute("sprite bg2");
-    sprite_bg2->_textureId = BACKGROUND1;
+    sprite_bg2->_textureId = BACKGROUND2;
     gettimeofday(&animation_bg2->_chrono, nullptr);
     animation_bg2->setTarget(sprite_bg2);
     animation_bg2->setTime({0, 30000});
@@ -104,7 +138,7 @@ void LobbyScene::initEntities()
     sprite_bg3->setScale(1);
     sprite_bg3->setPosition({0, 0});
     sprite_bg3->setAttribute("sprite bg3");
-    sprite_bg3->_textureId = BACKGROUND1;
+    sprite_bg3->_textureId = BACKGROUND3;
     gettimeofday(&animation_bg3->_chrono, nullptr);
     animation_bg3->setTarget(sprite_bg3);
     animation_bg3->setTime({0, 5000});
@@ -126,7 +160,7 @@ void LobbyScene::initEntities()
     sprite_bg4->setScale(1);
     sprite_bg4->setPosition({0, 0});
     sprite_bg4->setAttribute("sprite bg4");
-    sprite_bg4->_textureId = BACKGROUND1;
+    sprite_bg4->_textureId = BACKGROUND4;
     gettimeofday(&animation_bg4->_chrono, nullptr);
     animation_bg4->setTarget(sprite_bg4);
     animation_bg4->setTime({0, 50000});
@@ -144,37 +178,6 @@ void LobbyScene::initEntities()
     addEntity(bg3);
     addEntity(bg4);
     addEntity(enemy1);
-
-    // std::shared_ptr<Drawable> sprite_bg2 = std::make_shared<Drawable>();
-    // std::shared_ptr<Timer> timer_bg2 = std::make_shared<Timer>();
-    // sprite_bg2->setAttribute("sprite bg2");
-
-    // std::shared_ptr<Drawable> sprite_bg3 = std::make_shared<Drawable>();
-    // std::shared_ptr<Timer> timer_bg3 = std::make_shared<Timer>();
-    // sprite_bg3->setAttribute("sprite bg3");
-
-    // std::shared_ptr<Drawable> sprite_bg4 = std::make_shared<Drawable>();
-    // std::shared_ptr<Timer> timer_bg4 = std::make_shared<Timer>();
-    // sprite_bg4->setAttribute("sprite bg4");
-
-    // addEntity(enemy1);
-
-    // std::shared_ptr<IEntity> player = std::make_shared<IEntity>();
-    // std::shared_ptr<IEntity> background = std::make_shared<IEntity>();
-
-    // std::shared_ptr<Drawable> sprite = std::make_shared<Drawable>();
-    // sprite->setPosition({50, 50});
-    // sprite->setAttribute("Player");
-    // player->setAttribute("Player");
-    // player->addComponent(sprite);
-
-    // std::shared_ptr<Drawable> backgroundSprite = std::make_shared<Drawable>();
-    // backgroundSprite->setPosition({0, 0});
-    // background->setAttribute("Background");
-    // background->addComponent(backgroundSprite);
-
-    // addEntity(player);
-    // addEntity(background);
 }
 
 void LobbyScene::initServices()
@@ -184,12 +187,14 @@ void LobbyScene::initServices()
     std::shared_ptr<Animation> animation = std::make_shared<Animation>(_serverSocket);
     std::shared_ptr<Collision> collision = std::make_shared<Collision>(_serverSocket);
     std::shared_ptr<Move> move = std::make_shared<Move>(_serverSocket);
+    // std::shared_ptr<Spawner> spawner = std::make_shared<Spawner>(_serverSocket);
 
     addService(graphic);
     addService(collision);
     addService(move);
     addService(animation);
     addService(timeManagement);
+    // addService(spawner);
 
 }
 
@@ -199,6 +204,8 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
     timeval diff{};
     gettimeofday(&now, nullptr);
     timersub(&now, &_chrono, &diff);
+
+
 
     if (event->key != sf::Keyboard::Key::Unknown)
         _lastEvent = event;

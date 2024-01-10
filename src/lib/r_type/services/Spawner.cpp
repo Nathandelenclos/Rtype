@@ -2,13 +2,13 @@
 ** EPITECH PROJECT, 2023
 ** RType
 ** File description:
-** Animation.cpp
+** Spawner.cpp
 */
 
-#include "Animatable.hpp"
-#include "Animation.hpp"
+#include "Spawnable.hpp"
+#include "Spawner.hpp"
 
-void Animation::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component)
+void Spawner::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component)
 {
     auto animatable = std::dynamic_pointer_cast<Animatable>(component);
     if (animatable) {

@@ -74,15 +74,15 @@ void GameScene::receiveData() {
                     if (component->getAttribute() == "sprite bg1") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND1));
                     }
-                    // if (component->getAttribute() == "sprite bg2") {
-                    //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND2));
-                    // }
-                    // if (component->getAttribute() == "sprite bg3") {
-                    //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND3));
-                    // }
-                    // if (component->getAttribute() == "sprite bg4") {
-                    //     dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND4));
-                    // }
+                    if (component->getAttribute() == "sprite bg2") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND2));
+                    }
+                    if (component->getAttribute() == "sprite bg3") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND3));
+                    }
+                    if (component->getAttribute() == "sprite bg4") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND4));
+                    }
                 }
             }
         }
@@ -191,7 +191,7 @@ void GameScene::initTextures() {
     _textures[Type::PLAYER] = sf::Texture();
     _textures[Type::PLAYER].loadFromFile("../sprites/r-typesheet1.gif");
     _textures[Type::ENEMY] = sf::Texture();
-    _textures[Type::ENEMY].loadFromFile("../testsprites/r-typesheet5.png");
+    _textures[Type::ENEMY].loadFromFile("../testsprites/r-typesheet5_invert.png");
     _textures[Type::BULLET] = sf::Texture();
     _textures[Type::BULLET].loadFromFile("../src/client/assets/missing.png");
     _textures[Type::BACKGROUND1] = sf::Texture();
