@@ -1,15 +1,16 @@
 <map id="src/lib/r_type/Scenes/IScene.hpp" name="src/lib/r_type/Scenes/IScene.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="294,5,450,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="467,184,530,211"/>
-<area shape="rect" id="node3" title=" " alt="" coords="77,184,155,211"/>
+<area shape="rect" id="node1" title=" " alt="" coords="352,5,508,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="589,184,652,211"/>
+<area shape="rect" id="node3" title=" " alt="" coords="89,184,166,211"/>
 <area shape="rect" id="node4" title=" " alt="" coords="49,95,213,136"/>
-<area shape="rect" id="node5" href="$lib_2r__type_2components_2IComponent_8hpp.html" title=" " alt="" coords="153,341,378,367"/>
-<area shape="rect" id="node6" href="$src_2lib_2r__type_2services_2IService_8hpp.html" title=" " alt="" coords="370,259,542,285"/>
-<area shape="rect" id="node8" href="$Graphic_8hpp.html" title=" " alt="" coords="728,102,899,129"/>
-<area shape="rect" id="node12" href="$Animation_8hpp.html" title=" " alt="" coords="517,102,704,129"/>
-<area shape="rect" id="node13" href="$IEntity_8hpp.html" title=" " alt="" coords="237,102,392,129"/>
-<area shape="rect" id="node7" title=" " alt="" coords="403,333,555,375"/>
-<area shape="rect" id="node9" title=" " alt="" coords="606,184,666,211"/>
-<area shape="rect" id="node10" href="$AService_8hpp.html" title=" " alt="" coords="691,184,797,211"/>
-<area shape="rect" id="node11" title=" " alt="" coords="679,259,809,285"/>
+<area shape="rect" id="node5" href="$lib_2r__type_2components_2IComponent_8hpp.html" title=" " alt="" coords="164,341,389,367"/>
+<area shape="rect" id="node6" href="$src_2lib_2r__type_2services_2IService_8hpp.html" title=" " alt="" coords="360,259,532,285"/>
+<area shape="rect" id="node8" href="$Graphic_8hpp.html" title=" " alt="" coords="729,102,899,129"/>
+<area shape="rect" id="node12" href="$TimeManagement_8hpp.html" title=" " alt="" coords="924,102,1163,129"/>
+<area shape="rect" id="node13" href="$Animation_8hpp.html" title=" " alt="" coords="518,102,705,129"/>
+<area shape="rect" id="node14" href="$IEntity_8hpp.html" title=" " alt="" coords="238,102,393,129"/>
+<area shape="rect" id="node7" title=" " alt="" coords="414,333,566,375"/>
+<area shape="rect" id="node9" title=" " alt="" coords="676,184,736,211"/>
+<area shape="rect" id="node10" href="$AService_8hpp.html" title=" " alt="" coords="761,184,867,211"/>
+<area shape="rect" id="node11" title=" " alt="" coords="795,259,924,285"/>
 </map>
