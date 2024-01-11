@@ -36,8 +36,9 @@ var searchData=
   ['_5ftarget_33',['_target',['../classTimer.html#abaca4a7e13bb8eae94aa956a19ee35eb',1,'Timer']]],
   ['_5ftargettime_34',['_targetTime',['../classTimer.html#a95d5015cfcf06851803accb29604aaac',1,'Timer']]],
   ['_5ftextentry_35',['_textEntry',['../classInputComponent.html#a80b47ff40a73954a2e80731b9c9e3d50',1,'InputComponent']]],
-  ['_5ftexture_36',['_texture',['../classParallaxLayer.html#aaee6edcc1351f0b23b227489f43cb3f3',1,'ParallaxLayer']]],
-  ['_5ftexture_37',['_Texture',['../classSprite.html#a143bc7e8bcae6e4deb9a3cf71b56b86b',1,'Sprite']]],
+  ['_5ftexture_36',['_Texture',['../classSprite.html#a143bc7e8bcae6e4deb9a3cf71b56b86b',1,'Sprite']]],
+  ['_5ftexture_37',['_texture',['../classParallaxLayer.html#aaee6edcc1351f0b23b227489f43cb3f3',1,'ParallaxLayer']]],
   ['_5ftextureid_38',['_textureId',['../classDrawable.html#aa081925ea9f0149fbc7e1c531f47d69d',1,'Drawable']]],
-  ['_5ftype_39',['_type',['../classIComponent.html#a059d5f171ad78246fe9038599316cf72',1,'IComponent']]]
+  ['_5ftodelete_39',['_toDelete',['../classDrawable.html#ae26a4cd257bd195518f6c4cef05cd1ba',1,'Drawable']]],
+  ['_5ftype_40',['_type',['../classIComponent.html#a059d5f171ad78246fe9038599316cf72',1,'IComponent']]]
 ];
