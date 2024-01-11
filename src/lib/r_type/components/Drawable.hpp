@@ -37,15 +37,14 @@ class Drawable : public IComponentRType {
 
         std::shared_ptr<Packet> getPacket();
 
-        void storeStringInAttributes(std::string str, DrawablePacket *drawablePacket);
-
         void setHasChanged(bool hasChanged);
         bool getHasChanged() const;
 
         void addDrawableCollision(std::shared_ptr<Drawable> drawableCollision);
-        std::vector<std::shared_ptr<Drawable>> getDrawablesCollision() const;
+        [[nodiscard]] std::vector<std::shared_ptr<Drawable>> getDrawablesCollision() const;
 
-    int _textureId;
+        int _textureId;
+        bool _toDelete = false;
 protected:
         Position _position;
         Size _size;

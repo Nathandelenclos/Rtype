@@ -10,7 +10,12 @@ void Collision::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentR
     if (!drawable) return;
     for (auto &other: drawable->getDrawablesCollision()) {
         if (Collision::checkCollision(drawable, other)) {
-            Collision::cancelMove(event, drawable);
+            if (drawable->_textureId == BULLET) {
+                if (other->_textureId == ENEMY) {
+                    drawable->_toDelete = true;
+                    other->_toDelete = true;
+                }
+            }
         }
     }
 }
@@ -21,10 +26,31 @@ bool Collision::checkCollision(const std::shared_ptr<Drawable>& drawable, const 
     Size size1 = drawable->getSize();
     Size size2 = other->getSize();
 
-    return std::get<0>(pos1) < std::get<0>(pos2) + std::get<0>(size2) &&
-           std::get<0>(pos1) + std::get<0>(size1) > std::get<0>(pos2) &&
-           std::get<1>(pos1) < std::get<1>(pos2) + std::get<1>(size2) &&
-           std::get<1>(pos1) + std::get<1>(size1) > std::get<1>(pos2);
+    if (std::get<0>(pos1) < std::get<0>(pos2) && std::get<0>(pos1) + std::get<0>(size1) > std::get<0>(pos2) &&
+        std::get<1>(pos1) < std::get<1>(pos2) && std::get<1>(pos1) + std::get<1>(size1) > std::get<1>(pos2)) {
+        return true;
+    }
+    if (std::get<0>(pos1) < std::get<0>(pos2) + std::get<0>(size2) &&
+        std::get<0>(pos1) + std::get<0>(size1) > std::get<0>(pos2) + std::get<0>(size2) &&
+        std::get<1>(pos1) < std::get<1>(pos2) + std::get<1>(size2) &&
+        std::get<1>(pos1) + std::get<1>(size1) > std::get<1>(pos2) + std::get<1>(size2)) {
+        return true;
+    }
+    if (std::get<0>(pos1) < std::get<0>(pos2) + std::get<0>(size2) &&
+        std::get<0>(pos1) + std::get<0>(size1) > std::get<0>(pos2) + std::get<0>(size2) &&
+        std::get<1>(pos1) < std::get<1>(pos2) &&
+        std::get<1>(pos1) + std::get<1>(size1) > std::get<1>(pos2)) {
+        return true;
+    }
+    if (std::get<0>(pos1) < std::get<0>(pos2) &&
+        std::get<0>(pos1) + std::get<0>(size1) > std::get<0>(pos2) &&
+        std::get<1>(pos1) < std::get<1>(pos2) + std::get<1>(size2) &&
+        std::get<1>(pos1) + std::get<1>(size1) > std::get<1>(pos2) + std::get<1>(size2)) {
+        return true;
+    }
+
+    return false;
+
 }
 
 void Collision::cancelMove(const std::shared_ptr<Event>& event, const std::shared_ptr<Drawable>& drawable) {
