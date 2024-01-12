@@ -29,7 +29,7 @@ void LobbyScene::initEntities()
     timer->_targetTime.tv_sec = 0;
     timer->_targetTime.tv_usec = 50000;
     timer->setTarget(sprite);
-    timer->setActive(true);
+    timer->setActive(false);
     std::shared_ptr<Animatable> animation = std::make_shared<Animatable>();
     animation->setTarget(sprite);
     animation->setTime({0, 200000});
@@ -42,7 +42,7 @@ void LobbyScene::initEntities()
     sprite->setRect({0, 0, 33, 36});
     sprite->setSize({263 * 5, 36 * 5});
     sprite->setScale(5);
-    sprite->setPosition({50, 50});
+    sprite->setPosition({200, 200});
     sprite->setAttribute("sprite enemy");
     sprite->_textureId = ENEMY;
     enemy1->setAttribute("sprite enemy");
