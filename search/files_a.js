@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['server_2ecpp_502',['Server.cpp',['../Server_8cpp.html',1,'']]],
-  ['server_2ehpp_503',['Server.hpp',['../Server_8hpp.html',1,'']]],
-  ['serversocket_2ecpp_504',['ServerSocket.cpp',['../ServerSocket_8cpp.html',1,'']]],
-  ['serversocket_2ehpp_505',['ServerSocket.hpp',['../ServerSocket_8hpp.html',1,'']]],
-  ['soundcomponent_2ecpp_506',['SoundComponent.cpp',['../SoundComponent_8cpp.html',1,'']]],
-  ['soundcomponent_2ehpp_507',['SoundComponent.hpp',['../SoundComponent_8hpp.html',1,'']]],
-  ['spritecomponent_2ecpp_508',['SpriteComponent.cpp',['../SpriteComponent_8cpp.html',1,'']]],
-  ['spritecomponent_2ehpp_509',['SpriteComponent.hpp',['../SpriteComponent_8hpp.html',1,'']]],
-  ['start_5finstall_2emd_510',['start_install.md',['../start__install_8md.html',1,'']]]
+  ['textcomponent_2ecpp_511',['TextComponent.cpp',['../TextComponent_8cpp.html',1,'']]],
+  ['textcomponent_2ehpp_512',['TextComponent.hpp',['../TextComponent_8hpp.html',1,'']]],
+  ['timemanagement_2ecpp_513',['TimeManagement.cpp',['../TimeManagement_8cpp.html',1,'']]],
+  ['timemanagement_2ehpp_514',['TimeManagement.hpp',['../TimeManagement_8hpp.html',1,'']]],
+  ['timer_2ecpp_515',['Timer.cpp',['../Timer_8cpp.html',1,'']]],
+  ['timer_2ehpp_516',['Timer.hpp',['../Timer_8hpp.html',1,'']]]
 ];
