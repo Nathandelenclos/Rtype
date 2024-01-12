@@ -2,7 +2,7 @@
 // Created by talleux on 1/4/24.
 //
 
-#include "Lobby.hpp"
+#include "Game.hpp"
 #include "Collision.hpp"
 #include "Graphic.hpp"
 #include "Move.hpp"

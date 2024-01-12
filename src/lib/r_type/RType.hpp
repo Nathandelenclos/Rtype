@@ -14,13 +14,13 @@
 #include "IGame.hpp"
 #include "./services/Graphic.hpp"
 #include "./Scenes/IScene.hpp"
-#include "./Scenes/Lobby/Lobby.hpp"
+#include "./Scenes/Game/Game.hpp"
 
 class RType : public IGame {
 public:
     explicit RType(std::shared_ptr<ServerSocket> socket) {
         _socket = std::move(socket);
-        _scenes["Lobby"] = std::make_shared<LobbyScene>(_socket);
+        _scenes["Game"] = std::make_shared<LobbyScene>(_socket);
         _currentScene = nullptr;
         gettimeofday(&_broadcastGameState, nullptr);
     }
@@ -35,7 +35,7 @@ public:
 
         if (!_socket->getClients().empty()) {
             if (_currentScene == nullptr) {
-                _currentScene = _scenes["Lobby"];
+                _currentScene = _scenes["Game"];
                 _currentScene->restartScene();
             }
         } else {
