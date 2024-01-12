@@ -100,7 +100,7 @@ $(function() {
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    timer-&gt;_targetTime.tv_sec = 0;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    timer-&gt;_targetTime.tv_usec = 50000;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    timer-&gt;setTarget(sprite);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    timer-&gt;setActive(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    timer-&gt;setActive(<span class="keyword">false</span>);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    std::shared_ptr&lt;<a class="code" href="classAnimatable.html">Animatable</a>&gt; animation = std::make_shared&lt;Animatable&gt;();</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    animation-&gt;setTarget(sprite);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    animation-&gt;setTime({0, 200000});</div>
@@ -113,7 +113,7 @@ $(function() {
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    sprite-&gt;setRect({0, 0, 33, 36});</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    sprite-&gt;setSize({263 * 5, 36 * 5});</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    sprite-&gt;setScale(5);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    sprite-&gt;setPosition({50, 50});</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    sprite-&gt;setPosition({200, 200});</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    sprite-&gt;setAttribute(<span class="stringliteral">&quot;sprite enemy&quot;</span>);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    sprite-&gt;_textureId = ENEMY;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    enemy1-&gt;setAttribute(<span class="stringliteral">&quot;sprite enemy&quot;</span>);</div>
