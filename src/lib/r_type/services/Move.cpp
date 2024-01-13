@@ -8,6 +8,11 @@
 #include "Move.hpp"
 #include "SFML/Window/Keyboard.hpp"
 
+/**
+ * @brief update, update the move
+ * @param event
+ * @param component
+ */
 void Move::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component)
 {
     auto drawable = std::dynamic_pointer_cast<Drawable>(component);

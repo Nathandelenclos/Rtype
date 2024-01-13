@@ -9,4 +9,5 @@ r-type_server
 build
 html
 .DS_Store
-
+clang-format
+clang-reformat.sh

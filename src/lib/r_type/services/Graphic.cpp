@@ -8,6 +8,12 @@
 #include "Graphic.hpp"
 #include "Drawable.hpp"
 
+/**
+ * @brief update, update the graphic
+ * @param event
+ * @param component
+ */
+
 void Graphic::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component)
 {
     auto drawable = std::dynamic_pointer_cast<Drawable>(component);

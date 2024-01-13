@@ -22,8 +22,8 @@ class Drawable : public IComponentRType
 {
   public:
     Drawable();
-    [[nodiscard]] char *getAttribute() const override;
-    void setAttribute(std::string attribute) override;
+    [[nodiscard]] char *getAttribute() const;
+    void setAttribute(std::string attribute);
 
     [[nodiscard]] Position getPosition() const;
     void setPosition(std::tuple<float, float> position);

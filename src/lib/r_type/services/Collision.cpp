@@ -7,6 +7,11 @@
 #include "SFML/Graphics/Rect.hpp"
 #include "SFML/Window/Keyboard.hpp"
 
+/**
+ * @brief update, update the collision
+ * @param event
+ * @param component
+ */
 void Collision::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component)
 {
     auto drawable = std::dynamic_pointer_cast<Drawable>(component);
@@ -24,6 +29,12 @@ void Collision::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentR
     }
 }
 
+/**
+ * @brief checkCollision, check the collision
+ * @param drawable
+ * @param other
+ * @return bool (true or false) if there is a collision
+ */
 bool Collision::checkCollision(const std::shared_ptr<Drawable> &drawable, const std::shared_ptr<Drawable> &other)
 {
     Position pos1 = drawable->getPosition();
@@ -38,6 +49,11 @@ bool Collision::checkCollision(const std::shared_ptr<Drawable> &drawable, const 
     return rect1.intersects(rect2);
 }
 
+/**
+ * @brief cancelMove, cancel the move
+ * @param event
+ * @param drawable
+ */
 void Collision::cancelMove(const std::shared_ptr<Event> &event, const std::shared_ptr<Drawable> &drawable)
 {
     std::cout << "collision" << std::endl;

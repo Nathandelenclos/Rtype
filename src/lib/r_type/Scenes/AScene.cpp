@@ -6,26 +6,46 @@
 
 #include <utility>
 
+/**
+ * @brief Construct a new AScene:: AScene object
+ * @param serverSocket
+ */
 AScene::AScene(std::shared_ptr<ServerSocket> serverSocket)
 {
     _serverSocket = std::move(serverSocket);
 }
 
+/**
+ * @brief addEntity, add an entity
+ * @param entity
+ */
 void AScene::addEntity(std::shared_ptr<IEntity> entity)
 {
     _entities.push_back(std::move(entity));
 }
 
+/**
+ * @brief getEntities, get the entities
+ * @return entities (std::vector<std::shared_ptr<IEntity>>)
+ */
 std::vector<std::shared_ptr<IEntity>> AScene::getEntities()
 {
     return _entities;
 }
 
+/**
+ * @brief addService, add a service
+ * @param service
+ */
 void AScene::addService(std::shared_ptr<IService> service)
 {
     _services.push_back(std::move(service));
 }
 
+/**
+ * @brief getServices, get the services
+ * @return services (std::vector<std::shared_ptr<IService>>)
+ */
 std::vector<std::shared_ptr<IService>> AScene::getServices()
 {
     return _services;
@@ -47,6 +67,9 @@ void AScene::stopScene()
 {
 }
 
+/**
+ * @brief restartScene, restart the scene
+ */
 void AScene::restartScene()
 {
     _entities.clear();
@@ -55,6 +78,10 @@ void AScene::restartScene()
     initServices();
 }
 
+/**
+ * @brief sedGameState, send the game state
+ * @param clientID
+ */
 void AScene::sendGameState(int clientID)
 {
     std::cout << "Sending game state to client " << clientID << std::endl;
@@ -83,6 +110,9 @@ void AScene::sendGameState(int clientID)
     }
 }
 
+/**
+ * @brief broadcastGameState, broadcast the game state
+ */
 void AScene::broadcastGameState()
 {
     std::shared_ptr<Packet> packet = std::make_shared<Packet>();

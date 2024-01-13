@@ -5,6 +5,11 @@
 #include "TimeManagement.hpp"
 #include "Timer.hpp"
 
+/**
+ * @brief update, update the time
+ * @param event
+ * @param component
+ */
 void TimeManagement::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component)
 {
     auto time = std::dynamic_pointer_cast<Timer>(component);

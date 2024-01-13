@@ -7,6 +7,10 @@
 
 #include "Player.hpp"
 
+/**
+ * @brief Construct a new Player:: Player object
+ * @param socket
+ */
 Player::Player(ServerSocket *socket) :
     socket(socket)
 {
@@ -16,6 +20,9 @@ Player::Player(ServerSocket *socket) :
     _direction = 0.1;
 }
 
+/**
+ * @brief draw, draw the player
+ */
 void Player::draw()
 {
     Packet *packet;
@@ -37,6 +44,10 @@ void Player::draw()
     }
 }
 
+/**
+ * @brief getPacket, get the packet
+ * @return packet (Packet *)
+ */
 Packet *Player::getPacket()
 {
     std::unique_ptr<Packet> packet = std::make_unique<Packet>();

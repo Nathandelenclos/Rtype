@@ -8,6 +8,11 @@
 #include "Animation.hpp"
 #include "Animatable.hpp"
 
+/**
+ * @brief Construct a new Animation:: Animation object
+ * @param event
+ * @param component
+ */
 void Animation::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component)
 {
     auto animatable = std::dynamic_pointer_cast<Animatable>(component);

@@ -7,6 +7,10 @@
 #include "Graphic.hpp"
 #include "Move.hpp"
 
+/**
+ * @brief Construct a new LobbyScene:: LobbyScene object
+ * @param serverSocket
+ */
 LobbyScene::LobbyScene(std::shared_ptr<ServerSocket> serverSocket) :
     AScene(std::move(serverSocket))
 {
@@ -15,12 +19,18 @@ LobbyScene::LobbyScene(std::shared_ptr<ServerSocket> serverSocket) :
     _bulletTriggerLimiter = {0, 0};
 }
 
+/**
+ * @brief initScene, init the scene
+ */
 void LobbyScene::initScene()
 {
     initEntities();
     initServices();
 }
 
+/**
+ * @brief initEntities, init the entities
+ */
 void LobbyScene::initEntities()
 {
     std::shared_ptr<IEntity> enemy1 = std::make_shared<IEntity>();
@@ -177,6 +187,9 @@ void LobbyScene::initEntities()
     // addEntity(background);
 }
 
+/**
+ * @brief initServices, init the services
+ */
 void LobbyScene::initServices()
 {
     std::shared_ptr<Graphic> graphic = std::make_shared<Graphic>(_serverSocket);
@@ -192,6 +205,11 @@ void LobbyScene::initServices()
     addService(timeManagement);
 }
 
+/**
+ * @brief update, update the scene
+ * @param event
+ * @param packet
+ */
 void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet)
 {
     timeval now{};
@@ -413,6 +431,9 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
     }
 }
 
+/**
+ * @brief checkBulletDeletion, check the bullet deletion
+ */
 void LobbyScene::checkBulletDeletion()
 {
     for (auto &entity : getEntities()) {
