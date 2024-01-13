@@ -9,6 +9,7 @@
 
 #include <utility>
 
-extern "C" RType* create(std::shared_ptr<ServerSocket> socket) {
+extern "C" RType *create(std::shared_ptr<ServerSocket> socket)
+{
     return new RType(std::move(socket));
 }

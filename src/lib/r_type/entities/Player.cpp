@@ -7,14 +7,17 @@
 
 #include "Player.hpp"
 
-Player::Player(ServerSocket *socket) : socket(socket) {
+Player::Player(ServerSocket *socket) :
+    socket(socket)
+{
     gettimeofday(&_annimationTime, nullptr);
     _positionX = 100;
     _positionY = 100;
     _direction = 0.1;
 }
 
-void Player::draw() {
+void Player::draw()
+{
     Packet *packet;
     timeval now{};
     timeval diff{};
@@ -34,7 +37,8 @@ void Player::draw() {
     }
 }
 
-Packet *Player::getPacket() {
+Packet *Player::getPacket()
+{
     std::unique_ptr<Packet> packet = std::make_unique<Packet>();
     std::unique_ptr<Element> element = std::make_unique<Element>();
 

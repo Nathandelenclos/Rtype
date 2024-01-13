@@ -5,16 +5,17 @@
 #ifndef R_TYPE_SERVER_SERVERSOCKET_HPP
 #define R_TYPE_SERVER_SERVERSOCKET_HPP
 
-#include <string>
+#include "../shared/USocket.hpp"
 #include <cstring>
-#include <vector>
 #include <map>
 #include <memory>
 #include <netinet/in.h>
-#include "../shared/USocket.hpp"
+#include <string>
+#include <vector>
 
-class ServerSocket : public USocket {
-public:
+class ServerSocket : public USocket
+{
+  public:
     ServerSocket();
     ~ServerSocket() override;
 
@@ -34,8 +35,9 @@ public:
     void splitAndSend(Packet *packet, struct sockaddr_in dest) override;
     void receivePacketAndAddToBuffer();
 
-
-    [[nodiscard]] std::vector<std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>, timeval>>& getClients();
+    [[nodiscard]] std::vector<
+        std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>, timeval>> &
+    getClients();
 
     std::tuple<std::unique_ptr<Packet>, int> manageClientsBuffer();
 
@@ -45,12 +47,16 @@ public:
 
     void clientDump();
 
-private:
+  private:
     unsigned long long sockfd;
-    struct sockaddr_in serv_addr{};
+    struct sockaddr_in serv_addr {
+    };
     std::string lastMessage;
-    std::vector<std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>, timeval>> clients;
-    struct sockaddr_in lastClientAddress{};
+    std::vector<
+        std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>, timeval>>
+        clients;
+    struct sockaddr_in lastClientAddress {
+    };
     std::unique_ptr<struct timeval> timeout;
     fd_set _readfds;
     bool newClientConnected;
@@ -58,4 +64,4 @@ private:
     int nextClientId = 1;
 };
 
-#endif //R_TYPE_SERVER_SERVERSOCKET_HPP
+#endif // R_TYPE_SERVER_SERVERSOCKET_HPP

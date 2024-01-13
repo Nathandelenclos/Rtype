@@ -13,7 +13,7 @@ ClientCore::ClientCore()
     _currentScene = _scenes["main"];
 }
 
-bool ClientCore::init_socket(const std::string& ip, int port)
+bool ClientCore::init_socket(const std::string &ip, int port)
 {
     if (_socket->isInit())
         return true;
@@ -43,12 +43,12 @@ void ClientCore::run()
         _heartBeatThread.join();
 }
 
-std::shared_ptr<IScene> ClientCore::getSceneByName(const std::string& name)
+std::shared_ptr<IScene> ClientCore::getSceneByName(const std::string &name)
 {
     return _scenes[name];
 }
 
-void ClientCore::setCurrentScene(const std::string& name)
+void ClientCore::setCurrentScene(const std::string &name)
 {
     _currentScene->continueScene = false;
     _currentScene->pauseScene();
@@ -57,7 +57,7 @@ void ClientCore::setCurrentScene(const std::string& name)
     _currentScene->resumeScene();
 }
 
-void ClientCore::sendHeartBeat(sf::RenderWindow& window)
+void ClientCore::sendHeartBeat(sf::RenderWindow &window)
 {
     std::unique_ptr<Packet> packet = std::make_unique<Packet>();
 
@@ -65,7 +65,7 @@ void ClientCore::sendHeartBeat(sf::RenderWindow& window)
     packet->data_size = sizeof(timeval);
     packet->data = malloc(packet->data_size);
     while (window.isOpen()) {
-        gettimeofday((timeval*)packet->data, nullptr);
+        gettimeofday((timeval *)packet->data, nullptr);
         _socket->send(packet.get(), _socket->serv_addr);
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }

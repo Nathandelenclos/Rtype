@@ -4,7 +4,8 @@
 
 #include "SoundComponent.hpp"
 
-SoundComponent::SoundComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
+SoundComponent::SoundComponent(ClientCore *core, std::shared_ptr<ClientSocket> socket) :
+    AComponent(core)
 {
     _type = ComponentType::SOUND;
     if (!_buffer.loadFromFile("../src/client/assets/sounds/click.wav"))
@@ -13,7 +14,7 @@ SoundComponent::SoundComponent(ClientCore* core, std::shared_ptr<ClientSocket> s
     _socket = std::move(socket);
 }
 
-void SoundComponent::display(sf::RenderWindow& window)
+void SoundComponent::display(sf::RenderWindow &window)
 {
 }
 
@@ -22,11 +23,11 @@ void SoundComponent::action()
     _sound.play();
 }
 
-void SoundComponent::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+void SoundComponent::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
 }
 
-void SoundComponent::setSound(const std::string& path)
+void SoundComponent::setSound(const std::string &path)
 {
     if (!_buffer.loadFromFile(path))
         throw std::runtime_error("Cannot load " + path);

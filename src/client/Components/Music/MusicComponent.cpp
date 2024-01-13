@@ -5,7 +5,8 @@
 #include "MusicComponent.hpp"
 #include <iostream>
 
-MusicComponent::MusicComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
+MusicComponent::MusicComponent(ClientCore *core, std::shared_ptr<ClientSocket> socket) :
+    AComponent(core)
 {
     _type = ComponentType::MUSIC;
     if (!_music.openFromFile("../src/client/assets/musics/music.ogg"))
@@ -21,7 +22,7 @@ MusicComponent::~MusicComponent()
     _music.stop();
 }
 
-void MusicComponent::display(sf::RenderWindow& window)
+void MusicComponent::display(sf::RenderWindow &window)
 {
     if (_music.getStatus() != sf::Music::Playing)
         if (_toPlay) {
@@ -35,11 +36,11 @@ void MusicComponent::action()
     _music.play();
 }
 
-void MusicComponent::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+void MusicComponent::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
 }
 
-void MusicComponent::setSound(const std::string& path)
+void MusicComponent::setSound(const std::string &path)
 {
     if (!_music.openFromFile(path))
         throw std::runtime_error("Cannot load " + path);
@@ -88,7 +89,6 @@ void MusicComponent::setVolume(float volume)
 
 void MusicComponent::handleClick()
 {
-
 }
 
 void MusicComponent::stop()

@@ -7,8 +7,8 @@
 
 #include "Drawable.hpp"
 
-#include <utility>
 #include <cstring>
+#include <utility>
 
 Drawable::Drawable()
 {
@@ -99,18 +99,22 @@ std::shared_ptr<Packet> Drawable::getPacket()
     return packet;
 }
 
-void Drawable::setHasChanged(bool hasChanged) {
+void Drawable::setHasChanged(bool hasChanged)
+{
     this->hasChanged = hasChanged;
 }
 
-bool Drawable::getHasChanged() const {
+bool Drawable::getHasChanged() const
+{
     return hasChanged;
 }
 
-void Drawable::addDrawableCollision(std::shared_ptr<Drawable> drawableCollision) {
+void Drawable::addDrawableCollision(std::shared_ptr<Drawable> drawableCollision)
+{
     _drawablesCollision.push_back(std::move(drawableCollision));
 }
 
-std::vector<std::shared_ptr<Drawable>> Drawable::getDrawablesCollision() const {
+std::vector<std::shared_ptr<Drawable>> Drawable::getDrawablesCollision() const
+{
     return _drawablesCollision;
 }

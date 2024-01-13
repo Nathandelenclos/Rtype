@@ -7,7 +7,9 @@
 
 #include <utility>
 
-MenuScene::MenuScene(ClientCore* clientCore, std::shared_ptr<ClientSocket> socket) : AScene(clientCore), _socket(std::move(socket))
+MenuScene::MenuScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket) :
+    AScene(clientCore),
+    _socket(std::move(socket))
 {
     init_scene();
     _pingTime.tv_sec = 0;
@@ -54,7 +56,6 @@ void MenuScene::init_scene()
     text_ping->setText("Ping: 0ms");
     text_ping->setPosition(sf::Vector2f(0, 550));
 
-
     addComponent(text);
     addComponent(button);
     addComponent(text_button);
@@ -64,7 +65,7 @@ void MenuScene::init_scene()
     addComponent(text_ping);
 }
 
-void MenuScene::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+void MenuScene::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
     while (window.pollEvent(const_cast<sf::Event &>(event))) {
         if (event.type == sf::Event::Closed) {
@@ -83,7 +84,8 @@ void MenuScene::handleEvent(const sf::Event& event, sf::RenderWindow& window)
     }
 }
 
-void MenuScene::receiveData() {
+void MenuScene::receiveData()
+{
     std::tuple<std::unique_ptr<Packet>, int> packet = _socket->receive();
     std::unique_ptr<Packet> p = std::move(std::get<0>(packet));
 
@@ -114,7 +116,9 @@ void MenuScene::receiveData() {
             for (auto &component : _components) {
                 if (component->getType() == ComponentType::TEXT) {
                     if (component->getAttribute() == "text ping") {
-                        dynamic_cast<TextComponent *>(component.get())->setText("Ping: " + std::to_string(_pingTime.tv_sec * 1000 + _pingTime.tv_usec / 1000) + ", " + std::to_string(_pingTime.tv_usec % 1000) + "ms");
+                        dynamic_cast<TextComponent *>(component.get())
+                            ->setText("Ping: " + std::to_string(_pingTime.tv_sec * 1000 + _pingTime.tv_usec / 1000) +
+                                      ", " + std::to_string(_pingTime.tv_usec % 1000) + "ms");
                     }
                 }
             }

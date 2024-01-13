@@ -7,13 +7,14 @@
 
 #pragma once
 
-#include <vector>
 #include "ParallaxLayer.hpp"
+#include <vector>
 
-class ParallaxBackground {
-public:
+class ParallaxBackground
+{
+  public:
     std::vector<ParallaxLayer> layers;
 
-    void addLayer(const std::string& filename, float speed);
+    void addLayer(const std::string &filename, float speed);
     void update(float deltaTime);
 };

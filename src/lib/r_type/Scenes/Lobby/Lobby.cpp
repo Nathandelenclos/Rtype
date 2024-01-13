@@ -7,7 +7,8 @@
 #include "Graphic.hpp"
 #include "Move.hpp"
 
-LobbyScene::LobbyScene(std::shared_ptr<ServerSocket> serverSocket) : AScene(std::move(serverSocket))
+LobbyScene::LobbyScene(std::shared_ptr<ServerSocket> serverSocket) :
+    AScene(std::move(serverSocket))
 {
     initScene();
     gettimeofday(&_chrono, nullptr);
@@ -189,7 +190,6 @@ void LobbyScene::initServices()
     addService(move);
     addService(animation);
     addService(timeManagement);
-
 }
 
 void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet)
@@ -203,7 +203,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
         _lastEvent = event;
 
     if (diff.tv_usec >= 5000) {
-        for (auto & _entitie : _entities) {
+        for (auto &_entitie : _entities) {
             for (auto &component : _entitie->getComponents()) {
                 for (auto &service : _services) {
                     service->update(_lastEvent, component);
@@ -241,28 +241,26 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 entitytodelete = _entities.erase(entitytodelete);
 
                 break;
-
             }
         }
         if (entitytodelete != _entities.end())
             entitytodelete++;
     }
 
-
     if (packet != nullptr) {
         int id = event->id;
         if (packet->code == MESSAGE) {
-             if (std::string(static_cast<char *>(packet->data)) == "enter game") {
-                 std::cout << "enter game player id " << id << std::endl;
-                 std::shared_ptr<IEntity> entity = std::make_shared<IEntity>();
-                 std::shared_ptr<Drawable> drawable = std::make_shared<Drawable>();
+            if (std::string(static_cast<char *>(packet->data)) == "enter game") {
+                std::cout << "enter game player id " << id << std::endl;
+                std::shared_ptr<IEntity> entity = std::make_shared<IEntity>();
+                std::shared_ptr<Drawable> drawable = std::make_shared<Drawable>();
 
                 drawable->setAttribute("player " + std::to_string(id));
                 drawable->setPosition({100 * id, 100 * id});
                 drawable->setHasChanged(true);
                 drawable->_textureId = PLAYER;
-                for (const auto& e: getEntities()) {
-                    for (const auto& component: e->getComponents()) {
+                for (const auto &e : getEntities()) {
+                    for (const auto &component : e->getComponents()) {
                         std::string attribute = component->getAttribute();
                         auto drawablePlayer = std::dynamic_pointer_cast<Drawable>(component);
                         bool isPlayer = attribute.substr(0, 6) == "player";
@@ -280,39 +278,39 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 addEntity(entity);
                 std::cout << "Entity added" << std::endl;
 
-                 std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
-                 sendpacket->code = NEW_COMPONENT;
-                 sendpacket->data_size = sizeof(NewComponent);
-                 sendpacket->data = malloc(sendpacket->data_size);
-                 NewComponent newComponent{};
-                 newComponent.type = ComponentTypeSocket ::SPRITESOCKET;
-                 newComponent.id = PLAYER;
-                 std::memcpy(&newComponent.attribute, entity->getAttribute().c_str(), 8);
-                 std::memcpy(&newComponent.attribute2, entity->getAttribute().c_str() + 8, 8);
-                 memcpy(sendpacket->data, &newComponent, sendpacket->data_size);
-                 _serverSocket->broadcast(sendpacket.get());
-                 free(sendpacket->data);
+                std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
+                sendpacket->code = NEW_COMPONENT;
+                sendpacket->data_size = sizeof(NewComponent);
+                sendpacket->data = malloc(sendpacket->data_size);
+                NewComponent newComponent{};
+                newComponent.type = ComponentTypeSocket ::SPRITESOCKET;
+                newComponent.id = PLAYER;
+                std::memcpy(&newComponent.attribute, entity->getAttribute().c_str(), 8);
+                std::memcpy(&newComponent.attribute2, entity->getAttribute().c_str() + 8, 8);
+                memcpy(sendpacket->data, &newComponent, sendpacket->data_size);
+                _serverSocket->broadcast(sendpacket.get());
+                free(sendpacket->data);
 
-                 sendGameState(id);
-                 broadcastGameState();
-             }
-             if (std::string(static_cast<char *>(packet->data)) == "exit game") {
-                 std::cout << "exit game player id " << id << std::endl;
-                 //delete Entity("player " + std::to_string(id));
-                 for (auto &entity : _entities) {
-                     if (entity->getAttribute() == "player " + std::to_string(id)) {
-                         _entities.erase(std::remove(_entities.begin(), _entities.end(), entity), _entities.end());
-                         break;
-                     }
-                 }
-                 std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
-                 sendpacket->code = DELETE_COMPONENT;
-                 sendpacket->data_size = ("player " + std::to_string(id)).size();
-                 sendpacket->data = malloc(sendpacket->data_size);
-                 std::memcpy(sendpacket->data, ("player " + std::to_string(id)).c_str(), sendpacket->data_size);
-                 _serverSocket->broadcast(sendpacket.get());
-                 free(sendpacket->data);
-             }
+                sendGameState(id);
+                broadcastGameState();
+            }
+            if (std::string(static_cast<char *>(packet->data)) == "exit game") {
+                std::cout << "exit game player id " << id << std::endl;
+                // delete Entity("player " + std::to_string(id));
+                for (auto &entity : _entities) {
+                    if (entity->getAttribute() == "player " + std::to_string(id)) {
+                        _entities.erase(std::remove(_entities.begin(), _entities.end(), entity), _entities.end());
+                        break;
+                    }
+                }
+                std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
+                sendpacket->code = DELETE_COMPONENT;
+                sendpacket->data_size = ("player " + std::to_string(id)).size();
+                sendpacket->data = malloc(sendpacket->data_size);
+                std::memcpy(sendpacket->data, ("player " + std::to_string(id)).c_str(), sendpacket->data_size);
+                _serverSocket->broadcast(sendpacket.get());
+                free(sendpacket->data);
+            }
         }
     }
 
@@ -330,7 +328,8 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
         sendpacket->code = DELETE_COMPONENT;
         sendpacket->data_size = ("player " + std::to_string(_serverSocket->checkClientsDeconnection())).size();
         sendpacket->data = malloc(sendpacket->data_size);
-        std::memcpy(sendpacket->data, ("player " + std::to_string(_serverSocket->checkClientsDeconnection())).c_str(), sendpacket->data_size);
+        std::memcpy(sendpacket->data, ("player " + std::to_string(_serverSocket->checkClientsDeconnection())).c_str(),
+                    sendpacket->data_size);
         _serverSocket->broadcast(sendpacket.get());
         free(sendpacket->data);
     }
@@ -355,8 +354,8 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
 
         std::shared_ptr<IEntity> player = nullptr;
 
-        for (const auto& entity : getEntities())
-            for (const auto& component : entity->getComponents()) {
+        for (const auto &entity : getEntities())
+            for (const auto &component : entity->getComponents()) {
                 if (component->getAttribute() == "player " + std::to_string(event->id)) {
                     player = entity;
                     break;
@@ -385,8 +384,8 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 timer->setActive(true);
                 bullet->addComponent(timer);
 
-                for (const auto& e: getEntities()) {
-                    for (const auto& component: e->getComponents()) {
+                for (const auto &e : getEntities()) {
+                    for (const auto &component : e->getComponents()) {
                         std::string attribute = component->getAttribute();
                         auto enemy = std::dynamic_pointer_cast<Drawable>(component);
                         if (enemy && enemy->_textureId == ENEMY)
@@ -412,16 +411,17 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
             }
         }
     }
-
 }
 
 void LobbyScene::checkBulletDeletion()
 {
     for (auto &entity : getEntities()) {
         for (auto &component : entity->getComponents()) {
-            //std::cout << "component: " << component->getAttribute() << std::endl;
+            // std::cout << "component: " << component->getAttribute() << std::endl;
             if (std::string(component->getAttribute()).find("bullet") != std::string::npos) {
-                //std::cout << "bullet x position: " << std::get<0>(std::dynamic_pointer_cast<Drawable>(component)->getPosition()) << " y position: " << std::get<1>(std::dynamic_pointer_cast<Drawable>(component)->getPosition()) << std::endl;
+                // std::cout << "bullet x position: " <<
+                // std::get<0>(std::dynamic_pointer_cast<Drawable>(component)->getPosition()) << " y position: " <<
+                // std::get<1>(std::dynamic_pointer_cast<Drawable>(component)->getPosition()) << std::endl;
                 auto draw = std::dynamic_pointer_cast<Drawable>(component);
                 auto [x, y] = draw->getPosition();
                 if (x > 900) {

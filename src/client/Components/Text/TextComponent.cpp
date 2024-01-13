@@ -6,7 +6,8 @@
 
 #include <utility>
 
-TextComponent::TextComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
+TextComponent::TextComponent(ClientCore *core, std::shared_ptr<ClientSocket> socket) :
+    AComponent(core)
 {
     _type = ComponentType::TEXT;
     _text = "base_text";
@@ -33,7 +34,7 @@ void TextComponent::setText(std::string text)
     _sfText.setString(_text);
 }
 
-void TextComponent::setFont(const sf::Font& font)
+void TextComponent::setFont(const sf::Font &font)
 {
     _font = font;
     _sfText.setFont(_font);
@@ -57,11 +58,11 @@ void TextComponent::setSize(unsigned int size)
     _sfText.setCharacterSize(_size);
 }
 
-void TextComponent::display(sf::RenderWindow& window)
+void TextComponent::display(sf::RenderWindow &window)
 {
     window.draw(_sfText);
 }
 
-void TextComponent::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+void TextComponent::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
 }

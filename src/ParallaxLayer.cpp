@@ -7,7 +7,7 @@
 
 #include "ParallaxLayer.hpp"
 
-void ParallaxLayer::loadTexture(const std::string& filename)
+void ParallaxLayer::loadTexture(const std::string &filename)
 {
     _texture.loadFromFile(filename);
     _sprite.setTexture(_texture);

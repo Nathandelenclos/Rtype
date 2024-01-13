@@ -8,12 +8,10 @@
 void TimeManagement::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component)
 {
     auto time = std::dynamic_pointer_cast<Timer>(component);
-    if (time)
-    {
+    if (time) {
         gettimeofday(&time->_now, nullptr);
         timersub(&time->_now, &time->_startTime, &time->_diff);
-        if (time->_diff.tv_sec >= time->_targetTime.tv_sec && time->_diff.tv_usec >= time->_targetTime.tv_usec)
-        {
+        if (time->_diff.tv_sec >= time->_targetTime.tv_sec && time->_diff.tv_usec >= time->_targetTime.tv_usec) {
             if (!time->isActive())
                 return;
             auto drawable = time->getTarget();

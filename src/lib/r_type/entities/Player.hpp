@@ -7,19 +7,20 @@
 
 #pragma once
 
-#include <iostream>
-#include "IObject.hpp"
 #include "Drawable.hpp"
+#include "IObject.hpp"
+#include <iostream>
 
-class Player: public Drawable, public IObject {
-public:
+class Player : public Drawable, public IObject
+{
+  public:
     explicit Player(ServerSocket *socket);
     ~Player() override = default;
     [[nodiscard]] Packet *getPacket() override;
 
     void draw() override;
 
-private:
+  private:
     ServerSocket *socket;
     timeval _annimationTime{};
     float _positionX;

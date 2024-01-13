@@ -5,23 +5,22 @@
 #ifndef R_TYPE_SERVER_USOCKET_HPP
 #define R_TYPE_SERVER_USOCKET_HPP
 
-#include <string>
-#include <memory>
-#include <sys/time.h>
 #include <cstdint>
-
+#include <memory>
+#include <string>
+#include <sys/time.h>
 
 #ifdef _WIN32
-    #include <winsock2.h>
-    #include <ws2tcpip.h>
+#include <winsock2.h>
+#include <ws2tcpip.h>
 
-    #define STDIN_FILENO 0
+#define STDIN_FILENO 0
 #elif defined(__unix__) || defined(__linux__)
-    #include <sys/socket.h>
-    #include <netinet/in.h>
-    #include <arpa/inet.h>
-    #include <unistd.h>
-    #include <SFML/Window/Event.hpp>
+#include <SFML/Window/Event.hpp>
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <unistd.h>
 
 #endif
 
@@ -73,7 +72,7 @@ typedef struct packet {
 typedef union attribute {
     char data;
     std::uint64_t number;
-}attribute_t;
+} attribute_t;
 
 typedef struct drawable {
     int id;
@@ -105,7 +104,7 @@ typedef struct newComponent {
     ComponentTypeSocket type;
 } NewComponent;
 
-//obsolete
+// obsolete
 typedef enum type {
     MISSINGTXT,
     PLAYER,
@@ -117,7 +116,7 @@ typedef enum type {
     BACKGROUND4,
 } Type;
 
-//obsolete
+// obsolete
 typedef struct element {
     int id;
     float x;
@@ -134,20 +133,19 @@ typedef struct split_packet {
     char data[1024];
 } SplitPacket;
 
-class USocket {
-    public:
-        virtual ~USocket() = default;
+class USocket
+{
+  public:
+    virtual ~USocket() = default;
 
-        virtual void send(Packet *packet, struct sockaddr_in dest) = 0;
-        virtual std::tuple<std::unique_ptr<Packet>, int> receive() = 0;
+    virtual void send(Packet *packet, struct sockaddr_in dest) = 0;
+    virtual std::tuple<std::unique_ptr<Packet>, int> receive() = 0;
 
-        virtual void splitAndSend(Packet *packet, struct sockaddr_in dest) = 0;
+    virtual void splitAndSend(Packet *packet, struct sockaddr_in dest) = 0;
 
-        virtual void run() = 0;
+    virtual void run() = 0;
 
-        virtual void sendPacket(SplitPacket *packet, struct sockaddr_in dest) = 0;
-
+    virtual void sendPacket(SplitPacket *packet, struct sockaddr_in dest) = 0;
 };
 
-
-#endif //R_TYPE_SERVER_USOCKET_HPP
+#endif // R_TYPE_SERVER_USOCKET_HPP

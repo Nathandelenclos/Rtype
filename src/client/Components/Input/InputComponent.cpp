@@ -2,11 +2,12 @@
 // Created by talleux on 12/29/23.
 //
 
+#include "InputComponent.hpp"
 #include <iostream>
 #include <utility>
-#include "InputComponent.hpp"
 
-InputComponent::InputComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
+InputComponent::InputComponent(ClientCore *core, std::shared_ptr<ClientSocket> socket) :
+    AComponent(core)
 {
     _type = ComponentType::INPUT;
     _texture.loadFromFile("../src/client/assets/button.png");
@@ -35,7 +36,7 @@ void InputComponent::action()
     _callback();
 }
 
-void InputComponent::setTexture(const sf::Texture& texture)
+void InputComponent::setTexture(const sf::Texture &texture)
 {
     _texture = texture;
     _sprite.setTexture(_texture);
@@ -63,7 +64,7 @@ void InputComponent::setRect(sf::IntRect rect)
     _sprite.setTextureRect(_rect);
 }
 
-void InputComponent::display(sf::RenderWindow& window)
+void InputComponent::display(sf::RenderWindow &window)
 {
     window.draw(_sprite);
     window.draw(_text);
@@ -89,7 +90,7 @@ void InputComponent::setIsClicked(bool isClicked)
     _isClicked = isClicked;
 }
 
-void InputComponent::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+void InputComponent::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
     if (event.type == sf::Event::TextEntered) {
         if (_isClicked) {

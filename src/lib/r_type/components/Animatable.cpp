@@ -7,8 +7,8 @@
 
 #include "Animatable.hpp"
 
-#include <utility>
 #include <cstring>
+#include <utility>
 
 Animatable::Animatable()
 {
@@ -28,18 +28,22 @@ void Animatable::setAttribute(std::string attribute)
     std::cout << "attribute: " << _attribute << std::endl;
 }
 
-void Animatable::setTarget(std::shared_ptr<Drawable> target) {
+void Animatable::setTarget(std::shared_ptr<Drawable> target)
+{
     sprite = target;
 }
 
-std::shared_ptr<Drawable> Animatable::getTarget() {
+std::shared_ptr<Drawable> Animatable::getTarget()
+{
     return sprite;
 }
 
-void Animatable::setTime(timeval frametime) {
+void Animatable::setTime(timeval frametime)
+{
     _frametime = frametime;
 }
 
-timeval Animatable::getTime() {
+timeval Animatable::getTime()
+{
     return _frametime;
 }

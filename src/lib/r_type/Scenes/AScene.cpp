@@ -33,7 +33,6 @@ std::vector<std::shared_ptr<IService>> AScene::getServices()
 
 void AScene::display()
 {
-
 }
 
 void AScene::pauseScene()
@@ -69,13 +68,14 @@ void AScene::sendGameState(int clientID)
                 newComponent.id = drawable->_textureId;
                 std::memset(&newComponent.attribute, 0, 16);
                 std::memcpy(&newComponent.attribute, entity->getAttribute().c_str(), 16);
-                //std::memcpy(&newComponent.attribute2, entity->getAttribute().c_str() + 8, 8);
+                // std::memcpy(&newComponent.attribute2, entity->getAttribute().c_str() + 8, 8);
                 newComponent.type = ComponentTypeSocket ::SPRITESOCKET;
                 packet->code = NEW_COMPONENT;
                 packet->data_size = sizeof(NewComponent);
                 packet->data = malloc(packet->data_size);
                 std::memcpy(packet->data, &newComponent, packet->data_size);
-                //std::cout << "Sending component " << static_cast<char *>(packet->data) << " to client " << clientID << std::endl;
+                // std::cout << "Sending component " << static_cast<char *>(packet->data) << " to client " << clientID
+                // << std::endl;
                 _serverSocket->send(packet.get(), _serverSocket->getClientAddress(clientID));
                 free(packet->data);
             }
@@ -108,7 +108,8 @@ void AScene::broadcastGameState()
                 packet->data_size = sizeof(NewComponent);
                 packet->data = malloc(packet->data_size);
                 std::memcpy(packet->data, &newComponent, packet->data_size);
-                //std::cout << "Sending component " << static_cast<char *>(packet->data) << " to all clients" << std::endl;
+                // std::cout << "Sending component " << static_cast<char *>(packet->data) << " to all clients" <<
+                // std::endl;
                 _serverSocket->broadcast(packet.get());
                 free(packet->data);
             }

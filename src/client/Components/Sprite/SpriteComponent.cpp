@@ -2,7 +2,8 @@
 
 #include "SpriteComponent.hpp"
 
-SpriteComponent::SpriteComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
+SpriteComponent::SpriteComponent(ClientCore *core, std::shared_ptr<ClientSocket> socket) :
+    AComponent(core)
 {
     _socket = std::move(socket);
     if (!_texture.loadFromFile("../src/client/assets/missing.png"))
@@ -20,16 +21,16 @@ void SpriteComponent::action()
 {
 }
 
-void SpriteComponent::display(sf::RenderWindow& window)
+void SpriteComponent::display(sf::RenderWindow &window)
 {
     window.draw(_sprite);
 }
 
-void SpriteComponent::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+void SpriteComponent::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
 }
 
-void SpriteComponent::setTexture(const sf::Texture& texture)
+void SpriteComponent::setTexture(const sf::Texture &texture)
 {
     _texture = texture;
     _sprite.setTexture(_texture);

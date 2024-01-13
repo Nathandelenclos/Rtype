@@ -7,7 +7,8 @@
 
 #include <utility>
 
-ButtonComponent::ButtonComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
+ButtonComponent::ButtonComponent(ClientCore *core, std::shared_ptr<ClientSocket> socket) :
+    AComponent(core)
 {
     _type = ComponentType::BUTTON;
     _texture.loadFromFile("../src/client/assets/button.png");
@@ -29,7 +30,7 @@ void ButtonComponent::action()
     _callback();
 }
 
-void ButtonComponent::setTexture(const sf::Texture& texture)
+void ButtonComponent::setTexture(const sf::Texture &texture)
 {
     _texture = texture;
     _sprite.setTexture(_texture);
@@ -58,7 +59,7 @@ void ButtonComponent::setCallback(std::function<void()> callback)
     _callback = std::move(callback);
 }
 
-void ButtonComponent::display(sf::RenderWindow& window)
+void ButtonComponent::display(sf::RenderWindow &window)
 {
     window.draw(_sprite);
 }
@@ -68,7 +69,7 @@ sf::IntRect ButtonComponent::getRect() const
     return _rect;
 }
 
-void ButtonComponent::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+void ButtonComponent::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
     if (event.type == sf::Event::MouseButtonPressed) {
         if (event.mouseButton.button == sf::Mouse::Left) {
@@ -105,7 +106,7 @@ void ButtonComponent::handleClickInitServer()
             }
         }
     } else {
-        for (auto &component: action_target) {
+        for (auto &component : action_target) {
             if (component->getType() == ComponentType::TEXT) {
                 if (component->getAttribute() == "text add serv") {
                     try {
@@ -149,7 +150,7 @@ void ButtonComponent::handleClickAccessGame()
         }
     }
     if (!_socket->isInit()) {
-        for (auto &component: action_target) {
+        for (auto &component : action_target) {
             if (component->getType() == ComponentType::TEXT) {
                 if (component->getAttribute() == "text error not init") {
                     dynamic_cast<TextComponent *>(component.get())->setText("Please init server connection");
@@ -158,7 +159,7 @@ void ButtonComponent::handleClickAccessGame()
         }
         return;
     }
-    for (auto &component: action_target) {
+    for (auto &component : action_target) {
         if (component->getType() == ComponentType::MUSIC) {
             auto music = dynamic_cast<MusicComponent *>(component.get());
             music->stop();
@@ -176,5 +177,4 @@ void ButtonComponent::handleClickAccessGame()
 
 void ButtonComponent::defaultCallback()
 {
-
 }

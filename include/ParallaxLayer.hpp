@@ -9,15 +9,15 @@
 
 #include "maintestdisplay.hpp"
 
-class ParallaxLayer {
-    public:
-
-    void loadTexture(const std::string& filename);
+class ParallaxLayer
+{
+  public:
+    void loadTexture(const std::string &filename);
     void update(float deltaTime);
 
-        float _speed;
-        sf::Sprite _sprite;
-        sf::Texture _texture;
-    protected:
-};
+    float _speed;
+    sf::Sprite _sprite;
+    sf::Texture _texture;
 
+  protected:
+};

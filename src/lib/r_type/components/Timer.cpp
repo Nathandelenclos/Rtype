@@ -2,12 +2,13 @@
 // Created by talleux on 1/10/24.
 //
 
+#include "Timer.hpp"
 #include <cstring>
 #include <iostream>
 #include <utility>
-#include "Timer.hpp"
 
-Timer::Timer() {
+Timer::Timer()
+{
     _startTime = {0, 0};
     _now = {0, 0};
     _targetTime = {0, 0};
