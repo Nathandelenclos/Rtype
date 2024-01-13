@@ -8,6 +8,10 @@
 #include <stdexcept>
 #include <unistd.h>
 
+/*
+ * @brief Construct a new Client Socket:: Client Socket object
+ *
+ */
 ClientSocket::ClientSocket()
 {
     std::cout << "ClientSocket constructor" << std::endl;
@@ -43,6 +47,10 @@ ClientSocket::ClientSocket()
     std::cout << "Socket created successfully (fd: " << sockfd << ")" << std::endl;
 }
 
+/*
+ * @brief Destroy the Client Socket:: Client Socket object
+ *
+ */
 ClientSocket::~ClientSocket()
 {
 #ifdef _WIN32
@@ -52,6 +60,14 @@ ClientSocket::~ClientSocket()
 #endif
 }
 
+/*
+ * @brief Initialize the client socket
+ *
+ * @param ip
+ * @param port
+ * @return true
+ * @return false
+ */
 bool ClientSocket::init_client(const std::string &ip, int port)
 {
     memset(&serv_addr, 0, sizeof(serv_addr));
@@ -73,11 +89,24 @@ bool ClientSocket::init_client(const std::string &ip, int port)
     return true;
 }
 
+/*
+ * @brief Send a packet to the server
+ *
+ * @param packet
+ * @param dest
+ */
 void ClientSocket::send(Packet *packet, struct sockaddr_in dest)
 {
     splitAndSend(packet, dest);
 }
 
+
+/*
+ * @brief Send a packet to the server
+ *
+ * @param packet
+ * @param dest
+ */
 void ClientSocket::sendPacket(SplitPacket *packet, struct sockaddr_in dest)
 {
     char *buffer = static_cast<char *>(malloc(sizeof(SplitPacket)));
@@ -91,6 +120,12 @@ void ClientSocket::sendPacket(SplitPacket *packet, struct sockaddr_in dest)
     free(buffer);
 }
 
+
+/*
+ * @brief Receive a packet from the server
+ *
+ * @return void
+ */
 void ClientSocket::receivePacketAndAddToBuffer()
 {
     SplitPacket splitPacket{};
@@ -118,6 +153,11 @@ void ClientSocket::receivePacketAndAddToBuffer()
     free(buffer);
 }
 
+/*
+ * @brief Get a packet from the buffer
+ *
+ * @return std::unique_ptr<Packet>
+ */
 std::unique_ptr<Packet> ClientSocket::getPacketFromBuffer()
 {
     std::unique_ptr<Packet> packet = std::make_unique<Packet>();
@@ -185,6 +225,11 @@ std::unique_ptr<Packet> ClientSocket::getPacketFromBuffer()
     return nullptr;
 }
 
+/*
+ * @brief Receive a packet from the server
+ *
+ * @return std::tuple<std::unique_ptr<Packet>, int>
+ */
 std::tuple<std::unique_ptr<Packet>, int> ClientSocket::receive()
 {
     receivePacketAndAddToBuffer();
@@ -255,6 +300,11 @@ ntohs(cli_addr_data.sin_port) << std::endl; return std::make_tuple(nullptr, 0);
 }*/
 
 #ifdef _WIN32
+
+/*
+ * @brief Read the input from the user
+ *
+ */
 void ClientSocket::read_input()
 {
     while (loop) {
@@ -268,6 +318,10 @@ void ClientSocket::read_input()
 }
 #endif
 
+/*
+ * @brief Run the client socket
+ *
+ */
 void ClientSocket::run()
 {
     std::cout << "ClientSocket run" << std::endl;
@@ -316,6 +370,11 @@ void ClientSocket::run()
 #endif
 }
 
+/*
+ * @brief Listen the server
+ *
+ * @return std::tuple<std::unique_ptr<Packet>, int>
+ */
 std::tuple<std::unique_ptr<Packet>, int> ClientSocket::listen_server()
 {
     std::cout << "listen_server" << std::endl;
@@ -347,6 +406,10 @@ std::tuple<std::unique_ptr<Packet>, int> ClientSocket::listen_server()
     return std::make_tuple(nullptr, 0);
 }
 
+/*
+ * @brief Initialize the fd_set
+ *
+ */
 void ClientSocket::init_fd_set()
 {
     FD_ZERO(&_readfds);
@@ -356,16 +419,32 @@ void ClientSocket::init_fd_set()
     FD_SET(sockfd, &_readfds);
 }
 
+/*
+ * @brief Get the Last Message object
+ *
+ * @return boolean siInit
+ */
 bool ClientSocket::isInit() const
 {
     return _isInit;
 }
 
+/*
+ * @brief Set the Last Message object
+ *
+ * @param init
+ */
 void ClientSocket::setInit(bool init)
 {
     _isInit = init;
 }
 
+/*
+ * @brief Split a packet and send it
+ *
+ * @param packet
+ * @param dest
+ */
 void ClientSocket::splitAndSend(Packet *packet, struct sockaddr_in dest)
 {
     std::unique_ptr<SplitPacket> splitPacket = std::make_unique<SplitPacket>();

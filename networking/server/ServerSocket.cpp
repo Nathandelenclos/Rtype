@@ -4,6 +4,9 @@
 #include <stdexcept>
 #include <unistd.h>
 
+/*
+ * @brief Construct a new Server Socket:: Server Socket object
+ */
 ServerSocket::ServerSocket()
 {
     std::cout << "ServerSocket constructor" << std::endl;
@@ -34,6 +37,9 @@ ServerSocket::ServerSocket()
     std::cout << "Socket created successfully (fd: " << sockfd << ")" << std::endl;
 }
 
+/*
+ * @brief Destroy the Server Socket:: Server Socket object
+ */
 ServerSocket::~ServerSocket()
 {
 #ifdef _WIN32
@@ -43,6 +49,10 @@ ServerSocket::~ServerSocket()
 #endif
 }
 
+/*
+ * @brief Initialize the server socket with the given port
+ * @param port The port to listen on
+ */
 void ServerSocket::init_server(int port)
 {
     memset(&serv_addr, 0, sizeof(serv_addr));
@@ -54,11 +64,21 @@ void ServerSocket::init_server(int port)
     }
 }
 
+/*
+ * @brief Send a packet to the given client
+ * @param packet The packet to send
+ * @param client The client to send the packet to
+ */
 void ServerSocket::send(Packet *packet, struct sockaddr_in client)
 {
     splitAndSend(packet, client);
 }
 
+/*
+ * @brief Send a packet to the given client
+ * @param packet The packet to send
+ * @param client The client to send the packet to
+ */
 void ServerSocket::sendPacket(SplitPacket *packet, struct sockaddr_in dest)
 {
     char *buffer = static_cast<char *>(malloc(sizeof(SplitPacket)));
@@ -71,6 +91,10 @@ void ServerSocket::sendPacket(SplitPacket *packet, struct sockaddr_in dest)
     free(buffer);
 }
 
+/*
+ * @brief Add a client to the clients list
+ * @param client The client to add
+ */
 void ServerSocket::addClient(struct sockaddr_in client)
 {
     int id = 1;
@@ -84,6 +108,11 @@ void ServerSocket::addClient(struct sockaddr_in client)
     clients.emplace_back(id, client, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>(), timeval());
 }
 
+/*
+ * @brief Get the client id from the given client
+ * @param client The client to get the id from
+ * @return The client id
+ */
 int ServerSocket::getClientId(struct sockaddr_in client)
 {
     if (clients.empty()) {
@@ -97,6 +126,10 @@ int ServerSocket::getClientId(struct sockaddr_in client)
     return -1;
 }
 
+/*
+ * @brief Receive a packet from a client
+ * @return The received packet and the client id
+ */
 std::tuple<std::unique_ptr<Packet>, int> ServerSocket::receive()
 {
     receivePacketAndAddToBuffer();
@@ -186,12 +219,18 @@ cli_addr_code.sin_port) { throw std::runtime_error("Failed to read from socket")
     return std::make_tuple(std::move(std::make_unique<Packet>(packet_last)), id);
 }*/
 
+/*
+ * @brief Initialize the fd_set
+ */
 void ServerSocket::init_fd_set()
 {
     FD_ZERO(&_readfds);
     FD_SET(sockfd, &_readfds);
 }
 
+/*
+ * @brief Run the server
+ */
 void ServerSocket::run()
 {
     while (true) {
@@ -210,6 +249,10 @@ void ServerSocket::run()
     }
 }
 
+/*
+ * @brief Get the clients list
+ * @return The clients list
+ */
 std::vector<
     std::tuple<int, struct sockaddr_in, std::vector<std::tuple<std::shared_ptr<SplitPacket>, timeval>>, timeval>> &
 ServerSocket::getClients()
@@ -217,6 +260,11 @@ ServerSocket::getClients()
     return clients;
 }
 
+/*
+ * @brief Get the client address from the given id
+ * @param id The client id
+ * @return The client address
+ */
 struct sockaddr_in ServerSocket::getClientAddress(int id)
 {
     for (auto &[i, cli, splitPackets, lastReceived] : clients) {
@@ -227,6 +275,10 @@ struct sockaddr_in ServerSocket::getClientAddress(int id)
     throw std::runtime_error("Client not found");
 }
 
+/*
+ * @brief Broadcast a packet to all clients
+ * @param packet The packet to broadcast
+ */
 void ServerSocket::broadcast(Packet *packet)
 {
     for (auto &[id, cli, splitPackets, lastReceived] : clients) {
@@ -234,6 +286,11 @@ void ServerSocket::broadcast(Packet *packet)
     }
 }
 
+/*
+ * @brief Broadcast a packet to all clients except the given id
+ * @param packet The packet to broadcast
+ * @param id The id to exclude
+ */
 void ServerSocket::splitAndSend(Packet *packet, struct sockaddr_in dest)
 {
     std::unique_ptr<SplitPacket> splitPacket = std::make_unique<SplitPacket>();
@@ -265,6 +322,9 @@ void ServerSocket::splitAndSend(Packet *packet, struct sockaddr_in dest)
     }
 }
 
+/*
+ * @brief Receive a packet from a client and add it to the buffer
+ */
 void ServerSocket::receivePacketAndAddToBuffer()
 {
     struct sockaddr_in cli_addr {
@@ -305,6 +365,10 @@ void ServerSocket::receivePacketAndAddToBuffer()
     free(buffer);
 }
 
+/*
+ * @brief Manage the clients buffer
+ * @return The received packet and the client id
+ */
 std::tuple<std::unique_ptr<Packet>, int> ServerSocket::manageClientsBuffer()
 {
     std::unique_ptr<Packet> packet = std::make_unique<Packet>();
@@ -373,6 +437,10 @@ std::tuple<std::unique_ptr<Packet>, int> ServerSocket::manageClientsBuffer()
     return std::make_tuple(nullptr, 0);
 }
 
+/*
+ * @brief Check if a client has disconnected
+ * @return The disconnected client id
+ */
 int ServerSocket::checkClientsDeconnection()
 {
     timeval now{};
@@ -405,12 +473,20 @@ int ServerSocket::checkClientsDeconnection()
     return idClient;
 }
 
+/*
+ * @brief Check if a new client has connected
+ * @return The new client id
+ */
 void ServerSocket::setNewClientConnected(int id)
 {
     newClientConnected = true;
     newClientId = id;
 }
 
+/*
+ * @brief Get the new client id
+ * @return The new client id
+ */
 int ServerSocket::getNewClientId()
 {
     if (!newClientConnected) {
@@ -420,6 +496,9 @@ int ServerSocket::getNewClientId()
     return newClientId;
 }
 
+/*
+ * @brief Dump the clients list
+ */
 void ServerSocket::clientDump()
 {
     std::cout << "Clients dump:" << std::endl;
