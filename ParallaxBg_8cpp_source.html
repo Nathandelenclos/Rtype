@@ -76,21 +76,22 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">** ParallaxBg.cpp</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="ParallaxBg_8hpp.html">&quot;ParallaxBg.hpp&quot;</a></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classParallaxBackground.html#acd41176542b3b4632b94c5945e475f44">   11</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classParallaxBackground.html">ParallaxBackground</a>::<a class="code" href="classParallaxBackground.html#acd41176542b3b4632b94c5945e475f44">addLayer</a>(<span class="keyword">const</span> std::string &amp;filename, <span class="keywordtype">float</span> speed) {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="ParallaxBg_8hpp.html">&quot;ParallaxBg.hpp&quot;</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classParallaxBackground.html#acd41176542b3b4632b94c5945e475f44">   10</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classParallaxBackground.html">ParallaxBackground</a>::<a class="code" href="classParallaxBackground.html#acd41176542b3b4632b94c5945e475f44">addLayer</a>(<span class="keyword">const</span> std::string &amp;filename, <span class="keywordtype">float</span> speed)</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classParallaxLayer.html">ParallaxLayer</a> layer;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    layer<a class="code" href="classParallaxLayer.html#a40ac5d207bf38d49fb19b24cd37b4df8">.</a><a class="code" href="classParallaxLayer.html#a40ac5d207bf38d49fb19b24cd37b4df8">loadTexture</a><a class="code" href="classParallaxLayer.html#a40ac5d207bf38d49fb19b24cd37b4df8">(</a>filename<a class="code" href="classParallaxLayer.html#a40ac5d207bf38d49fb19b24cd37b4df8">)</a>;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    layer<a class="code" href="classParallaxLayer.html#a45a77bb50ea8f65ca81b5917d17cfea3">.</a><a class="code" href="classParallaxLayer.html#a45a77bb50ea8f65ca81b5917d17cfea3">_speed</a> = speed;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    layers.push_back(layer);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classParallaxBackground.html#ade29f52b6ff5d8d6b6978aa6cf928aa0">   18</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classParallaxBackground.html">ParallaxBackground</a>::<a class="code" href="classParallaxBackground.html#ade29f52b6ff5d8d6b6978aa6cf928aa0">update</a>(<span class="keywordtype">float</span> deltaTime) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;layer : layers) {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        layer.update(deltaTime);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classParallaxBackground.html#ade29f52b6ff5d8d6b6978aa6cf928aa0">   18</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classParallaxBackground.html">ParallaxBackground</a>::<a class="code" href="classParallaxBackground.html#ade29f52b6ff5d8d6b6978aa6cf928aa0">update</a>(<span class="keywordtype">float</span> deltaTime)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;layer : layers) {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        layer.update(deltaTime);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

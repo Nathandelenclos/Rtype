@@ -84,7 +84,7 @@ $(function() {
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    _currentScene = _scenes[<span class="stringliteral">&quot;main&quot;</span>];</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classClientCore.html#a6d75e38771453021439906ca006aa47f">   16</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classClientCore.html">ClientCore</a>::<a class="code" href="classClientCore.html#a6d75e38771453021439906ca006aa47f">init_socket</a>(<span class="keyword">const</span> std::string&amp; ip, <span class="keywordtype">int</span> port)</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classClientCore.html#a6d75e38771453021439906ca006aa47f">   16</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classClientCore.html">ClientCore</a>::<a class="code" href="classClientCore.html#a6d75e38771453021439906ca006aa47f">init_socket</a>(<span class="keyword">const</span> std::string &amp;ip, <span class="keywordtype">int</span> port)</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">if</span> (_socket-&gt;isInit())</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -114,12 +114,12 @@ $(function() {
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        _heartBeatThread.join();</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classClientCore.html#af972ffdc3a2e0bdee7db506820df0047">   46</a></span>&#160;std::shared_ptr&lt;<a class="code" href="classIScene.html">IScene</a>&gt; <a class="code" href="classClientCore.html">ClientCore</a>::<a class="code" href="classClientCore.html#af972ffdc3a2e0bdee7db506820df0047">getSceneByName</a>(<span class="keyword">const</span> std::string&amp; name)</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classClientCore.html#af972ffdc3a2e0bdee7db506820df0047">   46</a></span>&#160;std::shared_ptr&lt;<a class="code" href="classIScene.html">IScene</a>&gt; <a class="code" href="classClientCore.html">ClientCore</a>::<a class="code" href="classClientCore.html#af972ffdc3a2e0bdee7db506820df0047">getSceneByName</a>(<span class="keyword">const</span> std::string &amp;name)</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> _scenes[name];</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classClientCore.html#a6f6faf8f3ea8d30f67715846af48e3ec">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classClientCore.html">ClientCore</a>::<a class="code" href="classClientCore.html#a6f6faf8f3ea8d30f67715846af48e3ec">setCurrentScene</a>(<span class="keyword">const</span> std::string&amp; name)</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classClientCore.html#a6f6faf8f3ea8d30f67715846af48e3ec">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classClientCore.html">ClientCore</a>::<a class="code" href="classClientCore.html#a6f6faf8f3ea8d30f67715846af48e3ec">setCurrentScene</a>(<span class="keyword">const</span> std::string &amp;name)</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    _currentScene-&gt;continueScene = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    _currentScene-&gt;pauseScene();</div>
@@ -128,7 +128,7 @@ $(function() {
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    _currentScene-&gt;resumeScene();</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classClientCore.html#ad0679b18fb01a214b51238b4bbd6110a">   60</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classClientCore.html">ClientCore</a>::<a class="code" href="classClientCore.html#ad0679b18fb01a214b51238b4bbd6110a">sendHeartBeat</a>(sf::RenderWindow&amp; window)</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classClientCore.html#ad0679b18fb01a214b51238b4bbd6110a">   60</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classClientCore.html">ClientCore</a>::<a class="code" href="classClientCore.html#ad0679b18fb01a214b51238b4bbd6110a">sendHeartBeat</a>(sf::RenderWindow &amp;window)</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::unique_ptr&lt;Packet&gt; packet = std::make_unique&lt;Packet&gt;();</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
@@ -136,7 +136,7 @@ $(function() {
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    packet-&gt;data_size = <span class="keyword">sizeof</span>(timeval);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    packet-&gt;data = malloc(packet-&gt;data_size);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">while</span> (window.isOpen()) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        gettimeofday((timeval*)packet-&gt;data, <span class="keywordtype">nullptr</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        gettimeofday((timeval *)packet-&gt;data, <span class="keywordtype">nullptr</span>);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        _socket-&gt;send(packet.get(), _socket-&gt;serv_addr);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        std::this_thread::sleep_for(std::chrono::milliseconds(500));</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>

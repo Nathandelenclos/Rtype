@@ -104,49 +104,49 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classAScene.html#a70a045bb0f8108394d437dc3ade4724c">   34</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAScene.html">AScene</a>::<a class="code" href="classAScene.html#a70a045bb0f8108394d437dc3ade4724c">display</a>()</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAScene.html">AScene</a>::<a class="code" href="classAScene.html#ac84c87170a6a0563e50e9c5ed2d85cdd">pauseScene</a>()</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAScene.html">AScene</a>::<a class="code" href="classAScene.html#a52a5fdd3b7e64a229431c940492f9722">resumeScene</a>()</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAScene.html">AScene</a>::<a class="code" href="classAScene.html#ad4c94f9d778a846a23931a6d07690adc">stopScene</a>()</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classAScene.html#a4826db95b32af7b58a2a1bf715734f0b">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAScene.html">AScene</a>::<a class="code" href="classAScene.html#a4826db95b32af7b58a2a1bf715734f0b">restartScene</a>()</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    _entities.clear();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    _services.clear();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classISceneRType.html#af3fd46f1427274493dbfb618bd4f6d93">initEntities</a>();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classISceneRType.html#a2869c8225bc3fe9173148258fe16fd34">initServices</a>();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classAScene.html#a04756252779480e19871b162ed0aea8a">   59</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAScene.html">AScene</a>::<a class="code" href="classAScene.html#a04756252779480e19871b162ed0aea8a">sendGameState</a>(<span class="keywordtype">int</span> clientID)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Sending game state to client &quot;</span> &lt;&lt; clientID &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::shared_ptr&lt;Packet&gt; packet = std::make_shared&lt;Packet&gt;();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    NewComponent newComponent{};</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;entity : _entities) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;component : entity-&gt;getComponents()) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">auto</span> drawable = std::dynamic_pointer_cast&lt;Drawable&gt;(component);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">if</span> (drawable) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                newComponent.id = drawable-&gt;_textureId;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                std::memset(&amp;newComponent.attribute, 0, 16);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                std::memcpy(&amp;newComponent.attribute, entity-&gt;getAttribute().c_str(), 16);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="comment">//std::memcpy(&amp;newComponent.attribute2, entity-&gt;getAttribute().c_str() + 8, 8);</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                newComponent.type = ComponentTypeSocket ::SPRITESOCKET;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                packet-&gt;code = NEW_COMPONENT;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                packet-&gt;data_size = <span class="keyword">sizeof</span>(NewComponent);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                packet-&gt;data = malloc(packet-&gt;data_size);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                std::memcpy(packet-&gt;data, &amp;newComponent, packet-&gt;data_size);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="comment">//std::cout &lt;&lt; &quot;Sending component &quot; &lt;&lt; static_cast&lt;char *&gt;(packet-&gt;data) &lt;&lt; &quot; to client &quot; &lt;&lt; clientID &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAScene.html">AScene</a>::<a class="code" href="classAScene.html#ac84c87170a6a0563e50e9c5ed2d85cdd">pauseScene</a>()</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAScene.html">AScene</a>::<a class="code" href="classAScene.html#a52a5fdd3b7e64a229431c940492f9722">resumeScene</a>()</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAScene.html">AScene</a>::<a class="code" href="classAScene.html#ad4c94f9d778a846a23931a6d07690adc">stopScene</a>()</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classAScene.html#a4826db95b32af7b58a2a1bf715734f0b">   50</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAScene.html">AScene</a>::<a class="code" href="classAScene.html#a4826db95b32af7b58a2a1bf715734f0b">restartScene</a>()</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    _entities.clear();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    _services.clear();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classISceneRType.html#af3fd46f1427274493dbfb618bd4f6d93">initEntities</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classISceneRType.html#a2869c8225bc3fe9173148258fe16fd34">initServices</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classAScene.html#a04756252779480e19871b162ed0aea8a">   58</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAScene.html">AScene</a>::<a class="code" href="classAScene.html#a04756252779480e19871b162ed0aea8a">sendGameState</a>(<span class="keywordtype">int</span> clientID)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Sending game state to client &quot;</span> &lt;&lt; clientID &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::shared_ptr&lt;Packet&gt; packet = std::make_shared&lt;Packet&gt;();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    NewComponent newComponent{};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;entity : _entities) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;component : entity-&gt;getComponents()) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keyword">auto</span> drawable = std::dynamic_pointer_cast&lt;Drawable&gt;(component);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">if</span> (drawable) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                newComponent.id = drawable-&gt;_textureId;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                std::memset(&amp;newComponent.attribute, 0, 16);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                std::memcpy(&amp;newComponent.attribute, entity-&gt;getAttribute().c_str(), 16);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="comment">// std::memcpy(&amp;newComponent.attribute2, entity-&gt;getAttribute().c_str() + 8, 8);</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                newComponent.type = ComponentTypeSocket ::SPRITESOCKET;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                packet-&gt;code = NEW_COMPONENT;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                packet-&gt;data_size = <span class="keyword">sizeof</span>(NewComponent);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                packet-&gt;data = malloc(packet-&gt;data_size);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                std::memcpy(packet-&gt;data, &amp;newComponent, packet-&gt;data_size);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="comment">// std::cout &lt;&lt; &quot;Sending component &quot; &lt;&lt; static_cast&lt;char *&gt;(packet-&gt;data) &lt;&lt; &quot; to client &quot; &lt;&lt; clientID</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="comment">// &lt;&lt; std::endl;</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                _serverSocket-&gt;send(packet.get(), _serverSocket-&gt;getClientAddress(clientID));</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                free(packet-&gt;data);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
@@ -179,13 +179,14 @@ $(function() {
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                packet-&gt;data_size = <span class="keyword">sizeof</span>(NewComponent);</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                packet-&gt;data = malloc(packet-&gt;data_size);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                std::memcpy(packet-&gt;data, &amp;newComponent, packet-&gt;data_size);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="comment">//std::cout &lt;&lt; &quot;Sending component &quot; &lt;&lt; static_cast&lt;char *&gt;(packet-&gt;data) &lt;&lt; &quot; to all clients&quot; &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                _serverSocket-&gt;broadcast(packet.get());</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                free(packet-&gt;data);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="comment">// std::cout &lt;&lt; &quot;Sending component &quot; &lt;&lt; static_cast&lt;char *&gt;(packet-&gt;data) &lt;&lt; &quot; to all clients&quot; &lt;&lt;</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="comment">// std::endl;</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                _serverSocket-&gt;broadcast(packet.get());</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                free(packet-&gt;data);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
