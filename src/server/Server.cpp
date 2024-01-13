@@ -8,6 +8,10 @@
 #include <sys/time.h>
 #include <utility>
 
+/**
+ * @brief Construct a new Server:: Server object
+ * @param port
+ */
 Server::Server(int port)
 {
     _serverSocket = std::make_shared<ServerSocket>();
@@ -17,6 +21,11 @@ Server::Server(int port)
     _packetHeartBeat = std::make_unique<Packet>();
 }
 
+/**
+ * @brief &operator<< overload the << operator for CODE enum
+ * @param os
+ * @param packetCode
+ */
 std::ostream &operator<<(std::ostream &os, CODE const &packetCode)
 {
     switch (packetCode) {
@@ -42,6 +51,11 @@ std::ostream &operator<<(std::ostream &os, CODE const &packetCode)
     return os;
 }
 
+/**
+ * @brief &operator<< overload the << operator for Element struct
+ * @param os
+ * @param packetElement
+ */
 std::ostream &operator<<(std::ostream &os, Element const &packetElement)
 {
     os << "Element: " << packetElement.id << " " << packetElement.x << " " << packetElement.y << " "
@@ -49,6 +63,11 @@ std::ostream &operator<<(std::ostream &os, Element const &packetElement)
     return os;
 }
 
+/**
+ * @brief &operator<< overload the << operator for Packet struct
+ * @param os
+ * @param packet
+ */
 std::ostream &operator<<(std::ostream &os, std::unique_ptr<Packet> &packet)
 {
     os << "Packet: " << packet->code << " " << packet->data_size;
@@ -64,6 +83,9 @@ std::ostream &operator<<(std::ostream &os, std::unique_ptr<Packet> &packet)
 
 Packet packet{};
 
+/**
+ * @brief run the server
+ */
 void Server::run()
 {
     bool send_broadcast = false;
