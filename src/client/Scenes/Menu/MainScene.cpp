@@ -4,6 +4,12 @@
 
 #include "MainScene.hpp"
 
+/**
+ * @brief Construct a new Main Scene:: Main Scene object
+ *
+ * @param clientCore
+ * @param socket
+ */
 MainScene::MainScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket) :
     AScene(clientCore)
 {
@@ -11,6 +17,10 @@ MainScene::MainScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socke
     init_scene();
 }
 
+/**
+ * @brief init_scene,  initialize the scene
+ *
+ */
 void MainScene::init_scene()
 {
     std::shared_ptr<MusicComponent> music = std::make_shared<MusicComponent>(_clientCore, _socket);
@@ -79,6 +89,11 @@ void MainScene::init_scene()
     addComponent(text_error_not_init);
 }
 
+/**
+ * @brief handleEvent, handle the event
+ * @param event
+ * @param window
+ */
 void MainScene::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
     while (window.pollEvent(const_cast<sf::Event &>(event))) {
@@ -94,6 +109,9 @@ void MainScene::handleEvent(const sf::Event &event, sf::RenderWindow &window)
     }
 }
 
+/**
+ * @brief receiveData, receive the data
+ */
 void MainScene::receiveData()
 {
     std::tuple<std::unique_ptr<Packet>, int> packet = _socket->receive();

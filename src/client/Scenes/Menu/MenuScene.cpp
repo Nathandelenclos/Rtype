@@ -7,6 +7,12 @@
 
 #include <utility>
 
+/**
+ * @brief Construct a new Menu Scene:: Menu Scene object
+ *
+ * @param clientCore
+ * @param socket
+ */
 MenuScene::MenuScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket) :
     AScene(clientCore),
     _socket(std::move(socket))
@@ -16,6 +22,10 @@ MenuScene::MenuScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socke
     _pingTime.tv_usec = 0;
 }
 
+/**
+ * @brief init_scene,  initialize the scene
+ *
+ */
 void MenuScene::init_scene()
 {
     std::shared_ptr<TextComponent> text = std::make_shared<TextComponent>(_clientCore, _socket);
@@ -65,6 +75,11 @@ void MenuScene::init_scene()
     addComponent(text_ping);
 }
 
+/**
+ * @brief handleEvent, handle the event
+ * @param event
+ * @param window
+ */
 void MenuScene::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
     while (window.pollEvent(const_cast<sf::Event &>(event))) {
@@ -84,6 +99,9 @@ void MenuScene::handleEvent(const sf::Event &event, sf::RenderWindow &window)
     }
 }
 
+/**
+ * @brief receiveData, receive data from the server
+ */
 void MenuScene::receiveData()
 {
     std::tuple<std::unique_ptr<Packet>, int> packet = _socket->receive();

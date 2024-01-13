@@ -7,6 +7,11 @@
 
 #include <utility>
 
+/**
+ * @brief ButtonComponent constructor
+ * @param core
+ * @param socket
+ */
 ButtonComponent::ButtonComponent(ClientCore *core, std::shared_ptr<ClientSocket> socket) :
     AComponent(core)
 {
@@ -25,50 +30,86 @@ ButtonComponent::ButtonComponent(ClientCore *core, std::shared_ptr<ClientSocket>
     setCallback(default_handle_click);
 }
 
+/**
+ * @brief action, call the callback function
+ */
 void ButtonComponent::action()
 {
     _callback();
 }
 
+/**
+ * @brief setTexture set the texture of the button
+ * @param texture
+ */
 void ButtonComponent::setTexture(const sf::Texture &texture)
 {
     _texture = texture;
     _sprite.setTexture(_texture);
 }
 
+/**
+ * @brief setPosition set the position of the button
+ * @param position
+ */
 void ButtonComponent::setPosition(sf::Vector2f position)
 {
     _position = position;
     _sprite.setPosition(_position);
 }
 
+/**
+ * @brief setSize set the size of the button
+ * @param size
+ */
 void ButtonComponent::setSize(sf::Vector2f size)
 {
     _size = size;
     _sprite.setScale(_size);
 }
 
+/**
+ * @brief setRect set the rect of the button
+ * @param rect
+ */
 void ButtonComponent::setRect(sf::IntRect rect)
 {
     _rect = rect;
     _sprite.setTextureRect(_rect);
 }
 
+/**
+ * @brief setAttribute set the attribute of the button
+ * @param attribute
+ */
 void ButtonComponent::setCallback(std::function<void()> callback)
 {
     _callback = std::move(callback);
 }
 
+/**
+ * @brief setAttribute set the attribute of the button
+ * @param window
+ */
 void ButtonComponent::display(sf::RenderWindow &window)
 {
     window.draw(_sprite);
 }
 
+/**
+ * @brief getRect get the texture of the button
+ * @return rect of the button
+ */
 sf::IntRect ButtonComponent::getRect() const
 {
     return _rect;
 }
 
+/**
+ * @brief handleEvent handle the event of the button
+ * @param event to handle
+ * @param window
+ */
 void ButtonComponent::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
     if (event.type == sf::Event::MouseButtonPressed) {
@@ -82,6 +123,9 @@ void ButtonComponent::handleEvent(const sf::Event &event, sf::RenderWindow &wind
     }
 }
 
+/**
+ * @brief handleClickInitServer handle the click of the button
+ */
 void ButtonComponent::handleClickInitServer()
 {
     std::string ip;
@@ -126,6 +170,9 @@ void ButtonComponent::handleClickInitServer()
     }
 }
 
+/**
+ * @brief handleClickMainScene handle the click of the button on the main scene
+ */
 void ButtonComponent::handleClickMainScene()
 {
     for (auto &component : action_target) {
@@ -142,6 +189,9 @@ void ButtonComponent::handleClickMainScene()
     _clientCore->setCurrentScene("menu");
 }
 
+/**
+ * @brief handleClickAccessGame handle the click of the button for access the game scene
+ */
 void ButtonComponent::handleClickAccessGame()
 {
     for (auto &component : action_target) {

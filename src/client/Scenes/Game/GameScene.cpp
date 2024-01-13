@@ -9,6 +9,12 @@
 #include "ClientCore.hpp"
 #include <utility>
 
+/**
+ * @brief Construct a new Game Scene:: Game Scene object
+ *
+ * @param clientCore
+ * @param socket
+ */
 GameScene::GameScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket) :
     AScene(clientCore),
     _socket(std::move(socket))
@@ -17,6 +23,9 @@ GameScene::GameScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socke
     init_scene();
 }
 
+/**
+ * @brief init_scene, init the scene
+ */
 void GameScene::init_scene()
 {
     std::shared_ptr<TextComponent> text_ping = std::make_shared<TextComponent>(_clientCore, _socket);
@@ -45,6 +54,9 @@ void GameScene::init_scene()
     addComponent(sound_player_left);
 }
 
+/**
+ * @brief receiveData, receive data from the server
+ */
 void GameScene::receiveData()
 {
     std::tuple<std::unique_ptr<Packet>, int> packet = _socket->receive();
@@ -193,11 +205,19 @@ void GameScene::receiveData()
     }
 }
 
+/**
+ * @brief getTextureByType, get the texture by type
+ * @param type
+ * @return texture of the type
+ */
 sf::Texture GameScene::getTextureByType(Type type) const
 {
     return _textures.at(type);
 }
 
+/**
+ * @brief initTextures, init the textures
+ */
 void GameScene::initTextures()
 {
     _textures[Type::MISSINGTXT] = sf::Texture();
@@ -218,6 +238,11 @@ void GameScene::initTextures()
     _textures[Type::BACKGROUND4].loadFromFile("../testsprites/bg_800_600/background_4.png");
 }
 
+/**
+ * @brief handleEvent, handle the event
+ * @param event
+ * @param window
+ */
 void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
     while (window.pollEvent(const_cast<sf::Event &>(event))) {

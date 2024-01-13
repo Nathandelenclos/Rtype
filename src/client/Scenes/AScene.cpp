@@ -4,16 +4,28 @@
 
 #include "AScene.hpp"
 
+/**
+ * @brief addComponent, add a component to the scene
+ * @param component
+ */
 void AScene::addComponent(std::shared_ptr<IComponent> component)
 {
     _components.push_back(component);
 }
 
+/**
+ * @brief getComponents, get all the components of the scene
+ * @return std::vector<std::shared_ptr<IComponent>>
+ */
 std::vector<std::shared_ptr<IComponent>> AScene::getComponents()
 {
     return _components;
 }
 
+/**
+ * @brief display, display the scene
+ * @param window
+ */
 void AScene::display(sf::RenderWindow &window)
 {
     for (auto &component : _components) {
@@ -25,6 +37,11 @@ void AScene::update()
 {
 }
 
+/**
+ * @brief handleEvent, handle the event
+ * @param event
+ * @param window
+ */
 void AScene::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
     for (auto &component : _components) {
@@ -32,6 +49,9 @@ void AScene::handleEvent(const sf::Event &event, sf::RenderWindow &window)
     }
 }
 
+/**
+ * @brief pauseScene, pause the scene
+ */
 void AScene::pauseScene()
 {
     for (auto &component : _components) {
@@ -44,6 +64,9 @@ void AScene::pauseScene()
     }
 }
 
+/**
+ * @brief resumeScene, resume the scene
+ */
 void AScene::resumeScene()
 {
     for (auto &component : _components) {
@@ -56,6 +79,9 @@ void AScene::resumeScene()
     }
 }
 
+/**
+ * @brief stopScene, stop the scene
+ */
 void AScene::stopScene()
 {
     for (auto &component : _components) {
