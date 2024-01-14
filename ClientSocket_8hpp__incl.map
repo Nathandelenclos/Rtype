@@ -1,13 +1,13 @@
 <map id="networking/client/ClientSocket.hpp" name="networking/client/ClientSocket.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="148,5,325,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="172,169,231,196"/>
-<area shape="rect" id="node3" title=" " alt="" coords="26,95,92,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="116,95,180,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="204,95,268,121"/>
-<area shape="rect" id="node6" title=" " alt="" coords="293,95,356,121"/>
-<area shape="rect" id="node7" title=" " alt="" coords="380,95,476,121"/>
-<area shape="rect" id="node8" href="$USocket_8hpp.html" title=" " alt="" coords="501,95,729,121"/>
-<area shape="rect" id="node9" title=" " alt="" coords="468,169,546,196"/>
-<area shape="rect" id="node10" title=" " alt="" coords="570,169,660,196"/>
-<area shape="rect" id="node11" title=" " alt="" coords="684,169,751,196"/>
+<area shape="rect" id="node1" title=" " alt="" coords="229,5,406,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,95,72,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="96,95,160,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="184,95,280,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="360,169,419,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="355,95,419,121"/>
+<area shape="rect" id="node7" title=" " alt="" coords="443,95,506,121"/>
+<area shape="rect" id="node8" href="$USocket_8hpp.html" title=" " alt="" coords="530,95,758,121"/>
+<area shape="rect" id="node9" title=" " alt="" coords="515,169,581,196"/>
+<area shape="rect" id="node10" title=" " alt="" coords="605,169,683,196"/>
+<area shape="rect" id="node11" title=" " alt="" coords="707,169,797,196"/>
 </map>

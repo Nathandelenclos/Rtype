@@ -1,6 +1,6 @@
 <map id="Drawable::Drawable" name="Drawable::Drawable">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,160,83"/>
-<area shape="rect" id="node2" href="$classDrawable.html#addb6142ea3eaa69348a8ed319ae3e804" title=" " alt="" coords="208,5,372,32"/>
-<area shape="rect" id="node3" href="$classDrawable.html#a7298142d4efc1dc877a0f4296f1a50bc" title=" " alt="" coords="219,56,361,83"/>
-<area shape="rect" id="node4" href="$classDrawable.html#a42d13e97b29b5c3bb5d2e23f80eb62f3" title=" " alt="" coords="221,107,359,133"/>
+<area shape="rect" id="node1" title="Construct a new Drawable:: Drawable object." alt="" coords="5,56,160,83"/>
+<area shape="rect" id="node2" href="$classDrawable.html#addb6142ea3eaa69348a8ed319ae3e804" title="setPosition, set the position" alt="" coords="208,5,372,32"/>
+<area shape="rect" id="node3" href="$classDrawable.html#a7298142d4efc1dc877a0f4296f1a50bc" title="setRect, set the rect" alt="" coords="219,56,361,83"/>
+<area shape="rect" id="node4" href="$classDrawable.html#a42d13e97b29b5c3bb5d2e23f80eb62f3" title="setSize, set the size" alt="" coords="221,107,359,133"/>
 </map>

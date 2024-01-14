@@ -1,6 +1,6 @@
 <map id="MenuScene::MenuScene" name="MenuScene::MenuScene">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,185,57"/>
+<area shape="rect" id="node1" title="Construct a new Menu Scene:: Menu Scene object." alt="" coords="5,31,185,57"/>
 <area shape="rect" id="node2" href="$classAScene.html#afa86b1f8e48baeaf05dab72008b83b15" title=" " alt="" coords="255,5,382,32"/>
-<area shape="rect" id="node4" href="$classMenuScene.html#aad35539ae16b637e66ff9d27b54dfe6c" title=" " alt="" coords="233,56,404,83"/>
+<area shape="rect" id="node4" href="$classMenuScene.html#aad35539ae16b637e66ff9d27b54dfe6c" title="init_scene, initialize the scene" alt="" coords="233,56,404,83"/>
 <area shape="rect" id="node3" href="$classIScene.html#adfd32db3454f92122c2297690732a455" title=" " alt="" coords="452,5,568,32"/>
 </map>
