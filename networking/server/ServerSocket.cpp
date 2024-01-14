@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2023
+** R-type
+** File description:
+** R-type
+*/
+
 #include "ServerSocket.hpp"
 #include <arpa/inet.h>
 #include <iostream>

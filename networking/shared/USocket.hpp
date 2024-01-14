@@ -1,6 +1,9 @@
-//
-// Created by talleux on 12/13/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** R-type
+** File description:
+** R-type
+*/
 
 #ifndef R_TYPE_SERVER_USOCKET_HPP
 #define R_TYPE_SERVER_USOCKET_HPP
@@ -24,6 +27,9 @@
 
 #endif
 
+/**
+ * @brief Enum of all the code of the packet
+ */
 typedef enum code {
     UNDEFINED,
     EVENT,
@@ -36,6 +42,9 @@ typedef enum code {
     DELETE_COMPONENT,
 } CODE;
 
+/**
+ * @brief Enum of all the type of the component
+ */
 typedef enum {
     TEXTSOCKET,
     SPRITESOCKET,
@@ -46,10 +55,12 @@ typedef enum {
     SOUNDSOCKET,
 } ComponentTypeSocket;
 
+
 typedef struct key {
     int key;
     int type;
 } Key;
+
 
 typedef struct mouse {
     int x;
@@ -136,15 +147,42 @@ typedef struct split_packet {
 class USocket
 {
   public:
+
+    /**
+     * @brief Destructor of USocket
+     */
     virtual ~USocket() = default;
 
+    /**
+     * @brief Send a packet to a client
+     * @param packet
+     * @param dest
+     */
     virtual void send(Packet *packet, struct sockaddr_in dest) = 0;
+
+    /**
+     * @brief Receive a packet from a client
+     * @return a tuple with the packet and the size of the packet
+     */
     virtual std::tuple<std::unique_ptr<Packet>, int> receive() = 0;
 
+    /**
+     * @brief Send a split packet to a client
+     * @param packet
+     * @param dest
+     */
     virtual void splitAndSend(Packet *packet, struct sockaddr_in dest) = 0;
 
+    /**
+     * @brief Run the server socket
+     */
     virtual void run() = 0;
 
+    /**
+     * @brief Send a split packet to a client
+     * @param packet
+     * @param dest
+     */
     virtual void sendPacket(SplitPacket *packet, struct sockaddr_in dest) = 0;
 };
 
