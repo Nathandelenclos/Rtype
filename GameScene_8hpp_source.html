@@ -86,55 +86,20 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classGameScene.html">   15</a></span>&#160;<span class="keyword">class</span> <a class="code" href="classGameScene.html">GameScene</a> : <span class="keyword">public</span> <a class="code" href="classAScene.html">AScene</a></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">     * @brief GameScene, constructor of GameScene</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">     * @param clientCore</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">     * @param socket</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classGameScene.html#a6c4da661361d87bb1db87d12903a6814">GameScene</a>(<a class="code" href="classClientCore.html">ClientCore</a> *clientCore, std::shared_ptr&lt;<a class="code" href="classClientSocket.html">ClientSocket</a>&gt; socket);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">     * @brief ~GameScene, destructor of GameScene</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classGameScene.html#a9d4720cfdab4b927f8f51ab4f7c77222">   30</a></span>&#160;    ~<a class="code" href="classGameScene.html#a9d4720cfdab4b927f8f51ab4f7c77222">GameScene</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">     * @brief init_scene, init the scene</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameScene.html#af99fe74e97db89e6ec7360e64979149b">init_scene</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">     * @brief handleEvent, handle the event</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">     * @param event</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">     * @param window</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameScene.html#adcf7f428226827801b36765c24d0bd16">handleEvent</a>(<span class="keyword">const</span> sf::Event &amp;event, sf::RenderWindow &amp;window) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     * @brief receiveData, receive the data</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameScene.html#a96f9195c04703eaacb82c8fc07ef557d">receiveData</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">     * @brief getTextureByType, get the texture by type</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">     * @param type</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classGameScene.html#a09e7f20e553ee7d7d416da3de8422a2b">sf</a>::<a class="code" href="classGameScene.html#a09e7f20e553ee7d7d416da3de8422a2b">Texture</a> <a class="code" href="classGameScene.html#a09e7f20e553ee7d7d416da3de8422a2b">getTextureByType</a>(<a class="code" href="classGameScene.html#a09e7f20e553ee7d7d416da3de8422a2b">Type</a> <a class="code" href="classGameScene.html#a09e7f20e553ee7d7d416da3de8422a2b">type</a>) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">     * @brief initTextures, init the textures</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameScene.html#aad82da9d10cc904fcd0c4ebd5993f71c">initTextures</a>();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::shared_ptr&lt;<a class="code" href="classClientSocket.html">ClientSocket</a>&gt; _socket;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::map&lt;Type, sf::Texture&gt; _textures;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classGameScene.html#a6c4da661361d87bb1db87d12903a6814">GameScene</a>(<a class="code" href="classClientCore.html">ClientCore</a> *clientCore, std::shared_ptr&lt;<a class="code" href="classClientSocket.html">ClientSocket</a>&gt; socket);</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classGameScene.html#a9d4720cfdab4b927f8f51ab4f7c77222">   19</a></span>&#160;    ~<a class="code" href="classGameScene.html#a9d4720cfdab4b927f8f51ab4f7c77222">GameScene</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameScene.html#af99fe74e97db89e6ec7360e64979149b">init_scene</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameScene.html#adcf7f428226827801b36765c24d0bd16">handleEvent</a>(<span class="keyword">const</span> sf::Event &amp;event, sf::RenderWindow &amp;window) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameScene.html#a96f9195c04703eaacb82c8fc07ef557d">receiveData</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classGameScene.html#a09e7f20e553ee7d7d416da3de8422a2b">sf</a>::<a class="code" href="classGameScene.html#a09e7f20e553ee7d7d416da3de8422a2b">Texture</a> <a class="code" href="classGameScene.html#a09e7f20e553ee7d7d416da3de8422a2b">getTextureByType</a>(<a class="code" href="classGameScene.html#a09e7f20e553ee7d7d416da3de8422a2b">Type</a> <a class="code" href="classGameScene.html#a09e7f20e553ee7d7d416da3de8422a2b">type</a>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameScene.html#aad82da9d10cc904fcd0c4ebd5993f71c">initTextures</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::shared_ptr&lt;<a class="code" href="classClientSocket.html">ClientSocket</a>&gt; _socket;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    std::map&lt;Type, sf::Texture&gt; _textures;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
