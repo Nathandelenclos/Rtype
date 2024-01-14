@@ -212,8 +212,8 @@ void LobbyScene::initEntities()
     addEntity(bg2);
     addEntity(bg3);
     addEntity(bg4);
-//    addEntity(floor_bg);
-//    addEntity(roof_bg);
+    addEntity(floor_bg);
+    addEntity(roof_bg);
     addEntity(enemy1);
     addEntity(boss);
 }
