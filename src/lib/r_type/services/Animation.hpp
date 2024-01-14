@@ -15,8 +15,19 @@
 class Animation : public AService
 {
   public:
+
+    /**
+     * @brief Construct a new Animation:: Animation object
+     * @param serverSocket
+     */
     explicit Animation(std::shared_ptr<ServerSocket> serverSocket) :
         AService(std::move(serverSocket)){};
 
+    /**
+     * @brief Destroy the Animation:: Animation object
+     *
+     * @param event
+     * @param component
+     */
     void update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component) override;
 };

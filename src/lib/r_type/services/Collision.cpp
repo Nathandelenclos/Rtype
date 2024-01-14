@@ -1,6 +1,9 @@
-//
-// Created by nathan on 1/10/24.
-//
+/*
+** EPITECH PROJECT, 2023
+** R-type
+** File description:
+** R-type
+*/
 
 #include "Collision.hpp"
 #include "Drawable.hpp"

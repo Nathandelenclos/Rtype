@@ -1,6 +1,9 @@
-//
-// Created by talleux on 1/10/24.
-//
+/*
+** EPITECH PROJECT, 2023
+** R-type
+** File description:
+** R-type
+*/
 
 #include "TimeManagement.hpp"
 #include "Timer.hpp"

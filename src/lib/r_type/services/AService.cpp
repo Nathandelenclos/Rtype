@@ -1,6 +1,9 @@
-//
-// Created by talleux on 1/4/24.
-//
+/*
+** EPITECH PROJECT, 2023
+** R-type
+** File description:
+** R-type
+*/
 
 #include "AService.hpp"
 

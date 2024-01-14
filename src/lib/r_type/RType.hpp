@@ -19,6 +19,11 @@
 class RType : public IGame
 {
   public:
+
+    /**
+     * @brief Construct a new RType:: RType object
+     * @param socket
+     */
     explicit RType(std::shared_ptr<ServerSocket> socket)
     {
         _socket = std::move(socket);
@@ -27,8 +32,16 @@ class RType : public IGame
         gettimeofday(&_broadcastGameState, nullptr);
     }
 
+    /**
+     * @brief Destroy the RType:: RType object
+     */
     ~RType() override = default;
 
+    /**
+     * @brief update, update the game
+     * @param event
+     * @param packet
+     */
     void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet) override
     {
         timeval currentTime{};
