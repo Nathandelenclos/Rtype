@@ -93,10 +93,13 @@ Collaboration diagram for RType:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3cc317156a17353c8ee42a3ac383c185"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType.html#a3cc317156a17353c8ee42a3ac383c185">RType</a> (std::shared_ptr&lt; <a class="el" href="classServerSocket.html">ServerSocket</a> &gt; socket)</td></tr>
+<tr class="memdesc:a3cc317156a17353c8ee42a3ac383c185"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classRType.html">RType</a>:: <a class="el" href="classRType.html">RType</a> object.  <a href="classRType.html#a3cc317156a17353c8ee42a3ac383c185">More...</a><br /></td></tr>
 <tr class="separator:a3cc317156a17353c8ee42a3ac383c185"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a5126ef861c704803819299cc9e43c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType.html#a5a5126ef861c704803819299cc9e43c7">~RType</a> () override=default</td></tr>
+<tr class="memdesc:a5a5126ef861c704803819299cc9e43c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classRType.html">RType</a>:: <a class="el" href="classRType.html">RType</a> object.  <a href="classRType.html#a5a5126ef861c704803819299cc9e43c7">More...</a><br /></td></tr>
 <tr class="separator:a5a5126ef861c704803819299cc9e43c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72fe471278f00507bb94c763a292f2ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType.html#a72fe471278f00507bb94c763a292f2ed">update</a> (std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#ab2f494a6b60c0f52e6c2a96fbe4d010c">Event</a> &gt; <a class="el" href="structevent.html">event</a>, std::shared_ptr&lt; <a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> &gt; <a class="el" href="structpacket.html">packet</a>) override</td></tr>
+<tr class="memdesc:a72fe471278f00507bb94c763a292f2ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">update, update the game  <a href="classRType.html#a72fe471278f00507bb94c763a292f2ed">More...</a><br /></td></tr>
 <tr class="separator:a72fe471278f00507bb94c763a292f2ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classIGame"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classIGame')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classIGame.html">IGame</a></td></tr>
 <tr class="memitem:a91b14c1b6019364120d5c5e4d4c64414 inherit pub_methods_classIGame"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIGame.html#a91b14c1b6019364120d5c5e4d4c64414">~IGame</a> ()=default</td></tr>
@@ -145,9 +148,17 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00022">22</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+<p>Construct a new <a class="el" href="classRType.html">RType</a>:: <a class="el" href="classRType.html">RType</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">socket</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="reference">References <a class="el" href="RType_8hpp_source.html#l00073">_broadcastGameState</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00027">27</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+
+<p class="reference">References <a class="el" href="RType_8hpp_source.html#l00086">_broadcastGameState</a>.</p>
 
 </div>
 </div>
@@ -173,6 +184,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Destroy the <a class="el" href="classRType.html">RType</a>:: <a class="el" href="classRType.html">RType</a> object. </p>
 
 </div>
 </div>
@@ -211,11 +224,20 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>update, update the game </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td></td></tr>
+    <tr><td class="paramname">packet</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implements <a class="el" href="classIGame.html#a37cdbd6ddcff99ba0b8fb6eb00d1bef0">IGame</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00032">32</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00045">45</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="RType_8hpp_source.html#l00073">_broadcastGameState</a>.</p>
+<p class="reference">References <a class="el" href="RType_8hpp_source.html#l00086">_broadcastGameState</a>.</p>
 
 </div>
 </div>
@@ -232,9 +254,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00073">73</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00086">86</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="RType_8hpp_source.html#l00022">RType()</a>, and <a class="el" href="RType_8hpp_source.html#l00032">update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="RType_8hpp_source.html#l00027">RType()</a>, and <a class="el" href="RType_8hpp_source.html#l00045">update()</a>.</p>
 
 </div>
 </div>
@@ -250,7 +272,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00070">70</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00083">83</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
 </div>
 </div>
@@ -266,7 +288,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00069">69</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00082">82</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
 </div>
 </div>
@@ -282,7 +304,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00068">68</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00081">81</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
 </div>
 </div>
@@ -298,7 +320,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00071">71</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00084">84</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
 </div>
 </div>
@@ -314,7 +336,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00072">72</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RType_8hpp_source.html#l00085">85</a> of file <a class="el" href="RType_8hpp_source.html">RType.hpp</a>.</p>
 
 </div>
 </div>
