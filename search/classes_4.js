@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['element_421',['element',['../structelement.html',1,'']]],
-  ['event_422',['event',['../structevent.html',1,'']]]
+  ['element_419',['element',['../structelement.html',1,'']]],
+  ['enemy_420',['Enemy',['../classEnemy.html',1,'']]],
+  ['event_421',['event',['../structevent.html',1,'']]]
 ];

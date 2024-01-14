@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['newcomponent_441',['newComponent',['../structnewComponent.html',1,'']]]
+  ['newcomponent_440',['newComponent',['../structnewComponent.html',1,'']]]
 ];

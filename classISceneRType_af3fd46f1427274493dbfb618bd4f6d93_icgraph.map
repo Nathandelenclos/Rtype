@@ -1,4 +1,4 @@
 <map id="ISceneRType::initEntities" name="ISceneRType::initEntities">
-<area shape="rect" id="node1" title=" " alt="" coords="213,5,395,32"/>
+<area shape="rect" id="node1" title="initEntities, init the entities" alt="" coords="213,5,395,32"/>
 <area shape="rect" id="node2" href="$classAScene.html#a4826db95b32af7b58a2a1bf715734f0b" title="restartScene, restart the scene" alt="" coords="5,5,165,32"/>
 </map>
