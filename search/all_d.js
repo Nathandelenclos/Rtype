@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['operator_3c_3c_242',['operator&lt;&lt;',['../Server_8cpp.html#aaf5d47cf0e834bc1d096b12fb601b813',1,'operator&lt;&lt;(std::ostream &amp;os, CODE const &amp;packetCode):&#160;Server.cpp'],['../Server_8cpp.html#abe921902d02cc1755bdaf6820fcc0978',1,'operator&lt;&lt;(std::ostream &amp;os, Element const &amp;packetElement):&#160;Server.cpp'],['../Server_8cpp.html#a3f58b3bb60d6ab9ca3250de7af800c0e',1,'operator&lt;&lt;(std::ostream &amp;os, std::unique_ptr&lt; Packet &gt; &amp;packet):&#160;Server.cpp']]]
+  ['new_5fcomponent_239',['NEW_COMPONENT',['../USocket_8hpp.html#afb9ed1b8a27eb20854efe6e23e297683aab2d32de3833e180b668c9274bc081bf',1,'USocket.hpp']]],
+  ['newcomponent_240',['newComponent',['../structnewComponent.html',1,'']]],
+  ['newcomponent_241',['NewComponent',['../USocket_8hpp.html#aa94eda72535700b290e4f094dc85dca8',1,'USocket.hpp']]],
+  ['number_242',['number',['../unionattribute.html#a7cb9f3414c552cf3be1a6d7f22ccbb53',1,'attribute']]]
 ];

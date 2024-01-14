@@ -84,27 +84,21 @@ Inheritance diagram for USocket:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0c5cdfb77f39f2a8a7ade86c47f9ea70"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSocket.html#a0c5cdfb77f39f2a8a7ade86c47f9ea70">~USocket</a> ()=default</td></tr>
-<tr class="memdesc:a0c5cdfb77f39f2a8a7ade86c47f9ea70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of <a class="el" href="classUSocket.html">USocket</a>.  <a href="classUSocket.html#a0c5cdfb77f39f2a8a7ade86c47f9ea70">More...</a><br /></td></tr>
 <tr class="separator:a0c5cdfb77f39f2a8a7ade86c47f9ea70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acca0232a90368db820d99ce45c33cb21"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSocket.html#acca0232a90368db820d99ce45c33cb21">send</a> (<a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> *<a class="el" href="structpacket.html">packet</a>, struct sockaddr_in dest)=0</td></tr>
-<tr class="memdesc:acca0232a90368db820d99ce45c33cb21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a packet to a client.  <a href="classUSocket.html#acca0232a90368db820d99ce45c33cb21">More...</a><br /></td></tr>
 <tr class="separator:acca0232a90368db820d99ce45c33cb21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8312f7a58b520dd9041aa63c29432124"><td class="memItemLeft" align="right" valign="top">virtual std::tuple&lt; std::unique_ptr&lt; <a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> &gt;, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSocket.html#a8312f7a58b520dd9041aa63c29432124">receive</a> ()=0</td></tr>
-<tr class="memdesc:a8312f7a58b520dd9041aa63c29432124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive a packet from a client.  <a href="classUSocket.html#a8312f7a58b520dd9041aa63c29432124">More...</a><br /></td></tr>
 <tr class="separator:a8312f7a58b520dd9041aa63c29432124"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74e85c4b5197a4016d714cb5c30daab5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSocket.html#a74e85c4b5197a4016d714cb5c30daab5">splitAndSend</a> (<a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> *<a class="el" href="structpacket.html">packet</a>, struct sockaddr_in dest)=0</td></tr>
-<tr class="memdesc:a74e85c4b5197a4016d714cb5c30daab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a split packet to a client.  <a href="classUSocket.html#a74e85c4b5197a4016d714cb5c30daab5">More...</a><br /></td></tr>
 <tr class="separator:a74e85c4b5197a4016d714cb5c30daab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7923bfb7cb56158cf193823c9a9dc15d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSocket.html#a7923bfb7cb56158cf193823c9a9dc15d">run</a> ()=0</td></tr>
-<tr class="memdesc:a7923bfb7cb56158cf193823c9a9dc15d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the server socket.  <a href="classUSocket.html#a7923bfb7cb56158cf193823c9a9dc15d">More...</a><br /></td></tr>
 <tr class="separator:a7923bfb7cb56158cf193823c9a9dc15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7285993068a372412e1e864ae4b8e227"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSocket.html#a7285993068a372412e1e864ae4b8e227">sendPacket</a> (<a class="el" href="USocket_8hpp.html#a77e642261c850546a789f257b1d03e98">SplitPacket</a> *<a class="el" href="structpacket.html">packet</a>, struct sockaddr_in dest)=0</td></tr>
-<tr class="memdesc:a7285993068a372412e1e864ae4b8e227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a split packet to a client.  <a href="classUSocket.html#a7285993068a372412e1e864ae4b8e227">More...</a><br /></td></tr>
 <tr class="separator:a7285993068a372412e1e864ae4b8e227"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="USocket_8hpp_source.html#l00147">147</a> of file <a class="el" href="USocket_8hpp_source.html">USocket.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="USocket_8hpp_source.html#l00139">139</a> of file <a class="el" href="USocket_8hpp_source.html">USocket.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0c5cdfb77f39f2a8a7ade86c47f9ea70"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c5cdfb77f39f2a8a7ade86c47f9ea70">&#9670;&nbsp;</a></span>~USocket()</h2>
@@ -128,8 +122,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Destructor of <a class="el" href="classUSocket.html">USocket</a>. </p>
 
 </div>
 </div>
@@ -157,9 +149,6 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Receive a packet from a client. </p>
-<dl class="section return"><dt>Returns</dt><dd>a tuple with the packet and the size of the packet </dd></dl>
-
 <p>Implemented in <a class="el" href="classServerSocket.html#ac6cbd1ed77ce812b1d9b07718fc557db">ServerSocket</a>, and <a class="el" href="classClientSocket.html#aff92fc80281e0ec1fae4431f123c267c">ClientSocket</a>.</p>
 
 </div>
@@ -186,8 +175,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Run the server socket. </p>
 
 <p>Implemented in <a class="el" href="classServerSocket.html#af288e86fa50894b11d7eecdc3e20bad3">ServerSocket</a>, and <a class="el" href="classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1">ClientSocket</a>.</p>
 
@@ -227,15 +214,6 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Send a packet to a client. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">packet</td><td></td></tr>
-    <tr><td class="paramname">dest</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
 <p>Implemented in <a class="el" href="classServerSocket.html#a1bb66bebf6cf617fb7046c4afb9e9a8f">ServerSocket</a>, and <a class="el" href="classClientSocket.html#a34d96504f522aac9759e66cdd66ea4a5">ClientSocket</a>.</p>
 
 </div>
@@ -274,15 +252,6 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Send a split packet to a client. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">packet</td><td></td></tr>
-    <tr><td class="paramname">dest</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
 <p>Implemented in <a class="el" href="classServerSocket.html#a23457dca0f587ece489c4b4150ea57c7">ServerSocket</a>, and <a class="el" href="classClientSocket.html#a5a16482f8789d796a3da14cacdfc6471">ClientSocket</a>.</p>
 
 </div>
@@ -320,15 +289,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Send a split packet to a client. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">packet</td><td></td></tr>
-    <tr><td class="paramname">dest</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 
 <p>Implemented in <a class="el" href="classServerSocket.html#a96fa677f928353dd2a25f07040f7e0a6">ServerSocket</a>, and <a class="el" href="classClientSocket.html#a7df9e5a9d7a1cd7838a3611cc89a5a4a">ClientSocket</a>.</p>
 
