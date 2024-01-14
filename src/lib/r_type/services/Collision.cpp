@@ -24,6 +24,10 @@ void Collision::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentR
                     drawable->_toDelete = true;
                     other->_toDelete = true;
                 }
+                if (other->_textureId == BOSS) {
+                    drawable->_toDelete = true;
+                    other->_toDelete = true;
+                }
             }
         }
     }

@@ -22,6 +22,7 @@ LobbyScene::LobbyScene(std::shared_ptr<ServerSocket> serverSocket) :
     _bulletTriggerLimiter = {0, 0};
     _nbBullets = 0;
     _nbBossBullets = 0;
+    _lifeBoss = 10;
 }
 
 /**
@@ -164,10 +165,10 @@ void LobbyScene::initEntities()
     bg4->addComponent(sprite_bg4);
     bg4->addComponent(animation_bg4);
 
-//    addEntity(bg1);
-//    addEntity(bg2);
-//    addEntity(bg3);
-//    addEntity(bg4);
+    addEntity(bg1);
+    addEntity(bg2);
+    addEntity(bg3);
+    addEntity(bg4);
     addEntity(floor_bg);
     addEntity(roof_bg);
 }
@@ -208,50 +209,61 @@ void LobbyScene::spawnBoss() {
     addEntity(boss);
 }
 
+int generateRandomNumber(int lowerBound, int upperBound) {
+    // Utilisez std::random_device pour initialiser le générateur de nombres aléatoires
+    std::random_device rd;
+
+    // Utilisez std::mt19937 comme générateur de nombres aléatoires
+    std::mt19937 gen(rd());
+
+    // Utilisez std::uniform_int_distribution pour spécifier la plage de valeurs
+    std::uniform_int_distribution<int> distribution(lowerBound, upperBound);
+
+    // Générez le nombre aléatoire
+    int randomNumber = distribution(gen);
+
+    return randomNumber;
+}
+
 /**
  * @brief shootBoss, boss attacks
  */
-void LobbyScene::shootBoss(std::tuple<float, float> position) {
-    std::shared_ptr<IEntity> boss_bullet = std::make_shared<IEntity>();
-    std::shared_ptr<Drawable> sprite_boss_bullet = std::make_shared<Drawable>();
-    std::shared_ptr<Animatable> animation_boss_bullet = std::make_shared<Animatable>();
-    std::shared_ptr<Timer> timer_boss_bullet = std::make_shared<Timer>();
-    gettimeofday(&timer_boss_bullet->_startTime, nullptr);
-    timer_boss_bullet->_targetTime.tv_sec = 0;
-    timer_boss_bullet->_targetTime.tv_usec = 10000;
-    timer_boss_bullet->setTarget(sprite_boss_bullet);
-    timer_boss_bullet->setActive(true);
-    timer_boss_bullet->setDirection(-1);
-    sprite_boss_bullet->setRect({0, 0, 23, 23});
-    sprite_boss_bullet->setSize({94 * 3, 23 * 3});
-    sprite_boss_bullet->setScale(3);
-    sprite_boss_bullet->setPosition(position);
-    sprite_boss_bullet->setAttribute("boss attack" + std::to_string(_nbBossBullets));
-    _nbBossBullets++;
-    sprite_boss_bullet->_textureId = BOSS_BULLET;
-    gettimeofday(&animation_boss_bullet->_chrono, nullptr);
-    animation_boss_bullet->setTarget(sprite_boss_bullet);
-    animation_boss_bullet->setTime({0, 200000});
-    animation_boss_bullet->_frameIndex = 0;
-    animation_boss_bullet->_numberFrameToAnim = 4;
-    animation_boss_bullet->_numberFrame = 4;
-    animation_boss_bullet->_startFrameIndex = 0;
-    animation_boss_bullet->_frameForOnePicture = 1;
-    boss_bullet->setAttribute("boss attack");
-    boss_bullet->addComponent(sprite_boss_bullet);
-    boss_bullet->addComponent(animation_boss_bullet);
-    boss_bullet->addComponent(timer_boss_bullet);
+void LobbyScene::shootBoss(int nb) {
+    for (int i = 0; i < nb; i++) {
+        std::tuple<float, float> position = std::make_tuple(1000, generateRandomNumber(0, 601 - 36 * 2));
+        std::shared_ptr <IEntity> boss_bullet = std::make_shared<IEntity>();
+        std::shared_ptr <Drawable> sprite_boss_bullet = std::make_shared<Drawable>();
+        std::shared_ptr <Animatable> animation_boss_bullet = std::make_shared<Animatable>();
+        std::shared_ptr <Timer> timer_boss_bullet = std::make_shared<Timer>();
+        gettimeofday(&timer_boss_bullet->_startTime, nullptr);
+        timer_boss_bullet->_targetTime.tv_sec = 0;
+        timer_boss_bullet->_targetTime.tv_usec = 10000;
+        timer_boss_bullet->setTarget(sprite_boss_bullet);
+        timer_boss_bullet->setActive(true);
+        timer_boss_bullet->setDirection(-1);
+        sprite_boss_bullet->setRect({0, 0, 23, 23});
+        sprite_boss_bullet->setSize({94 * 3, 23 * 3});
+        sprite_boss_bullet->setScale(3);
+        sprite_boss_bullet->setPosition(position);
+        sprite_boss_bullet->setAttribute(
+                "boss attack" + std::to_string(_nbBossBullets));
+        _nbBossBullets++;
+        sprite_boss_bullet->_textureId = BOSS_BULLET;
+        gettimeofday(&animation_boss_bullet->_chrono, nullptr);
+        animation_boss_bullet->setTarget(sprite_boss_bullet);
+        animation_boss_bullet->setTime({0, 200000});
+        animation_boss_bullet->_frameIndex = 0;
+        animation_boss_bullet->_numberFrameToAnim = 4;
+        animation_boss_bullet->_numberFrame = 4;
+        animation_boss_bullet->_startFrameIndex = 0;
+        animation_boss_bullet->_frameForOnePicture = 1;
+        boss_bullet->setAttribute("boss attack");
+        boss_bullet->addComponent(sprite_boss_bullet);
+        boss_bullet->addComponent(animation_boss_bullet);
+        boss_bullet->addComponent(timer_boss_bullet);
 
-//    for (const auto &e : getEntities()) {
-//        for (const auto &component : e->getComponents()) {
-//            std::string attribute = component->getAttribute();
-//            auto player = std::dynamic_pointer_cast<Drawable>(component);
-//            if (player && player->_textureId == PLAYER)
-//                bullet_sprite->addDrawableCollision(player);
-//        }
-//    }
-
-    addEntity(boss_bullet);
+        addEntity(boss_bullet);
+    }
 }
 
 /**
@@ -272,22 +284,6 @@ void LobbyScene::initServices()
     addService(timeManagement);
 }
 
-int generateRandomNumber(int lowerBound, int upperBound) {
-    // Utilisez std::random_device pour initialiser le générateur de nombres aléatoires
-    std::random_device rd;
-    
-    // Utilisez std::mt19937 comme générateur de nombres aléatoires
-    std::mt19937 gen(rd());
-    
-    // Utilisez std::uniform_int_distribution pour spécifier la plage de valeurs
-    std::uniform_int_distribution<int> distribution(lowerBound, upperBound);
-
-    // Générez le nombre aléatoire
-    int randomNumber = distribution(gen);
-
-    return randomNumber;
-}
-
 void LobbyScene::checkSpawnerActivation()
 {
     int spaceBetweenEnemy = 0;
@@ -295,26 +291,38 @@ void LobbyScene::checkSpawnerActivation()
     for (int i = 0; i < nbEntityToSpawn; ++i) {
         int randomVertcalPosition = generateRandomNumber(0, 601 - 36 * 2);// 601 car le modulo exclut la borne supérieure et 36 * 2 car la taille de l'ennemi est de 36 * 2
 
-        std::shared_ptr<IEntity> enemy1 = std::make_shared<Enemy>(
-            std::make_tuple(0, 20000),
-            timeval{0, 200000},
-            Rect{0, 0, 33, 36},
-            Position{263 * 2, 36 * 2},
-            Position{1000 + spaceBetweenEnemy, randomVertcalPosition},
-            2,
-            0,
-            8,
-            8,
-            0,
-            1,
-            ENEMY,
-            -1,
-            true,
-            "sprite enemy" + std::to_string(i),
-            "sprite enemy"
-        );
+        std::shared_ptr <IEntity> enemy = std::make_shared<IEntity>();
+        std::shared_ptr <Drawable> sprite_enemy = std::make_shared<Drawable>();
+        std::shared_ptr <Animatable> animation_enemy = std::make_shared<Animatable>();
+        std::shared_ptr <Timer> timer_enemy = std::make_shared<Timer>();
+        gettimeofday(&timer_enemy->_startTime, nullptr);
+        timer_enemy->_targetTime.tv_sec = 0;
+        timer_enemy->_targetTime.tv_usec = 20000;
+        timer_enemy->setTarget(sprite_enemy);
+        timer_enemy->setActive(true);
+        timer_enemy->setDirection(-1);
+        sprite_enemy->setRect({0, 0, 33, 36});
+        sprite_enemy->setSize({263 * 2, 36 * 2});
+        sprite_enemy->setScale(2);
+        sprite_enemy->setPosition({1000 + spaceBetweenEnemy, randomVertcalPosition});
+        sprite_enemy->setAttribute(
+                "sprite enemy" + std::to_string(i));
+        sprite_enemy->_textureId = ENEMY;
+        gettimeofday(&animation_enemy->_chrono, nullptr);
+        animation_enemy->setTarget(sprite_enemy);
+        animation_enemy->setTime({0, 200000});
+        animation_enemy->_frameIndex = 0;
+        animation_enemy->_numberFrameToAnim = 8;
+        animation_enemy->_numberFrame = 8;
+        animation_enemy->_startFrameIndex = 0;
+        animation_enemy->_frameForOnePicture = 1;
+        enemy->setAttribute("sprite enemy");
+        enemy->addComponent(sprite_enemy);
+        enemy->addComponent(animation_enemy);
+        enemy->addComponent(timer_enemy);
+
+        addEntity(enemy);
         spaceBetweenEnemy += 20 + 33 * 2;
-        addEntity(enemy1);
     }
     _spawnerActive = false;
 }
@@ -334,10 +342,39 @@ bool LobbyScene::allEnemiesLeftScreen()
     return true; // Tous les ennemis ont quitté l'écran
 }
 
+bool LobbyScene::allBulletsLeftScreen()
+{
+    for (auto &entity : getEntities()) {
+        if (entity->getAttribute() == "boss attack") {
+            for (const auto &component : entity->getComponents()) {
+                auto drawable = std::dynamic_pointer_cast<Drawable>(component);
+                if (drawable != nullptr && std::get<0>(drawable->getPosition()) > - 33 * 2) {
+                    return false; // Au moins un ennemi n'a pas quitté l'écran
+                }
+            }
+        }
+    }
+    return true; // Tous les ennemis ont quitté l'écran
+}
+
 void LobbyScene::enemyDeletion()
 {
     for (auto &entity : getEntities()) {
         if (entity->getAttribute() == "sprite enemy") {
+            for (const auto &component : entity->getComponents()) {
+                auto drawable = std::dynamic_pointer_cast<Drawable>(component);
+                if (drawable != nullptr) {
+                    drawable->_toDelete = true;
+                }
+            }
+        }
+    }
+}
+
+void LobbyScene::bulletDeletion()
+{
+    for (auto &entity : getEntities()) {
+        if (entity->getAttribute() == "boss attack") {
             for (const auto &component : entity->getComponents()) {
                 auto drawable = std::dynamic_pointer_cast<Drawable>(component);
                 if (drawable != nullptr) {
@@ -380,13 +417,17 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
         }
         if (now.tv_sec - _start.tv_sec >= 19) {
             _bossActive = true;
+            _timing = now.tv_sec;
             spawnBoss();
         }
     }
     if (_bossActive) {
-        if (now.tv_sec - _start.tv_sec >= 21 && _nbBossBullets < generateRandomNumber(0, 5)) {
-            shootBoss({1000, generateRandomNumber(0, 601 - 36 * 2)});
+        if (now.tv_sec - _start.tv_sec >= 21 && now.tv_sec - _timing >= 5 && _nbBossBullets < 11) {
+            shootBoss(generateRandomNumber(1, 5));
+            _timing = now.tv_sec;
         }
+        if (allBulletsLeftScreen())
+            bulletDeletion();
     }
     checkBulletDeletion();
 
@@ -556,6 +597,8 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                         std::string attribute = component->getAttribute();
                         auto enemy = std::dynamic_pointer_cast<Drawable>(component);
                         if (enemy && enemy->_textureId == ENEMY)
+                            bullet_sprite->addDrawableCollision(enemy);
+                        if (enemy && enemy->_textureId == BOSS)
                             bullet_sprite->addDrawableCollision(enemy);
                     }
                 }
