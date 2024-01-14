@@ -1,6 +1,8 @@
 <map id="LobbyScene::update" name="LobbyScene::update">
-<area shape="rect" id="node1" title="update, update the scene" alt="" coords="5,56,159,83"/>
-<area shape="rect" id="node2" href="$classAScene.html#ab439df212b6630bcda7f2cae7de14157" title="broadcastGameState, broadcast the game state" alt="" coords="219,5,433,32"/>
-<area shape="rect" id="node3" href="$classLobbyScene.html#ac871ad60458f007e63df2213eb6b3767" title="checkBulletDeletion, check the bullet deletion" alt="" coords="207,56,445,83"/>
-<area shape="rect" id="node4" href="$classAScene.html#a04756252779480e19871b162ed0aea8a" title="sedGameState, send the game state" alt="" coords="235,107,417,133"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,85,159,112"/>
+<area shape="rect" id="node2" href="$classAScene.html#ab439df212b6630bcda7f2cae7de14157" title=" " alt="" coords="219,5,433,32"/>
+<area shape="rect" id="node3" href="$classLobbyScene.html#ac871ad60458f007e63df2213eb6b3767" title=" " alt="" coords="207,56,445,83"/>
+<area shape="rect" id="node4" href="$classLobbyScene.html#a2a95d44d88f24875cda6566e33c767ff" title=" " alt="" coords="225,107,427,149"/>
+<area shape="rect" id="node6" href="$classAScene.html#a04756252779480e19871b162ed0aea8a" title=" " alt="" coords="235,173,417,200"/>
+<area shape="rect" id="node5" href="$Lobby_8cpp.html#a4a514963028e5f1f61de2419b39165b5" title=" " alt="" coords="493,115,680,141"/>
 </map>

@@ -1,8 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classIComponentRType.html" title=" " alt="" coords="5,56,144,83"/>
+<area shape="rect" id="node1" href="$classIComponentRType.html" title=" " alt="" coords="5,81,144,108"/>
 <area shape="rect" id="node2" href="$classAnimatable.html" title=" " alt="" coords="192,5,289,32"/>
 <area shape="rect" id="node3" href="$classDrawable.html" title=" " alt="" coords="199,56,283,83"/>
-<area shape="rect" id="node5" href="$classTimer.html" title=" " alt="" coords="211,107,271,133"/>
-<area shape="rect" id="node4" href="$classPlayer.html" title=" " alt="" coords="337,107,400,133"/>
-<area shape="rect" id="node6" href="$classIObject.html" title=" " alt="" coords="207,157,275,184"/>
+<area shape="rect" id="node5" href="$classSpawnable.html" title=" " alt="" coords="194,107,287,133"/>
+<area shape="rect" id="node6" href="$classTimer.html" title=" " alt="" coords="211,157,271,184"/>
+<area shape="rect" id="node4" href="$classPlayer.html" title=" " alt="" coords="337,132,400,159"/>
+<area shape="rect" id="node7" href="$classIObject.html" title=" " alt="" coords="207,208,275,235"/>
 </map>
