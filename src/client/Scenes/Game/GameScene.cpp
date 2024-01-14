@@ -29,6 +29,7 @@ GameScene::GameScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socke
 void GameScene::init_scene()
 {
     std::shared_ptr<TextComponent> text_ping = std::make_shared<TextComponent>(_clientCore, _socket);
+    std::shared_ptr<TextComponent> text_score = std::make_shared<TextComponent>(_clientCore, _socket);
     // std::shared_ptr<SpriteComponent> sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
     std::shared_ptr<MusicComponent> music = std::make_shared<MusicComponent>(_clientCore, _socket);
     std::shared_ptr<SoundComponent> sound_new_player = std::make_shared<SoundComponent>(_clientCore, _socket);
@@ -40,6 +41,9 @@ void GameScene::init_scene()
     text_ping->setAttribute("text ping");
     text_ping->setText("");
     text_ping->setPosition(sf::Vector2f(0, 550));
+    text_score->setAttribute("text score");
+    text_score->setText("Score: 0");
+    text_score->setPosition(sf::Vector2f(650, 550));
 
     // sprite->setAttribute("Player");
 
@@ -50,6 +54,7 @@ void GameScene::init_scene()
     // addComponent(sprite);
     addComponent(music);
     addComponent(text_ping);
+    addComponent(text_score);
     addComponent(sound_new_player);
     addComponent(sound_player_left);
 }
@@ -121,6 +126,19 @@ void GameScene::receiveData()
                 }
             }
         }
+        if (p->code == MESSAGE) {
+            if (std::string(static_cast<const char*>(p->data).find("Score"))) {
+                for (auto &component : _components) {
+                    if (component->getType() == ComponentType::TEXT) {
+                        if (component->getAttribute() == "text score") {
+                            dynamic_cast<TextComponent *>(component.get())
+                                ->setText("Score: " + std::string(static_cast<const char*>(p->data)));
+                        }
+                    }
+                }
+            }
+        }
+
         if (p->code == NEW_COMPONENT) {
             auto *newComponent = static_cast<NewComponent *>(p->data);
             newComponent->type = static_cast<ComponentTypeSocket>(ComponentType::SPRITE);

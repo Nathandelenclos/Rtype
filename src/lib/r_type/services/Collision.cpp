@@ -26,6 +26,7 @@ void Collision::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentR
                 if (other->_textureId == ENEMY) {
                     drawable->_toDelete = true;
                     other->_toDelete = true;
+                    drawable->_score += 1;
                 }
             }
         }

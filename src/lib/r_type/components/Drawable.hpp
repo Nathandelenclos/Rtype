@@ -142,6 +142,7 @@ class Drawable : public IComponentRType
 
     int _textureId;
     bool _toDelete = false;
+    int _score = 0;
 
   protected:
     Position _position;

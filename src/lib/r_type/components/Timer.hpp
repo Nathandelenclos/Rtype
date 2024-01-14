@@ -52,7 +52,7 @@ class Timer : public IComponentRType
      *
      * @param active
      */
-        void setActive(bool active);
+    void setActive(bool active);
 
     /**
      * @brief getActive, get the timer active

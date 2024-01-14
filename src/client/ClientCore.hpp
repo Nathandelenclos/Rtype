@@ -74,6 +74,7 @@ class ClientCore
      */
     void sendHeartBeat(sf::RenderWindow &window);
 
+
     /**
      * @brief startHeartBeat, start the heart beat
      */

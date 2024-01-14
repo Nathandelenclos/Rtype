@@ -51,6 +51,8 @@ class LobbyScene : public AScene
     void checkSpawnerActivation();
     bool allEnemiesLeftScreen();
     void enemyDeletion();
+    void setScore();
+
 
     /**
      * @brief display, display the scene
@@ -68,6 +70,7 @@ class LobbyScene : public AScene
     std::tuple<int, int> _numberEntityWave = {2, 5};
     std::tuple<int, int> _timeBetweenWave;
     bool _spawnerActive = true;
+    int _score = 0;
 
 };
 
