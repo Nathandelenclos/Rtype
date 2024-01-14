@@ -74,19 +74,17 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">pragma</span> <span class="preprocessor">once</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">iostream</span><span class="preprocessor">&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classIComponentRType.html">    8</a></span>&#160;<span class="keyword">class</span> <a class="code" href="classIComponentRType.html">IComponentRType</a></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classIComponentRType.html#a3068f6363ca5fdf4c708b9391b2fa692">   11</a></span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classIComponentRType.html#a3068f6363ca5fdf4c708b9391b2fa692">IComponentRType</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classIComponentRType.html#a5f4bb178508dc938832d9bc3deb7b3fb">   13</a></span>&#160;    [[<a class="code" href="classIComponentRType.html">nodiscard</a>]] <span class="keyword">virtual</span> <span class="keywordtype">char</span> *<a class="code" href="classIComponentRType.html#a5f4bb178508dc938832d9bc3deb7b3fb">getAttribute</a>() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classIComponentRType.html#a9b9d75fa5aba378838de64ce7125c9d3">   14</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIComponentRType.html#a9b9d75fa5aba378838de64ce7125c9d3">setAttribute</a>(std::string attribute) = 0;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">   17</a></span>&#160;    <span class="keywordtype">char</span> *<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classIComponentRType.html">    7</a></span>&#160;<span class="keyword">class</span> <a class="code" href="classIComponentRType.html">IComponentRType</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classIComponentRType.html#a3068f6363ca5fdf4c708b9391b2fa692">    9</a></span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classIComponentRType.html#a3068f6363ca5fdf4c708b9391b2fa692">IComponentRType</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classIComponentRType.html#a5f4bb178508dc938832d9bc3deb7b3fb">   11</a></span>&#160;        [[<a class="code" href="classIComponentRType.html">nodiscard</a>]] <span class="keyword">virtual</span> <span class="keywordtype">char</span> *<a class="code" href="classIComponentRType.html#a5f4bb178508dc938832d9bc3deb7b3fb">getAttribute</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classIComponentRType.html#a9b9d75fa5aba378838de64ce7125c9d3">   12</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIComponentRType.html#a9b9d75fa5aba378838de64ce7125c9d3">setAttribute</a>(std::string attribute) = 0;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">   15</a></span>&#160;        <span class="keywordtype">char</span> *<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

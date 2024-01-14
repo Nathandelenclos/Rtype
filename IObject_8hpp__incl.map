@@ -1,13 +1,13 @@
 <map id="include/IObject.hpp" name="include/IObject.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="443,5,589,32"/>
-<area shape="rect" id="node2" href="$ServerSocket_8hpp.html" title=" " alt="" coords="287,80,439,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="255,244,332,271"/>
-<area shape="rect" id="node6" title=" " alt="" coords="561,244,620,271"/>
-<area shape="rect" id="node8" title=" " alt="" coords="599,169,665,196"/>
-<area shape="rect" id="node3" href="$USocket_8hpp.html" title=" " alt="" coords="361,169,524,196"/>
-<area shape="rect" id="node9" title=" " alt="" coords="28,169,79,196"/>
-<area shape="rect" id="node10" title=" " alt="" coords="103,169,199,196"/>
-<area shape="rect" id="node11" title=" " alt="" coords="223,169,286,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="471,244,537,271"/>
-<area shape="rect" id="node7" title=" " alt="" coords="356,244,447,271"/>
+<area shape="rect" id="node1" title=" " alt="" coords="479,5,625,32"/>
+<area shape="rect" id="node2" href="$ServerSocket_8hpp.html" title=" " alt="" coords="369,80,521,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="535,244,593,271"/>
+<area shape="rect" id="node4" title=" " alt="" coords="601,169,668,196"/>
+<area shape="rect" id="node7" title=" " alt="" coords="5,244,83,271"/>
+<area shape="rect" id="node5" title=" " alt="" coords="389,169,451,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="476,169,527,196"/>
+<area shape="rect" id="node8" title=" " alt="" coords="81,169,177,196"/>
+<area shape="rect" id="node9" href="$USocket_8hpp.html" title=" " alt="" coords="201,169,364,196"/>
+<area shape="rect" id="node10" title=" " alt="" coords="185,244,276,271"/>
+<area shape="rect" id="node11" title=" " alt="" coords="300,244,367,271"/>
 </map>

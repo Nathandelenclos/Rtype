@@ -1,10 +1,9 @@
 <map id="src/lib/r_type/services/AService.cpp" name="src/lib/r_type/services/AService.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="125,5,289,47"/>
-<area shape="rect" id="node2" href="$AService_8hpp.html" title=" " alt="" coords="101,95,207,121"/>
-<area shape="rect" id="node8" title=" " alt="" coords="232,95,292,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="20,169,149,196"/>
-<area shape="rect" id="node4" href="$src_2lib_2r__type_2services_2IService_8hpp.html" title=" " alt="" coords="173,169,276,196"/>
-<area shape="rect" id="node5" href="$lib_2r__type_2components_2IComponent_8hpp.html" title=" " alt="" coords="5,251,231,278"/>
-<area shape="rect" id="node7" title=" " alt="" coords="255,244,407,285"/>
-<area shape="rect" id="node6" title=" " alt="" coords="78,333,158,360"/>
+<area shape="rect" id="node1" title=" " alt="" coords="229,5,393,47"/>
+<area shape="rect" id="node2" href="$AService_8hpp.html" title=" " alt="" coords="204,95,311,121"/>
+<area shape="rect" id="node7" title=" " alt="" coords="335,95,395,121"/>
+<area shape="rect" id="node3" href="$src_2lib_2r__type_2services_2IService_8hpp.html" title=" " alt="" coords="137,169,239,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="263,169,393,196"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,244,157,285"/>
+<area shape="rect" id="node5" href="$lib_2r__type_2components_2IComponent_8hpp.html" title=" " alt="" coords="182,251,407,278"/>
 </map>
