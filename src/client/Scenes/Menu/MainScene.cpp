@@ -40,12 +40,15 @@ void MainScene::init_scene()
     music->setVolume(10);
     music->setPersistant(true);
 
-    background->setSize(sf::Vector2f(800, 600));
+    background->setRect(sf::IntRect(0, 0, 800, 600));
+    sf::Texture texture = sf::Texture();
+    texture.loadFromFile("../testsprites/bg_800_600/background_1.png");
+    background->setTexture(texture);
 
     text->setText("R Type");
     text->setPosition(sf::Vector2f(275, 100));
     text->setSize(100);
-    text->setColor(sf::Color::Green);
+    text->setColor(sf::Color::White);
 
     button_init_serv->setPosition(sf::Vector2f(150, 250));
     button_init_serv->setSize(sf::Vector2f(0.75, 0.50));
