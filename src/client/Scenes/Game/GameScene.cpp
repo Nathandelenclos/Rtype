@@ -75,9 +75,9 @@ void GameScene::receiveData()
                     std::string attributeString(attributechar);
                     std::string componentAttribute = component->getAttribute();
                     if (component->getAttribute() == attributeString) {
-                        std::cout << "element: " << drawable->rectLeft << " " << drawable->rectTop << " "
-                                  << drawable->rectWidth << " " << drawable->rectHeight << std::endl;
-                        // sprite->setTexture(getTextureByType(element->type));
+
+                        std::cout << "element: " << drawable->rectLeft << " " << drawable->rectTop << " " << drawable->rectWidth << " " << drawable->rectHeight << std::endl;
+//                        sprite->setTexture(getTextureByType(element->type));
                         auto *sprite = dynamic_cast<SpriteComponent *>(component.get());
                         sprite->setPosition({drawable->x, drawable->y});
                         sprite->setSize({drawable->sizeHorizontal, drawable->sizeVertical});
@@ -249,7 +249,7 @@ void GameScene::initTextures()
     _textures[Type::ROOF_BACKGROUND] = sf::Texture();
     _textures[Type::ROOF_BACKGROUND].loadFromFile("../testsprites/bg_800_600/roof_texture_bg.png");
     _textures[Type::BOSS] = sf::Texture();
-    _textures[Type::BOSS].loadFromFile("../sprites/r-typesheet30-alone.gif");
+    _textures[Type::BOSS].loadFromFile("../testsprites/r-typesheet30-alone.png");
 }
 
 /**
