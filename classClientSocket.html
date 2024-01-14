@@ -93,35 +93,50 @@ Collaboration diagram for ClientSocket:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa452c26d330984ce23eb98fba8e59c6a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#aa452c26d330984ce23eb98fba8e59c6a">ClientSocket</a> ()</td></tr>
+<tr class="memdesc:aa452c26d330984ce23eb98fba8e59c6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of <a class="el" href="classClientSocket.html">ClientSocket</a>.  <a href="classClientSocket.html#aa452c26d330984ce23eb98fba8e59c6a">More...</a><br /></td></tr>
 <tr class="separator:aa452c26d330984ce23eb98fba8e59c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6223a3151982c684746335463c7bf6ed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#a6223a3151982c684746335463c7bf6ed">~ClientSocket</a> () override</td></tr>
+<tr class="memdesc:a6223a3151982c684746335463c7bf6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of <a class="el" href="classClientSocket.html">ClientSocket</a>.  <a href="classClientSocket.html#a6223a3151982c684746335463c7bf6ed">More...</a><br /></td></tr>
 <tr class="separator:a6223a3151982c684746335463c7bf6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac24f8b9a744a17dc4018ed03a967b26b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#ac24f8b9a744a17dc4018ed03a967b26b">init_client</a> (const std::string &amp;ip, int port)</td></tr>
+<tr class="memdesc:ac24f8b9a744a17dc4018ed03a967b26b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init the client socket.  <a href="classClientSocket.html#ac24f8b9a744a17dc4018ed03a967b26b">More...</a><br /></td></tr>
 <tr class="separator:ac24f8b9a744a17dc4018ed03a967b26b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34d96504f522aac9759e66cdd66ea4a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#a34d96504f522aac9759e66cdd66ea4a5">send</a> (<a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> *<a class="el" href="structpacket.html">packet</a>, struct sockaddr_in dest) override</td></tr>
+<tr class="memdesc:a34d96504f522aac9759e66cdd66ea4a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a packet to the server.  <a href="classClientSocket.html#a34d96504f522aac9759e66cdd66ea4a5">More...</a><br /></td></tr>
 <tr class="separator:a34d96504f522aac9759e66cdd66ea4a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a16482f8789d796a3da14cacdfc6471"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#a5a16482f8789d796a3da14cacdfc6471">sendPacket</a> (<a class="el" href="USocket_8hpp.html#a77e642261c850546a789f257b1d03e98">SplitPacket</a> *<a class="el" href="structpacket.html">packet</a>, struct sockaddr_in dest) override</td></tr>
+<tr class="memdesc:a5a16482f8789d796a3da14cacdfc6471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a split packet to the server.  <a href="classClientSocket.html#a5a16482f8789d796a3da14cacdfc6471">More...</a><br /></td></tr>
 <tr class="separator:a5a16482f8789d796a3da14cacdfc6471"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff92fc80281e0ec1fae4431f123c267c"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; std::unique_ptr&lt; <a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> &gt;, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#aff92fc80281e0ec1fae4431f123c267c">receive</a> () override</td></tr>
+<tr class="memdesc:aff92fc80281e0ec1fae4431f123c267c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive a packet from the server.  <a href="classClientSocket.html#aff92fc80281e0ec1fae4431f123c267c">More...</a><br /></td></tr>
 <tr class="separator:aff92fc80281e0ec1fae4431f123c267c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bdade63cea5622025f04efdbcaa9ca1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1">run</a> () override</td></tr>
+<tr class="memdesc:a0bdade63cea5622025f04efdbcaa9ca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the client socket.  <a href="classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1">More...</a><br /></td></tr>
 <tr class="separator:a0bdade63cea5622025f04efdbcaa9ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d29fb4689af8dda28d97b208eeb4055"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; std::unique_ptr&lt; <a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> &gt;, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#a1d29fb4689af8dda28d97b208eeb4055">listen_server</a> ()</td></tr>
+<tr class="memdesc:a1d29fb4689af8dda28d97b208eeb4055"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the client socket.  <a href="classClientSocket.html#a1d29fb4689af8dda28d97b208eeb4055">More...</a><br /></td></tr>
 <tr class="separator:a1d29fb4689af8dda28d97b208eeb4055"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78bb32feed79ebd7191a5654454d1674"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#a78bb32feed79ebd7191a5654454d1674">init_fd_set</a> ()</td></tr>
+<tr class="memdesc:a78bb32feed79ebd7191a5654454d1674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the client socket.  <a href="classClientSocket.html#a78bb32feed79ebd7191a5654454d1674">More...</a><br /></td></tr>
 <tr class="separator:a78bb32feed79ebd7191a5654454d1674"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30856fe260dc76b9e895f5e3b90908aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#a30856fe260dc76b9e895f5e3b90908aa">isInit</a> () const</td></tr>
+<tr class="memdesc:a30856fe260dc76b9e895f5e3b90908aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">isInit, check if the client is init  <a href="classClientSocket.html#a30856fe260dc76b9e895f5e3b90908aa">More...</a><br /></td></tr>
 <tr class="separator:a30856fe260dc76b9e895f5e3b90908aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2823435b217dc37419937681a7fc6fb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#a2823435b217dc37419937681a7fc6fb3">setInit</a> (bool init)</td></tr>
+<tr class="memdesc:a2823435b217dc37419937681a7fc6fb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">setInit, set the client init  <a href="classClientSocket.html#a2823435b217dc37419937681a7fc6fb3">More...</a><br /></td></tr>
 <tr class="separator:a2823435b217dc37419937681a7fc6fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7df9e5a9d7a1cd7838a3611cc89a5a4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#a7df9e5a9d7a1cd7838a3611cc89a5a4a">splitAndSend</a> (<a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> *<a class="el" href="structpacket.html">packet</a>, struct sockaddr_in dest) override</td></tr>
+<tr class="memdesc:a7df9e5a9d7a1cd7838a3611cc89a5a4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">split and send a packet to the server  <a href="classClientSocket.html#a7df9e5a9d7a1cd7838a3611cc89a5a4a">More...</a><br /></td></tr>
 <tr class="separator:a7df9e5a9d7a1cd7838a3611cc89a5a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac41ecb4f14a0db6cbf9c856f2f781440"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#ac41ecb4f14a0db6cbf9c856f2f781440">receivePacketAndAddToBuffer</a> ()</td></tr>
+<tr class="memdesc:ac41ecb4f14a0db6cbf9c856f2f781440"><td class="mdescLeft">&#160;</td><td class="mdescRight">receiivePacketAndAddToBuffer receive a packet and add it to the buffer  <a href="classClientSocket.html#ac41ecb4f14a0db6cbf9c856f2f781440">More...</a><br /></td></tr>
 <tr class="separator:ac41ecb4f14a0db6cbf9c856f2f781440"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1703ddddc3e4bbe89c7a7df16e9342d2"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="USocket_8hpp.html#a139a58c7fc96c54bf3705ec511bdd3e8">Packet</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientSocket.html#a1703ddddc3e4bbe89c7a7df16e9342d2">getPacketFromBuffer</a> ()</td></tr>
+<tr class="memdesc:a1703ddddc3e4bbe89c7a7df16e9342d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">getPacketFromBuffer get a packet from the buffer  <a href="classClientSocket.html#a1703ddddc3e4bbe89c7a7df16e9342d2">More...</a><br /></td></tr>
 <tr class="separator:a1703ddddc3e4bbe89c7a7df16e9342d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classUSocket"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classUSocket')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classUSocket.html">USocket</a></td></tr>
 <tr class="memitem:a0c5cdfb77f39f2a8a7ade86c47f9ea70 inherit pub_methods_classUSocket"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSocket.html#a0c5cdfb77f39f2a8a7ade86c47f9ea70">~USocket</a> ()=default</td></tr>
+<tr class="memdesc:a0c5cdfb77f39f2a8a7ade86c47f9ea70 inherit pub_methods_classUSocket"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of <a class="el" href="classUSocket.html">USocket</a>.  <a href="classUSocket.html#a0c5cdfb77f39f2a8a7ade86c47f9ea70">More...</a><br /></td></tr>
 <tr class="separator:a0c5cdfb77f39f2a8a7ade86c47f9ea70 inherit pub_methods_classUSocket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -133,7 +148,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8hpp_source.html#l00017">17</a> of file <a class="el" href="ClientSocket_8hpp_source.html">ClientSocket.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8hpp_source.html#l00020">20</a> of file <a class="el" href="ClientSocket_8hpp_source.html">ClientSocket.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa452c26d330984ce23eb98fba8e59c6a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa452c26d330984ce23eb98fba8e59c6a">&#9670;&nbsp;</a></span>ClientSocket()</h2>
@@ -150,9 +165,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00015">15</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p>Constructor of <a class="el" href="classClientSocket.html">ClientSocket</a>. </p>
 
-<p class="reference">References <a class="el" href="ClientSocket_8hpp_source.html#l00046">sockfd</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00018">18</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="ClientSocket_8hpp_source.html#l00111">sockfd</a>.</p>
 
 </div>
 </div>
@@ -179,9 +196,11 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00054">54</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p>Destructor of <a class="el" href="classClientSocket.html">ClientSocket</a>. </p>
 
-<p class="reference">References <a class="el" href="ClientSocket_8hpp_source.html#l00046">sockfd</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00057">57</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="ClientSocket_8hpp_source.html#l00111">sockfd</a>.</p>
 
 </div>
 </div>
@@ -201,7 +220,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00161">161</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p>getPacketFromBuffer get a packet from the buffer </p>
+<dl class="section return"><dt>Returns</dt><dd>a packet get from the buffer </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00164">164</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -231,19 +253,29 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00071">71</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p>Init the client socket. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ip</td><td></td></tr>
+    <tr><td class="paramname">port</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the client is init </dd></dl>
 
-<p class="reference">References <a class="el" href="USocket_8hpp_source.html#l00067">packet::code</a>, <a class="el" href="USocket_8hpp_source.html#l00069">packet::data</a>, <a class="el" href="USocket_8hpp_source.html#l00068">packet::data_size</a>, <a class="el" href="USocket_8hpp_source.html#l00030">MESSAGE</a>, <a class="el" href="ClientSocket_8cpp_source.html#l00098">send()</a>, and <a class="el" href="ClientSocket_8hpp_source.html#l00045">serv_addr</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00074">74</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="networking_2client_2main_8cpp_source.html#l00008">main()</a>.</p>
+<p class="reference">References <a class="el" href="USocket_8hpp_source.html#l00078">packet::code</a>, <a class="el" href="USocket_8hpp_source.html#l00080">packet::data</a>, <a class="el" href="USocket_8hpp_source.html#l00079">packet::data_size</a>, <a class="el" href="USocket_8hpp_source.html#l00036">MESSAGE</a>, <a class="el" href="ClientSocket_8cpp_source.html#l00101">send()</a>, and <a class="el" href="ClientSocket_8hpp_source.html#l00110">serv_addr</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="networking_2client_2main_8cpp_source.html#l00011">main()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classClientSocket_ac24f8b9a744a17dc4018ed03a967b26b_cgraph.png" border="0" usemap="#aclassClientSocket_ac24f8b9a744a17dc4018ed03a967b26b_cgraph" alt=""/></div>
 <map name="aclassClientSocket_ac24f8b9a744a17dc4018ed03a967b26b_cgraph" id="aclassClientSocket_ac24f8b9a744a17dc4018ed03a967b26b_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,137,47"/>
-<area shape="rect" href="classClientSocket.html#a34d96504f522aac9759e66cdd66ea4a5" title=" " alt="" coords="185,13,328,39"/>
-<area shape="rect" href="classClientSocket.html#a7df9e5a9d7a1cd7838a3611cc89a5a4a" title=" " alt="" coords="376,13,572,39"/>
+<area shape="rect" title="Init the client socket." alt="" coords="5,5,137,47"/>
+<area shape="rect" href="classClientSocket.html#a34d96504f522aac9759e66cdd66ea4a5" title="Send a packet to the server." alt="" coords="185,13,328,39"/>
+<area shape="rect" href="classClientSocket.html#a7df9e5a9d7a1cd7838a3611cc89a5a4a" title="split and send a packet to the server" alt="" coords="376,13,572,39"/>
 </map>
 </div>
 <div class="dynheader">
@@ -251,7 +283,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classClientSocket_ac24f8b9a744a17dc4018ed03a967b26b_icgraph.png" border="0" usemap="#aclassClientSocket_ac24f8b9a744a17dc4018ed03a967b26b_icgraph" alt=""/></div>
 <map name="aclassClientSocket_ac24f8b9a744a17dc4018ed03a967b26b_icgraph" id="aclassClientSocket_ac24f8b9a744a17dc4018ed03a967b26b_icgraph">
-<area shape="rect" title=" " alt="" coords="108,5,240,47"/>
+<area shape="rect" title="Init the client socket." alt="" coords="108,5,240,47"/>
 <area shape="rect" href="networking_2client_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,13,60,39"/>
 </map>
 </div>
@@ -273,18 +305,20 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00413">413</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p>Stop the client socket. </p>
 
-<p class="reference">References <a class="el" href="ClientSocket_8hpp_source.html#l00046">sockfd</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00416">416</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ClientSocket_8cpp_source.html#l00325">run()</a>.</p>
+<p class="reference">References <a class="el" href="ClientSocket_8hpp_source.html#l00111">sockfd</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ClientSocket_8cpp_source.html#l00328">run()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classClientSocket_a78bb32feed79ebd7191a5654454d1674_icgraph.png" border="0" usemap="#aclassClientSocket_a78bb32feed79ebd7191a5654454d1674_icgraph" alt=""/></div>
 <map name="aclassClientSocket_a78bb32feed79ebd7191a5654454d1674_icgraph" id="aclassClientSocket_a78bb32feed79ebd7191a5654454d1674_icgraph">
-<area shape="rect" title=" " alt="" coords="288,5,420,47"/>
-<area shape="rect" href="classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1" title=" " alt="" coords="108,13,240,39"/>
+<area shape="rect" title="Stop the client socket." alt="" coords="288,5,420,47"/>
+<area shape="rect" href="classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1" title="Run the client socket." alt="" coords="108,13,240,39"/>
 <area shape="rect" href="networking_2client_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,13,60,39"/>
 </map>
 </div>
@@ -306,7 +340,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00427">427</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p>isInit, check if the client is init </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the client is init </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00430">430</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -325,9 +362,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00378">378</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p>Stop the client socket. </p>
 
-<p class="reference">References <a class="el" href="ClientSocket_8hpp_source.html#l00046">sockfd</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00381">381</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="ClientSocket_8hpp_source.html#l00111">sockfd</a>.</p>
 
 </div>
 </div>
@@ -354,18 +393,21 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Receive a packet from the server. </p>
+<dl class="section return"><dt>Returns</dt><dd>a tuple with the packet and the size of the packet </dd></dl>
+
 <p>Implements <a class="el" href="classUSocket.html#a8312f7a58b520dd9041aa63c29432124">USocket</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00233">233</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00236">236</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ClientSocket_8cpp_source.html#l00129">receivePacketAndAddToBuffer()</a>.</p>
+<p class="reference">References <a class="el" href="ClientSocket_8cpp_source.html#l00132">receivePacketAndAddToBuffer()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classClientSocket_aff92fc80281e0ec1fae4431f123c267c_cgraph.png" border="0" usemap="#aclassClientSocket_aff92fc80281e0ec1fae4431f123c267c_cgraph" alt=""/></div>
 <map name="aclassClientSocket_aff92fc80281e0ec1fae4431f123c267c_cgraph" id="aclassClientSocket_aff92fc80281e0ec1fae4431f123c267c_cgraph">
-<area shape="rect" title=" " alt="" coords="5,13,164,39"/>
-<area shape="rect" href="classClientSocket.html#ac41ecb4f14a0db6cbf9c856f2f781440" title=" " alt="" coords="212,5,413,47"/>
+<area shape="rect" title="Receive a packet from the server." alt="" coords="5,13,164,39"/>
+<area shape="rect" href="classClientSocket.html#ac41ecb4f14a0db6cbf9c856f2f781440" title="receiivePacketAndAddToBuffer receive a packet and add it to the buffer" alt="" coords="212,5,413,47"/>
 </map>
 </div>
 
@@ -386,18 +428,20 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00129">129</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p>receiivePacketAndAddToBuffer receive a packet and add it to the buffer </p>
 
-<p class="reference">References <a class="el" href="ClientSocket_8hpp_source.html#l00046">sockfd</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00132">132</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ClientSocket_8cpp_source.html#l00233">receive()</a>.</p>
+<p class="reference">References <a class="el" href="ClientSocket_8hpp_source.html#l00111">sockfd</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ClientSocket_8cpp_source.html#l00236">receive()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classClientSocket_ac41ecb4f14a0db6cbf9c856f2f781440_icgraph.png" border="0" usemap="#aclassClientSocket_ac41ecb4f14a0db6cbf9c856f2f781440_icgraph" alt=""/></div>
 <map name="aclassClientSocket_ac41ecb4f14a0db6cbf9c856f2f781440_icgraph" id="aclassClientSocket_ac41ecb4f14a0db6cbf9c856f2f781440_icgraph">
-<area shape="rect" title=" " alt="" coords="212,5,413,47"/>
-<area shape="rect" href="classClientSocket.html#aff92fc80281e0ec1fae4431f123c267c" title=" " alt="" coords="5,13,164,39"/>
+<area shape="rect" title="receiivePacketAndAddToBuffer receive a packet and add it to the buffer" alt="" coords="212,5,413,47"/>
+<area shape="rect" href="classClientSocket.html#aff92fc80281e0ec1fae4431f123c267c" title="Receive a packet from the server." alt="" coords="5,13,164,39"/>
 </map>
 </div>
 
@@ -426,20 +470,22 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Run the client socket. </p>
+
 <p>Implements <a class="el" href="classUSocket.html#a7923bfb7cb56158cf193823c9a9dc15d">USocket</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00325">325</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00328">328</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ClientSocket_8cpp_source.html#l00413">init_fd_set()</a>.</p>
+<p class="reference">References <a class="el" href="ClientSocket_8cpp_source.html#l00416">init_fd_set()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="networking_2client_2main_8cpp_source.html#l00008">main()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="networking_2client_2main_8cpp_source.html#l00011">main()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classClientSocket_a0bdade63cea5622025f04efdbcaa9ca1_cgraph.png" border="0" usemap="#aclassClientSocket_a0bdade63cea5622025f04efdbcaa9ca1_cgraph" alt=""/></div>
 <map name="aclassClientSocket_a0bdade63cea5622025f04efdbcaa9ca1_cgraph" id="aclassClientSocket_a0bdade63cea5622025f04efdbcaa9ca1_cgraph">
-<area shape="rect" title=" " alt="" coords="5,13,137,39"/>
-<area shape="rect" href="classClientSocket.html#a78bb32feed79ebd7191a5654454d1674" title=" " alt="" coords="185,5,317,47"/>
+<area shape="rect" title="Run the client socket." alt="" coords="5,13,137,39"/>
+<area shape="rect" href="classClientSocket.html#a78bb32feed79ebd7191a5654454d1674" title="Stop the client socket." alt="" coords="185,5,317,47"/>
 </map>
 </div>
 <div class="dynheader">
@@ -447,7 +493,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classClientSocket_a0bdade63cea5622025f04efdbcaa9ca1_icgraph.png" border="0" usemap="#aclassClientSocket_a0bdade63cea5622025f04efdbcaa9ca1_icgraph" alt=""/></div>
 <map name="aclassClientSocket_a0bdade63cea5622025f04efdbcaa9ca1_icgraph" id="aclassClientSocket_a0bdade63cea5622025f04efdbcaa9ca1_icgraph">
-<area shape="rect" title=" " alt="" coords="108,5,240,32"/>
+<area shape="rect" title="Run the client socket." alt="" coords="108,5,240,32"/>
 <area shape="rect" href="networking_2client_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,32"/>
 </map>
 </div>
@@ -488,20 +534,29 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Send a packet to the server. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">packet</td><td></td></tr>
+    <tr><td class="paramname">dest</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implements <a class="el" href="classUSocket.html#acca0232a90368db820d99ce45c33cb21">USocket</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00098">98</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00101">101</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ClientSocket_8cpp_source.html#l00448">splitAndSend()</a>.</p>
+<p class="reference">References <a class="el" href="ClientSocket_8cpp_source.html#l00451">splitAndSend()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ClientSocket_8cpp_source.html#l00071">init_client()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ClientSocket_8cpp_source.html#l00074">init_client()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classClientSocket_a34d96504f522aac9759e66cdd66ea4a5_cgraph.png" border="0" usemap="#aclassClientSocket_a34d96504f522aac9759e66cdd66ea4a5_cgraph" alt=""/></div>
 <map name="aclassClientSocket_a34d96504f522aac9759e66cdd66ea4a5_cgraph" id="aclassClientSocket_a34d96504f522aac9759e66cdd66ea4a5_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,148,32"/>
-<area shape="rect" href="classClientSocket.html#a7df9e5a9d7a1cd7838a3611cc89a5a4a" title=" " alt="" coords="196,5,392,32"/>
+<area shape="rect" title="Send a packet to the server." alt="" coords="5,5,148,32"/>
+<area shape="rect" href="classClientSocket.html#a7df9e5a9d7a1cd7838a3611cc89a5a4a" title="split and send a packet to the server" alt="" coords="196,5,392,32"/>
 </map>
 </div>
 <div class="dynheader">
@@ -509,8 +564,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classClientSocket_a34d96504f522aac9759e66cdd66ea4a5_icgraph.png" border="0" usemap="#aclassClientSocket_a34d96504f522aac9759e66cdd66ea4a5_icgraph" alt=""/></div>
 <map name="aclassClientSocket_a34d96504f522aac9759e66cdd66ea4a5_icgraph" id="aclassClientSocket_a34d96504f522aac9759e66cdd66ea4a5_icgraph">
-<area shape="rect" title=" " alt="" coords="288,13,431,39"/>
-<area shape="rect" href="classClientSocket.html#ac24f8b9a744a17dc4018ed03a967b26b" title=" " alt="" coords="108,5,240,47"/>
+<area shape="rect" title="Send a packet to the server." alt="" coords="288,13,431,39"/>
+<area shape="rect" href="classClientSocket.html#ac24f8b9a744a17dc4018ed03a967b26b" title="Init the client socket." alt="" coords="108,5,240,47"/>
 <area shape="rect" href="networking_2client_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,13,60,39"/>
 </map>
 </div>
@@ -551,11 +606,20 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Send a split packet to the server. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">packet</td><td></td></tr>
+    <tr><td class="paramname">dest</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implements <a class="el" href="classUSocket.html#a7285993068a372412e1e864ae4b8e227">USocket</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00110">110</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00113">113</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ClientSocket_8hpp_source.html#l00046">sockfd</a>.</p>
+<p class="reference">References <a class="el" href="ClientSocket_8hpp_source.html#l00111">sockfd</a>.</p>
 
 </div>
 </div>
@@ -575,7 +639,15 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00437">437</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p>setInit, set the client init </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">init</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00440">440</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -613,21 +685,30 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>split and send a packet to the server </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">packet</td><td></td></tr>
+    <tr><td class="paramname">dest</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implements <a class="el" href="classUSocket.html#a74e85c4b5197a4016d714cb5c30daab5">USocket</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00448">448</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00451">451</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="USocket_8hpp_source.html#l00069">packet::data</a>, and <a class="el" href="USocket_8hpp_source.html#l00068">packet::data_size</a>.</p>
+<p class="reference">References <a class="el" href="USocket_8hpp_source.html#l00080">packet::data</a>, and <a class="el" href="USocket_8hpp_source.html#l00079">packet::data_size</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ClientSocket_8cpp_source.html#l00098">send()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ClientSocket_8cpp_source.html#l00101">send()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classClientSocket_a7df9e5a9d7a1cd7838a3611cc89a5a4a_icgraph.png" border="0" usemap="#aclassClientSocket_a7df9e5a9d7a1cd7838a3611cc89a5a4a_icgraph" alt=""/></div>
 <map name="aclassClientSocket_a7df9e5a9d7a1cd7838a3611cc89a5a4a_icgraph" id="aclassClientSocket_a7df9e5a9d7a1cd7838a3611cc89a5a4a_icgraph">
-<area shape="rect" title=" " alt="" coords="479,13,675,39"/>
-<area shape="rect" href="classClientSocket.html#a34d96504f522aac9759e66cdd66ea4a5" title=" " alt="" coords="288,13,431,39"/>
-<area shape="rect" href="classClientSocket.html#ac24f8b9a744a17dc4018ed03a967b26b" title=" " alt="" coords="108,5,240,47"/>
+<area shape="rect" title="split and send a packet to the server" alt="" coords="479,13,675,39"/>
+<area shape="rect" href="classClientSocket.html#a34d96504f522aac9759e66cdd66ea4a5" title="Send a packet to the server." alt="" coords="288,13,431,39"/>
+<area shape="rect" href="classClientSocket.html#ac24f8b9a744a17dc4018ed03a967b26b" title="Init the client socket." alt="" coords="108,5,240,47"/>
 <area shape="rect" href="networking_2client_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,13,60,39"/>
 </map>
 </div>
@@ -647,9 +728,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8hpp_source.html#l00039">39</a> of file <a class="el" href="ClientSocket_8hpp_source.html">ClientSocket.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8hpp_source.html#l00104">104</a> of file <a class="el" href="ClientSocket_8hpp_source.html">ClientSocket.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ClientSocket_8cpp_source.html#l00071">init_client()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ClientSocket_8cpp_source.html#l00074">init_client()</a>.</p>
 
 </div>
 </div>
@@ -665,9 +746,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8hpp_source.html#l00046">46</a> of file <a class="el" href="ClientSocket_8hpp_source.html">ClientSocket.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8hpp_source.html#l00111">111</a> of file <a class="el" href="ClientSocket_8hpp_source.html">ClientSocket.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ClientSocket_8cpp_source.html#l00015">ClientSocket()</a>, <a class="el" href="ClientSocket_8cpp_source.html#l00413">init_fd_set()</a>, <a class="el" href="ClientSocket_8cpp_source.html#l00378">listen_server()</a>, <a class="el" href="ClientSocket_8cpp_source.html#l00129">receivePacketAndAddToBuffer()</a>, <a class="el" href="ClientSocket_8cpp_source.html#l00110">sendPacket()</a>, and <a class="el" href="ClientSocket_8cpp_source.html#l00054">~ClientSocket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ClientSocket_8cpp_source.html#l00018">ClientSocket()</a>, <a class="el" href="ClientSocket_8cpp_source.html#l00416">init_fd_set()</a>, <a class="el" href="ClientSocket_8cpp_source.html#l00381">listen_server()</a>, <a class="el" href="ClientSocket_8cpp_source.html#l00132">receivePacketAndAddToBuffer()</a>, <a class="el" href="ClientSocket_8cpp_source.html#l00113">sendPacket()</a>, and <a class="el" href="ClientSocket_8cpp_source.html#l00057">~ClientSocket()</a>.</p>
 
 </div>
 </div>

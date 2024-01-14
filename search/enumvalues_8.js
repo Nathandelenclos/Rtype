@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['new_5fcomponent_784',['NEW_COMPONENT',['../USocket_8hpp.html#afb9ed1b8a27eb20854efe6e23e297683aab2d32de3833e180b668c9274bc081bf',1,'USocket.hpp']]]
+  ['player_781',['PLAYER',['../USocket_8hpp.html#a7aead736a07eaf25623ad7bfa1f0ee2dade5dc3e0dbd007d995ed3e37bde5ce7e',1,'USocket.hpp']]]
 ];

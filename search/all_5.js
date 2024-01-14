@@ -5,7 +5,7 @@ var searchData=
   ['element_125',['ELEMENT',['../USocket_8hpp.html#afb9ed1b8a27eb20854efe6e23e297683a3d10bfe84917127ab3347aa5c6309f33',1,'USocket.hpp']]],
   ['enemy_126',['ENEMY',['../USocket_8hpp.html#a7aead736a07eaf25623ad7bfa1f0ee2da5ce368bdfc444a87fef6c208b4101571',1,'USocket.hpp']]],
   ['event_127',['event',['../structevent.html',1,'']]],
-  ['event_128',['Event',['../USocket_8hpp.html#ab2f494a6b60c0f52e6c2a96fbe4d010c',1,'USocket.hpp']]],
-  ['event_129',['EVENT',['../USocket_8hpp.html#afb9ed1b8a27eb20854efe6e23e297683a08d627d21e6424f54671673ff1611d59',1,'USocket.hpp']]],
+  ['event_128',['EVENT',['../USocket_8hpp.html#afb9ed1b8a27eb20854efe6e23e297683a08d627d21e6424f54671673ff1611d59',1,'USocket.hpp']]],
+  ['event_129',['Event',['../USocket_8hpp.html#ab2f494a6b60c0f52e6c2a96fbe4d010c',1,'USocket.hpp']]],
   ['eventtype_130',['eventType',['../structevent.html#a3bf9d8d6ff4e515c985a8feb0ce8e5aa',1,'event']]]
 ];

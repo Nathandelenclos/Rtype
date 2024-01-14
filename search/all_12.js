@@ -1,17 +1,9 @@
 var searchData=
 [
-  ['text_332',['TEXT',['../client_2Components_2IComponent_8hpp.html#a81f78fc173dedefe5a049c0aa3eed2c0a9a4a47c1606e295076055a9cc4373197',1,'IComponent.hpp']]],
-  ['textcomponent_333',['TextComponent',['../classTextComponent.html',1,'TextComponent'],['../classTextComponent.html#a2a5c7c8ab0a69ec2fac60fe651169ece',1,'TextComponent::TextComponent()']]],
-  ['textcomponent_2ecpp_334',['TextComponent.cpp',['../TextComponent_8cpp.html',1,'']]],
-  ['textcomponent_2ehpp_335',['TextComponent.hpp',['../TextComponent_8hpp.html',1,'']]],
-  ['textsocket_336',['TEXTSOCKET',['../USocket_8hpp.html#a53ac520e65486b4727f9e55be92d9ee8adb6ca6500523c845223f56fc5982c42c',1,'USocket.hpp']]],
-  ['timemanagement_337',['TimeManagement',['../classTimeManagement.html',1,'TimeManagement'],['../classTimeManagement.html#a50fdf034335c50a31c485ad420ef44d1',1,'TimeManagement::TimeManagement()']]],
-  ['timemanagement_2ecpp_338',['TimeManagement.cpp',['../TimeManagement_8cpp.html',1,'']]],
-  ['timemanagement_2ehpp_339',['TimeManagement.hpp',['../TimeManagement_8hpp.html',1,'']]],
-  ['timer_340',['Timer',['../classTimer.html#a5f16e8da27d2a5a5242dead46de05d97',1,'Timer::Timer()'],['../classTimer.html',1,'Timer']]],
-  ['timer_2ecpp_341',['Timer.cpp',['../Timer_8cpp.html',1,'']]],
-  ['timer_2ehpp_342',['Timer.hpp',['../Timer_8hpp.html',1,'']]],
-  ['type_343',['type',['../structkey.html#a7c87a76a18d4712a12f08aa7824ab4b8',1,'key::type()'],['../structmouse.html#a49def5130cfab0940aa72779df737cb9',1,'mouse::type()'],['../structnewComponent.html#a374989fe4223ed796f18072a55e1474b',1,'newComponent::type()'],['../structelement.html#a8a01016da9360823e69dd32976b4a886',1,'element::type()']]],
-  ['type_344',['Type',['../USocket_8hpp.html#ad8acde1ec6ea7d87e774f6108f3f751e',1,'USocket.hpp']]],
-  ['type_345',['type',['../USocket_8hpp.html#a7aead736a07eaf25623ad7bfa1f0ee2d',1,'USocket.hpp']]]
+  ['undefined_344',['UNDEFINED',['../USocket_8hpp.html#afb9ed1b8a27eb20854efe6e23e297683a605159e8a4c32319fd69b5d151369d93',1,'USocket.hpp']]],
+  ['update_345',['update',['../classISceneRType.html#a6a2ef7f01e3d0d112c589a6c90aa3c28',1,'ISceneRType::update()'],['../classIScene.html#aba4d8ff373accb55004e9b5b5bc11b6d',1,'IScene::update()'],['../classAScene.html#a70cae055bb5e2a125d6c4228e046274a',1,'AScene::update()'],['../classRType.html#a72fe471278f00507bb94c763a292f2ed',1,'RType::update()'],['../classLobbyScene.html#aca72399dd75a5aee2a14f577dfcccd57',1,'LobbyScene::update()'],['../classCollision.html#a890eb98d3957f7eb451d617f5e12762c',1,'Collision::update()'],['../classGraphic.html#a6f5b387958f4f06ad2772e660330f5aa',1,'Graphic::update()'],['../classMove.html#a52f3c2e6a110a5daf63eb43757604685',1,'Move::update()'],['../classAnimation.html#a7bb1379937dd2de91fc3dc760de19147',1,'Animation::update()'],['../classAService.html#a3d49a40ddb9e5a38e2c62432a3f72ea1',1,'AService::update()'],['../classIService.html#a54bc434d007758191ebc574646ba9dbc',1,'IService::update()'],['../classTimeManagement.html#a42c1e00125c82711a95bbb8bb5f7fa83',1,'TimeManagement::update()'],['../classIGame.html#a37cdbd6ddcff99ba0b8fb6eb00d1bef0',1,'IGame::update()'],['../classIService.html#a82354494b2ecfc7af27ddccca70dc5f6',1,'IService::update()']]],
+  ['usage_346',['Usage',['../md_devops_doc_usage.html',1,'']]],
+  ['usage_2emd_347',['usage.md',['../usage_8md.html',1,'']]],
+  ['usocket_348',['USocket',['../classUSocket.html',1,'']]],
+  ['usocket_2ehpp_349',['USocket.hpp',['../USocket_8hpp.html',1,'']]]
 ];
