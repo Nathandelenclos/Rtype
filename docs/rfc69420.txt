@@ -1,0 +1,170 @@
+Epitech R-Type                                                N. Delanclos
+Request for Comments: 2223                                     D. Plouvier
+Category: Standards Track                                       E. Talleux
+                                                               B. Goussard
+                                                              S. Riembault
+                                                             Epitech Lille
+                                                             November 2023
+                              R-Type Protocol
+Status of This Memo
+
+    This memo is the official specification of the 2 R-Type Protocols
+    (the R-Type TCP Protocol and the R-Type UDP Protocol). The R-Type is
+    a third year project from EPITECH. Distribution of this memo is
+    unlimited.
+
+Table of Contents
+
+    1. Introduction....................................................
+    2. The R-Type Architecture.........................................
+    3. The R-Type UDP Protocol.........................................
+        3.1. The R-Type UDP Packet.....................................
+        3.2. The R-type Component......................................
+
+1. Introduction
+
+    The R-Type Protocol is a protocol designed to allow a client to
+    connect to a server and play a game. The server is a game server
+    which allows the client to play a game. The client is a game client
+    which allows the user to play the game. The game is a 2D game where
+    the player controls a spaceship and has to destroy enemies.
+
+    The R-Type Protocol is composed of 1 protocol: the R-Type UDP
+    Protocol. The R-Type UDP Protocol is used to send the game's state
+    to the client.
+
+2. The R-Type Architecture
+
+    The R-Type architecture is a client-server game architecture.
+    The logic of the game is in both the server and the client, however
+    the server has authority over the clients. A client connects to the
+    server by using the R-Type UDP protocol. Once connected to the
+    server, the client is able to play the game in local mode or in
+    online mode.
+
+Goussard                   Standards Track                     [Page 1]
+
+RFC 69420                  R-Type Protocol                December 2023
+
+3. The R-Type UDP Protocol
+
+    The R-Type UDP Protocol is a protocol designed to allow a client to
+    connect to a server and play a game. The server is a game server
+    which allows the client to play a game. The client is a game client
+    which allows the user to play the game. The game is a 2D game where
+    the player controls a spaceship and has to destroy enemies.
+
+    The R-Type UDP Protocol is composed of 1 packet: the R-Type
+    split_packet. The R-Type UDP Packet is used to send the game's
+    state to the client.
+
+    3.1 The R-Type UDP Packet
+
+        For the R-Type UDP Protocol, the packet is a split_packet. The
+        split_packet is composed like this:
+
+            typedef struct split_packet {
+                CODE code;
+                int packet_id;
+                int max_packet_id;
+                char data[1024];
+            } SplitPacket;
+
+        The code is the code of the packet, contain in the CODE enum.
+
+            typedef enum code {
+                UNDEFINED,
+                EVENT,
+                MESSAGE,
+                LOGIN,
+                LOGOUT,
+                HEARTBEAT,
+                ELEMENT,
+                NEW_COMPONENT,
+                DELETE_COMPONENT,
+            } CODE;
+
+        The packet_id is the id of the packet. The max_packet_id is the
+        nb max of packet send. The data is the data of the packet.
+
+Goussard                   Standards Track                     [Page 1]
+
+RFC 69420                  R-Type Protocol                December 2023
+
+    3.2. The R-type Component
+
+        The R-Type Component is a component of the game. The R-Type
+        Component is composed like this:
+
+            typedef struct drawable {
+                int id;
+
+                float x;
+                float y;
+                float sizeHorizontal;
+                float sizeVertical;
+                int rectLeft;
+                int rectTop;
+                int rectWidth;
+                int rectHeight;
+                std::uint64_t attribute;
+                std::uint64_t attribute2;
+            } DrawablePacket;
+
+        The id is the id of the component. The x is the x position of
+        the component. The y is the y position of the component. The
+        sizeHorizontal is the horizontal size of the component. The
+        sizeVertical is the vertical size of the component. The
+        rectLeft is the left position of the component. The rectTop
+        is the top position of the component. The rectWidth is the
+        width of the component. The rectHeight is the height of the
+        component. The attribute1 and attribute2 are the attributes of
+        the component.
+
+Goussard                   Standards Track                     [Page 1]
+
+RFC 69420                  R-Type Protocol                December 2023
+
+        To create a component, you have to use the struct newComponent:
+
+            typedef struct newComponent {
+                int id;
+                float x;
+                float y;
+                float sizeHorizontal;
+                float sizeVertical;
+                int rectLeft;
+                int rectTop;
+                int rectWidth;
+                int rectHeight;
+                std::uint64_t attribute;
+                std::uint64_t attribute2;
+                ComponentTypeSocket type;
+            } NewComponent;
+
+        The id is the id of the component. The x is the x position of
+        the component. The y is the y position of the component. The
+        sizeHorizontal is the horizontal size of the component. The
+        sizeVertical is the vertical size of the component. The
+        rectLeft is the left position of the component. The rectTop is
+        the top position of the component. The rectWidth is the width
+        of the component. The rectHeight is the height of the component.
+        The attribute1 and attribute2 are the attributes of the
+        component. The type is the type of the component contain on the
+        ComponentTypeSocket enum.
+
+        typedef enum {
+            TEXTSOCKET,
+            SPRITESOCKET,
+            BUTTONSOCKET,
+            INPUTSOCKET,
+            VARIABLESOCKET,
+            MUSICSOCKET,
+            SOUNDSOCKET,
+        } ComponentTypeSocket;
+
+        this enum is used to know the type of the component.
+
+Goussard                   Standards Track                     [Page 1]
+
+RFC 69420                  R-Type Protocol                December 2023

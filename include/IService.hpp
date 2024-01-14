@@ -7,13 +7,14 @@
 
 #pragma once
 
-#include <vector>
-#include "IObject.hpp"
 #include "IGame.hpp"
+#include "IObject.hpp"
+#include <vector>
 
 class IGame;
 
-class IService {
-public:
-    virtual void update(IGame *game, std::vector<IObject*> objects) = 0;
+class IService
+{
+  public:
+    virtual void update(IGame *game, std::vector<IObject *> objects) = 0;
 };

@@ -6,7 +6,14 @@
 
 #include <utility>
 
-TextComponent::TextComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
+/**
+ * @brief Construct a new Text Component:: Text Component object
+ *
+ * @param core
+ * @param socket
+ */
+TextComponent::TextComponent(ClientCore *core, std::shared_ptr<ClientSocket> socket) :
+    AComponent(core)
 {
     _type = ComponentType::TEXT;
     _text = "base_text";
@@ -27,41 +34,65 @@ void TextComponent::action()
 {
 }
 
+/**
+ * @brief setText, set the text
+ * @param text
+ */
 void TextComponent::setText(std::string text)
 {
     _text = std::move(text);
     _sfText.setString(_text);
 }
 
-void TextComponent::setFont(const sf::Font& font)
+/**
+ * @brief setFont, set the font
+ * @param font
+ */
+void TextComponent::setFont(const sf::Font &font)
 {
     _font = font;
     _sfText.setFont(_font);
 }
 
+/**
+ * @brief setPosition, set the position
+ * @param position
+ */
 void TextComponent::setPosition(sf::Vector2f position)
 {
     _position = position;
     _sfText.setPosition(_position);
 }
 
+/**
+ * @brief setColor, set the color
+ * @param color
+ */
 void TextComponent::setColor(sf::Color color)
 {
     _color = color;
     _sfText.setFillColor(_color);
 }
 
+/**
+ * @brief setSize, set the size
+ * @param size
+ */
 void TextComponent::setSize(unsigned int size)
 {
     _size = size;
     _sfText.setCharacterSize(_size);
 }
 
-void TextComponent::display(sf::RenderWindow& window)
+/**
+ * @brief display, display the text
+ * @param window
+ */
+void TextComponent::display(sf::RenderWindow &window)
 {
     window.draw(_sfText);
 }
 
-void TextComponent::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+void TextComponent::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
 }

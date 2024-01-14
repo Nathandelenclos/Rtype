@@ -45,7 +45,7 @@ if (UNIX OR APPLE)
             GIT_REPOSITORY https://github.com/SFML/SFML.git
             GIT_TAG 2.6.x)
     FetchContent_MakeAvailable(SFML)
-    target_link_libraries(lib_r_type PRIVATE sfml-graphics sfml-audio sfml-system sfml-window -fPIC g)
+    target_link_libraries(lib_r_type PRIVATE sfml-graphics sfml-audio sfml-system sfml-window -fPIC -g)
 
 endif (UNIX OR APPLE)
 

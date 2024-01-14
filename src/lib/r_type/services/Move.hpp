@@ -7,8 +7,10 @@
 #include "AService.hpp"
 #include "Drawable.hpp"
 
-class Move : public AService {
-public:
-    explicit Move(std::shared_ptr<ServerSocket> serverSocket) : AService(std::move(serverSocket)) {};
+class Move : public AService
+{
+  public:
+    explicit Move(std::shared_ptr<ServerSocket> serverSocket) :
+        AService(std::move(serverSocket)){};
     void update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component) override;
 };

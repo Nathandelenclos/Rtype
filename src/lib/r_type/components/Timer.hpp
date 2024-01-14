@@ -5,19 +5,19 @@
 #pragma once
 
 #include "../networking/shared/USocket.hpp"
-#include "IComponent.hpp"
 #include "Drawable.hpp"
+#include "IComponent.hpp"
 
+class Timer : public IComponentRType
+{
+  public:
+    Timer();
 
-class Timer : public IComponentRType {
-    public:
-        Timer();
+    [[nodiscard]] char *getAttribute() const override;
+    void setAttribute(std::string attribute) override;
 
-        [[nodiscard]] char *getAttribute() const override;
-        void setAttribute(std::string attribute) override;
-
-        void setTarget(std::shared_ptr<Drawable> target);
-        std::shared_ptr<Drawable> getTarget();
+    void setTarget(std::shared_ptr<Drawable> target);
+    std::shared_ptr<Drawable> getTarget();
 
         void setActive(bool active);
         bool isActive() const;
@@ -26,10 +26,10 @@ class Timer : public IComponentRType {
         int getDirection() const;
 
 
-        timeval _startTime{};
-        timeval _now{};
-        timeval _targetTime{};
-        timeval _diff{};
+    timeval _startTime{};
+    timeval _now{};
+    timeval _targetTime{};
+    timeval _diff{};
 
     protected:
         std::shared_ptr<Drawable> _target;
@@ -39,5 +39,3 @@ class Timer : public IComponentRType {
 
 
 };
-
-

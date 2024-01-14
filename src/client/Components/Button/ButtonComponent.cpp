@@ -7,7 +7,13 @@
 
 #include <utility>
 
-ButtonComponent::ButtonComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
+/**
+ * @brief ButtonComponent constructor
+ * @param core
+ * @param socket
+ */
+ButtonComponent::ButtonComponent(ClientCore *core, std::shared_ptr<ClientSocket> socket) :
+    AComponent(core)
 {
     _type = ComponentType::BUTTON;
     _texture.loadFromFile("../src/client/assets/button.png");
@@ -24,51 +30,87 @@ ButtonComponent::ButtonComponent(ClientCore* core, std::shared_ptr<ClientSocket>
     setCallback(default_handle_click);
 }
 
+/**
+ * @brief action, call the callback function
+ */
 void ButtonComponent::action()
 {
     _callback();
 }
 
-void ButtonComponent::setTexture(const sf::Texture& texture)
+/**
+ * @brief setTexture set the texture of the button
+ * @param texture
+ */
+void ButtonComponent::setTexture(const sf::Texture &texture)
 {
     _texture = texture;
     _sprite.setTexture(_texture);
 }
 
+/**
+ * @brief setPosition set the position of the button
+ * @param position
+ */
 void ButtonComponent::setPosition(sf::Vector2f position)
 {
     _position = position;
     _sprite.setPosition(_position);
 }
 
+/**
+ * @brief setSize set the size of the button
+ * @param size
+ */
 void ButtonComponent::setSize(sf::Vector2f size)
 {
     _size = size;
     _sprite.setScale(_size);
 }
 
+/**
+ * @brief setRect set the rect of the button
+ * @param rect
+ */
 void ButtonComponent::setRect(sf::IntRect rect)
 {
     _rect = rect;
     _sprite.setTextureRect(_rect);
 }
 
+/**
+ * @brief setAttribute set the attribute of the button
+ * @param attribute
+ */
 void ButtonComponent::setCallback(std::function<void()> callback)
 {
     _callback = std::move(callback);
 }
 
-void ButtonComponent::display(sf::RenderWindow& window)
+/**
+ * @brief setAttribute set the attribute of the button
+ * @param window
+ */
+void ButtonComponent::display(sf::RenderWindow &window)
 {
     window.draw(_sprite);
 }
 
+/**
+ * @brief getRect get the texture of the button
+ * @return rect of the button
+ */
 sf::IntRect ButtonComponent::getRect() const
 {
     return _rect;
 }
 
-void ButtonComponent::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+/**
+ * @brief handleEvent handle the event of the button
+ * @param event to handle
+ * @param window
+ */
+void ButtonComponent::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
     if (event.type == sf::Event::MouseButtonPressed) {
         if (event.mouseButton.button == sf::Mouse::Left) {
@@ -81,6 +123,9 @@ void ButtonComponent::handleEvent(const sf::Event& event, sf::RenderWindow& wind
     }
 }
 
+/**
+ * @brief handleClickInitServer handle the click of the button
+ */
 void ButtonComponent::handleClickInitServer()
 {
     std::string ip;
@@ -105,7 +150,7 @@ void ButtonComponent::handleClickInitServer()
             }
         }
     } else {
-        for (auto &component: action_target) {
+        for (auto &component : action_target) {
             if (component->getType() == ComponentType::TEXT) {
                 if (component->getAttribute() == "text add serv") {
                     try {
@@ -125,6 +170,9 @@ void ButtonComponent::handleClickInitServer()
     }
 }
 
+/**
+ * @brief handleClickMainScene handle the click of the button on the main scene
+ */
 void ButtonComponent::handleClickMainScene()
 {
     for (auto &component : action_target) {
@@ -141,6 +189,9 @@ void ButtonComponent::handleClickMainScene()
     _clientCore->setCurrentScene("menu");
 }
 
+/**
+ * @brief handleClickAccessGame handle the click of the button for access the game scene
+ */
 void ButtonComponent::handleClickAccessGame()
 {
     for (auto &component : action_target) {
@@ -149,7 +200,7 @@ void ButtonComponent::handleClickAccessGame()
         }
     }
     if (!_socket->isInit()) {
-        for (auto &component: action_target) {
+        for (auto &component : action_target) {
             if (component->getType() == ComponentType::TEXT) {
                 if (component->getAttribute() == "text error not init") {
                     dynamic_cast<TextComponent *>(component.get())->setText("Please init server connection");
@@ -158,7 +209,7 @@ void ButtonComponent::handleClickAccessGame()
         }
         return;
     }
-    for (auto &component: action_target) {
+    for (auto &component : action_target) {
         if (component->getType() == ComponentType::MUSIC) {
             auto music = dynamic_cast<MusicComponent *>(component.get());
             music->stop();
@@ -176,5 +227,4 @@ void ButtonComponent::handleClickAccessGame()
 
 void ButtonComponent::defaultCallback()
 {
-
 }

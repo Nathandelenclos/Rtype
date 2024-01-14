@@ -4,40 +4,41 @@
 
 #pragma once
 
+#include "Components/AComponent.hpp"
+#include "Components/Input/InputComponent.hpp"
+#include "Components/Music/MusicComponent.hpp"
+#include "Components/Sound/SoundComponent.hpp"
+#include "Components/Text/TextComponent.hpp"
 #include <functional>
 #include <iostream>
-#include "Components/AComponent.hpp"
-#include "Components/Text/TextComponent.hpp"
-#include "Components/Input/InputComponent.hpp"
-#include "Components/Sound/SoundComponent.hpp"
-#include "Components/Music/MusicComponent.hpp"
 
-class ButtonComponent : public AComponent {
-    public:
-        explicit ButtonComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket);
-        void action() override;
-        void setTexture(const sf::Texture& texture);
-        void setPosition(sf::Vector2f position);
-        void setSize(sf::Vector2f size);
-        void setCallback(std::function<void()> callback);
-        void setRect(sf::IntRect rect);
-        void display(sf::RenderWindow& window) override;
+class ButtonComponent : public AComponent
+{
+  public:
+    explicit ButtonComponent(ClientCore *core, std::shared_ptr<ClientSocket> socket);
+    void action() override;
+    void setTexture(const sf::Texture &texture);
+    void setPosition(sf::Vector2f position);
+    void setSize(sf::Vector2f size);
+    void setCallback(std::function<void()> callback);
+    void setRect(sf::IntRect rect);
+    void display(sf::RenderWindow &window) override;
 
-        sf::IntRect getRect() const;
+    sf::IntRect getRect() const;
 
-        void handleEvent(const sf::Event& event, sf::RenderWindow& window) override;
-        void handleClickInitServer();
-        void handleClickMainScene();
-        void handleClickAccessGame();
+    void handleEvent(const sf::Event &event, sf::RenderWindow &window) override;
+    void handleClickInitServer();
+    void handleClickMainScene();
+    void handleClickAccessGame();
 
-        void defaultCallback();
+    void defaultCallback();
 
-    private:
-        sf::Texture _texture;
-        sf::Sprite _sprite;
-        sf::Vector2f _position;
-        sf::Vector2f _size;
-        sf::IntRect _rect;
-        std::function<void()> _callback;
-        std::shared_ptr<ClientSocket> _socket;
+  private:
+    sf::Texture _texture;
+    sf::Sprite _sprite;
+    sf::Vector2f _position;
+    sf::Vector2f _size;
+    sf::IntRect _rect;
+    std::function<void()> _callback;
+    std::shared_ptr<ClientSocket> _socket;
 };

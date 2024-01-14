@@ -3,14 +3,16 @@
 //
 
 #pragma once
+#include <iostream>
 
-class IComponentRType {
-    public:
-        virtual ~IComponentRType() = default;
+class IComponentRType
+{
+  public:
+    virtual ~IComponentRType() = default;
 
-        [[nodiscard]] virtual char *getAttribute() const = 0;
-        virtual void setAttribute(std::string attribute) = 0;
+    [[nodiscard]] virtual char *getAttribute() const = 0;
+    virtual void setAttribute(std::string attribute) = 0;
 
-    protected:
-        char *_attribute;
+  protected:
+    char *_attribute;
 };

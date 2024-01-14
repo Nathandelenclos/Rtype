@@ -7,14 +7,15 @@
 
 #pragma once
 
-#include <vector>
-#include <memory>
 #include "networking/shared/USocket.hpp"
+#include <memory>
+#include <vector>
 
 class IService;
 
-class IGame {
-public:
+class IGame
+{
+  public:
     virtual ~IGame() = default;
 
     virtual void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet) = 0;

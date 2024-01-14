@@ -9,12 +9,23 @@
 #include "ClientCore.hpp"
 #include <utility>
 
-GameScene::GameScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket) : AScene(clientCore),
-                                                                                     _socket(std::move(socket)) {
+/**
+ * @brief Construct a new Game Scene:: Game Scene object
+ *
+ * @param clientCore
+ * @param socket
+ */
+GameScene::GameScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket) :
+    AScene(clientCore),
+    _socket(std::move(socket))
+{
     initTextures();
     init_scene();
 }
 
+/**
+ * @brief init_scene, init the scene
+ */
 void GameScene::init_scene()
 {
     std::shared_ptr<TextComponent> text_ping = std::make_shared<TextComponent>(_clientCore, _socket);
@@ -36,20 +47,24 @@ void GameScene::init_scene()
 
     sound_player_left->setAttribute("player left");
 
-    //addComponent(sprite);
+    // addComponent(sprite);
     addComponent(music);
     addComponent(text_ping);
     addComponent(sound_new_player);
     addComponent(sound_player_left);
 }
 
-void GameScene::receiveData() {
+/**
+ * @brief receiveData, receive data from the server
+ */
+void GameScene::receiveData()
+{
     std::tuple<std::unique_ptr<Packet>, int> packet = _socket->receive();
     std::unique_ptr<Packet> p = std::move(std::get<0>(packet));
     while (p != nullptr) {
         if (p->code == ELEMENT) {
             auto *drawable = static_cast<DrawablePacket *>(p->data);
-            for (auto &component: _components) {
+            for (auto &component : _components) {
                 if (component->getType() == ComponentType::SPRITE) {
                     char *attributechar = static_cast<char *>(malloc(16));
                     std::memset(attributechar, 0, 16);
@@ -58,12 +73,14 @@ void GameScene::receiveData() {
                     std::string attributeString(attributechar);
                     std::string componentAttribute = component->getAttribute();
                     if (component->getAttribute() == attributeString) {
-                        std::cout << "element: " << drawable->rectLeft << " " << drawable->rectTop << " " << drawable->rectWidth << " " << drawable->rectHeight << std::endl;
-                        //sprite->setTexture(getTextureByType(element->type));
+                        std::cout << "element: " << drawable->rectLeft << " " << drawable->rectTop << " "
+                                  << drawable->rectWidth << " " << drawable->rectHeight << std::endl;
+                        // sprite->setTexture(getTextureByType(element->type));
                         auto *sprite = dynamic_cast<SpriteComponent *>(component.get());
                         sprite->setPosition({drawable->x, drawable->y});
                         sprite->setSize({drawable->sizeHorizontal, drawable->sizeVertical});
-                        sprite->setRect({drawable->rectLeft, drawable->rectTop, drawable->rectWidth, drawable->rectHeight});
+                        sprite->setRect(
+                            {drawable->rectLeft, drawable->rectTop, drawable->rectWidth, drawable->rectHeight});
                     }
                     if (component->getAttribute() == "sprite enemy") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::ENEMY));
@@ -72,7 +89,8 @@ void GameScene::receiveData() {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BULLET));
                     }
                     if (component->getAttribute() == "sprite bg1") {
-                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND1));
+                        dynamic_cast<SpriteComponent *>(component.get())
+                            ->setTexture(getTextureByType(Type::BACKGROUND1));
                     }
                     if (component->getAttribute() == "sprite bg2") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND2));
@@ -93,12 +111,12 @@ void GameScene::receiveData() {
             timerecv = *static_cast<timeval *>(p->data);
             timersub(&now, &timerecv, &_pingTime);
 
-            for (auto &component: _components) {
+            for (auto &component : _components) {
                 if (component->getType() == ComponentType::TEXT) {
                     if (component->getAttribute() == "text ping") {
-                        dynamic_cast<TextComponent *>(component.get())->setText(
-                                "Ping: " + std::to_string(_pingTime.tv_sec * 1000 + _pingTime.tv_usec / 1000) + ", " +
-                                std::to_string(_pingTime.tv_usec % 1000) + "ms");
+                        dynamic_cast<TextComponent *>(component.get())
+                            ->setText("Ping: " + std::to_string(_pingTime.tv_sec * 1000 + _pingTime.tv_usec / 1000) +
+                                      ", " + std::to_string(_pingTime.tv_usec % 1000) + "ms");
                     }
                 }
             }
@@ -109,16 +127,18 @@ void GameScene::receiveData() {
             char *attributechar = static_cast<char *>(malloc(16));
             std::memset(attributechar, 0, 16);
             std::memcpy(attributechar, &newComponent->attribute, 16);
-            //std::memcpy(attributechar + 8, &newComponent->attribute2, 8);
+            // std::memcpy(attributechar + 8, &newComponent->attribute2, 8);
             std::cout << "attribute: " << reinterpret_cast<char *>(&newComponent->attribute) << std::endl;
             std::cout << "attribute2: " << reinterpret_cast<char *>(&newComponent->attribute2) << std::endl;
             std::string attributeString(attributechar);
             attributeString = attributeString.substr(0, attributeString.find('\001'));
-            std::cout << "newComponent: " << attributeString << " " << newComponent->x << " " << newComponent->y << " id: " << newComponent->id << std::endl;
-            for (auto &component: _components) {
+            std::cout << "newComponent: " << attributeString << " " << newComponent->x << " " << newComponent->y
+                      << " id: " << newComponent->id << std::endl;
+            for (auto &component : _components) {
                 if (component->getType() == ComponentType::SPRITE) {
                     if (component->getAttribute() == reinterpret_cast<char *>(&newComponent->attribute)) {
-                        _components.erase(std::remove(_components.begin(), _components.end(), component), _components.end());
+                        _components.erase(std::remove(_components.begin(), _components.end(), component),
+                                          _components.end());
                         break;
                     }
                 }
@@ -131,7 +151,8 @@ void GameScene::receiveData() {
                 sprite->setTexture(getTextureByType((Type)newComponent->id));
                 sprite->setPosition({newComponent->x, newComponent->y});
                 sprite->setSize({newComponent->sizeHorizontal, newComponent->sizeVertical});
-                sprite->setRect({newComponent->rectLeft, newComponent->rectTop, newComponent->rectWidth, newComponent->rectHeight});
+                sprite->setRect(
+                    {newComponent->rectLeft, newComponent->rectTop, newComponent->rectWidth, newComponent->rectHeight});
                 addComponent(sprite);
             }
             if (newComponent->type == ComponentType::TEXT) {
@@ -145,7 +166,7 @@ void GameScene::receiveData() {
         }
         if (p->code == DELETE_COMPONENT) {
             std::string attribute = static_cast<char *>(p->data);
-            for (auto &component: _components) {
+            for (auto &component : _components) {
                 if (component->getAttribute() == attribute) {
                     _components.erase(std::remove(_components.begin(), _components.end(), component),
                                       _components.end());
@@ -158,7 +179,7 @@ void GameScene::receiveData() {
             auto *data = static_cast<char *>(p->data);
             std::string message(data);
             if (message == "new player") {
-                for (auto &component: _components) {
+                for (auto &component : _components) {
                     if (component->getType() == ComponentType::SOUND) {
                         if (component->getAttribute() == "new player") {
                             dynamic_cast<SoundComponent *>(component.get())->action();
@@ -166,7 +187,7 @@ void GameScene::receiveData() {
                     }
                 }
             } else if (message == "player left") {
-                for (auto &component: _components) {
+                for (auto &component : _components) {
                     if (component->getType() == ComponentType::SOUND) {
                         if (component->getAttribute() == "player left") {
                             dynamic_cast<SoundComponent *>(component.get())->action();
@@ -181,11 +202,21 @@ void GameScene::receiveData() {
     }
 }
 
-sf::Texture GameScene::getTextureByType(Type type) const {
+/**
+ * @brief getTextureByType, get the texture by type
+ * @param type
+ * @return texture of the type
+ */
+sf::Texture GameScene::getTextureByType(Type type) const
+{
     return _textures.at(type);
 }
 
-void GameScene::initTextures() {
+/**
+ * @brief initTextures, init the textures
+ */
+void GameScene::initTextures()
+{
     _textures[Type::MISSINGTXT] = sf::Texture();
     _textures[Type::MISSINGTXT].loadFromFile("../src/client/assets/missing.png");
     _textures[Type::PLAYER] = sf::Texture();
@@ -193,7 +224,7 @@ void GameScene::initTextures() {
     _textures[Type::ENEMY] = sf::Texture();
     _textures[Type::ENEMY].loadFromFile("../testsprites/r-typesheet5_invert.png");
     _textures[Type::BULLET] = sf::Texture();
-    _textures[Type::BULLET].loadFromFile("../src/client/assets/missing.png");
+    _textures[Type::BULLET].loadFromFile("../sprites/r-typesheet1.gif");
     _textures[Type::BACKGROUND1] = sf::Texture();
     _textures[Type::BACKGROUND1].loadFromFile("../testsprites/bg_800_600/background_1.png");
     _textures[Type::BACKGROUND2] = sf::Texture();
@@ -204,7 +235,13 @@ void GameScene::initTextures() {
     _textures[Type::BACKGROUND4].loadFromFile("../testsprites/bg_800_600/background_4.png");
 }
 
-void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {
+/**
+ * @brief handleEvent, handle the event
+ * @param event
+ * @param window
+ */
+void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window)
+{
     while (window.pollEvent(const_cast<sf::Event &>(event))) {
         if (event.type == sf::Event::Closed) {
             window.close();
@@ -218,7 +255,7 @@ void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Escape)) {
             _clientCore->setCurrentScene("main");
-            for (auto &component: _clientCore->getCurrentScene()->getComponents()) {
+            for (auto &component : _clientCore->getCurrentScene()->getComponents()) {
                 if (component->getType() == ComponentType::MUSIC) {
                     dynamic_cast<MusicComponent *>(component.get())->action();
                 }
@@ -301,7 +338,7 @@ void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {
         free(packet.data);
     }
 
-    for (auto &component: _components) {
+    for (auto &component : _components) {
         component->handleEvent(event, window);
     }
 }

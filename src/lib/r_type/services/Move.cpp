@@ -6,8 +6,15 @@
 */
 
 #include "Move.hpp"
+#include "SFML/Window/Keyboard.hpp"
 
-void Move::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component) {
+/**
+ * @brief update, update the move
+ * @param event
+ * @param component
+ */
+void Move::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component)
+{
     auto drawable = std::dynamic_pointer_cast<Drawable>(component);
     std::string attribute = component->getAttribute();
     if (drawable == nullptr || event == nullptr || attribute != "player " + std::to_string(event->id))
