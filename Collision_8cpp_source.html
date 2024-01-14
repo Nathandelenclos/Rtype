@@ -69,90 +69,93 @@ $(function() {
 <div class="title">Collision.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="Collision_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Created by nathan on 1/10/24.</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="Collision_8hpp.html">&quot;Collision.hpp&quot;</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="Drawable_8hpp.html">&quot;Drawable.hpp&quot;</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;SFML/Graphics/Rect.hpp&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;SFML/Window/Keyboard.hpp&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * @brief update, update the collision</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * @param event</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * @param component</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classCollision.html#a890eb98d3957f7eb451d617f5e12762c">   15</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classCollision.html">Collision</a>::<a class="code" href="classCollision.html#a890eb98d3957f7eb451d617f5e12762c">update</a>(std::shared_ptr&lt;Event&gt; event, std::shared_ptr&lt;<a class="code" href="classIComponentRType.html">IComponentRType</a>&gt; component)</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">auto</span> drawable = std::dynamic_pointer_cast&lt;Drawable&gt;(component);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">if</span> (!drawable)</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;other : drawable-&gt;getDrawablesCollision()) {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">if</span> (Collision::checkCollision(drawable, other)) {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordflow">if</span> (drawable-&gt;_textureId == BULLET) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                <span class="keywordflow">if</span> (other-&gt;_textureId == ENEMY) {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                    drawable-&gt;_toDelete = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                    other-&gt;_toDelete = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> * @brief checkCollision, check the collision</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> * @param drawable</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * @param other</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * @return bool (true or false) if there is a collision</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classCollision.html#a5a1c4d571bb892f945f551b43971a901">   38</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classCollision.html">Collision</a>::<a class="code" href="classCollision.html#a5a1c4d571bb892f945f551b43971a901">checkCollision</a>(<span class="keyword">const</span> std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; &amp;drawable, <span class="keyword">const</span> std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; &amp;other)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="Drawable_8hpp.html#ac121d963f036d3ca9a61642014c3fcce">Position</a> pos1 = drawable-&gt;getPosition();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="Drawable_8hpp.html#ac121d963f036d3ca9a61642014c3fcce">Position</a> pos2 = other-&gt;getPosition();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="Drawable_8hpp.html#ab612d3d3173054bfdf27412db190f427">Size</a> size1 = {std::get&lt;2&gt;(drawable-&gt;getRect()) * drawable-&gt;getScale(),</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                  std::get&lt;3&gt;(drawable-&gt;getRect()) * drawable-&gt;getScale()};</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="Drawable_8hpp.html#ab612d3d3173054bfdf27412db190f427">Size</a> size2 = {std::get&lt;2&gt;(other-&gt;getRect()) * other-&gt;getScale(), std::get&lt;3&gt;(other-&gt;getRect()) * other-&gt;getScale()};</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    sf::Rect&lt;<span class="keywordtype">float</span>&gt; rect1(std::get&lt;0&gt;(pos1), std::get&lt;1&gt;(pos1), std::get&lt;0&gt;(size1), std::get&lt;1&gt;(size1));</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    sf::Rect&lt;<span class="keywordtype">float</span>&gt; rect2(std::get&lt;0&gt;(pos2), std::get&lt;1&gt;(pos2), std::get&lt;0&gt;(size2), std::get&lt;1&gt;(size2));</div>
+<a href="Collision_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">** EPITECH PROJECT, 2023</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">** R-type</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">** File description:</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">** R-type</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="Collision_8hpp.html">&quot;Collision.hpp&quot;</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="Drawable_8hpp.html">&quot;Drawable.hpp&quot;</a></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;SFML/Graphics/Rect.hpp&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;SFML/Window/Keyboard.hpp&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * @brief update, update the collision</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * @param event</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * @param component</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classCollision.html#a890eb98d3957f7eb451d617f5e12762c">   18</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classCollision.html">Collision</a>::<a class="code" href="classCollision.html#a890eb98d3957f7eb451d617f5e12762c">update</a>(std::shared_ptr&lt;Event&gt; event, std::shared_ptr&lt;<a class="code" href="classIComponentRType.html">IComponentRType</a>&gt; component)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">auto</span> drawable = std::dynamic_pointer_cast&lt;Drawable&gt;(component);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">if</span> (!drawable)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;other : drawable-&gt;getDrawablesCollision()) {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">if</span> (Collision::checkCollision(drawable, other)) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keywordflow">if</span> (drawable-&gt;_textureId == BULLET) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <span class="keywordflow">if</span> (other-&gt;_textureId == ENEMY) {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                    drawable-&gt;_toDelete = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    other-&gt;_toDelete = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * @brief checkCollision, check the collision</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> * @param drawable</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> * @param other</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> * @return bool (true or false) if there is a collision</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classCollision.html#a5a1c4d571bb892f945f551b43971a901">   41</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classCollision.html">Collision</a>::<a class="code" href="classCollision.html#a5a1c4d571bb892f945f551b43971a901">checkCollision</a>(<span class="keyword">const</span> std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; &amp;drawable, <span class="keyword">const</span> std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; &amp;other)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="Drawable_8hpp.html#ac121d963f036d3ca9a61642014c3fcce">Position</a> pos1 = drawable-&gt;getPosition();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="Drawable_8hpp.html#ac121d963f036d3ca9a61642014c3fcce">Position</a> pos2 = other-&gt;getPosition();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="Drawable_8hpp.html#ab612d3d3173054bfdf27412db190f427">Size</a> size1 = {std::get&lt;2&gt;(drawable-&gt;getRect()) * drawable-&gt;getScale(),</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                  std::get&lt;3&gt;(drawable-&gt;getRect()) * drawable-&gt;getScale()};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="Drawable_8hpp.html#ab612d3d3173054bfdf27412db190f427">Size</a> size2 = {std::get&lt;2&gt;(other-&gt;getRect()) * other-&gt;getScale(), std::get&lt;3&gt;(other-&gt;getRect()) * other-&gt;getScale()};</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> rect1.intersects(rect2);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    sf::Rect&lt;<span class="keywordtype">float</span>&gt; rect1(std::get&lt;0&gt;(pos1), std::get&lt;1&gt;(pos1), std::get&lt;0&gt;(size1), std::get&lt;1&gt;(size1));</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    sf::Rect&lt;<span class="keywordtype">float</span>&gt; rect2(std::get&lt;0&gt;(pos2), std::get&lt;1&gt;(pos2), std::get&lt;0&gt;(size2), std::get&lt;1&gt;(size2));</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> * @brief cancelMove, cancel the move</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> * @param event</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> * @param drawable</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classCollision.html#aeffb51679a7631bd486831c59bba81b5">   57</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classCollision.html">Collision</a>::<a class="code" href="classCollision.html#aeffb51679a7631bd486831c59bba81b5">cancelMove</a>(<span class="keyword">const</span> std::shared_ptr&lt;Event&gt; &amp;event, <span class="keyword">const</span> std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; &amp;drawable)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;collision&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::tuple&lt;<span class="keywordtype">float</span>, <span class="keywordtype">float</span>&gt; pos = drawable-&gt;getPosition();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;pos: &quot;</span> &lt;&lt; std::get&lt;0&gt;(pos) &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; std::get&lt;1&gt;(pos) &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span> (event == <span class="keywordtype">nullptr</span>)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">switch</span> (event-&gt;key) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">case</span> sf::Keyboard::Key::Left:</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;left&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        drawable-&gt;setPosition(std::make_tuple(std::get&lt;0&gt;(pos) + 5, std::get&lt;1&gt;(pos)));</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">case</span> sf::Keyboard::Key::Right:</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Right&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        drawable-&gt;setPosition(std::make_tuple(std::get&lt;0&gt;(pos) - 5, std::get&lt;1&gt;(pos)));</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">case</span> sf::Keyboard::Key::Up:</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Up&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        drawable-&gt;setPosition(std::make_tuple(std::get&lt;0&gt;(pos), std::get&lt;1&gt;(pos) - 5));</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">case</span> sf::Keyboard::Key::Down:</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Down&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        drawable-&gt;setPosition(std::make_tuple(std::get&lt;0&gt;(pos), std::get&lt;1&gt;(pos) + 5));</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> rect1.intersects(rect2);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> * @brief cancelMove, cancel the move</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> * @param event</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> * @param drawable</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classCollision.html#aeffb51679a7631bd486831c59bba81b5">   60</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classCollision.html">Collision</a>::<a class="code" href="classCollision.html#aeffb51679a7631bd486831c59bba81b5">cancelMove</a>(<span class="keyword">const</span> std::shared_ptr&lt;Event&gt; &amp;event, <span class="keyword">const</span> std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; &amp;drawable)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;collision&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::tuple&lt;<span class="keywordtype">float</span>, <span class="keywordtype">float</span>&gt; pos = drawable-&gt;getPosition();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;pos: &quot;</span> &lt;&lt; std::get&lt;0&gt;(pos) &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; std::get&lt;1&gt;(pos) &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> (event == <span class="keywordtype">nullptr</span>)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">switch</span> (event-&gt;key) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">case</span> sf::Keyboard::Key::Left:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;left&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        drawable-&gt;setPosition(std::make_tuple(std::get&lt;0&gt;(pos) + 5, std::get&lt;1&gt;(pos)));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">case</span> sf::Keyboard::Key::Right:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Right&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        drawable-&gt;setPosition(std::make_tuple(std::get&lt;0&gt;(pos) - 5, std::get&lt;1&gt;(pos)));</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">case</span> sf::Keyboard::Key::Up:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Up&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        drawable-&gt;setPosition(std::make_tuple(std::get&lt;0&gt;(pos), std::get&lt;1&gt;(pos) - 5));</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">case</span> sf::Keyboard::Key::Down:</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Down&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        drawable-&gt;setPosition(std::make_tuple(std::get&lt;0&gt;(pos), std::get&lt;1&gt;(pos) + 5));</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
