@@ -14,10 +14,28 @@
 class Player : public Drawable, public IObject
 {
   public:
+
+    /**
+     * @brief Construct a new Player:: Player object
+     * @param socket
+     */
     explicit Player(ServerSocket *socket);
+
+    /**
+     * @brief Destroy the Player:: Player object
+     */
     ~Player() override = default;
+
+    /**
+     * @brief getPacket, get the packet
+     * @return packet (Packet *)
+     */
     [[nodiscard]] Packet *getPacket() override;
 
+
+    /**
+     * @brief draw, draw the player
+     */
     void draw() override;
 
   private:
