@@ -1,5 +1,5 @@
 <map id="LobbyScene::initScene" name="LobbyScene::initScene">
 <area shape="rect" id="node1" title="initScene, init the scene" alt="" coords="5,31,173,57"/>
-<area shape="rect" id="node2" href="$classLobbyScene.html#ad133afb36656e25e1193c423c971cb26" title="initEntities, init the entities" alt="" coords="224,5,403,32"/>
+<area shape="rect" id="node2" href="$classLobbyScene.html#ad133afb36656e25e1193c423c971cb26" title="display, display the scene" alt="" coords="224,5,403,32"/>
 <area shape="rect" id="node3" href="$classLobbyScene.html#a55adeb02f875499bc6d100614428205e" title="initServices, init the services" alt="" coords="221,56,405,83"/>
 </map>

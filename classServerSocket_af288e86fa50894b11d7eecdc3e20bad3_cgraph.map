@@ -1,4 +1,4 @@
 <map id="ServerSocket::run" name="ServerSocket::run">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,141,39"/>
-<area shape="rect" id="node2" href="$classServerSocket.html#a5720e84e34e7b1bf728a2c585da45ccb" title=" " alt="" coords="189,5,325,47"/>
+<area shape="rect" id="node1" title="Run the server socket." alt="" coords="5,13,141,39"/>
+<area shape="rect" id="node2" href="$classServerSocket.html#a5720e84e34e7b1bf728a2c585da45ccb" title="init_fd_set, init the fd_set" alt="" coords="189,5,325,47"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="ServerSocket::init_fd_set" name="ServerSocket::init_fd_set">
-<area shape="rect" id="node1" title=" " alt="" coords="292,5,428,47"/>
-<area shape="rect" id="node2" href="$classServerSocket.html#af288e86fa50894b11d7eecdc3e20bad3" title=" " alt="" coords="108,13,244,39"/>
+<area shape="rect" id="node1" title="init_fd_set, init the fd_set" alt="" coords="292,5,428,47"/>
+<area shape="rect" id="node2" href="$classServerSocket.html#af288e86fa50894b11d7eecdc3e20bad3" title="Run the server socket." alt="" coords="108,13,244,39"/>
 <area shape="rect" id="node3" href="$networking_2server_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,13,60,39"/>
 </map>

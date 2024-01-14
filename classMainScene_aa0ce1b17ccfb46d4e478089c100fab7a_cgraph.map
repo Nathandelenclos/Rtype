@@ -1,6 +1,6 @@
 <map id="MainScene::MainScene" name="MainScene::MainScene">
-<area shape="rect" id="node1" title="Construct a new Main Scene:: Main Scene object." alt="" coords="5,31,177,57"/>
-<area shape="rect" id="node2" href="$classAScene.html#afa86b1f8e48baeaf05dab72008b83b15" title=" " alt="" coords="245,5,372,32"/>
-<area shape="rect" id="node4" href="$classMainScene.html#a5ca1e12dd2051e949eb54ac8315e648b" title="init_scene, initialize the scene" alt="" coords="225,56,392,83"/>
-<area shape="rect" id="node3" href="$classIScene.html#adfd32db3454f92122c2297690732a455" title=" " alt="" coords="440,5,556,32"/>
+<area shape="rect" id="node1" title="MainScene, constructor of MainScene." alt="" coords="5,31,177,57"/>
+<area shape="rect" id="node2" href="$classAScene.html#afa86b1f8e48baeaf05dab72008b83b15" title="AScene, constructor of AScene." alt="" coords="245,5,372,32"/>
+<area shape="rect" id="node4" href="$classMainScene.html#a5ca1e12dd2051e949eb54ac8315e648b" title="init_scene, init the scene" alt="" coords="225,56,392,83"/>
+<area shape="rect" id="node3" href="$classIScene.html#adfd32db3454f92122c2297690732a455" title="IScene, constructor of IScene." alt="" coords="440,5,556,32"/>
 </map>

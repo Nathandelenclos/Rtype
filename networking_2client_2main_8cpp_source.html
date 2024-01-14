@@ -69,21 +69,24 @@ $(function() {
 <div class="title">main.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="networking_2client_2main_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Created by talleux on 12/18/23.</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="ClientSocket_8hpp.html">&quot;ClientSocket.hpp&quot;</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">iostream</span><span class="preprocessor">&gt;</span></div>
+<a href="networking_2client_2main_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">** EPITECH PROJECT, 2023</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">** R-type</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">** File description:</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">** R-type</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="networking_2client_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">    8</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="networking_2client_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classClientSocket.html">ClientSocket</a> clientSocket;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    clientSocket<a class="code" href="classClientSocket.html#ac24f8b9a744a17dc4018ed03a967b26b">.</a><a class="code" href="classClientSocket.html#ac24f8b9a744a17dc4018ed03a967b26b">init_client</a>(<span class="stringliteral">&quot;127.0.0.1&quot;</span>, 6969);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    clientSocket<a class="code" href="classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1">.</a><a class="code" href="classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1">run</a><a class="code" href="classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1">(</a><a class="code" href="classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1">)</a>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="ClientSocket_8hpp.html">&quot;ClientSocket.hpp&quot;</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">iostream</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="networking_2client_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   11</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="networking_2client_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classClientSocket.html">ClientSocket</a> clientSocket;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    clientSocket<a class="code" href="classClientSocket.html#ac24f8b9a744a17dc4018ed03a967b26b">.</a><a class="code" href="classClientSocket.html#ac24f8b9a744a17dc4018ed03a967b26b">init_client</a>(<span class="stringliteral">&quot;127.0.0.1&quot;</span>, 6969);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    clientSocket<a class="code" href="classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1">.</a><a class="code" href="classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1">run</a><a class="code" href="classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1">(</a><a class="code" href="classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1">)</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
