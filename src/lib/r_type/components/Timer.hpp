@@ -52,7 +52,7 @@ class Timer : public IComponentRType
      *
      * @param active
      */
-    void setActive(bool active);
+        void setActive(bool active);
 
     /**
      * @brief getActive, get the timer active
@@ -61,12 +61,20 @@ class Timer : public IComponentRType
      */
     bool isActive() const;
 
+    void setDirection(int direction);
+    int getDirection() const;
+
+
     timeval _startTime{};
     timeval _now{};
     timeval _targetTime{};
     timeval _diff{};
 
-  protected:
-    std::shared_ptr<Drawable> _target;
-    bool _active;
+    protected:
+        std::shared_ptr<Drawable> _target;
+        bool _active;
+        int _direction;
+
+
+
 };

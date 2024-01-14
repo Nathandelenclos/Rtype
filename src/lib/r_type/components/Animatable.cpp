@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** RType
 ** File description:
-** Controlable.cpp
+** Animatable.cpp
 */
 
 #include "Animatable.hpp"
