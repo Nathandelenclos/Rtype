@@ -66,7 +66,7 @@ ClientSocket::~ClientSocket()
  * @param ip
  * @param port
  * @return true
- * @return false
+ * @return true if the client is init
  */
 bool ClientSocket::init_client(const std::string &ip, int port)
 {
