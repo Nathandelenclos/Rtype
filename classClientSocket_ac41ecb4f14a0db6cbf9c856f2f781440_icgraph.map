@@ -1,4 +1,4 @@
 <map id="ClientSocket::receivePacketAndAddToBuffer" name="ClientSocket::receivePacketAndAddToBuffer">
-<area shape="rect" id="node1" title=" " alt="" coords="212,5,413,47"/>
-<area shape="rect" id="node2" href="$classClientSocket.html#aff92fc80281e0ec1fae4431f123c267c" title=" " alt="" coords="5,13,164,39"/>
+<area shape="rect" id="node1" title="receiivePacketAndAddToBuffer receive a packet and add it to the buffer" alt="" coords="212,5,413,47"/>
+<area shape="rect" id="node2" href="$classClientSocket.html#aff92fc80281e0ec1fae4431f123c267c" title="Receive a packet from the server." alt="" coords="5,13,164,39"/>
 </map>

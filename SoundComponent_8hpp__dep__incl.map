@@ -1,18 +1,18 @@
 <map id="src/client/Components/Sound/SoundComponent.hpp" name="src/client/Components/Sound/SoundComponent.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="292,5,505,47"/>
-<area shape="rect" id="node2" href="$ButtonComponent_8hpp.html" title=" " alt="" coords="143,184,361,225"/>
-<area shape="rect" id="node4" href="$MenuScene_8hpp.html" title=" " alt="" coords="28,273,199,315"/>
-<area shape="rect" id="node10" href="$MainScene_8hpp.html" title=" " alt="" coords="296,273,467,315"/>
-<area shape="rect" id="node12" href="$client_2Scenes_2IScene_8hpp.html" title=" " alt="" coords="437,102,643,129"/>
-<area shape="rect" id="node16" href="$SoundComponent_8cpp.html" title=" " alt="" coords="667,95,879,136"/>
-<area shape="rect" id="node3" href="$ButtonComponent_8cpp.html" title=" " alt="" coords="200,452,419,493"/>
-<area shape="rect" id="node5" href="$ClientCore_8hpp.html" title=" " alt="" coords="472,370,653,397"/>
-<area shape="rect" id="node9" href="$MenuScene_8cpp.html" title=" " alt="" coords="5,452,176,493"/>
+<area shape="rect" id="node1" title=" " alt="" coords="268,5,481,47"/>
+<area shape="rect" id="node2" href="$ButtonComponent_8hpp.html" title=" " alt="" coords="119,184,337,225"/>
+<area shape="rect" id="node4" href="$MainScene_8hpp.html" title=" " alt="" coords="20,273,191,315"/>
+<area shape="rect" id="node11" href="$MenuScene_8hpp.html" title=" " alt="" coords="277,273,448,315"/>
+<area shape="rect" id="node12" href="$client_2Scenes_2IScene_8hpp.html" title=" " alt="" coords="413,102,619,129"/>
+<area shape="rect" id="node16" href="$SoundComponent_8cpp.html" title=" " alt="" coords="643,95,855,136"/>
+<area shape="rect" id="node3" href="$ButtonComponent_8cpp.html" title=" " alt="" coords="5,452,224,493"/>
+<area shape="rect" id="node5" href="$ClientCore_8hpp.html" title=" " alt="" coords="411,370,592,397"/>
+<area shape="rect" id="node10" href="$MainScene_8cpp.html" title=" " alt="" coords="20,363,191,404"/>
 <area shape="rect" id="node6" href="$ClientCore_8cpp.html" title=" " alt="" coords="613,459,793,486"/>
 <area shape="rect" id="node7" href="$src_2client_2main_8cpp.html" title=" " alt="" coords="443,459,589,486"/>
 <area shape="rect" id="node8" href="$GameScene_8cpp.html" title=" " alt="" coords="817,452,991,493"/>
-<area shape="rect" id="node11" href="$MainScene_8cpp.html" title=" " alt="" coords="277,363,448,404"/>
-<area shape="rect" id="node13" href="$client_2Scenes_2AScene_8hpp.html" title=" " alt="" coords="577,191,788,218"/>
-<area shape="rect" id="node14" href="$GameScene_8hpp.html" title=" " alt="" coords="813,273,987,315"/>
-<area shape="rect" id="node15" href="$client_2Scenes_2AScene_8cpp.html" title=" " alt="" coords="577,281,788,307"/>
+<area shape="rect" id="node9" href="$MenuScene_8cpp.html" title=" " alt="" coords="248,452,419,493"/>
+<area shape="rect" id="node13" href="$client_2Scenes_2AScene_8hpp.html" title=" " alt="" coords="539,191,749,218"/>
+<area shape="rect" id="node14" href="$GameScene_8hpp.html" title=" " alt="" coords="774,273,949,315"/>
+<area shape="rect" id="node15" href="$client_2Scenes_2AScene_8cpp.html" title=" " alt="" coords="539,281,749,307"/>
 </map>

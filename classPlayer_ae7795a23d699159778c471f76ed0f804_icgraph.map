@@ -1,4 +1,4 @@
 <map id="Player::getPacket" name="Player::getPacket">
-<area shape="rect" id="node1" title=" " alt="" coords="156,5,291,32"/>
-<area shape="rect" id="node2" href="$classPlayer.html#a7abe0fbf95b42b9ff4a2c0c7d334bc68" title=" " alt="" coords="5,5,108,32"/>
+<area shape="rect" id="node1" title="getPacket, get the packet" alt="" coords="156,5,291,32"/>
+<area shape="rect" id="node2" href="$classPlayer.html#a7abe0fbf95b42b9ff4a2c0c7d334bc68" title="draw, draw the player" alt="" coords="5,5,108,32"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="ButtonComponent::action" name="ButtonComponent::action">
-<area shape="rect" id="node1" title=" " alt="" coords="283,5,471,32"/>
-<area shape="rect" id="node2" href="$classButtonComponent.html#a8480116c76000d744605a3e95024ddcb" title=" " alt="" coords="5,5,235,32"/>
+<area shape="rect" id="node1" title="Destroy the Button Component object." alt="" coords="283,5,471,32"/>
+<area shape="rect" id="node2" href="$classButtonComponent.html#a8480116c76000d744605a3e95024ddcb" title="handle event, check if the button is clicked" alt="" coords="5,5,235,32"/>
 </map>

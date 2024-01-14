@@ -1,10 +1,9 @@
 <map id="src/lib/r_type/Scenes/IScene.hpp" name="src/lib/r_type/Scenes/IScene.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="21,5,177,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="19,5,175,47"/>
 <area shape="rect" id="node2" href="$RType_8hpp.html" title=" " alt="" coords="5,281,181,307"/>
-<area shape="rect" id="node4" href="$lib_2r__type_2Scenes_2AScene_8hpp.html" title=" " alt="" coords="79,95,235,136"/>
+<area shape="rect" id="node4" href="$lib_2r__type_2Scenes_2AScene_8hpp.html" title=" " alt="" coords="78,95,234,136"/>
 <area shape="rect" id="node3" href="$RType_8cpp.html" title=" " alt="" coords="6,363,181,389"/>
-<area shape="rect" id="node5" href="$lib_2r__type_2Scenes_2AScene_8cpp.html" title=" " alt="" coords="79,184,235,225"/>
-<area shape="rect" id="node6" href="$Lobby_8hpp.html" title=" " alt="" coords="259,184,415,225"/>
-<area shape="rect" id="node7" href="$Lobby_8cpp.html" title=" " alt="" coords="233,273,389,315"/>
-<area shape="rect" id="node8" href="$Spawner_8cpp.html" title=" " alt="" coords="413,273,577,315"/>
+<area shape="rect" id="node5" href="$lib_2r__type_2Scenes_2AScene_8cpp.html" title=" " alt="" coords="78,184,234,225"/>
+<area shape="rect" id="node6" href="$Lobby_8hpp.html" title=" " alt="" coords="258,184,414,225"/>
+<area shape="rect" id="node7" href="$Lobby_8cpp.html" title=" " alt="" coords="258,273,414,315"/>
 </map>

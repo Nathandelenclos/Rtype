@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['operator_3c_3c_646',['operator&lt;&lt;',['../Server_8cpp.html#aaf5d47cf0e834bc1d096b12fb601b813',1,'operator&lt;&lt;(std::ostream &amp;os, CODE const &amp;packetCode):&#160;Server.cpp'],['../Server_8cpp.html#abe921902d02cc1755bdaf6820fcc0978',1,'operator&lt;&lt;(std::ostream &amp;os, Element const &amp;packetElement):&#160;Server.cpp'],['../Server_8cpp.html#a3f58b3bb60d6ab9ca3250de7af800c0e',1,'operator&lt;&lt;(std::ostream &amp;os, std::unique_ptr&lt; Packet &gt; &amp;packet):&#160;Server.cpp']]]
+  ['pausescene_596',['pauseScene',['../classIScene.html#a3c9ff4ff7f152e5adb5ab5470a1b4efc',1,'IScene::pauseScene()'],['../classAScene.html#ac84c87170a6a0563e50e9c5ed2d85cdd',1,'AScene::pauseScene() override'],['../classAScene.html#ac84c87170a6a0563e50e9c5ed2d85cdd',1,'AScene::pauseScene() override'],['../classISceneRType.html#aee401aba9f0c1732c638977d140cc250',1,'ISceneRType::pauseScene()']]],
+  ['player_597',['Player',['../classPlayer.html#a8a21ea10a2a555a30adc5dcf241ad702',1,'Player']]]
 ];
