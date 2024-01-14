@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['roof_5fbackground_839',['ROOF_BACKGROUND',['../USocket_8hpp.html#a7aead736a07eaf25623ad7bfa1f0ee2daf5df489f015d0f968521cac3e1b99c8c',1,'USocket.hpp']]]
+  ['text_834',['TEXT',['../client_2Components_2IComponent_8hpp.html#a81f78fc173dedefe5a049c0aa3eed2c0a9a4a47c1606e295076055a9cc4373197',1,'IComponent.hpp']]],
+  ['textsocket_835',['TEXTSOCKET',['../USocket_8hpp.html#a53ac520e65486b4727f9e55be92d9ee8adb6ca6500523c845223f56fc5982c42c',1,'USocket.hpp']]]
 ];

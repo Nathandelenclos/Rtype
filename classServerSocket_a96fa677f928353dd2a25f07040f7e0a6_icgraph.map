@@ -1,4 +1,4 @@
 <map id="ServerSocket::splitAndSend" name="ServerSocket::splitAndSend">
-<area shape="rect" id="node1" title=" " alt="" coords="200,5,400,32"/>
-<area shape="rect" id="node2" href="$classServerSocket.html#a1bb66bebf6cf617fb7046c4afb9e9a8f" title=" " alt="" coords="5,5,152,32"/>
+<area shape="rect" id="node1" title="split and send a packet to a client" alt="" coords="200,5,400,32"/>
+<area shape="rect" id="node2" href="$classServerSocket.html#a1bb66bebf6cf617fb7046c4afb9e9a8f" title="Send a packet to a client." alt="" coords="5,5,152,32"/>
 </map>

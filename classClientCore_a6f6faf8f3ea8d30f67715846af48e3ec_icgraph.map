@@ -1,7 +1,7 @@
 <map id="ClientCore::setCurrentScene" name="ClientCore::setCurrentScene">
 <area shape="rect" id="node1" title="setCurrentScene, set the current scene" alt="" coords="277,107,483,134"/>
-<area shape="rect" id="node2" href="$classButtonComponent.html#aba7edbff4f9f79c42e29df7d2cd56335" title="handleClickAccessGame handle the click of the button for access the game scene" alt="" coords="5,5,229,47"/>
-<area shape="rect" id="node3" href="$classButtonComponent.html#a828ae715e809c4d6aaa6513d178dde87" title="handleClickMainScene handle the click of the button on the main scene" alt="" coords="5,71,229,112"/>
+<area shape="rect" id="node2" href="$classButtonComponent.html#aba7edbff4f9f79c42e29df7d2cd56335" title="handleClickMenuScene, handle click on menu scene button" alt="" coords="5,5,229,47"/>
+<area shape="rect" id="node3" href="$classButtonComponent.html#a828ae715e809c4d6aaa6513d178dde87" title="handleClickMainScene, handle click on main scene button" alt="" coords="5,71,229,112"/>
 <area shape="rect" id="node4" href="$classGameScene.html#adcf7f428226827801b36765c24d0bd16" title="handleEvent, handle the event" alt="" coords="23,137,212,163"/>
 <area shape="rect" id="node5" href="$classMenuScene.html#a743863632a217410fcee95a95a9c88a3" title="handleEvent, handle the event" alt="" coords="24,187,211,214"/>
 </map>
