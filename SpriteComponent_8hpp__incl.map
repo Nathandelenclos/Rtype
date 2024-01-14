@@ -1,17 +1,17 @@
 <map id="src/client/Components/Sprite/SpriteComponent.hpp" name="src/client/Components/Sprite/SpriteComponent.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="502,5,711,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="233,251,380,278"/>
-<area shape="rect" id="node3" href="$AComponent_8hpp.html" title=" " alt="" coords="599,95,819,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="718,333,780,360"/>
-<area shape="rect" id="node5" title=" " alt="" coords="641,408,718,435"/>
-<area shape="rect" id="node6" href="$client_2Components_2IComponent_8hpp.html" title=" " alt="" coords="607,169,736,196"/>
-<area shape="rect" id="node7" href="$ClientSocket_8hpp.html" title=" " alt="" coords="404,244,582,285"/>
-<area shape="rect" id="node8" title=" " alt="" coords="141,408,200,435"/>
-<area shape="rect" id="node9" title=" " alt="" coords="234,333,301,360"/>
-<area shape="rect" id="node10" title=" " alt="" coords="578,333,642,360"/>
-<area shape="rect" id="node11" title=" " alt="" coords="26,333,90,360"/>
-<area shape="rect" id="node12" title=" " alt="" coords="114,333,210,360"/>
-<area shape="rect" id="node13" href="$USocket_8hpp.html" title=" " alt="" coords="326,333,554,360"/>
-<area shape="rect" id="node14" title=" " alt="" coords="445,408,536,435"/>
-<area shape="rect" id="node15" title=" " alt="" coords="354,408,421,435"/>
+<area shape="rect" id="node1" title=" " alt="" coords="500,5,709,47"/>
+<area shape="rect" id="node2" href="$AComponent_8hpp.html" title=" " alt="" coords="597,95,817,121"/>
+<area shape="rect" id="node15" title=" " alt="" coords="271,251,418,278"/>
+<area shape="rect" id="node3" href="$client_2Components_2IComponent_8hpp.html" title=" " alt="" coords="605,169,735,196"/>
+<area shape="rect" id="node10" title=" " alt="" coords="716,333,779,360"/>
+<area shape="rect" id="node13" title=" " alt="" coords="639,408,717,435"/>
+<area shape="rect" id="node4" href="$ClientSocket_8hpp.html" title=" " alt="" coords="443,244,620,285"/>
+<area shape="rect" id="node5" title=" " alt="" coords="574,333,641,360"/>
+<area shape="rect" id="node6" title=" " alt="" coords="25,333,89,360"/>
+<area shape="rect" id="node7" title=" " alt="" coords="113,333,209,360"/>
+<area shape="rect" id="node8" title=" " alt="" coords="89,408,147,435"/>
+<area shape="rect" id="node9" title=" " alt="" coords="486,333,550,360"/>
+<area shape="rect" id="node11" href="$USocket_8hpp.html" title=" " alt="" coords="233,333,461,360"/>
+<area shape="rect" id="node12" title=" " alt="" coords="365,408,431,435"/>
+<area shape="rect" id="node14" title=" " alt="" coords="250,408,341,435"/>
 </map>

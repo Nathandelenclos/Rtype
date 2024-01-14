@@ -1,5 +1,5 @@
 <map id="LobbyScene::initEntities" name="LobbyScene::initEntities">
-<area shape="rect" id="node1" title=" " alt="" coords="456,5,635,32"/>
-<area shape="rect" id="node2" href="$classLobbyScene.html#a1ce6c014d26503baf2f31b479b47ef1a" title=" " alt="" coords="240,5,408,32"/>
-<area shape="rect" id="node3" href="$classLobbyScene.html#ab492d5d030ae5fbd542a8a818f53823a" title=" " alt="" coords="5,5,192,32"/>
+<area shape="rect" id="node1" title="initEntities, init the entities" alt="" coords="456,29,635,56"/>
+<area shape="rect" id="node2" href="$classLobbyScene.html#a1ce6c014d26503baf2f31b479b47ef1a" title="initScene, init the scene" alt="" coords="240,29,408,56"/>
+<area shape="rect" id="node3" href="$classLobbyScene.html#ab492d5d030ae5fbd542a8a818f53823a" title="Construct a new LobbyScene:: LobbyScene object." alt="" coords="5,29,192,56"/>
 </map>

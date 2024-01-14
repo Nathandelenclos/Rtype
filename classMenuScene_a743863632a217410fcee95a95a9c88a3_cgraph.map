@@ -1,4 +1,4 @@
 <map id="MenuScene::handleEvent" name="MenuScene::handleEvent">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,192,32"/>
-<area shape="rect" id="node2" href="$classClientCore.html#a6f6faf8f3ea8d30f67715846af48e3ec" title=" " alt="" coords="240,5,445,32"/>
+<area shape="rect" id="node1" title="handleEvent, handle the event" alt="" coords="5,5,192,32"/>
+<area shape="rect" id="node2" href="$classClientCore.html#a6f6faf8f3ea8d30f67715846af48e3ec" title="setCurrentScene, set the current scene" alt="" coords="240,5,445,32"/>
 </map>

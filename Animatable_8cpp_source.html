@@ -78,42 +78,73 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="Animatable_8hpp.html">&quot;Animatable.hpp&quot;</a></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">utility</span><span class="preprocessor">&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">cstring</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">cstring</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">utility</span><span class="preprocessor">&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classAnimatable.html#ae555d254bc25db80a3ad591b1140e6b9">   13</a></span>&#160;<a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#ae555d254bc25db80a3ad591b1140e6b9">Animatable</a>()</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[64];</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::memset(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, 0, 64);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classAnimatable.html#a85617b38231f258681620e9b6dda97b6">   19</a></span>&#160;<span class="keywordtype">char</span> *<a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#a85617b38231f258681620e9b6dda97b6">getAttribute</a>() <span class="keyword">const</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classAnimatable.html#acf2642276e28fd3a798ce4b2795af97d">   24</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#acf2642276e28fd3a798ce4b2795af97d">setAttribute</a>(std::string attribute)</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::memset(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, 0, 64);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::memcpy(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, attribute.c_str(), attribute.size());</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;attribute: &quot;</span> &lt;&lt; <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * @brief Construct a new Animatable:: Animatable object</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classAnimatable.html#ae555d254bc25db80a3ad591b1140e6b9">   16</a></span>&#160;<a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#ae555d254bc25db80a3ad591b1140e6b9">Animatable</a>()</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[64];</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::memset(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, 0, 64);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * @brief getAttribute, get the attribute</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * @return attribute (char *)</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classAnimatable.html#a85617b38231f258681620e9b6dda97b6">   26</a></span>&#160;<span class="keywordtype">char</span> *<a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#a85617b38231f258681620e9b6dda97b6">getAttribute</a>() <span class="keyword">const</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classAnimatable.html#a6c62679e66969c1207f54b0f5757d496">   31</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#a6c62679e66969c1207f54b0f5757d496">setTarget</a>(std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; target) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    sprite = target;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classAnimatable.html#a210924df2eaef33c2c67818fe398b4e2">   35</a></span>&#160;std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; <a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#a210924df2eaef33c2c67818fe398b4e2">getTarget</a>() {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> sprite;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classAnimatable.html#a6ad7e9e546c14e22dfd198a6508808ef">   39</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#a6ad7e9e546c14e22dfd198a6508808ef">setTime</a>(timeval frametime) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classAnimatable.html#a52844eb7d7b4ef6e260378344f9833ad">_frametime</a> = frametime;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classAnimatable.html#a5d1821a441b53de0aa65379af2c19777">   43</a></span>&#160;timeval <a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#a5d1821a441b53de0aa65379af2c19777">getTime</a>() {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classAnimatable.html#a52844eb7d7b4ef6e260378344f9833ad">_frametime</a>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> * @brief setAttribute, set the attribute</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> * @param attribute</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classAnimatable.html#acf2642276e28fd3a798ce4b2795af97d">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#acf2642276e28fd3a798ce4b2795af97d">setAttribute</a>(std::string attribute)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::memset(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, 0, 64);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::memcpy(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, attribute.c_str(), attribute.size());</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;attribute: &quot;</span> &lt;&lt; <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> * @brief setTarget, set the target</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> * @param target</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classAnimatable.html#a6c62679e66969c1207f54b0f5757d496">   46</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#a6c62679e66969c1207f54b0f5757d496">setTarget</a>(std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; target)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    sprite = target;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> * @brief getTarget, get the target</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> * @return target (std::shared_ptr&lt;Drawable&gt;)</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classAnimatable.html#a210924df2eaef33c2c67818fe398b4e2">   55</a></span>&#160;std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; <a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#a210924df2eaef33c2c67818fe398b4e2">getTarget</a>()</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> sprite;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"> * @brief setTime, set the time</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"> * @param frametime</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classAnimatable.html#a6ad7e9e546c14e22dfd198a6508808ef">   64</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#a6ad7e9e546c14e22dfd198a6508808ef">setTime</a>(timeval frametime)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="classAnimatable.html#a52844eb7d7b4ef6e260378344f9833ad">_frametime</a> = frametime;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment"> * @brief getTime, get the time</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment"> * @return timeval</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classAnimatable.html#a5d1821a441b53de0aa65379af2c19777">   73</a></span>&#160;timeval <a class="code" href="classAnimatable.html">Animatable</a>::<a class="code" href="classAnimatable.html#a5d1821a441b53de0aa65379af2c19777">getTime</a>()</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classAnimatable.html#a52844eb7d7b4ef6e260378344f9833ad">_frametime</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

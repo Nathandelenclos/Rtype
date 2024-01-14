@@ -1,4 +1,4 @@
 <map id="InputComponent::setText" name="InputComponent::setText">
-<area shape="rect" id="node1" title=" " alt="" coords="272,5,457,32"/>
-<area shape="rect" id="node2" href="$classInputComponent.html#a61faeca5e282bef6c56c6f6f49337d36" title=" " alt="" coords="5,5,224,32"/>
+<area shape="rect" id="node1" title="setText set the text of the component" alt="" coords="272,5,457,32"/>
+<area shape="rect" id="node2" href="$classInputComponent.html#a61faeca5e282bef6c56c6f6f49337d36" title="handleEvent handle the event of the component" alt="" coords="5,5,224,32"/>
 </map>
