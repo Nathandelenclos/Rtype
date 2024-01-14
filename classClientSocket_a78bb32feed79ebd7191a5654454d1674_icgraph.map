@@ -1,5 +1,5 @@
 <map id="ClientSocket::init_fd_set" name="ClientSocket::init_fd_set">
-<area shape="rect" id="node1" title="Stop the client socket." alt="" coords="288,5,420,47"/>
-<area shape="rect" id="node2" href="$classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1" title="Run the client socket." alt="" coords="108,13,240,39"/>
+<area shape="rect" id="node1" title=" " alt="" coords="288,5,420,47"/>
+<area shape="rect" id="node2" href="$classClientSocket.html#a0bdade63cea5622025f04efdbcaa9ca1" title=" " alt="" coords="108,13,240,39"/>
 <area shape="rect" id="node3" href="$networking_2client_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,13,60,39"/>
 </map>

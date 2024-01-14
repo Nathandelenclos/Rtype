@@ -1,5 +1,5 @@
 <map id="SpriteComponent::SpriteComponent" name="SpriteComponent::SpriteComponent">
 <area shape="rect" id="node1" title="Construct a new Sprite Component:: Sprite Component object." alt="" coords="5,5,261,32"/>
-<area shape="rect" id="node2" href="$classAComponent.html#a9ddc2b8c92d1204ca8ee0fffb295e136" title="AComponent, constructor of AComponent." alt="" coords="309,5,508,32"/>
-<area shape="rect" id="node3" href="$classIComponent.html#a9230af60e880f13d6e878c2974d06d03" title="IComponent, constructor of IComponent." alt="" coords="556,5,744,32"/>
+<area shape="rect" id="node2" href="$classAComponent.html#a9ddc2b8c92d1204ca8ee0fffb295e136" title=" " alt="" coords="309,5,508,32"/>
+<area shape="rect" id="node3" href="$classIComponent.html#a9230af60e880f13d6e878c2974d06d03" title=" " alt="" coords="556,5,744,32"/>
 </map>
