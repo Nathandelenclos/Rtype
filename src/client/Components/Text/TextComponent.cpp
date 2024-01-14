@@ -1,6 +1,9 @@
-//
-// Created by Talleux on 28/12/2023.
-//
+/*
+** EPITECH PROJECT, 2023
+** R-type
+** File description:
+** R-type
+*/
 
 #include "TextComponent.hpp"
 

@@ -1,4 +1,9 @@
-//
+/*
+** EPITECH PROJECT, 2023
+** R-type
+** File description:
+** R-type
+*/
 
 #include "SpriteComponent.hpp"
 
