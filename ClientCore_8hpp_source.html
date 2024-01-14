@@ -145,18 +145,19 @@ $(function() {
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">     */</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classClientCore.html#ad0679b18fb01a214b51238b4bbd6110a">sendHeartBeat</a>(sf::RenderWindow &amp;window);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">     * @brief startHeartBeat, start the heart beat</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classClientCore.html#a90b985b00cacf4ef24af40b13d9662ee">startHeartBeat</a>();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    std::shared_ptr&lt;<a class="code" href="classClientSocket.html">ClientSocket</a>&gt; _socket;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    sf::RenderWindow _window;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::map&lt;std::string, std::shared_ptr&lt;IScene&gt;&gt; _scenes;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::shared_ptr&lt;<a class="code" href="classIScene.html">IScene</a>&gt; _currentScene;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    std::thread _heartBeatThread;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;};</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">     * @brief startHeartBeat, start the heart beat</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classClientCore.html#a90b985b00cacf4ef24af40b13d9662ee">startHeartBeat</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::shared_ptr&lt;<a class="code" href="classClientSocket.html">ClientSocket</a>&gt; _socket;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    sf::RenderWindow _window;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::map&lt;std::string, std::shared_ptr&lt;IScene&gt;&gt; _scenes;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    std::shared_ptr&lt;<a class="code" href="classIScene.html">IScene</a>&gt; _currentScene;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::thread _heartBeatThread;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
