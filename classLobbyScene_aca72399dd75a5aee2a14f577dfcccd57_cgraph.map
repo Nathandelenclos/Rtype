@@ -4,7 +4,7 @@
 <area shape="rect" id="node3" href="$classLobbyScene.html#ae570b0a9aed91cbcc912e30680ec288a" title=" " alt="" coords="224,71,428,112"/>
 <area shape="rect" id="node4" href="$classAScene.html#ab439df212b6630bcda7f2cae7de14157" title="broadcastGameState, broadcast the game state" alt="" coords="493,270,708,297"/>
 <area shape="rect" id="node5" href="$classLobbyScene.html#a8fcddeb9ddb8887aec233d0be7e328d7" title=" " alt="" coords="226,187,426,214"/>
-<area shape="rect" id="node6" href="$classLobbyScene.html#ac871ad60458f007e63df2213eb6b3767" title=" " alt="" coords="207,238,445,265"/>
+<area shape="rect" id="node6" href="$classLobbyScene.html#ac871ad60458f007e63df2213eb6b3767" title="checkBulletDeletion, check the bullet deletion" alt="" coords="207,238,445,265"/>
 <area shape="rect" id="node7" href="$classLobbyScene.html#a2a95d44d88f24875cda6566e33c767ff" title=" " alt="" coords="225,289,427,331"/>
 <area shape="rect" id="node8" href="$Lobby_8cpp.html#a4a514963028e5f1f61de2419b39165b5" title=" " alt="" coords="507,325,694,351"/>
 <area shape="rect" id="node9" href="$classLobbyScene.html#a7202daf08faed2f5f5eb7a526d2c5fcd" title=" " alt="" coords="222,406,430,433"/>
