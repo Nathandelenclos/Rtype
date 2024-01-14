@@ -230,7 +230,7 @@ int generateRandomNumber(int lowerBound, int upperBound) {
  */
 void LobbyScene::shootBoss(int nb) {
     for (int i = 0; i < nb; i++) {
-        std::tuple<float, float> position = std::make_tuple(1000, generateRandomNumber(0, 601 - 36 * 2));
+        std::tuple<float, float> position = std::make_tuple(500, generateRandomNumber(0, 601 - 36 * 2));
         std::shared_ptr <IEntity> boss_bullet = std::make_shared<IEntity>();
         std::shared_ptr <Drawable> sprite_boss_bullet = std::make_shared<Drawable>();
         std::shared_ptr <Animatable> animation_boss_bullet = std::make_shared<Animatable>();
