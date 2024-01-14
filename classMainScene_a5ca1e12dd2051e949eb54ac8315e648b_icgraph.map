@@ -1,4 +1,4 @@
 <map id="MainScene::init_scene" name="MainScene::init_scene">
-<area shape="rect" id="node1" title="init_scene, initialize the scene" alt="" coords="225,5,392,32"/>
-<area shape="rect" id="node2" href="$classMainScene.html#aa0ce1b17ccfb46d4e478089c100fab7a" title="Construct a new Main Scene:: Main Scene object." alt="" coords="5,5,177,32"/>
+<area shape="rect" id="node1" title="init_scene, init the scene" alt="" coords="225,5,392,32"/>
+<area shape="rect" id="node2" href="$classMainScene.html#aa0ce1b17ccfb46d4e478089c100fab7a" title="MainScene, constructor of MainScene." alt="" coords="5,5,177,32"/>
 </map>
