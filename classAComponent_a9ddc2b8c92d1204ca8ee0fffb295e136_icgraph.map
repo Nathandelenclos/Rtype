@@ -1,9 +1,9 @@
 <map id="AComponent::AComponent" name="AComponent::AComponent">
 <area shape="rect" id="node1" title=" " alt="" coords="320,132,519,159"/>
-<area shape="rect" id="node2" href="$classButtonComponent.html#a879a853ba0ab76b8cd734a2aa8ac8fa7" title="ButtonComponent constructor." alt="" coords="5,5,272,32"/>
-<area shape="rect" id="node3" href="$classInputComponent.html#acb40e25bdd17bb8219fc0af32e6809da" title="InputComponent constructor." alt="" coords="15,56,262,83"/>
-<area shape="rect" id="node4" href="$classMusicComponent.html#abb5691a5443cbdc8b2f811b609c41dc0" title="Construct a new Music Component:: Music Component object." alt="" coords="11,107,267,133"/>
-<area shape="rect" id="node5" href="$classSoundComponent.html#a7406c9f3098930154ecf5b1c616e20ac" title="Construct a new Sound Component:: Sound Component object." alt="" coords="9,157,269,184"/>
-<area shape="rect" id="node6" href="$classSpriteComponent.html#a5874e48db34955805d1560629d250754" title="Construct a new Sprite Component:: Sprite Component object." alt="" coords="11,208,267,235"/>
-<area shape="rect" id="node7" href="$classTextComponent.html#a2a5c7c8ab0a69ec2fac60fe651169ece" title="Construct a new Text Component:: Text Component object." alt="" coords="21,259,256,285"/>
+<area shape="rect" id="node2" href="$classButtonComponent.html#a879a853ba0ab76b8cd734a2aa8ac8fa7" title=" " alt="" coords="5,5,272,32"/>
+<area shape="rect" id="node3" href="$classInputComponent.html#acb40e25bdd17bb8219fc0af32e6809da" title=" " alt="" coords="15,56,262,83"/>
+<area shape="rect" id="node4" href="$classMusicComponent.html#abb5691a5443cbdc8b2f811b609c41dc0" title=" " alt="" coords="11,107,267,133"/>
+<area shape="rect" id="node5" href="$classSoundComponent.html#a7406c9f3098930154ecf5b1c616e20ac" title=" " alt="" coords="9,157,269,184"/>
+<area shape="rect" id="node6" href="$classSpriteComponent.html#a5874e48db34955805d1560629d250754" title=" " alt="" coords="11,208,267,235"/>
+<area shape="rect" id="node7" href="$classTextComponent.html#a2a5c7c8ab0a69ec2fac60fe651169ece" title=" " alt="" coords="21,259,256,285"/>
 </map>

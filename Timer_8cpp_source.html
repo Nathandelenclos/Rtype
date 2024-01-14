@@ -73,80 +73,52 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Created by talleux on 1/10/24.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="Timer_8hpp.html">&quot;Timer.hpp&quot;</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">cstring</span><span class="preprocessor">&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">iostream</span><span class="preprocessor">&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">utility</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">cstring</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">iostream</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">utility</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="Timer_8hpp.html">&quot;Timer.hpp&quot;</a></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * @brief Construct a new Timer:: Timer object</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classTimer.html#a5f16e8da27d2a5a5242dead46de05d97">   13</a></span>&#160;<a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#a5f16e8da27d2a5a5242dead46de05d97">Timer</a>()</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classTimer.html#ac974a91cadd7f97581548540e686b84e">_startTime</a> = {0, 0};</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classTimer.html#acb66cbde99d5127faf1e8970b7f4655e">_now</a> = {0, 0};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classTimer.html#a95d5015cfcf06851803accb29604aaac">_targetTime</a> = {0, 0};</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classTimer.html#adf0e5f9f90574b66ff54709f5f66fedd">_diff</a> = {0, 0};</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[64];</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classTimer.html#a4d2530233ec58f41344c4e20b2a7af90">_active</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    std::memset(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, 0, 64);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * @brief getAttribute, get the attribute</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * @return attribute (char *)</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classTimer.html#aa8b83318c7508a4b157a169a51114e9f">   28</a></span>&#160;<span class="keywordtype">char</span> *<a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#aa8b83318c7508a4b157a169a51114e9f">getAttribute</a>() <span class="keyword">const</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> * @brief setAttribute, set the attribute</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * @param attribute</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classTimer.html#a4bafe9f48e11850c6c01d4755c2d23c6">   37</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#a4bafe9f48e11850c6c01d4755c2d23c6">setAttribute</a>(std::string attribute)</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classTimer.html#a5f16e8da27d2a5a5242dead46de05d97">   10</a></span>&#160;<a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#a5f16e8da27d2a5a5242dead46de05d97">Timer</a>() {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classTimer.html#ac974a91cadd7f97581548540e686b84e">_startTime</a> = {0, 0};</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classTimer.html#acb66cbde99d5127faf1e8970b7f4655e">_now</a> = {0, 0};</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classTimer.html#a95d5015cfcf06851803accb29604aaac">_targetTime</a> = {0, 0};</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classTimer.html#adf0e5f9f90574b66ff54709f5f66fedd">_diff</a> = {0, 0};</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[64];</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classTimer.html#a4d2530233ec58f41344c4e20b2a7af90">_active</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    std::memset(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, 0, 64);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classTimer.html#aa8b83318c7508a4b157a169a51114e9f">   20</a></span>&#160;<span class="keywordtype">char</span> *<a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#aa8b83318c7508a4b157a169a51114e9f">getAttribute</a>() <span class="keyword">const</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classTimer.html#a4bafe9f48e11850c6c01d4755c2d23c6">   25</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#a4bafe9f48e11850c6c01d4755c2d23c6">setAttribute</a>(std::string attribute)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::memset(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, 0, 64);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::memcpy(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, attribute.c_str(), attribute.size());</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;attribute: &quot;</span> &lt;&lt; <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classTimer.html#a9392c815cd4d2c7e2ccf243c20d5702c">   32</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#a9392c815cd4d2c7e2ccf243c20d5702c">setTarget</a>(std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; target)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    _target = std::move(target);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classTimer.html#a1034474c800df1e56aeca0e9406d46f8">   37</a></span>&#160;std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; <a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#a1034474c800df1e56aeca0e9406d46f8">getTarget</a>()</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    std::memset(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, 0, 64);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    std::memcpy(<a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a>, attribute.c_str(), attribute.size());</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;attribute: &quot;</span> &lt;&lt; <a class="code" href="classIComponentRType.html#a0cbb455ef81e79a4ad72253621586405">_attribute</a> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> * @brief setTarget, set the target</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> * @param target</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classTimer.html#a9392c815cd4d2c7e2ccf243c20d5702c">   48</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#a9392c815cd4d2c7e2ccf243c20d5702c">setTarget</a>(std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; target)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    _target = std::move(target);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> * @brief setTarget, set the target</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> * @return target</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classTimer.html#a1034474c800df1e56aeca0e9406d46f8">   57</a></span>&#160;std::shared_ptr&lt;<a class="code" href="classDrawable.html">Drawable</a>&gt; <a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#a1034474c800df1e56aeca0e9406d46f8">getTarget</a>()</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> _target;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"> * @brief setActive, set the timer active</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"> * @param active</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classTimer.html#ac438bd8fb5a33ca6a20911ed5c328165">   66</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#ac438bd8fb5a33ca6a20911ed5c328165">setActive</a>(<span class="keywordtype">bool</span> active)</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="classTimer.html#a4d2530233ec58f41344c4e20b2a7af90">_active</a> = active;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment"> * @brief isActive, check if the timer is active</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> * @return active (bool)</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classTimer.html#a1c037eeecf9a04772c0b57576a12bfad">   75</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#a1c037eeecf9a04772c0b57576a12bfad">isActive</a>() <span class="keyword">const</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classTimer.html#a4d2530233ec58f41344c4e20b2a7af90">_active</a>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> _target;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classTimer.html#ac438bd8fb5a33ca6a20911ed5c328165">   42</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#ac438bd8fb5a33ca6a20911ed5c328165">setActive</a>(<span class="keywordtype">bool</span> active)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classTimer.html#a4d2530233ec58f41344c4e20b2a7af90">_active</a> = active;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classTimer.html#a1c037eeecf9a04772c0b57576a12bfad">   47</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classTimer.html">Timer</a>::<a class="code" href="classTimer.html#a1c037eeecf9a04772c0b57576a12bfad">isActive</a>() <span class="keyword">const</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classTimer.html#a4d2530233ec58f41344c4e20b2a7af90">_active</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
