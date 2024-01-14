@@ -1,14 +1,14 @@
 <map id="LobbyScene::update" name="LobbyScene::update">
-<area shape="rect" id="node1" title=" " alt="" coords="5,297,159,323"/>
+<area shape="rect" id="node1" title="display, display the scene" alt="" coords="5,297,159,323"/>
 <area shape="rect" id="node2" href="$classLobbyScene.html#a2e884213cf2e7c15a388c749ff7b6fb6" title=" " alt="" coords="229,5,423,47"/>
 <area shape="rect" id="node3" href="$classLobbyScene.html#ae570b0a9aed91cbcc912e30680ec288a" title=" " alt="" coords="224,71,428,112"/>
-<area shape="rect" id="node4" href="$classAScene.html#ab439df212b6630bcda7f2cae7de14157" title="broadcastGameState, broadcast the game state" alt="" coords="219,137,433,163"/>
+<area shape="rect" id="node4" href="$classAScene.html#ab439df212b6630bcda7f2cae7de14157" title="broadcastGameState, broadcast the game state" alt="" coords="493,270,708,297"/>
 <area shape="rect" id="node5" href="$classLobbyScene.html#a8fcddeb9ddb8887aec233d0be7e328d7" title=" " alt="" coords="226,187,426,214"/>
-<area shape="rect" id="node6" href="$classLobbyScene.html#ac871ad60458f007e63df2213eb6b3767" title="checkBulletDeletion, check the bullet deletion" alt="" coords="207,238,445,265"/>
+<area shape="rect" id="node6" href="$classLobbyScene.html#ac871ad60458f007e63df2213eb6b3767" title=" " alt="" coords="207,238,445,265"/>
 <area shape="rect" id="node7" href="$classLobbyScene.html#a2a95d44d88f24875cda6566e33c767ff" title=" " alt="" coords="225,289,427,331"/>
-<area shape="rect" id="node8" href="$Lobby_8cpp.html#a4a514963028e5f1f61de2419b39165b5" title=" " alt="" coords="493,326,680,353"/>
+<area shape="rect" id="node8" href="$Lobby_8cpp.html#a4a514963028e5f1f61de2419b39165b5" title=" " alt="" coords="507,325,694,351"/>
 <area shape="rect" id="node9" href="$classLobbyScene.html#a7202daf08faed2f5f5eb7a526d2c5fcd" title=" " alt="" coords="222,406,430,433"/>
-<area shape="rect" id="node10" href="$classAScene.html#a04756252779480e19871b162ed0aea8a" title="sedGameState, send the game state" alt="" coords="235,457,417,483"/>
+<area shape="rect" id="node10" href="$classAScene.html#a04756252779480e19871b162ed0aea8a" title="sendGameState, send the game state" alt="" coords="235,457,417,483"/>
 <area shape="rect" id="node11" href="$classLobbyScene.html#a1e868fa2feeb3dc5ba21aaea82f5498e" title="shootBoss, boss attacks" alt="" coords="239,507,413,534"/>
-<area shape="rect" id="node12" href="$classLobbyScene.html#abafbb841ce543ea7cb1905c4ed8d056d" title="spawnBoss, spawn the boss" alt="" coords="235,558,417,585"/>
+<area shape="rect" id="node12" href="$classLobbyScene.html#abafbb841ce543ea7cb1905c4ed8d056d" title="initServices, init the services" alt="" coords="235,558,417,585"/>
 </map>

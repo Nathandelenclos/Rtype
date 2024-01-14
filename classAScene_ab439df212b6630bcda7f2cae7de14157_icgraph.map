@@ -1,4 +1,5 @@
 <map id="AScene::broadcastGameState" name="AScene::broadcastGameState">
-<area shape="rect" id="node1" title="broadcastGameState, broadcast the game state" alt="" coords="207,5,421,32"/>
-<area shape="rect" id="node2" href="$classLobbyScene.html#aca72399dd75a5aee2a14f577dfcccd57" title=" " alt="" coords="5,5,159,32"/>
+<area shape="rect" id="node1" title="broadcastGameState, broadcast the game state" alt="" coords="457,42,672,69"/>
+<area shape="rect" id="node2" href="$classLobbyScene.html#a2a95d44d88f24875cda6566e33c767ff" title=" " alt="" coords="207,5,409,47"/>
+<area shape="rect" id="node3" href="$classLobbyScene.html#aca72399dd75a5aee2a14f577dfcccd57" title="display, display the scene" alt="" coords="5,42,159,69"/>
 </map>

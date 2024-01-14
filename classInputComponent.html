@@ -96,7 +96,7 @@ Collaboration diagram for InputComponent:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:acb40e25bdd17bb8219fc0af32e6809da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInputComponent.html#acb40e25bdd17bb8219fc0af32e6809da">InputComponent</a> (<a class="el" href="classClientCore.html">ClientCore</a> *core, std::shared_ptr&lt; <a class="el" href="classClientSocket.html">ClientSocket</a> &gt; socket)</td></tr>
-<tr class="memdesc:acb40e25bdd17bb8219fc0af32e6809da"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classInputComponent.html">InputComponent</a> constructor.  <a href="classInputComponent.html#acb40e25bdd17bb8219fc0af32e6809da">More...</a><br /></td></tr>
+<tr class="memdesc:acb40e25bdd17bb8219fc0af32e6809da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Input Component object.  <a href="classInputComponent.html#acb40e25bdd17bb8219fc0af32e6809da">More...</a><br /></td></tr>
 <tr class="separator:acb40e25bdd17bb8219fc0af32e6809da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a694c0510afc1a8758650b750a1aad844"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInputComponent.html#a694c0510afc1a8758650b750a1aad844">action</a> () override</td></tr>
 <tr class="memdesc:a694c0510afc1a8758650b750a1aad844"><td class="mdescLeft">&#160;</td><td class="mdescRight">action, call the callback function  <a href="classInputComponent.html#a694c0510afc1a8758650b750a1aad844">More...</a><br /></td></tr>
@@ -114,29 +114,32 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ae2abc9967c90557ecd79cd0ffa0f3a6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">setRect set the rect of the component  <a href="classInputComponent.html#ae2abc9967c90557ecd79cd0ffa0f3a6d">More...</a><br /></td></tr>
 <tr class="separator:ae2abc9967c90557ecd79cd0ffa0f3a6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7c2eca50aa4d0e541b1ed1d783fa30f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInputComponent.html#ad7c2eca50aa4d0e541b1ed1d783fa30f">setIsClicked</a> (bool isClicked)</td></tr>
-<tr class="memdesc:ad7c2eca50aa4d0e541b1ed1d783fa30f"><td class="mdescLeft">&#160;</td><td class="mdescRight">SetIsClicked set the isClicked of the component.  <a href="classInputComponent.html#ad7c2eca50aa4d0e541b1ed1d783fa30f">More...</a><br /></td></tr>
+<tr class="memdesc:ad7c2eca50aa4d0e541b1ed1d783fa30f"><td class="mdescLeft">&#160;</td><td class="mdescRight">setIsClicked, set the isClicked of the component  <a href="classInputComponent.html#ad7c2eca50aa4d0e541b1ed1d783fa30f">More...</a><br /></td></tr>
 <tr class="separator:ad7c2eca50aa4d0e541b1ed1d783fa30f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1945035328dd6d788c75ed4d0525725f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInputComponent.html#a1945035328dd6d788c75ed4d0525725f">display</a> (sf::RenderWindow &amp;window) override</td></tr>
 <tr class="memdesc:a1945035328dd6d788c75ed4d0525725f"><td class="mdescLeft">&#160;</td><td class="mdescRight">display display the component  <a href="classInputComponent.html#a1945035328dd6d788c75ed4d0525725f">More...</a><br /></td></tr>
 <tr class="separator:a1945035328dd6d788c75ed4d0525725f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acad8e1209c34713d9456ad605c3481e2"><td class="memItemLeft" align="right" valign="top">sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInputComponent.html#acad8e1209c34713d9456ad605c3481e2">getRect</a> () const</td></tr>
-<tr class="memdesc:acad8e1209c34713d9456ad605c3481e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">getRect get the texture of the component  <a href="classInputComponent.html#acad8e1209c34713d9456ad605c3481e2">More...</a><br /></td></tr>
+<tr class="memdesc:acad8e1209c34713d9456ad605c3481e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">getRect get the rect of the component  <a href="classInputComponent.html#acad8e1209c34713d9456ad605c3481e2">More...</a><br /></td></tr>
 <tr class="separator:acad8e1209c34713d9456ad605c3481e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61faeca5e282bef6c56c6f6f49337d36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInputComponent.html#a61faeca5e282bef6c56c6f6f49337d36">handleEvent</a> (const <a class="el" href="USocket_8hpp.html#ab2f494a6b60c0f52e6c2a96fbe4d010c">sf::Event</a> &amp;<a class="el" href="structevent.html">event</a>, sf::RenderWindow &amp;window) override</td></tr>
-<tr class="memdesc:a61faeca5e282bef6c56c6f6f49337d36"><td class="mdescLeft">&#160;</td><td class="mdescRight">handleEvent handle the event of the component  <a href="classInputComponent.html#a61faeca5e282bef6c56c6f6f49337d36">More...</a><br /></td></tr>
+<tr class="memdesc:a61faeca5e282bef6c56c6f6f49337d36"><td class="mdescLeft">&#160;</td><td class="mdescRight">handleEvent, handle the event  <a href="classInputComponent.html#a61faeca5e282bef6c56c6f6f49337d36">More...</a><br /></td></tr>
 <tr class="separator:a61faeca5e282bef6c56c6f6f49337d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6b871f244ddfa825c24a5cc6703edd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInputComponent.html#ac6b871f244ddfa825c24a5cc6703edd4">handleClick</a> ()</td></tr>
+<tr class="memdesc:ac6b871f244ddfa825c24a5cc6703edd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">handleClick, handle the click  <a href="classInputComponent.html#ac6b871f244ddfa825c24a5cc6703edd4">More...</a><br /></td></tr>
 <tr class="separator:ac6b871f244ddfa825c24a5cc6703edd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fae41e6b7de0075e8b6aaa61dfc39c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInputComponent.html#a1fae41e6b7de0075e8b6aaa61dfc39c0">setText</a> ()</td></tr>
-<tr class="memdesc:a1fae41e6b7de0075e8b6aaa61dfc39c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">setText set the text of the component  <a href="classInputComponent.html#a1fae41e6b7de0075e8b6aaa61dfc39c0">More...</a><br /></td></tr>
+<tr class="memdesc:a1fae41e6b7de0075e8b6aaa61dfc39c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">setText, set the text of the component  <a href="classInputComponent.html#a1fae41e6b7de0075e8b6aaa61dfc39c0">More...</a><br /></td></tr>
 <tr class="separator:a1fae41e6b7de0075e8b6aaa61dfc39c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af69b4fd09ca4c5f9c8a5fec9b53e1830"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInputComponent.html#af69b4fd09ca4c5f9c8a5fec9b53e1830">getText</a> ()</td></tr>
-<tr class="memdesc:af69b4fd09ca4c5f9c8a5fec9b53e1830"><td class="mdescLeft">&#160;</td><td class="mdescRight">getText get the text of the component  <a href="classInputComponent.html#af69b4fd09ca4c5f9c8a5fec9b53e1830">More...</a><br /></td></tr>
+<tr class="memdesc:af69b4fd09ca4c5f9c8a5fec9b53e1830"><td class="mdescLeft">&#160;</td><td class="mdescRight">getText, get the text of the component  <a href="classInputComponent.html#af69b4fd09ca4c5f9c8a5fec9b53e1830">More...</a><br /></td></tr>
 <tr class="separator:af69b4fd09ca4c5f9c8a5fec9b53e1830"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classAComponent"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classAComponent')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classAComponent.html">AComponent</a></td></tr>
 <tr class="memitem:a9ddc2b8c92d1204ca8ee0fffb295e136 inherit pub_methods_classAComponent"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAComponent.html#a9ddc2b8c92d1204ca8ee0fffb295e136">AComponent</a> (<a class="el" href="classClientCore.html">ClientCore</a> *clientCore)</td></tr>
+<tr class="memdesc:a9ddc2b8c92d1204ca8ee0fffb295e136 inherit pub_methods_classAComponent"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classAComponent.html">AComponent</a>, constructor of <a class="el" href="classAComponent.html">AComponent</a>.  <a href="classAComponent.html#a9ddc2b8c92d1204ca8ee0fffb295e136">More...</a><br /></td></tr>
 <tr class="separator:a9ddc2b8c92d1204ca8ee0fffb295e136 inherit pub_methods_classAComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73d23cfa76293767476118966d17d4d7 inherit pub_methods_classAComponent"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAComponent.html#a73d23cfa76293767476118966d17d4d7">~AComponent</a> () override=default</td></tr>
+<tr class="memdesc:a73d23cfa76293767476118966d17d4d7 inherit pub_methods_classAComponent"><td class="mdescLeft">&#160;</td><td class="mdescRight">~AComponent, destructor of <a class="el" href="classAComponent.html">AComponent</a>  <a href="classAComponent.html#a73d23cfa76293767476118966d17d4d7">More...</a><br /></td></tr>
 <tr class="separator:a73d23cfa76293767476118966d17d4d7 inherit pub_methods_classAComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afad9f86379413b3706a04111a22f1721 inherit pub_methods_classAComponent"><td class="memItemLeft" align="right" valign="top"><a class="el" href="client_2Components_2IComponent_8hpp.html#a81f78fc173dedefe5a049c0aa3eed2c0">ComponentType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAComponent.html#afad9f86379413b3706a04111a22f1721">getType</a> () const override</td></tr>
 <tr class="memdesc:afad9f86379413b3706a04111a22f1721 inherit pub_methods_classAComponent"><td class="mdescLeft">&#160;</td><td class="mdescRight">getType, get the type of the component  <a href="classAComponent.html#afad9f86379413b3706a04111a22f1721">More...</a><br /></td></tr>
@@ -155,8 +158,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aaaef56583d17d96755944b8bfd326e08 inherit pub_methods_classAComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classIComponent"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classIComponent')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classIComponent.html">IComponent</a></td></tr>
 <tr class="memitem:a9230af60e880f13d6e878c2974d06d03 inherit pub_methods_classIComponent"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIComponent.html#a9230af60e880f13d6e878c2974d06d03">IComponent</a> (<a class="el" href="classClientCore.html">ClientCore</a> *clientCore)</td></tr>
+<tr class="memdesc:a9230af60e880f13d6e878c2974d06d03 inherit pub_methods_classIComponent"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classIComponent.html">IComponent</a>, constructor of <a class="el" href="classIComponent.html">IComponent</a>.  <a href="classIComponent.html#a9230af60e880f13d6e878c2974d06d03">More...</a><br /></td></tr>
 <tr class="separator:a9230af60e880f13d6e878c2974d06d03 inherit pub_methods_classIComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1a616cdfb3812f3aabdb97666c71116 inherit pub_methods_classIComponent"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIComponent.html#ab1a616cdfb3812f3aabdb97666c71116">~IComponent</a> ()=default</td></tr>
+<tr class="memdesc:ab1a616cdfb3812f3aabdb97666c71116 inherit pub_methods_classIComponent"><td class="mdescLeft">&#160;</td><td class="mdescRight">~IComponent, destructor of <a class="el" href="classIComponent.html">IComponent</a>  <a href="classIComponent.html#ab1a616cdfb3812f3aabdb97666c71116">More...</a><br /></td></tr>
 <tr class="separator:ab1a616cdfb3812f3aabdb97666c71116 inherit pub_methods_classIComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -180,7 +185,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="InputComponent_8hpp_source.html#l00010">10</a> of file <a class="el" href="InputComponent_8hpp_source.html">InputComponent.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8hpp_source.html#l00013">13</a> of file <a class="el" href="InputComponent_8hpp_source.html">InputComponent.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="acb40e25bdd17bb8219fc0af32e6809da"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acb40e25bdd17bb8219fc0af32e6809da">&#9670;&nbsp;</a></span>InputComponent()</h2>
@@ -216,7 +221,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="classInputComponent.html">InputComponent</a> constructor. </p>
+<p>Construct a new Input Component object. </p>
+<p><a class="el" href="classInputComponent.html">InputComponent</a> constructor.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">core</td><td></td></tr>
@@ -225,17 +231,17 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00014">14</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00017">17</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="client_2Components_2IComponent_8hpp_source.html#l00045">IComponent::_attribute</a>, <a class="el" href="InputComponent_8hpp_source.html#l00030">_textEntry</a>, <a class="el" href="client_2Components_2IComponent_8hpp_source.html#l00046">IComponent::_type</a>, <a class="el" href="AComponent_8hpp_source.html#l00014">AComponent::AComponent()</a>, and <a class="el" href="client_2Components_2IComponent_8hpp_source.html#l00016">INPUT</a>.</p>
+<p class="reference">References <a class="el" href="client_2Components_2IComponent_8hpp_source.html#l00096">IComponent::_attribute</a>, <a class="el" href="InputComponent_8hpp_source.html#l00104">_textEntry</a>, <a class="el" href="client_2Components_2IComponent_8hpp_source.html#l00097">IComponent::_type</a>, <a class="el" href="AComponent_8hpp_source.html#l00021">AComponent::AComponent()</a>, and <a class="el" href="client_2Components_2IComponent_8hpp_source.html#l00019">INPUT</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classInputComponent_acb40e25bdd17bb8219fc0af32e6809da_cgraph.png" border="0" usemap="#aclassInputComponent_acb40e25bdd17bb8219fc0af32e6809da_cgraph" alt=""/></div>
 <map name="aclassInputComponent_acb40e25bdd17bb8219fc0af32e6809da_cgraph" id="aclassInputComponent_acb40e25bdd17bb8219fc0af32e6809da_cgraph">
-<area shape="rect" title="InputComponent constructor." alt="" coords="5,5,252,32"/>
-<area shape="rect" href="classAComponent.html#a9ddc2b8c92d1204ca8ee0fffb295e136" title=" " alt="" coords="300,5,499,32"/>
-<area shape="rect" href="classIComponent.html#a9230af60e880f13d6e878c2974d06d03" title=" " alt="" coords="547,5,735,32"/>
+<area shape="rect" title="Construct a new Input Component object." alt="" coords="5,5,252,32"/>
+<area shape="rect" href="classAComponent.html#a9ddc2b8c92d1204ca8ee0fffb295e136" title="AComponent, constructor of AComponent." alt="" coords="300,5,499,32"/>
+<area shape="rect" href="classIComponent.html#a9230af60e880f13d6e878c2974d06d03" title="IComponent, constructor of IComponent." alt="" coords="547,5,735,32"/>
 </map>
 </div>
 
@@ -269,7 +275,7 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classIComponent.html#a31daef7da20f27c0cc30c7f48a20bf05">IComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00042">42</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00045">45</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
 
 </div>
 </div>
@@ -307,7 +313,7 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classIComponent.html#a14c8c65f67a3d82f69835180ccee5c4d">IComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00095">95</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00098">98</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
 
 </div>
 </div>
@@ -326,10 +332,13 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>getRect get the texture of the component </p>
-<dl class="section return"><dt>Returns</dt><dd>rect of the component </dd></dl>
+<p>getRect get the rect of the component </p>
+<p>getRect get the texture of the component</p>
+<dl class="section return"><dt>Returns</dt><dd>sf::IntRect</dd>
+<dd>
+rect of the component </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00105">105</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00108">108</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
 
 </div>
 </div>
@@ -348,11 +357,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p>getText, get the text of the component </p>
 <p>getText get the text of the component </p>
 
-<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00121">121</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00124">124</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="InputComponent_8hpp_source.html#l00030">_textEntry</a>.</p>
+<p class="reference">References <a class="el" href="InputComponent_8hpp_source.html#l00104">_textEntry</a>.</p>
 
 </div>
 </div>
@@ -370,6 +380,8 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>handleClick, handle the click </p>
 
 </div>
 </div>
@@ -407,7 +419,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>handleEvent handle the event of the component </p>
+<p>handleEvent, handle the event </p>
+<p>handleEvent handle the event of the component</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">event</td><td></td></tr>
@@ -418,16 +431,16 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classIComponent.html#a557a494b366d5836bbd0b2d64aa24619">IComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00140">140</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00143">143</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="InputComponent_8hpp_source.html#l00030">_textEntry</a>, and <a class="el" href="InputComponent_8cpp_source.html#l00113">setText()</a>.</p>
+<p class="reference">References <a class="el" href="InputComponent_8hpp_source.html#l00104">_textEntry</a>, and <a class="el" href="InputComponent_8cpp_source.html#l00116">setText()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classInputComponent_a61faeca5e282bef6c56c6f6f49337d36_cgraph.png" border="0" usemap="#aclassInputComponent_a61faeca5e282bef6c56c6f6f49337d36_cgraph" alt=""/></div>
 <map name="aclassInputComponent_a61faeca5e282bef6c56c6f6f49337d36_cgraph" id="aclassInputComponent_a61faeca5e282bef6c56c6f6f49337d36_cgraph">
-<area shape="rect" title="handleEvent handle the event of the component" alt="" coords="5,5,224,32"/>
-<area shape="rect" href="classInputComponent.html#a1fae41e6b7de0075e8b6aaa61dfc39c0" title="setText set the text of the component" alt="" coords="272,5,457,32"/>
+<area shape="rect" title="handleEvent, handle the event" alt="" coords="5,5,224,32"/>
+<area shape="rect" href="classInputComponent.html#a1fae41e6b7de0075e8b6aaa61dfc39c0" title="setText, set the text of the component" alt="" coords="272,5,457,32"/>
 </map>
 </div>
 
@@ -449,7 +462,8 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>SetIsClicked set the isClicked of the component. </p>
+<p>setIsClicked, set the isClicked of the component </p>
+<p>SetIsClicked set the isClicked of the component.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">isClicked</td><td></td></tr>
@@ -457,7 +471,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00130">130</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00133">133</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
 
 </div>
 </div>
@@ -485,7 +499,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00061">61</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00064">64</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
 
 </div>
 </div>
@@ -513,7 +527,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00085">85</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00088">88</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
 
 </div>
 </div>
@@ -541,7 +555,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00075">75</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00078">78</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
 
 </div>
 </div>
@@ -560,18 +574,19 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p>setText, set the text of the component </p>
 <p>setText set the text of the component </p>
 
-<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00113">113</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00116">116</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="InputComponent_8cpp_source.html#l00140">handleEvent()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="InputComponent_8cpp_source.html#l00143">handleEvent()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classInputComponent_a1fae41e6b7de0075e8b6aaa61dfc39c0_icgraph.png" border="0" usemap="#aclassInputComponent_a1fae41e6b7de0075e8b6aaa61dfc39c0_icgraph" alt=""/></div>
 <map name="aclassInputComponent_a1fae41e6b7de0075e8b6aaa61dfc39c0_icgraph" id="aclassInputComponent_a1fae41e6b7de0075e8b6aaa61dfc39c0_icgraph">
-<area shape="rect" title="setText set the text of the component" alt="" coords="272,5,457,32"/>
-<area shape="rect" href="classInputComponent.html#a61faeca5e282bef6c56c6f6f49337d36" title="handleEvent handle the event of the component" alt="" coords="5,5,224,32"/>
+<area shape="rect" title="setText, set the text of the component" alt="" coords="272,5,457,32"/>
+<area shape="rect" href="classInputComponent.html#a61faeca5e282bef6c56c6f6f49337d36" title="handleEvent, handle the event" alt="" coords="5,5,224,32"/>
 </map>
 </div>
 
@@ -601,7 +616,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00051">51</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8cpp_source.html#l00054">54</a> of file <a class="el" href="InputComponent_8cpp_source.html">InputComponent.cpp</a>.</p>
 
 </div>
 </div>
@@ -618,9 +633,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="InputComponent_8hpp_source.html#l00030">30</a> of file <a class="el" href="InputComponent_8hpp_source.html">InputComponent.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="InputComponent_8hpp_source.html#l00104">104</a> of file <a class="el" href="InputComponent_8hpp_source.html">InputComponent.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="InputComponent_8cpp_source.html#l00121">getText()</a>, <a class="el" href="InputComponent_8cpp_source.html#l00140">handleEvent()</a>, and <a class="el" href="InputComponent_8cpp_source.html#l00014">InputComponent()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="InputComponent_8cpp_source.html#l00124">getText()</a>, <a class="el" href="InputComponent_8cpp_source.html#l00143">handleEvent()</a>, and <a class="el" href="InputComponent_8cpp_source.html#l00017">InputComponent()</a>.</p>
 
 </div>
 </div>

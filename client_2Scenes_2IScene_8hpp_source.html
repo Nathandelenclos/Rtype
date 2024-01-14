@@ -69,49 +69,104 @@ $(function() {
 <div class="title">IScene.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="client_2Scenes_2IScene_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Created by Talleux on 28/12/2023.</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">pragma</span> <span class="preprocessor">once</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../Components/IComponent.hpp&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../Components/Music/MusicComponent.hpp&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../Components/Sound/SoundComponent.hpp&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">memory</span><span class="preprocessor">&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">sys</span><span class="preprocessor">/</span><span class="preprocessor">time</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">vector</span><span class="preprocessor">&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classIScene.html">   14</a></span>&#160;<span class="keyword">class</span> <a class="code" href="classIScene.html">IScene</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classIScene.html#adfd32db3454f92122c2297690732a455">   17</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classIScene.html#adfd32db3454f92122c2297690732a455">IScene</a>(<a class="code" href="classClientCore.html">ClientCore</a> *clientCore) :</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classIScene.html#a4f2873232c9ca2e542775f2d1e5b3220">_clientCore</a>(clientCore)</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classIScene.html#a146b1101069efb7a46b3bb6e419bc2bc">   21</a></span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classIScene.html#a146b1101069efb7a46b3bb6e419bc2bc">IScene</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classIScene.html#a6b33fd91f35ac6be09dd36649f1a6be7">   23</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#a6b33fd91f35ac6be09dd36649f1a6be7">addComponent</a>(std::shared_ptr&lt;<a class="code" href="classIComponent.html">IComponent</a>&gt; component) = 0;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">   24</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">std</a>::<a class="code" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">vector</a>&lt;<a class="code" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">std</a>::<a class="code" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">shared_ptr</a>&lt;<a class="code" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">IComponent</a>&gt;&gt; <a class="code" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">getComponents</a>() = 0;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classIScene.html#ad396de90d15c0b4ba006e12278fd552c">   25</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#ad396de90d15c0b4ba006e12278fd552c">display</a>(sf::RenderWindow &amp;window) = 0;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classIScene.html#aba4d8ff373accb55004e9b5b5bc11b6d">   27</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#aba4d8ff373accb55004e9b5b5bc11b6d">update</a>() = 0;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classIScene.html#af708ad60661734da757a6483e73e3a94">   28</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#af708ad60661734da757a6483e73e3a94">handleEvent</a>(<span class="keyword">const</span> sf::Event &amp;event, sf::RenderWindow &amp;window) = 0;</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classIScene.html#a5e2d057c961ce85475b3be3a0263008b">   29</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#a5e2d057c961ce85475b3be3a0263008b">receiveData</a>() = 0;</div>
+<a href="client_2Scenes_2IScene_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">** EPITECH PROJECT, 2023</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">** R-type</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">** File description:</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">** R-type</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">pragma</span> <span class="preprocessor">once</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../Components/IComponent.hpp&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../Components/Music/MusicComponent.hpp&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;../Components/Sound/SoundComponent.hpp&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">memory</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">sys</span><span class="preprocessor">/</span><span class="preprocessor">time</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">vector</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classIScene.html">   17</a></span>&#160;<span class="keyword">class</span> <a class="code" href="classIScene.html">IScene</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">     * @brief IScene, constructor of IScene</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">     * @param clientCore</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classIScene.html#adfd32db3454f92122c2297690732a455">   26</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classIScene.html#adfd32db3454f92122c2297690732a455">IScene</a>(<a class="code" href="classClientCore.html">ClientCore</a> *clientCore) :</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="classIScene.html#a4f2873232c9ca2e542775f2d1e5b3220">_clientCore</a>(clientCore)</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classIScene.html#a3c9ff4ff7f152e5adb5ab5470a1b4efc">   31</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#a3c9ff4ff7f152e5adb5ab5470a1b4efc">pauseScene</a>() = 0;</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classIScene.html#aa403c32d1a454e80d7efd8968653712f">   32</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#aa403c32d1a454e80d7efd8968653712f">resumeScene</a>() = 0;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classIScene.html#af12f095a2ed34d5e0285e7a87785e57e">   33</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#af12f095a2ed34d5e0285e7a87785e57e">stopScene</a>() = 0;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classIScene.html#af02d7d7ce071b195534d5e19d3ccb694">   35</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classIScene.html#af02d7d7ce071b195534d5e19d3ccb694">continueScene</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::vector&lt;std::shared_ptr&lt;IComponent&gt;&gt; _components;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classIScene.html#a4f2873232c9ca2e542775f2d1e5b3220">   41</a></span>&#160;    <a class="code" href="classClientCore.html">ClientCore</a> *<a class="code" href="classIScene.html#a4f2873232c9ca2e542775f2d1e5b3220">_clientCore</a>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classIScene.html#af25096353ec4c5e0123ad317a5639ce1">   42</a></span>&#160;    timeval <a class="code" href="classIScene.html#af25096353ec4c5e0123ad317a5639ce1">_pingTime</a>{};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">     * @brief ~IScene, destructor of IScene</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classIScene.html#a146b1101069efb7a46b3bb6e419bc2bc">   34</a></span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classIScene.html#a146b1101069efb7a46b3bb6e419bc2bc">IScene</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">     * @brief addComponent, add a component</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">     * @param component</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classIScene.html#a6b33fd91f35ac6be09dd36649f1a6be7">   41</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#a6b33fd91f35ac6be09dd36649f1a6be7">addComponent</a>(std::shared_ptr&lt;<a class="code" href="classIComponent.html">IComponent</a>&gt; component) = 0;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">     * @brief getComponents, get all the components</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">     * @return std::vector&lt;std::shared_ptr&lt;IComponent&gt;&gt;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">   48</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">std</a>::<a class="code" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">vector</a>&lt;<a class="code" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">std</a>::<a class="code" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">shared_ptr</a>&lt;<a class="code" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">IComponent</a>&gt;&gt; <a class="code" href="classIScene.html#ad0879bf788d8578d3e21c0f0e2386e1c">getComponents</a>() = 0;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">     * @brief display, display the scene</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">     * @param window</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classIScene.html#ad396de90d15c0b4ba006e12278fd552c">   55</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#ad396de90d15c0b4ba006e12278fd552c">display</a>(sf::RenderWindow &amp;window) = 0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">     * @brief update, update the scene</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classIScene.html#aba4d8ff373accb55004e9b5b5bc11b6d">   60</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#aba4d8ff373accb55004e9b5b5bc11b6d">update</a>() = 0;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">     * @brief handleEvent, handle the event</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">     * @param event</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">     * @param window</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classIScene.html#af708ad60661734da757a6483e73e3a94">   68</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#af708ad60661734da757a6483e73e3a94">handleEvent</a>(<span class="keyword">const</span> sf::Event &amp;event, sf::RenderWindow &amp;window) = 0;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">     * @brief receiveData, receive the data</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classIScene.html#a5e2d057c961ce85475b3be3a0263008b">   73</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#a5e2d057c961ce85475b3be3a0263008b">receiveData</a>() = 0;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">     * @brief pauseScene, pause the scene</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classIScene.html#a3c9ff4ff7f152e5adb5ab5470a1b4efc">   78</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#a3c9ff4ff7f152e5adb5ab5470a1b4efc">pauseScene</a>() = 0;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">     * @brief resumeScene, resume the scene</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classIScene.html#aa403c32d1a454e80d7efd8968653712f">   83</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#aa403c32d1a454e80d7efd8968653712f">resumeScene</a>() = 0;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">     * @brief stopScene, stop the scene</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classIScene.html#af12f095a2ed34d5e0285e7a87785e57e">   88</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classIScene.html#af12f095a2ed34d5e0285e7a87785e57e">stopScene</a>() = 0;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="classIScene.html#af02d7d7ce071b195534d5e19d3ccb694">   90</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classIScene.html#af02d7d7ce071b195534d5e19d3ccb694">continueScene</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    std::vector&lt;std::shared_ptr&lt;IComponent&gt;&gt; _components;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classIScene.html#a4f2873232c9ca2e542775f2d1e5b3220">   96</a></span>&#160;    <a class="code" href="classClientCore.html">ClientCore</a> *<a class="code" href="classIScene.html#a4f2873232c9ca2e542775f2d1e5b3220">_clientCore</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classIScene.html#af25096353ec4c5e0123ad317a5639ce1">   97</a></span>&#160;    timeval <a class="code" href="classIScene.html#af25096353ec4c5e0123ad317a5639ce1">_pingTime</a>{};</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

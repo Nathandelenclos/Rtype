@@ -1,5 +1,5 @@
 <map id="SoundComponent::SoundComponent" name="SoundComponent::SoundComponent">
 <area shape="rect" id="node1" title="Construct a new Sound Component:: Sound Component object." alt="" coords="5,5,265,32"/>
-<area shape="rect" id="node2" href="$classAComponent.html#a9ddc2b8c92d1204ca8ee0fffb295e136" title=" " alt="" coords="313,5,512,32"/>
-<area shape="rect" id="node3" href="$classIComponent.html#a9230af60e880f13d6e878c2974d06d03" title=" " alt="" coords="560,5,748,32"/>
+<area shape="rect" id="node2" href="$classAComponent.html#a9ddc2b8c92d1204ca8ee0fffb295e136" title="AComponent, constructor of AComponent." alt="" coords="313,5,512,32"/>
+<area shape="rect" id="node3" href="$classIComponent.html#a9230af60e880f13d6e878c2974d06d03" title="IComponent, constructor of IComponent." alt="" coords="560,5,748,32"/>
 </map>

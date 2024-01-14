@@ -1,4 +1,4 @@
 <map id="LobbyScene::shootBoss" name="LobbyScene::shootBoss">
 <area shape="rect" id="node1" title="shootBoss, boss attacks" alt="" coords="207,5,381,32"/>
-<area shape="rect" id="node2" href="$classLobbyScene.html#aca72399dd75a5aee2a14f577dfcccd57" title=" " alt="" coords="5,5,159,32"/>
+<area shape="rect" id="node2" href="$classLobbyScene.html#aca72399dd75a5aee2a14f577dfcccd57" title="display, display the scene" alt="" coords="5,5,159,32"/>
 </map>

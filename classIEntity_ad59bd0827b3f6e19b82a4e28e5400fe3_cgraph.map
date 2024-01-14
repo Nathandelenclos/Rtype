@@ -1,4 +1,4 @@
 <map id="IEntity::IEntity" name="IEntity::IEntity">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node2" href="$classIEntity.html#aa9737b6d2827bdf63b51c2a98f4bd182" title=" " alt="" coords="167,5,315,32"/>
+<area shape="rect" id="node1" title="Construct a new IEntity object." alt="" coords="5,5,119,32"/>
+<area shape="rect" id="node2" href="$classIEntity.html#aa9737b6d2827bdf63b51c2a98f4bd182" title="Set the Attribute object." alt="" coords="167,5,315,32"/>
 </map>

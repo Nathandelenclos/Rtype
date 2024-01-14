@@ -69,62 +69,65 @@ $(function() {
 <div class="title">SoundComponent.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="SoundComponent_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Created by talleux on 12/29/23.</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="SoundComponent_8hpp.html">&quot;SoundComponent.hpp&quot;</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * @brief Construct a new Sound Component:: Sound Component object</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * @param core</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * @param socket</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classSoundComponent.html#a7406c9f3098930154ecf5b1c616e20ac">   13</a></span>&#160;<a class="code" href="classSoundComponent.html">SoundComponent</a>::<a class="code" href="classSoundComponent.html#a7406c9f3098930154ecf5b1c616e20ac">SoundComponent</a>(<a class="code" href="classClientCore.html">ClientCore</a> *core, std::shared_ptr&lt;<a class="code" href="classClientSocket.html">ClientSocket</a>&gt; socket) :</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classAComponent.html">AComponent</a><a class="code" href="classAComponent.html#a9ddc2b8c92d1204ca8ee0fffb295e136">(</a>core<a class="code" href="classAComponent.html#a9ddc2b8c92d1204ca8ee0fffb295e136">)</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classIComponent.html#a059d5f171ad78246fe9038599316cf72">_type</a> = ComponentType<a class="code" href="client_2Components_2IComponent_8hpp.html#a81f78fc173dedefe5a049c0aa3eed2c0af6f528c05e18d84cb19ff77db96211f0">::</a><a class="code" href="client_2Components_2IComponent_8hpp.html#a81f78fc173dedefe5a049c0aa3eed2c0af6f528c05e18d84cb19ff77db96211f0">SOUND</a>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">if</span> (!_buffer.loadFromFile(<span class="stringliteral">&quot;../src/client/assets/sounds/click.wav&quot;</span>))</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Cannot load click.wav&quot;</span>);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    _sound.setBuffer(_buffer);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    _socket = std::move(socket);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classSoundComponent.html#a31d19ea91fa2862b0fe0eb7cdfbff852">   23</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html">SoundComponent</a>::<a class="code" href="classSoundComponent.html#a31d19ea91fa2862b0fe0eb7cdfbff852">display</a>(sf::RenderWindow &amp;window)</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * @brief action, play the sound</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classSoundComponent.html#a5d9073c6f31d2b5392ebb9b0d120a52f">   30</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html">SoundComponent</a>::<a class="code" href="classSoundComponent.html#a5d9073c6f31d2b5392ebb9b0d120a52f">action</a>()</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    _sound.play();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classSoundComponent.html#a386407e05340c4f850f48449b7c7dd64">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html">SoundComponent</a>::<a class="code" href="classSoundComponent.html#a386407e05340c4f850f48449b7c7dd64">handleEvent</a>(<span class="keyword">const</span> sf::Event &amp;event, sf::RenderWindow &amp;window)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * @brief setSound, set the sound</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * @param path the path of the sound</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classSoundComponent.html#aa4326d391a161ba4fb69657c607efc28">   43</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html">SoundComponent</a>::<a class="code" href="classSoundComponent.html#aa4326d391a161ba4fb69657c607efc28">setSound</a>(<span class="keyword">const</span> std::string &amp;path)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> (!_buffer.loadFromFile(path))</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Cannot load &quot;</span> + path);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    _sound.setBuffer(_buffer);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> * @brief stop, stop the sound</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classSoundComponent.html#a960361b01a6976816f007ac8bd5f1bd7">   53</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html">SoundComponent</a>::<a class="code" href="classSoundComponent.html#a960361b01a6976816f007ac8bd5f1bd7">stop</a>()</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    _sound.stop();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<a href="SoundComponent_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">** EPITECH PROJECT, 2023</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">** R-type</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">** File description:</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">** R-type</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="SoundComponent_8hpp.html">&quot;SoundComponent.hpp&quot;</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * @brief Construct a new Sound Component:: Sound Component object</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * @param core</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * @param socket</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classSoundComponent.html#a7406c9f3098930154ecf5b1c616e20ac">   16</a></span>&#160;<a class="code" href="classSoundComponent.html">SoundComponent</a>::<a class="code" href="classSoundComponent.html#a7406c9f3098930154ecf5b1c616e20ac">SoundComponent</a>(<a class="code" href="classClientCore.html">ClientCore</a> *core, std::shared_ptr&lt;<a class="code" href="classClientSocket.html">ClientSocket</a>&gt; socket) :</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classAComponent.html">AComponent</a><a class="code" href="classAComponent.html#a9ddc2b8c92d1204ca8ee0fffb295e136">(</a>core<a class="code" href="classAComponent.html#a9ddc2b8c92d1204ca8ee0fffb295e136">)</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classIComponent.html#a059d5f171ad78246fe9038599316cf72">_type</a> = ComponentType<a class="code" href="client_2Components_2IComponent_8hpp.html#a81f78fc173dedefe5a049c0aa3eed2c0af6f528c05e18d84cb19ff77db96211f0">::</a><a class="code" href="client_2Components_2IComponent_8hpp.html#a81f78fc173dedefe5a049c0aa3eed2c0af6f528c05e18d84cb19ff77db96211f0">SOUND</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">if</span> (!_buffer.loadFromFile(<span class="stringliteral">&quot;../src/client/assets/sounds/click.wav&quot;</span>))</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Cannot load click.wav&quot;</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    _sound.setBuffer(_buffer);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    _socket = std::move(socket);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classSoundComponent.html#a31d19ea91fa2862b0fe0eb7cdfbff852">   26</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html">SoundComponent</a>::<a class="code" href="classSoundComponent.html#a31d19ea91fa2862b0fe0eb7cdfbff852">display</a>(sf::RenderWindow &amp;window)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * @brief action, play the sound</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classSoundComponent.html#a5d9073c6f31d2b5392ebb9b0d120a52f">   33</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html">SoundComponent</a>::<a class="code" href="classSoundComponent.html#a5d9073c6f31d2b5392ebb9b0d120a52f">action</a>()</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    _sound.play();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classSoundComponent.html#a386407e05340c4f850f48449b7c7dd64">   38</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html">SoundComponent</a>::<a class="code" href="classSoundComponent.html#a386407e05340c4f850f48449b7c7dd64">handleEvent</a>(<span class="keyword">const</span> sf::Event &amp;event, sf::RenderWindow &amp;window)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> * @brief setSound, set the sound</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> * @param path the path of the sound</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classSoundComponent.html#aa4326d391a161ba4fb69657c607efc28">   46</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html">SoundComponent</a>::<a class="code" href="classSoundComponent.html#aa4326d391a161ba4fb69657c607efc28">setSound</a>(<span class="keyword">const</span> std::string &amp;path)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (!_buffer.loadFromFile(path))</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Cannot load &quot;</span> + path);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    _sound.setBuffer(_buffer);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> * @brief stop, stop the sound</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classSoundComponent.html#a960361b01a6976816f007ac8bd5f1bd7">   56</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classSoundComponent.html">SoundComponent</a>::<a class="code" href="classSoundComponent.html#a960361b01a6976816f007ac8bd5f1bd7">stop</a>()</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    _sound.stop();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
