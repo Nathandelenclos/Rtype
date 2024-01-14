@@ -176,6 +176,27 @@ void LobbyScene::initEntities()
     bg4->addComponent(sprite_bg4);
     bg4->addComponent(animation_bg4);
 
+//    std::shared_ptr<IEntity> boss = std::make_shared<IEntity>();
+//    std::shared_ptr<Drawable> sprite_boss = std::make_shared<Drawable>();
+//    std::shared_ptr<Animatable> animation_boss = std::make_shared<Animatable>();
+//    sprite_boss->setRect({0, 0, 160, 214});
+//    sprite_boss->setSize({160 * 5, 214 * 5});
+//    sprite_boss->setScale(5);
+//    sprite_boss->setPosition({100, 100});
+//    sprite_boss->setAttribute("sprite boss");
+//    sprite_boss->_textureId = BOSS;
+//    gettimeofday(&animation_boss->_chrono, nullptr);
+//    animation_boss->setTarget(sprite_boss);
+//    animation_boss->setTime({0, 500000});
+//    animation_boss->_frameIndex = 0;
+//    animation_boss->_numberFrameToAnim = 4;
+//    animation_boss->_numberFrame = 4;
+//    animation_boss->_startFrameIndex = 0;
+//    animation_boss->_frameForOnePicture = 1;
+//    boss->setAttribute("sprite boss");
+//    boss->addComponent(sprite_boss);
+//    boss->addComponent(animation_boss);
+
     addEntity(bg1);
     addEntity(bg2);
     addEntity(bg3);
@@ -183,6 +204,7 @@ void LobbyScene::initEntities()
     addEntity(floor_bg);
     addEntity(roof_bg);
     addEntity(enemy1);
+//    addEntity(boss);
 
     // std::shared_ptr<Drawable> sprite_bg2 = std::make_shared<Drawable>();
     // std::shared_ptr<Timer> timer_bg2 = std::make_shared<Timer>();

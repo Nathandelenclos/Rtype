@@ -37,7 +37,7 @@ void GameScene::init_scene()
     sound_player_left->setAttribute("player left");
 
     //addComponent(sprite);
-    addComponent(music);
+//    addComponent(music);
     addComponent(text_ping);
     addComponent(sound_new_player);
     addComponent(sound_player_left);
@@ -80,15 +80,18 @@ void GameScene::receiveData() {
                     if (component->getAttribute() == "sprite bg1") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND1));
                     }
-                     if (component->getAttribute() == "sprite bg2") {
-                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND2));
-                     }
-                     if (component->getAttribute() == "sprite bg3") {
-                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND3));
-                     }
-                     if (component->getAttribute() == "sprite bg4") {
-                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND4));
-                     }
+                    if (component->getAttribute() == "sprite bg2") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND2));
+                    }
+                    if (component->getAttribute() == "sprite bg3") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND3));
+                    }
+                    if (component->getAttribute() == "sprite bg4") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND4));
+                    }
+                    if (component->getAttribute() == "sprite boss") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BOSS));
+                    }
                 }
             }
         }
@@ -212,6 +215,8 @@ void GameScene::initTextures() {
     _textures[Type::FLOOR_BACKGROUND].loadFromFile("../testsprites/bg_800_600/ground_texture_bg.png");
     _textures[Type::ROOF_BACKGROUND] = sf::Texture();
     _textures[Type::ROOF_BACKGROUND].loadFromFile("../testsprites/bg_800_600/roof_texture_bg.png");
+    _textures[Type::BOSS] = sf::Texture();
+    _textures[Type::BOSS].loadFromFile("../sprites/r-typesheet30-alone.gif");
 }
 
 void GameScene::handleEvent(const sf::Event &event, sf::RenderWindow &window) {
