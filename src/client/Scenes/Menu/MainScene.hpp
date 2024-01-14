@@ -1,6 +1,9 @@
-//
-// Created by talleux on 12/29/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** R-type
+** File description:
+** R-type
+*/
 
 #pragma once
 
@@ -18,13 +21,36 @@
 class MainScene : public AScene
 {
   public:
-    // take socket as parameter
+
+    /**
+     * @brief MainScene, constructor of MainScene
+     *
+     * @param clientCore
+     * @param socket
+     */
     explicit MainScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket);
+
+    /**
+     * @brief ~MainScene, destructor of MainScene
+     */
     ~MainScene() override = default;
 
+    /**
+     * @brief init_scene, init the scene
+     */
     void init_scene();
+
+    /**
+     * @brief handleEvent, handle the event
+     *
+     * @param event
+     * @param window
+     */
     void handleEvent(const sf::Event &event, sf::RenderWindow &window) override;
 
+    /**
+     * @brief receiveData, receive the data
+     */
     void receiveData() override;
 
   private:

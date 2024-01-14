@@ -1,6 +1,9 @@
-//
-// Created by talleux on 12/29/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** R-type
+** File description:
+** R-type
+*/
 
 #include "MainScene.hpp"
 

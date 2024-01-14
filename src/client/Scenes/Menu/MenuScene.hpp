@@ -1,6 +1,9 @@
-//
-// Created by Talleux on 29/12/2023.
-//
+/*
+** EPITECH PROJECT, 2023
+** R-type
+** File description:
+** R-type
+*/
 
 #pragma once
 
@@ -19,12 +22,36 @@
 class MenuScene : public AScene
 {
   public:
-    // take socket as parameter
+
+    /**
+     * @brief MenuScene, constructor of MenuScene
+     *
+     * @param clientCore
+     * @param socket
+     */
     explicit MenuScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket);
+
+    /**
+     * @brief ~MenuScene, destructor of MenuScene
+     */
     ~MenuScene() override = default;
 
+    /**
+     * @brief init_scene, init the scene
+     */
     void init_scene();
+
+    /**
+     * @brief handleEvent, handle the event
+     *
+     * @param event
+     * @param window
+     */
     void handleEvent(const sf::Event &event, sf::RenderWindow &window) override;
+
+    /**
+     * @brief receiveData, receive the data
+     */
     void receiveData() override;
 
   private:
