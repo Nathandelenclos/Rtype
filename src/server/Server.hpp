@@ -19,7 +19,16 @@
 class Server
 {
   public:
+
+    /**
+     * @brief Construct a new Server:: Server object
+     * @param port
+     */
     Server(int port);
+
+    /**
+     * @brief Destroy the Server:: Server object
+     */
     ~Server() = default;
     void run();
 

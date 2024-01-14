@@ -1,6 +1,9 @@
-//
-// Created by nathan on 12/30/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** R-type
+** File description:
+** R-type
+*/
 
 #include "Server.hpp"
 
