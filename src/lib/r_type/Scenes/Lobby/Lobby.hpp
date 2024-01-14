@@ -1,6 +1,9 @@
-//
-// Created by talleux on 1/4/24.
-//
+/*
+** EPITECH PROJECT, 2023
+** R-type
+** File description:
+** R-type
+*/
 
 #pragma once
 
@@ -13,15 +16,42 @@
 class LobbyScene : public AScene
 {
   public:
+
+    /**
+     * @brief Construct a new LobbyScene object
+     * @param serverSocket
+     */
     explicit LobbyScene(std::shared_ptr<ServerSocket> serverSocket);
+
+    /**
+     * @brief Destroy the LobbyScene object
+     */
     ~LobbyScene() override = default;
 
+
+    /**
+     * @brief initScene, init the scene
+     */
     void initScene();
 
+
+    /**
+     * @brief display, display the scene
+     *
+     * @param event
+     * @param window
+     */
     void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet) override;
 
+
+    /**
+     * @brief checkBulletDeletion, check if a bullet has to be deleted
+     */
     void checkBulletDeletion();
 
+    /**
+     * @brief display, display the scene
+     */
     void initEntities() override;
     void initServices() override;
 
