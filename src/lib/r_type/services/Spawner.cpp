@@ -7,27 +7,30 @@
 
 #include "Spawnable.hpp"
 #include "Spawner.hpp"
+#include "Lobby.hpp"
 
 void Spawner::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentRType> component)
 {
-    auto animatable = std::dynamic_pointer_cast<Animatable>(component);
-    if (animatable) {
-        gettimeofday(&animatable->_now, NULL);
-        timersub(&animatable->_now, &animatable->_chrono, &animatable->_diff);
-        if (animatable->_diff.tv_sec >= animatable->getTime().tv_sec && animatable->_diff.tv_usec >= animatable->getTime().tv_usec) {
-            auto spriteAnim = animatable->getTarget();
-            int numberFrameToAnim = animatable->_numberFrameToAnim - 1;
-            std::tuple<float, float> size = spriteAnim->getSize();
-            if (animatable->_frameIndex >= numberFrameToAnim + animatable->_startFrameIndex) {
-                animatable->_frameIndex = animatable->_startFrameIndex;
-            } else {
-                animatable->_frameIndex++;
+    timeval randomtime;
+    auto spawnable = std::dynamic_pointer_cast<Spawnable>(component);
+    if (spawnable && spawnable) {
+        gettimeofday(&spawnable->_now, NULL);
+        timersub(&spawnable->_now, &spawnable->_chrono, &spawnable->_diff);
+        int time1 = std::get<0>(spawnable->getTimeBetweenWave());
+        int time2 = std::get<1>(spawnable->getTimeBetweenWave());
+        randomtime = {rand() % time1 + time2, 0};
+        if (spawnable->_diff.tv_sec >= randomtime.tv_sec && spawnable->_diff.tv_usec >= randomtime.tv_usec) {
+            int nbEntityToSpawn = rand() % std::get<0>(spawnable->_numberEntityWave) + std::get<1>(spawnable->_numberEntityWave);
+            // auto spriteSpawn = spawnable->getTarget();
+            for (int i = 0; i < nbEntityToSpawn; ++i) {
+                // Créez une nouvelle entité ici
+                std::shared_ptr<IEntity> enemy1 = std::make_shared<Enemy>();
+
+                // Ajoutez la nouvelle entité à votre système de gestion des entités (ou faites ce qui est nécessaire)
+                addEntity(newEntity);
             }
-            int frameWidth1 = std::get<0>(size) / spriteAnim->getScale() / animatable->_numberFrame * animatable->_frameIndex;
-            int frameWidth2 = std::get<0>(size) / spriteAnim->getScale() / animatable->_numberFrame * animatable->_frameForOnePicture;
-            int frameHeight = std::get<1>(size) / spriteAnim->getScale();
-            spriteAnim->setRect(std::make_tuple(frameWidth1, 0, frameWidth2, frameHeight));
-            animatable->_chrono = animatable->_now;
+            
+            spawnable->_chrono = spawnable->_now;
         }
     }
 }

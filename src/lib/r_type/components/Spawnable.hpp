@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** RType
 ** File description:
-** Animatable.hpp
+** Spawnable.hpp
 */
 
 #pragma once
@@ -16,25 +16,22 @@
 #include "Drawable.hpp"
 
 
-class Animatable : public IComponentRType {
+class Spawnable : public IComponentRType {
     public:
-        Animatable();
+        Spawnable();
         [[nodiscard]] char *getAttribute() const override;
         void setAttribute(std::string attribute) override;
         void setTarget(std::shared_ptr<Drawable> target);
         std::shared_ptr<Drawable> getTarget();
-        void setTime(timeval frametime);
-        timeval getTime();
+        void setTimeBetweenWave(std::tuple<int, int> frametime);
+        std::tuple<int, int> getTimeBetweenWave();
         timeval _now;
         timeval _diff;
         timeval _chrono;
-        int _numberFrameToAnim;
-        int _frameIndex;
-        int _numberFrame;
-        int _startFrameIndex;
-        int _frameForOnePicture;
+        std::tuple<int, int> _speedWave;
+        std::tuple<int, int> _numberEntityWave;
 
     protected:
+        std::tuple<int, int> _timeBetweenWave;
         std::shared_ptr<Drawable> sprite;
-        timeval _frametime;
 };

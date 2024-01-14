@@ -7,11 +7,13 @@
 #include "Graphic.hpp"
 #include "Move.hpp"
 #include "Spawner.hpp"
+#include <random>
 
 LobbyScene::LobbyScene(std::shared_ptr<ServerSocket> serverSocket) : AScene(std::move(serverSocket))
 {
     initScene();
     gettimeofday(&_chrono, nullptr);
+    gettimeofday(&_start, nullptr);
     _bulletTriggerLimiter = {0, 0};
 }
 
@@ -53,7 +55,6 @@ void LobbyScene::initEntities()
     // enemy1->addComponent(animation);
 
     std::shared_ptr<IEntity> enemy1 = std::make_shared<Enemy>();
-
 
     std::shared_ptr<IEntity> enemy2 = std::make_shared<IEntity>();
     std::shared_ptr<Timer> timer2 = std::make_shared<Timer>();
@@ -172,8 +173,8 @@ void LobbyScene::initEntities()
     addEntity(bg2);
     addEntity(bg3);
     addEntity(bg4);
-    addEntity(enemy1);
-    addEntity(enemy2);
+    // addEntity(enemy1);
+    // addEntity(enemy2);
 }
 
 void LobbyScene::initServices()
@@ -194,14 +195,114 @@ void LobbyScene::initServices()
 
 }
 
+int generateRandomNumber(int lowerBound, int upperBound) {
+    // Utilisez std::random_device pour initialiser le générateur de nombres aléatoires
+    std::random_device rd;
+    
+    // Utilisez std::mt19937 comme générateur de nombres aléatoires
+    std::mt19937 gen(rd());
+    
+    // Utilisez std::uniform_int_distribution pour spécifier la plage de valeurs
+    std::uniform_int_distribution<int> distribution(lowerBound, upperBound);
+
+    // Générez le nombre aléatoire
+    int randomNumber = distribution(gen);
+
+    return randomNumber;
+}
+
+void LobbyScene::checkSpawnerActivation()
+{
+    // gettimeofday(&spawnable->_now, NULL);
+    // timersub(&spawnable->_now, &spawnable->_chrono, &spawnable->_diff);
+    // int time1 = std::get<0>(_timeBetweenWave);
+    // int time2 = std::get<1>(_timeBetweenWave);
+    int spaceBetweenEnemy = 0;
+    // timeval randomtime = {rand() % time1 + time2, 0};
+// if (diff.tv_sec >= randomtime.tv_sec && diff.tv_usec >= randomtime.tv_usec) {
+    int nbEntityToSpawn = generateRandomNumber(std::get<0>(_numberEntityWave), std::get<1>(_numberEntityWave));
+    for (int i = 0; i < nbEntityToSpawn; ++i) {
+        int randomVertcalPosition = generateRandomNumber(0, 601 - 36 * 2);// 601 car le modulo exclut la borne supérieure et 36 * 2 car la taille de l'ennemi est de 36 * 2
+
+        std::shared_ptr<IEntity> enemy1 = std::make_shared<Enemy>(
+            std::make_tuple(0, 20000),
+            timeval{0, 200000},
+            Rect{0, 0, 33, 36},
+            Position{263 * 2, 36 * 2},
+            Position{1000 + spaceBetweenEnemy, randomVertcalPosition},
+            2,
+            0,
+            8,
+            8,
+            0,
+            1,
+            ENEMY,
+            -1,
+            true,
+            "sprite enemy" + std::to_string(i),
+            "sprite enemy"
+        );
+        spaceBetweenEnemy += 20 + 33 * 2;
+        addEntity(enemy1);
+    }
+    _spawnerActive = false;
+// }
+}
+
+bool LobbyScene::allEnemiesLeftScreen()
+{
+    for (auto &entity : getEntities()) {
+        if (entity->getAttribute() == "sprite enemy") {
+            for (const auto &component : entity->getComponents()) {
+                auto drawable = std::dynamic_pointer_cast<Drawable>(component);
+                if (drawable != nullptr && std::get<0>(drawable->getPosition()) > - 33 * 2) {
+                    return false; // Au moins un ennemi n'a pas quitté l'écran
+                }
+            }
+        }
+    }
+    return true; // Tous les ennemis ont quitté l'écran
+}
+
+void LobbyScene::enemyDeletion()
+{
+    // for (const auto &entity : _entities) {
+    //     if (entity->getAttribute() == "sprite enemy") {
+    //         _entities.erase(std::remove(_entities.begin(), _entities.end(), entity), _entities.end());
+    //     }
+    // }
+
+    for (auto &entity : getEntities()) {
+        for (auto &component : entity->getComponents()) {
+            //std::cout << "component: " << component->getAttribute() << std::endl;
+            if (std::string(component->getAttribute()).find("bullet") != std::string::npos) {
+                //std::cout << "bullet x position: " << std::get<0>(std::dynamic_pointer_cast<Drawable>(component)->getPosition()) << " y position: " << std::get<1>(std::dynamic_pointer_cast<Drawable>(component)->getPosition()) << std::endl;
+                auto draw = std::dynamic_pointer_cast<Drawable>(component);
+                auto [x, y] = draw->getPosition();
+                if (x > 900) {
+                    std::cout << "delete " << component->getAttribute() << std::endl;
+                    _entities.erase(std::remove(_entities.begin(), _entities.end(), entity), _entities.end());
+                    _nbBullets--;
+                    std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
+                    sendpacket->code = DELETE_COMPONENT;
+                    sendpacket->data_size = std::string(component->getAttribute()).size();
+                    sendpacket->data = malloc(sendpacket->data_size);
+                    std::memcpy(sendpacket->data, component->getAttribute(), sendpacket->data_size);
+                    _serverSocket->broadcast(sendpacket.get());
+                    free(sendpacket->data);
+                }
+            }
+        }
+    }
+}
+
+
 void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet)
 {
     timeval now{};
     timeval diff{};
     gettimeofday(&now, nullptr);
     timersub(&now, &_chrono, &diff);
-
-
 
     if (event->key != sf::Keyboard::Key::Unknown)
         _lastEvent = event;
@@ -218,7 +319,18 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
         _chrono = now;
     }
 
-    checkBulletDeletion();
+    std::cout << "diff: " << diff.tv_sec << " " << diff.tv_usec << std::endl;
+    std::cout << "_start: " << now.tv_sec - _start.tv_sec << std::endl;
+
+    if (now.tv_sec - _start.tv_sec >= 5) {
+        if (_spawnerActive) {
+            checkSpawnerActivation(diff);
+        } else if (allEnemiesLeftScreen(_entities)) {
+            enemyDeletion(_entities);
+            _spawnerActive = true;
+        }
+        checkBulletDeletion();
+    }
 
     if (packet != nullptr) {
         int id = event->id;
