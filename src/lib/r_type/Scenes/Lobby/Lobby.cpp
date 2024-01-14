@@ -422,7 +422,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
         }
     }
     if (_bossActive) {
-        if (now.tv_sec - _start.tv_sec >= 31 && now.tv_sec - _timing >= 5 && _nbBossBullets < 11) {
+        if (now.tv_sec - _start.tv_sec >= 45 && now.tv_sec - _timing >= 5 && _nbBossBullets < 11) {
             shootBoss(generateRandomNumber(1, 5));
             _timing = now.tv_sec;
         }
