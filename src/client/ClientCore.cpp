@@ -4,6 +4,10 @@
 
 #include "ClientCore.hpp"
 
+/**
+ * @brief Construct a new Client Core:: Client Core object
+ *
+ */
 ClientCore::ClientCore()
 {
     _socket = std::make_shared<ClientSocket>();
@@ -13,7 +17,13 @@ ClientCore::ClientCore()
     _currentScene = _scenes["main"];
 }
 
-bool ClientCore::init_socket(const std::string& ip, int port)
+/**
+ * @brief init_socket, initialize the socket with the ip and the port
+ *
+ * @param ip
+ * @param port
+ */
+bool ClientCore::init_socket(const std::string &ip, int port)
 {
     if (_socket->isInit())
         return true;
@@ -23,6 +33,10 @@ bool ClientCore::init_socket(const std::string& ip, int port)
     return init;
 }
 
+/**
+ * @brief run, run the client
+ *
+ */
 void ClientCore::run()
 {
     _window.create(sf::VideoMode(800, 600), "R-Type");
@@ -43,12 +57,23 @@ void ClientCore::run()
         _heartBeatThread.join();
 }
 
-std::shared_ptr<IScene> ClientCore::getSceneByName(const std::string& name)
+/**
+ * @brief getSceneByName, get the scene by name
+ *
+ * @param name
+ * @return std::shared_ptr<IScene>
+ */
+std::shared_ptr<IScene> ClientCore::getSceneByName(const std::string &name)
 {
     return _scenes[name];
 }
 
-void ClientCore::setCurrentScene(const std::string& name)
+/**
+ * @brief setCurrentScene, set the current scene
+ *
+ * @param name
+ */
+void ClientCore::setCurrentScene(const std::string &name)
 {
     _currentScene->continueScene = false;
     _currentScene->pauseScene();
@@ -57,7 +82,12 @@ void ClientCore::setCurrentScene(const std::string& name)
     _currentScene->resumeScene();
 }
 
-void ClientCore::sendHeartBeat(sf::RenderWindow& window)
+/**
+ * @brief sendHeartBeat, send the heart beat
+ *
+ * @param window
+ */
+void ClientCore::sendHeartBeat(sf::RenderWindow &window)
 {
     std::unique_ptr<Packet> packet = std::make_unique<Packet>();
 
@@ -65,18 +95,27 @@ void ClientCore::sendHeartBeat(sf::RenderWindow& window)
     packet->data_size = sizeof(timeval);
     packet->data = malloc(packet->data_size);
     while (window.isOpen()) {
-        gettimeofday((timeval*)packet->data, nullptr);
+        gettimeofday((timeval *)packet->data, nullptr);
         _socket->send(packet.get(), _socket->serv_addr);
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
     free(packet->data);
 }
 
+/**
+ * @brief getCurrentScene, get the current scene
+ *
+ * @return std::shared_ptr<IScene>
+ */
 std::shared_ptr<IScene> ClientCore::getCurrentScene() const
 {
     return _currentScene;
 }
 
+/**
+ * @brief startHeartBeat, start the heart beat
+ *
+ */
 void ClientCore::startHeartBeat()
 {
     if (_heartBeatThread.joinable())

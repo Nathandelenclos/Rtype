@@ -7,10 +7,11 @@
 
 #pragma once
 
-#include <iostream>
 #include "../../../../include/IObject.hpp"
+#include <iostream>
 
-class Controlable {
-public:
+class Controlable
+{
+  public:
     virtual void control() = 0;
 };

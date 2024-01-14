@@ -2,11 +2,17 @@
 // Created by talleux on 12/29/23.
 //
 
+#include "InputComponent.hpp"
 #include <iostream>
 #include <utility>
-#include "InputComponent.hpp"
 
-InputComponent::InputComponent(ClientCore* core, std::shared_ptr<ClientSocket> socket) : AComponent(core)
+/**
+ * @brief InputComponent constructor
+ * @param core
+ * @param socket
+ */
+InputComponent::InputComponent(ClientCore *core, std::shared_ptr<ClientSocket> socket) :
+    AComponent(core)
 {
     _type = ComponentType::INPUT;
     _texture.loadFromFile("../src/client/assets/button.png");
@@ -30,17 +36,28 @@ InputComponent::InputComponent(ClientCore* core, std::shared_ptr<ClientSocket> s
     _socket = std::move(socket);
 }
 
+/**
+ * @brief action, call the callback function
+ */
 void InputComponent::action()
 {
     _callback();
 }
 
-void InputComponent::setTexture(const sf::Texture& texture)
+/**
+ * @brief setTexture set the texture of the component
+ * @param texture
+ */
+void InputComponent::setTexture(const sf::Texture &texture)
 {
     _texture = texture;
     _sprite.setTexture(_texture);
 }
 
+/**
+ * @brief setPosition set the position of the component
+ * @param position
+ */
 void InputComponent::setPosition(sf::Vector2f position)
 {
     _position = position;
@@ -51,45 +68,76 @@ void InputComponent::setPosition(sf::Vector2f position)
     _text.setPosition(textPosition);
 }
 
+/**
+ * @brief setSize set the size of the component
+ * @param size
+ */
 void InputComponent::setSize(sf::Vector2f size)
 {
     _size = size;
     _sprite.setScale(_size);
 }
 
+/**
+ * @brief setRect set the rect of the component
+ * @param rect
+ */
 void InputComponent::setRect(sf::IntRect rect)
 {
     _rect = rect;
     _sprite.setTextureRect(_rect);
 }
 
-void InputComponent::display(sf::RenderWindow& window)
+/**
+ * @brief display display the component
+ * @param window
+ */
+void InputComponent::display(sf::RenderWindow &window)
 {
     window.draw(_sprite);
     window.draw(_text);
 }
 
+/**
+ * @brief getRect get the texture of the component
+ * @return rect of the component
+ */
 sf::IntRect InputComponent::getRect() const
 {
     return _rect;
 }
 
+/**
+ * @brief setText set the text of the component
+ */
 void InputComponent::setText()
 {
     _text.setString(_textEntry);
 }
 
+/**
+ * @brief getText get the text of the component
+ */
 std::string InputComponent::getText()
 {
     return _textEntry;
 }
 
+/**
+ * @brief SetIsClicked set the isClicked of the component
+ * @param isClicked
+ */
 void InputComponent::setIsClicked(bool isClicked)
 {
     _isClicked = isClicked;
 }
 
-void InputComponent::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+/**
+ * @brief handleEvent handle the event of the component
+ * @param event
+ * @param window
+ */
+void InputComponent::handleEvent(const sf::Event &event, sf::RenderWindow &window)
 {
     if (event.type == sf::Event::TextEntered) {
         if (_isClicked) {

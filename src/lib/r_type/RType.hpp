@@ -7,18 +7,20 @@
 
 #pragma once
 
-#include <iostream>
-#include <utility>
-#include <SFML/Window/Keyboard.hpp>
-#include <SFML/Window/Event.hpp>
-#include "IGame.hpp"
-#include "./services/Graphic.hpp"
 #include "./Scenes/IScene.hpp"
 #include "./Scenes/Lobby/Lobby.hpp"
+#include "./services/Graphic.hpp"
+#include "IGame.hpp"
+#include <SFML/Window/Event.hpp>
+#include <SFML/Window/Keyboard.hpp>
+#include <iostream>
+#include <utility>
 
-class RType : public IGame {
-public:
-    explicit RType(std::shared_ptr<ServerSocket> socket) {
+class RType : public IGame
+{
+  public:
+    explicit RType(std::shared_ptr<ServerSocket> socket)
+    {
         _socket = std::move(socket);
         _scenes["Lobby"] = std::make_shared<LobbyScene>(_socket);
         _currentScene = nullptr;
@@ -27,7 +29,8 @@ public:
 
     ~RType() override = default;
 
-    void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet) override {
+    void update(std::shared_ptr<Event> event, std::shared_ptr<Packet> packet) override
+    {
         timeval currentTime{};
         timeval elapsedTime{};
         gettimeofday(&currentTime, nullptr);
@@ -60,7 +63,6 @@ public:
             _currentScene->broadcastGameState();
             gettimeofday(&_broadcastGameState, nullptr);
         }
-
     }
 
     std::shared_ptr<ServerSocket> _socket;

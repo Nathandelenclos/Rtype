@@ -7,50 +7,51 @@
 
 #pragma once
 
-#include <iostream>
-#include <tuple>
-#include <memory>
-#include <vector>
 #include "../networking/shared/USocket.hpp"
 #include "IComponent.hpp"
+#include <iostream>
+#include <memory>
+#include <tuple>
+#include <vector>
 
 typedef std::tuple<float, float> Position;
 typedef std::tuple<float, float> Size;
 typedef std::tuple<int, int, int, int> Rect;
 
-class Drawable : public IComponentRType {
-    public:
-        Drawable();
-        [[nodiscard]] char *getAttribute() const override;
-        void setAttribute(std::string attribute) override;
+class Drawable : public IComponentRType
+{
+  public:
+    Drawable();
+    [[nodiscard]] char *getAttribute() const;
+    void setAttribute(std::string attribute);
 
-        [[nodiscard]] Position getPosition() const;
-        void setPosition(std::tuple<float, float> position);
+    [[nodiscard]] Position getPosition() const;
+    void setPosition(std::tuple<float, float> position);
 
-        [[nodiscard]] Size getSize() const;
-        void setSize(std::tuple<float, float> size);
-        [[nodiscard]] float getScale() const;
-        void setScale(float scale);
+    [[nodiscard]] Size getSize() const;
+    void setSize(std::tuple<float, float> size);
+    [[nodiscard]] float getScale() const;
+    void setScale(float scale);
 
-        [[nodiscard]] Rect getRect() const;
-        void setRect(std::tuple<int, int, int, int> rect);
+    [[nodiscard]] Rect getRect() const;
+    void setRect(std::tuple<int, int, int, int> rect);
 
-        std::shared_ptr<Packet> getPacket();
+    std::shared_ptr<Packet> getPacket();
 
-        void storeStringInAttributes(std::string str, DrawablePacket *drawablePacket);
+    void setHasChanged(bool hasChanged);
+    bool getHasChanged() const;
 
-        void setHasChanged(bool hasChanged);
-        bool getHasChanged() const;
-
-        void addDrawableCollision(std::shared_ptr<Drawable> drawableCollision);
-        std::vector<std::shared_ptr<Drawable>> getDrawablesCollision() const;
+    void addDrawableCollision(std::shared_ptr<Drawable> drawableCollision);
+    [[nodiscard]] std::vector<std::shared_ptr<Drawable>> getDrawablesCollision() const;
 
     int _textureId;
-protected:
-        Position _position;
-        Size _size;
-        Rect _rect;
-        float _scale;
-        bool hasChanged = false;
-        std::vector<std::shared_ptr<Drawable>> _drawablesCollision;
+    bool _toDelete = false;
+
+  protected:
+    Position _position;
+    Size _size;
+    Rect _rect;
+    float _scale;
+    bool hasChanged = false;
+    std::vector<std::shared_ptr<Drawable>> _drawablesCollision;
 };

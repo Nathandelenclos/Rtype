@@ -3,33 +3,38 @@
 //
 
 #include "ClientSocket.hpp"
-#include <stdexcept>
-#include <iostream>
 #include <arpa/inet.h>
+#include <iostream>
+#include <stdexcept>
 #include <unistd.h>
 
-ClientSocket::ClientSocket() {
+/*
+ * @brief Construct a new Client Socket:: Client Socket object
+ *
+ */
+ClientSocket::ClientSocket()
+{
     std::cout << "ClientSocket constructor" << std::endl;
 
-    #ifdef _WIN32
-        WSADATA wsaData;
-        if (WSAStartup(MAKEWORD(2,2), &wsaData) != 0) {
-            std::cout << "WSAStartup failed: " << WSAGetLastError() << std::endl;
-            throw std::runtime_error("Failed to initialize Winsock");
-        }
-        sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-        if (sockfd == INVALID_SOCKET) {
-            std::cout << "Error at socket(): " << WSAGetLastError() << std::endl;
-            WSACleanup();
-            throw std::runtime_error("Failed to create socket");
-        }
-    #elif defined(__unix__) || defined(__unix__) || defined(__APPLE__) && defined(__MACH__)
-        sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-        if (sockfd < 0) {
-            std::cout << "Error sockfd < 0 sockfd : " << sockfd << std::endl;
-            throw std::runtime_error("Failed to create socket");
-        }
-    #endif
+#ifdef _WIN32
+    WSADATA wsaData;
+    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
+        std::cout << "WSAStartup failed: " << WSAGetLastError() << std::endl;
+        throw std::runtime_error("Failed to initialize Winsock");
+    }
+    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (sockfd == INVALID_SOCKET) {
+        std::cout << "Error at socket(): " << WSAGetLastError() << std::endl;
+        WSACleanup();
+        throw std::runtime_error("Failed to create socket");
+    }
+#elif defined(__unix__) || defined(__unix__) || defined(__APPLE__) && defined(__MACH__)
+    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (sockfd < 0) {
+        std::cout << "Error sockfd < 0 sockfd : " << sockfd << std::endl;
+        throw std::runtime_error("Failed to create socket");
+    }
+#endif
 
     timeout = std::make_unique<struct timeval>();
     timeout->tv_sec = 0;
@@ -42,15 +47,29 @@ ClientSocket::ClientSocket() {
     std::cout << "Socket created successfully (fd: " << sockfd << ")" << std::endl;
 }
 
-ClientSocket::~ClientSocket() {
-    #ifdef _WIN32
-        closesocket(sockfd);
-    #elif defined(__unix__) || defined(__unix__) || defined(__APPLE__) && defined(__MACH__)
-        close(sockfd);
-    #endif
+/*
+ * @brief Destroy the Client Socket:: Client Socket object
+ *
+ */
+ClientSocket::~ClientSocket()
+{
+#ifdef _WIN32
+    closesocket(sockfd);
+#elif defined(__unix__) || defined(__unix__) || defined(__APPLE__) && defined(__MACH__)
+    close(sockfd);
+#endif
 }
 
-bool ClientSocket::init_client(const std::string& ip, int port) {
+/*
+ * @brief Initialize the client socket
+ *
+ * @param ip
+ * @param port
+ * @return true
+ * @return false
+ */
+bool ClientSocket::init_client(const std::string &ip, int port)
+{
     memset(&serv_addr, 0, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(port);
@@ -70,33 +89,58 @@ bool ClientSocket::init_client(const std::string& ip, int port) {
     return true;
 }
 
-void ClientSocket::send(Packet *packet, struct sockaddr_in dest) {
+/*
+ * @brief Send a packet to the server
+ *
+ * @param packet
+ * @param dest
+ */
+void ClientSocket::send(Packet *packet, struct sockaddr_in dest)
+{
     splitAndSend(packet, dest);
 }
 
-void ClientSocket::sendPacket(SplitPacket *packet, struct sockaddr_in dest) {
+
+/*
+ * @brief Send a packet to the server
+ *
+ * @param packet
+ * @param dest
+ */
+void ClientSocket::sendPacket(SplitPacket *packet, struct sockaddr_in dest)
+{
     char *buffer = static_cast<char *>(malloc(sizeof(SplitPacket)));
     memset(buffer, 0, sizeof(SplitPacket));
-    //strcpy(buffer, "test");
+    // strcpy(buffer, "test");
     memcpy(buffer, packet, sizeof(SplitPacket));
-    if (sendto(sockfd, reinterpret_cast<const char *>(buffer), sizeof(SplitPacket), 0, (struct sockaddr*)&dest, sizeof(dest)) < 0) {
+    if (sendto(sockfd, reinterpret_cast<const char *>(buffer), sizeof(SplitPacket), 0, (struct sockaddr *)&dest,
+               sizeof(dest)) < 0) {
         throw std::runtime_error("Failed to send packet");
     }
     free(buffer);
 }
 
-void ClientSocket::receivePacketAndAddToBuffer() {
+
+/*
+ * @brief Receive a packet from the server
+ *
+ * @return void
+ */
+void ClientSocket::receivePacketAndAddToBuffer()
+{
     SplitPacket splitPacket{};
-    struct sockaddr_in cli_addr{};
+    struct sockaddr_in cli_addr {
+    };
     timeval receveidTime{};
     socklen_t len = sizeof(cli_addr);
     char *buffer = static_cast<char *>(malloc(sizeof(SplitPacket)));
     memset(buffer, 0, sizeof(SplitPacket));
     if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) > 0) {
-        if (recvfrom(sockfd, buffer, sizeof(SplitPacket), 0, (struct sockaddr*)&cli_addr, &len) < 0) {
+        if (recvfrom(sockfd, buffer, sizeof(SplitPacket), 0, (struct sockaddr *)&cli_addr, &len) < 0) {
             throw std::runtime_error("Failed to read from socket");
         }
-        std::cout << "Received packet from " << inet_ntoa(cli_addr.sin_addr) << ":" << ntohs(cli_addr.sin_port) << std::endl;
+        std::cout << "Received packet from " << inet_ntoa(cli_addr.sin_addr) << ":" << ntohs(cli_addr.sin_port)
+                  << std::endl;
     } else {
         free(buffer);
         return;
@@ -105,11 +149,17 @@ void ClientSocket::receivePacketAndAddToBuffer() {
 
     gettimeofday(&receveidTime, nullptr);
     _packetBuffer.emplace_back(std::make_unique<SplitPacket>(splitPacket), receveidTime);
-    //std::cout << "Received packet type: " << splitPacket.code << std::endl;
+    // std::cout << "Received packet type: " << splitPacket.code << std::endl;
     free(buffer);
 }
 
-std::unique_ptr<Packet> ClientSocket::getPacketFromBuffer() {
+/*
+ * @brief Get a packet from the buffer
+ *
+ * @return std::unique_ptr<Packet>
+ */
+std::unique_ptr<Packet> ClientSocket::getPacketFromBuffer()
+{
     std::unique_ptr<Packet> packet = std::make_unique<Packet>();
     int counter = 0;
     long long int size = 0;
@@ -143,7 +193,8 @@ std::unique_ptr<Packet> ClientSocket::getPacketFromBuffer() {
                     while (it != _packetBuffer.end()) {
                         auto &[splitPacketInBufferAssign, receveidTimeInBufferAssign] = *it;
                         if (splitPacketInBufferAssign->packet_id == counterAssign) {
-                            memcpy((char *)packet->data + counterAssign * 1024, splitPacketInBufferAssign->data, strlen(splitPacketInBufferAssign->data));
+                            memcpy((char *)packet->data + counterAssign * 1024, splitPacketInBufferAssign->data,
+                                   strlen(splitPacketInBufferAssign->data));
                             it = _packetBuffer.erase(it);
                             counterAssign++;
                         } else {
@@ -174,7 +225,13 @@ std::unique_ptr<Packet> ClientSocket::getPacketFromBuffer() {
     return nullptr;
 }
 
-std::tuple<std::unique_ptr<Packet>, int> ClientSocket::receive() {
+/*
+ * @brief Receive a packet from the server
+ *
+ * @return std::tuple<std::unique_ptr<Packet>, int>
+ */
+std::tuple<std::unique_ptr<Packet>, int> ClientSocket::receive()
+{
     receivePacketAndAddToBuffer();
     std::unique_ptr<Packet> packet = getPacketFromBuffer();
     if (packet != nullptr) {
@@ -189,8 +246,8 @@ std::tuple<std::unique_ptr<Packet>, int> ClientSocket::receive() {
     struct sockaddr_in cli_addr_code{};
     socklen_t len_code = sizeof(cli_addr_code);
     if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) > 0) {
-        if (recvfrom(sockfd, reinterpret_cast<char *>(&packet_test.code), sizeof(int), 0, (struct sockaddr*)&cli_addr_code, &len_code) < 0) {
-            throw std::runtime_error("Failed to read from socket");
+        if (recvfrom(sockfd, reinterpret_cast<char *>(&packet_test.code), sizeof(int), 0, (struct
+sockaddr*)&cli_addr_code, &len_code) < 0) { throw std::runtime_error("Failed to read from socket");
         }
         if (packet_test.code == LOGIN) {
             std::cout << "packet.code == LOGIN" << std::endl;
@@ -204,11 +261,11 @@ std::tuple<std::unique_ptr<Packet>, int> ClientSocket::receive() {
     struct sockaddr_in cli_addr_size{};
     socklen_t len_size = sizeof(cli_addr_size);
     if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) > 0) {
-        if (recvfrom(sockfd, reinterpret_cast<char *>(&packet_test.data_size), sizeof(int), 0, (struct sockaddr*)&cli_addr_size, &len_size) < 0) {
-            throw std::runtime_error("Failed to read from socket");
+        if (recvfrom(sockfd, reinterpret_cast<char *>(&packet_test.data_size), sizeof(int), 0, (struct
+sockaddr*)&cli_addr_size, &len_size) < 0) { throw std::runtime_error("Failed to read from socket");
         }
-        if (cli_addr_size.sin_addr.s_addr != cli_addr_code.sin_addr.s_addr || cli_addr_size.sin_port != cli_addr_code.sin_port) {
-            throw std::runtime_error("Failed to read from socket");
+        if (cli_addr_size.sin_addr.s_addr != cli_addr_code.sin_addr.s_addr || cli_addr_size.sin_port !=
+cli_addr_code.sin_port) { throw std::runtime_error("Failed to read from socket");
         }
     } else {
         return std::make_tuple(nullptr, 0);
@@ -235,75 +292,91 @@ std::tuple<std::unique_ptr<Packet>, int> ClientSocket::receive() {
 
     std::string message = reinterpret_cast<char *>(packet_test.data);
     if (message == "received") {
-        std::cout << "(Ghost Mode) Received message from " << inet_ntoa(cli_addr_data.sin_addr) << ":" << ntohs(cli_addr_data.sin_port) << std::endl;
-        return std::make_tuple(nullptr, 0);
+        std::cout << "(Ghost Mode) Received message from " << inet_ntoa(cli_addr_data.sin_addr) << ":" <<
+ntohs(cli_addr_data.sin_port) << std::endl; return std::make_tuple(nullptr, 0);
     }
     lastMessage = message;
     return std::make_tuple(std::make_unique<Packet>(packet_test), -1);
 }*/
 
 #ifdef _WIN32
-    void ClientSocket::read_input() {
-        while (loop) {
-            std::string message;
-            std::getline(std::cin, message);
-            {
-                std::lock_guard<std::mutex> lock(mtx);
-                input = message;
-            }
+
+/*
+ * @brief Read the input from the user
+ *
+ */
+void ClientSocket::read_input()
+{
+    while (loop) {
+        std::string message;
+        std::getline(std::cin, message);
+        {
+            std::lock_guard<std::mutex> lock(mtx);
+            input = message;
         }
     }
+}
 #endif
 
-void ClientSocket::run() {
+/*
+ * @brief Run the client socket
+ *
+ */
+void ClientSocket::run()
+{
     std::cout << "ClientSocket run" << std::endl;
 
     std::tuple<std::unique_ptr<Packet>, int> packet_client_id;
 
     std::unique_ptr<Packet> packet;
 
-    #ifdef _WIN32
-        inputThread = std::thread(&ClientSocket::read_input, this);
+#ifdef _WIN32
+    inputThread = std::thread(&ClientSocket::read_input, this);
 
-        while (loop) {
-            init_fd_set();
-            std::string message;
-            {
-                std::lock_guard<std::mutex> lock(mtx);
-                if (!input.empty()) {
-                    message = input;
-                    input.clear();
-                }
-            }
-            if (!message.empty()) {
-                std::unique_ptr<Packet> packet = std::make_unique<Packet>();
-                packet->code = MESSAGE;
-                packet->data_size = message.size();
-                packet->data = malloc(packet->data_size);
-                memcpy(packet->data, message.c_str(), packet->data_size);
-                send(packet.get(), serv_addr);
-            }
-            if (FD_ISSET(sockfd, &_readfds)) {
-                if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) > 0) {
-                    receive();
-                }
-            }
-
-        }
-
-        inputThread.join();
-    #elif defined(__unix__) || defined(__unix__) || defined(__APPLE__) && defined(__MACH__)
-        while (loop) {
-            init_fd_set();
-            listen_server();
-            if (lastMessage == "exit") {
-                break;
+    while (loop) {
+        init_fd_set();
+        std::string message;
+        {
+            std::lock_guard<std::mutex> lock(mtx);
+            if (!input.empty()) {
+                message = input;
+                input.clear();
             }
         }
-    #endif
+        if (!message.empty()) {
+            std::unique_ptr<Packet> packet = std::make_unique<Packet>();
+            packet->code = MESSAGE;
+            packet->data_size = message.size();
+            packet->data = malloc(packet->data_size);
+            memcpy(packet->data, message.c_str(), packet->data_size);
+            send(packet.get(), serv_addr);
+        }
+        if (FD_ISSET(sockfd, &_readfds)) {
+            if (select(sockfd + 1, &_readfds, nullptr, nullptr, timeout.get()) > 0) {
+                receive();
+            }
+        }
+    }
+
+    inputThread.join();
+#elif defined(__unix__) || defined(__unix__) || defined(__APPLE__) && defined(__MACH__)
+    while (loop) {
+        init_fd_set();
+        listen_server();
+        if (lastMessage == "exit") {
+            break;
+        }
+    }
+#endif
 }
 
-std::tuple<std::unique_ptr<Packet>, int> ClientSocket::listen_server() {
+/*
+ * @brief Listen the server
+ *
+ * @return std::tuple<std::unique_ptr<Packet>, int>
+ */
+std::tuple<std::unique_ptr<Packet>, int> ClientSocket::listen_server()
+{
     std::cout << "listen_server" << std::endl;
     int action = select(FD_SETSIZE, &_readfds, nullptr, nullptr, nullptr);
     std::cout << "action: " << action << std::endl;
@@ -333,23 +406,47 @@ std::tuple<std::unique_ptr<Packet>, int> ClientSocket::listen_server() {
     return std::make_tuple(nullptr, 0);
 }
 
-void ClientSocket::init_fd_set() {
+/*
+ * @brief Initialize the fd_set
+ *
+ */
+void ClientSocket::init_fd_set()
+{
     FD_ZERO(&_readfds);
-    #ifndef _WIN32
-        FD_SET(0, &_readfds);
-    #endif
+#ifndef _WIN32
+    FD_SET(0, &_readfds);
+#endif
     FD_SET(sockfd, &_readfds);
 }
 
-bool ClientSocket::isInit() const {
+/*
+ * @brief Get the Last Message object
+ *
+ * @return boolean siInit
+ */
+bool ClientSocket::isInit() const
+{
     return _isInit;
 }
 
-void ClientSocket::setInit(bool init) {
+/*
+ * @brief Set the Last Message object
+ *
+ * @param init
+ */
+void ClientSocket::setInit(bool init)
+{
     _isInit = init;
 }
 
-void ClientSocket::splitAndSend(Packet *packet, struct sockaddr_in dest) {
+/*
+ * @brief Split a packet and send it
+ *
+ * @param packet
+ * @param dest
+ */
+void ClientSocket::splitAndSend(Packet *packet, struct sockaddr_in dest)
+{
     std::unique_ptr<SplitPacket> splitPacket = std::make_unique<SplitPacket>();
     splitPacket->code = packet->code;
     int i;

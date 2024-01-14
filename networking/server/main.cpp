@@ -2,10 +2,11 @@
 // Created by talleux on 12/18/23.
 //
 
-#include <iostream>
 #include "ServerSocket.hpp"
+#include <iostream>
 
-int main() {
+int main()
+{
     std::cout << "Hello, World!" << std::endl;
     ServerSocket serverSocket;
     std::cout << "ServerSocket created" << std::endl;

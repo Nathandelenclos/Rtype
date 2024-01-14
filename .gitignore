@@ -6,7 +6,9 @@ CMakeCache.txt
 RType/
 *lib_r_type.so
 r-type_server
+r-type_client
 build
 html
 .DS_Store
-
+clang-format
+clang-reformat.sh

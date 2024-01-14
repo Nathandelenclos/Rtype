@@ -7,22 +7,23 @@
 
 #pragma once
 
+#include "../../networking/server/ServerSocket.hpp"
+#include "DLLoader.hpp"
+#include "IGame.hpp"
+#include <functional>
 #include <iostream>
+#include <map>
 #include <memory>
 #include <vector>
-#include <map>
-#include <functional>
-#include "IGame.hpp"
-#include "DLLoader.hpp"
-#include "../../networking/server/ServerSocket.hpp"
 
-class Server {
-public:
+class Server
+{
+  public:
     Server(int port);
     ~Server() = default;
     void run();
 
-private:
+  private:
     std::unique_ptr<DLLoader> _gameLoader;
     std::unique_ptr<IGame> _game;
     std::shared_ptr<ServerSocket> _serverSocket;

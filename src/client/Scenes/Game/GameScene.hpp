@@ -7,13 +7,14 @@
 
 #pragma once
 
-#include <iostream>
 #include "../AScene.hpp"
 #include "Components/Sprite/SpriteComponent.hpp"
 #include "networking/shared/USocket.hpp"
+#include <iostream>
 
-class GameScene : public AScene {
-public:
+class GameScene : public AScene
+{
+  public:
     GameScene(ClientCore *clientCore, std::shared_ptr<ClientSocket> socket);
     ~GameScene() override = default;
 
@@ -24,7 +25,7 @@ public:
     sf::Texture getTextureByType(Type type) const;
     void initTextures();
 
-private:
+  private:
     std::shared_ptr<ClientSocket> _socket;
     std::map<Type, sf::Texture> _textures;
 };
