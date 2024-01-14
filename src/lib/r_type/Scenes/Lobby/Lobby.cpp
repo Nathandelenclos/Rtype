@@ -242,6 +242,15 @@ void LobbyScene::shootBoss(std::tuple<float, float> position) {
     boss_bullet->addComponent(animation_boss_bullet);
     boss_bullet->addComponent(timer_boss_bullet);
 
+//    for (const auto &e : getEntities()) {
+//        for (const auto &component : e->getComponents()) {
+//            std::string attribute = component->getAttribute();
+//            auto player = std::dynamic_pointer_cast<Drawable>(component);
+//            if (player && player->_textureId == PLAYER)
+//                bullet_sprite->addDrawableCollision(player);
+//        }
+//    }
+
     addEntity(boss_bullet);
 }
 
@@ -374,18 +383,14 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
             spawnBoss();
         }
     }
-    timeval nowboss{};
-    nowboss = now;
     if (_bossActive) {
-        if (now.tv_sec - _start.tv_sec >= 21 && _nbBossBullets < 3 && nowboss.tv_sec % 7 == 0) {
-            int randomVertcalPosition = generateRandomNumber(0, 601 - 36 * 2);
-            shootBoss({500, randomVertcalPosition});
+        if (now.tv_sec - _start.tv_sec >= 21 && _nbBossBullets < generateRandomNumber(0, 5)) {
+            shootBoss({1000, generateRandomNumber(0, 601 - 36 * 2)});
         }
     }
     checkBulletDeletion();
 
     auto entitytodelete = _entities.begin();
-//    std::cout << "Entity len " << _entities.size() << std::endl;
     while (entitytodelete != _entities.end()) {
         for (auto &component : (*entitytodelete)->getComponents()) {
             auto drawable = std::dynamic_pointer_cast<Drawable>(component);
