@@ -1,4 +1,4 @@
 <map id="AScene::sendGameState" name="AScene::sendGameState">
-<area shape="rect" id="node1" title="sendGameState, send the game state" alt="" coords="207,5,389,32"/>
-<area shape="rect" id="node2" href="$classLobbyScene.html#aca72399dd75a5aee2a14f577dfcccd57" title="display, display the scene" alt="" coords="5,5,159,32"/>
+<area shape="rect" id="node1" title="sedGameState, send the game state" alt="" coords="207,5,389,32"/>
+<area shape="rect" id="node2" href="$classLobbyScene.html#aca72399dd75a5aee2a14f577dfcccd57" title="update, update the scene" alt="" coords="5,5,159,32"/>
 </map>

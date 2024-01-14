@@ -1,0 +1,5 @@
+<map id="LobbyScene::checkSpawnerActivation" name="LobbyScene::checkSpawnerActivation">
+<area shape="rect" id="node1" title=" " alt="" coords="5,23,208,65"/>
+<area shape="rect" id="node2" href="$classAScene.html#ab439df212b6630bcda7f2cae7de14157" title="broadcastGameState, broadcast the game state" alt="" coords="256,5,471,32"/>
+<area shape="rect" id="node3" href="$Lobby_8cpp.html#a4a514963028e5f1f61de2419b39165b5" title=" " alt="" coords="270,56,457,83"/>
+</map>

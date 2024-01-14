@@ -76,10 +76,11 @@ Inheritance diagram for IComponentRType:</div>
 <div class="dyncontent">
 <div class="center"><img src="classIComponentRType__inherit__graph.png" border="0" usemap="#aIComponentRType_inherit__map" alt="Inheritance graph"/></div>
 <map name="aIComponentRType_inherit__map" id="aIComponentRType_inherit__map">
-<area shape="rect" title=" " alt="" coords="99,5,238,32"/>
+<area shape="rect" title=" " alt="" coords="155,5,294,32"/>
 <area shape="rect" href="classAnimatable.html" title=" " alt="" coords="5,80,103,107"/>
 <area shape="rect" href="classDrawable.html" title=" " alt="" coords="127,80,211,107"/>
-<area shape="rect" href="classTimer.html" title=" " alt="" coords="235,80,295,107"/>
+<area shape="rect" href="classSpawnable.html" title=" " alt="" coords="235,80,329,107"/>
+<area shape="rect" href="classTimer.html" title=" " alt="" coords="353,80,413,107"/>
 <area shape="rect" href="classPlayer.html" title=" " alt="" coords="137,155,200,181"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -87,13 +88,10 @@ Inheritance diagram for IComponentRType:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3068f6363ca5fdf4c708b9391b2fa692"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIComponentRType.html#a3068f6363ca5fdf4c708b9391b2fa692">~IComponentRType</a> ()=default</td></tr>
-<tr class="memdesc:a3068f6363ca5fdf4c708b9391b2fa692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classIComponentRType.html">IComponentRType</a> object.  <a href="classIComponentRType.html#a3068f6363ca5fdf4c708b9391b2fa692">More...</a><br /></td></tr>
 <tr class="separator:a3068f6363ca5fdf4c708b9391b2fa692"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f4bb178508dc938832d9bc3deb7b3fb"><td class="memItemLeft" align="right" valign="top">virtual char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIComponentRType.html#a5f4bb178508dc938832d9bc3deb7b3fb">getAttribute</a> () const =0</td></tr>
-<tr class="memdesc:a5f4bb178508dc938832d9bc3deb7b3fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">getAttribute, get the attribute  <a href="classIComponentRType.html#a5f4bb178508dc938832d9bc3deb7b3fb">More...</a><br /></td></tr>
 <tr class="separator:a5f4bb178508dc938832d9bc3deb7b3fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b9d75fa5aba378838de64ce7125c9d3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIComponentRType.html#a9b9d75fa5aba378838de64ce7125c9d3">setAttribute</a> (std::string <a class="el" href="unionattribute.html">attribute</a>)=0</td></tr>
-<tr class="memdesc:a9b9d75fa5aba378838de64ce7125c9d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">setAttribute, set the attribute  <a href="classIComponentRType.html#a9b9d75fa5aba378838de64ce7125c9d3">More...</a><br /></td></tr>
 <tr class="separator:a9b9d75fa5aba378838de64ce7125c9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -103,7 +101,7 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html#l00011">11</a> of file <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html">IComponent.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html#l00008">8</a> of file <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html">IComponent.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3068f6363ca5fdf4c708b9391b2fa692"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3068f6363ca5fdf4c708b9391b2fa692">&#9670;&nbsp;</a></span>~IComponentRType()</h2>
@@ -127,8 +125,6 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Construct a new <a class="el" href="classIComponentRType.html">IComponentRType</a> object. </p>
 
 </div>
 </div>
@@ -156,10 +152,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>getAttribute, get the attribute </p>
-<dl class="section return"><dt>Returns</dt><dd>attribute (char *) </dd></dl>
-
-<p>Implemented in <a class="el" href="classTimer.html#aa8b83318c7508a4b157a169a51114e9f">Timer</a>, <a class="el" href="classAnimatable.html#a85617b38231f258681620e9b6dda97b6">Animatable</a>, and <a class="el" href="classDrawable.html#a7f59164bac65f2e0360fac3d6c5f2ed7">Drawable</a>.</p>
+<p>Implemented in <a class="el" href="classTimer.html#aa8b83318c7508a4b157a169a51114e9f">Timer</a>, <a class="el" href="classSpawnable.html#ab589f2d18324650ecb02732c3857d7b8">Spawnable</a>, <a class="el" href="classAnimatable.html#a85617b38231f258681620e9b6dda97b6">Animatable</a>, and <a class="el" href="classDrawable.html#a7f59164bac65f2e0360fac3d6c5f2ed7">Drawable</a>.</p>
 
 </div>
 </div>
@@ -187,15 +180,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>setAttribute, set the attribute </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">attribute</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implemented in <a class="el" href="classTimer.html#a4bafe9f48e11850c6c01d4755c2d23c6">Timer</a>, <a class="el" href="classAnimatable.html#acf2642276e28fd3a798ce4b2795af97d">Animatable</a>, and <a class="el" href="classDrawable.html#a16c4a7eada528a0bc63ec21ecce5dfab">Drawable</a>.</p>
+<p>Implemented in <a class="el" href="classTimer.html#a4bafe9f48e11850c6c01d4755c2d23c6">Timer</a>, <a class="el" href="classSpawnable.html#a38efd6eba841a63d52e34daff67398f6">Spawnable</a>, <a class="el" href="classAnimatable.html#acf2642276e28fd3a798ce4b2795af97d">Animatable</a>, and <a class="el" href="classDrawable.html#a16c4a7eada528a0bc63ec21ecce5dfab">Drawable</a>.</p>
 
 </div>
 </div>
@@ -220,9 +205,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html#l00036">36</a> of file <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html">IComponent.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html#l00017">17</a> of file <a class="el" href="lib_2r__type_2components_2IComponent_8hpp_source.html">IComponent.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="Animatable_8cpp_source.html#l00016">Animatable::Animatable()</a>, <a class="el" href="Drawable_8cpp_source.html#l00016">Drawable::Drawable()</a>, <a class="el" href="Drawable_8cpp_source.html#l00030">Drawable::getAttribute()</a>, <a class="el" href="Animatable_8cpp_source.html#l00026">Animatable::getAttribute()</a>, <a class="el" href="Timer_8cpp_source.html#l00028">Timer::getAttribute()</a>, <a class="el" href="Drawable_8cpp_source.html#l00125">Drawable::getPacket()</a>, <a class="el" href="Drawable_8cpp_source.html#l00039">Drawable::setAttribute()</a>, <a class="el" href="Animatable_8cpp_source.html#l00035">Animatable::setAttribute()</a>, <a class="el" href="Timer_8cpp_source.html#l00037">Timer::setAttribute()</a>, and <a class="el" href="Timer_8cpp_source.html#l00013">Timer::Timer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="Animatable_8cpp_source.html#l00016">Animatable::Animatable()</a>, <a class="el" href="Drawable_8cpp_source.html#l00016">Drawable::Drawable()</a>, <a class="el" href="Drawable_8cpp_source.html#l00030">Drawable::getAttribute()</a>, <a class="el" href="Animatable_8cpp_source.html#l00026">Animatable::getAttribute()</a>, <a class="el" href="Timer_8cpp_source.html#l00029">Timer::getAttribute()</a>, <a class="el" href="Drawable_8cpp_source.html#l00125">Drawable::getPacket()</a>, <a class="el" href="Drawable_8cpp_source.html#l00039">Drawable::setAttribute()</a>, <a class="el" href="Animatable_8cpp_source.html#l00035">Animatable::setAttribute()</a>, <a class="el" href="Timer_8cpp_source.html#l00038">Timer::setAttribute()</a>, and <a class="el" href="Timer_8cpp_source.html#l00013">Timer::Timer()</a>.</p>
 
 </div>
 </div>

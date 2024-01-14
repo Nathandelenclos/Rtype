@@ -1,6 +1,10 @@
 <map id="LobbyScene::update" name="LobbyScene::update">
-<area shape="rect" id="node1" title="display, display the scene" alt="" coords="5,56,159,83"/>
-<area shape="rect" id="node2" href="$classAScene.html#ab439df212b6630bcda7f2cae7de14157" title="broadcastGameState, broadcast the game state" alt="" coords="219,5,433,32"/>
-<area shape="rect" id="node3" href="$classLobbyScene.html#ac871ad60458f007e63df2213eb6b3767" title="checkBulletDeletion, check if a bullet has to be deleted" alt="" coords="207,56,445,83"/>
-<area shape="rect" id="node4" href="$classAScene.html#a04756252779480e19871b162ed0aea8a" title="sendGameState, send the game state" alt="" coords="235,107,417,133"/>
+<area shape="rect" id="node1" title="update, update the scene" alt="" coords="5,151,159,178"/>
+<area shape="rect" id="node2" href="$classLobbyScene.html#ae570b0a9aed91cbcc912e30680ec288a" title=" " alt="" coords="224,5,428,47"/>
+<area shape="rect" id="node3" href="$classAScene.html#ab439df212b6630bcda7f2cae7de14157" title="broadcastGameState, broadcast the game state" alt="" coords="493,101,708,127"/>
+<area shape="rect" id="node4" href="$classLobbyScene.html#ac871ad60458f007e63df2213eb6b3767" title="checkBulletDeletion, check the bullet deletion" alt="" coords="207,122,445,149"/>
+<area shape="rect" id="node5" href="$classLobbyScene.html#a2a95d44d88f24875cda6566e33c767ff" title=" " alt="" coords="225,173,427,215"/>
+<area shape="rect" id="node7" href="$classLobbyScene.html#a7202daf08faed2f5f5eb7a526d2c5fcd" title=" " alt="" coords="222,239,430,266"/>
+<area shape="rect" id="node8" href="$classAScene.html#a04756252779480e19871b162ed0aea8a" title="sedGameState, send the game state" alt="" coords="235,290,417,317"/>
+<area shape="rect" id="node6" href="$Lobby_8cpp.html#a4a514963028e5f1f61de2419b39165b5" title=" " alt="" coords="507,181,694,207"/>
 </map>
