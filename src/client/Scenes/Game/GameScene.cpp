@@ -37,6 +37,7 @@ void GameScene::init_scene()
     std::shared_ptr<MusicComponent> music = std::make_shared<MusicComponent>(_clientCore, _socket);
     std::shared_ptr<SoundComponent> sound_new_player = std::make_shared<SoundComponent>(_clientCore, _socket);
     std::shared_ptr<SoundComponent> sound_player_left = std::make_shared<SoundComponent>(_clientCore, _socket);
+    std::shared_ptr<TextComponent> text_event = std::make_shared<TextComponent>(_clientCore, _socket);
 
     music->setSound("../src/client/assets/musics/thisgirl.ogg");
     music->setVolume(10);
@@ -47,6 +48,10 @@ void GameScene::init_scene()
     text_score->setAttribute("text score");
     text_score->setText("Score: 0");
     text_score->setPosition(sf::Vector2f(650, 550));
+
+    text_event->setAttribute("text event");
+    text_event->setText("");
+    text_event->setPosition(sf::Vector2f(425, 0));
 
     // sprite->setAttribute("Player");
 
@@ -60,6 +65,7 @@ void GameScene::init_scene()
     addComponent(text_score);
     addComponent(sound_new_player);
     addComponent(sound_player_left);
+    addComponent(text_event);
 }
 
 /**
@@ -163,12 +169,12 @@ void GameScene::receiveData()
             std::memset(attributechar, 0, 16);
             std::memcpy(attributechar, &newComponent->attribute, 16);
             // std::memcpy(attributechar + 8, &newComponent->attribute2, 8);
-            std::cout << "attribute: " << reinterpret_cast<char *>(&newComponent->attribute) << std::endl;
-            std::cout << "attribute2: " << reinterpret_cast<char *>(&newComponent->attribute2) << std::endl;
+            //std::cout << "attribute: " << reinterpret_cast<char *>(&newComponent->attribute) << std::endl;
+            //std::cout << "attribute2: " << reinterpret_cast<char *>(&newComponent->attribute2) << std::endl;
             std::string attributeString(attributechar);
             attributeString = attributeString.substr(0, attributeString.find('\001'));
-            std::cout << "newComponent: " << attributeString << " " << newComponent->x << " " << newComponent->y
-                      << " id: " << newComponent->id << std::endl;
+            //std::cout << "newComponent: " << attributeString << " " << newComponent->x << " " << newComponent->y
+                      //<< " id: " << newComponent->id << std::endl;
             for (auto &component : _components) {
                 if (component->getType() == ComponentType::SPRITE) {
                     if (component->getAttribute() == reinterpret_cast<char *>(&newComponent->attribute)) {
@@ -182,7 +188,7 @@ void GameScene::receiveData()
             if (newComponent->type == ComponentType::SPRITE) {
                 auto sprite = std::make_shared<SpriteComponent>(_clientCore, _socket);
                 sprite->setAttribute(attributeString);
-                std::cout << "new component: " << newComponent->id << std::endl;
+                //std::cout << "new component: " << newComponent->id << std::endl;
                 sprite->setTexture(getTextureByType((Type)newComponent->id));
                 sprite->setPosition({newComponent->x, newComponent->y});
                 sprite->setSize({newComponent->sizeHorizontal, newComponent->sizeVertical});
@@ -210,6 +216,22 @@ void GameScene::receiveData()
             }
             std::cout << "delete component: " << attribute << std::endl;
         }
+
+        if (p->code == MESSAGE) {
+            std::string message = static_cast<char *>(p->data);
+            std::cout << "Message: " << message << std::endl;
+            if (message.find("event: ") != std::string::npos) {
+                std::string event = message.substr(message.find("event: ") + 7);
+                for (auto &component : _components) {
+                    if (component->getType() == ComponentType::TEXT) {
+                        if (component->getAttribute() == "text event") {
+                            dynamic_cast<TextComponent *>(component.get())->setText(event);
+                        }
+                    }
+                }
+            }
+        }
+
         if (p->code == EVENT) {
             auto *data = static_cast<char *>(p->data);
             std::string message(data);

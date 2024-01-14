@@ -240,7 +240,7 @@ void LobbyScene::checkSpawnerActivation()
         int randomVertcalPosition = generateRandomNumber(0, 601 - 36 * 2);// 601 car le modulo exclut la borne supérieure et 36 * 2 car la taille de l'ennemi est de 36 * 2
 
         std::shared_ptr<IEntity> enemy1 = std::make_shared<Enemy>(
-            std::make_tuple(0, 20000),
+            std::make_tuple(0, 40000),
             timeval{0, 200000},
             Rect{0, 0, 33, 36},
             Position{263 * 2, 36 * 2},
@@ -426,6 +426,14 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 _serverSocket->broadcast(sendpacket.get());
                 free(sendpacket->data);
 
+                std::shared_ptr<Packet> sendpacket2 = std::make_shared<Packet>();
+                sendpacket2->code = MESSAGE;
+                sendpacket2->data_size = ("event: Player " + std::to_string(id) + " joined the game").size();
+                sendpacket2->data = malloc(sendpacket2->data_size);
+                std::memcpy(sendpacket2->data, ("event: Player " + std::to_string(id) + " joined the game").c_str(), sendpacket2->data_size);
+                _serverSocket->broadcast(sendpacket2.get());
+                free(sendpacket2->data);
+
                 sendGameState(id);
                 broadcastGameState();
             }
@@ -445,6 +453,17 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 std::memcpy(sendpacket->data, ("player " + std::to_string(id)).c_str(), sendpacket->data_size);
                 _serverSocket->broadcast(sendpacket.get());
                 free(sendpacket->data);
+
+                std::shared_ptr<Packet> sendpacket2 = std::make_shared<Packet>();
+                sendpacket2->code = MESSAGE;
+                sendpacket2->data_size = ("event: Player " + std::to_string(id) + " left the game").size();
+                sendpacket2->data = malloc(sendpacket2->data_size);
+                std::memcpy(sendpacket2->data, ("event: Player " + std::to_string(id) + " left the game").c_str(), sendpacket2->data_size);
+                _serverSocket->broadcast(sendpacket2.get());
+                std::cout << "broadcasted" << std::endl;
+                free(sendpacket2->data);
+
+                broadcastGameState();
             }
         }
     }
@@ -461,12 +480,22 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
         }
         std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
         sendpacket->code = DELETE_COMPONENT;
-        sendpacket->data_size = ("player " + std::to_string(_serverSocket->checkClientsDeconnection())).size();
+        sendpacket->data_size = ("player " + std::to_string(clientIdDisconnected)).size();
         sendpacket->data = malloc(sendpacket->data_size);
         std::memcpy(sendpacket->data, ("player " + std::to_string(_serverSocket->checkClientsDeconnection())).c_str(),
                     sendpacket->data_size);
         _serverSocket->broadcast(sendpacket.get());
         free(sendpacket->data);
+
+        std::shared_ptr<Packet> sendpacket2 = std::make_shared<Packet>();
+        sendpacket2->code = MESSAGE;
+        sendpacket2->data_size = ("event: Player " + std::to_string(clientIdDisconnected) + " left the game").size();
+        sendpacket2->data = malloc(sendpacket2->data_size);
+        std::memcpy(sendpacket2->data, ("event: Player " + std::to_string(clientIdDisconnected) + " left the game").c_str(), sendpacket2->data_size);
+        _serverSocket->broadcast(sendpacket2.get());
+        free(sendpacket2->data);
+
+        broadcastGameState();
     }
 
     if (event->key == sf::Keyboard::Key::Space) {
