@@ -30,8 +30,12 @@ void TimeManagement::update(std::shared_ptr<Event> event, std::shared_ptr<ICompo
             auto position = drawable->getPosition();
             if (std::string(drawable->getAttribute()).find("bullet") != std::string::npos)
                 drawable->setPosition(std::make_tuple(std::get<0>(position) + 55, std::get<1>(position)));
+            else if (std::string(drawable->getAttribute()).find("boss attack") != std::string::npos)
+                drawable->setPosition(std::make_tuple(std::get<0>(position) + 2 * time->getDirection(), std::get<1>(position)));
             else
                 drawable->setPosition(std::make_tuple(std::get<0>(position) + 10 * time->getDirection(), std::get<1>(position)));
+            if (std::string(drawable->getAttribute()).find("sprite boss") != std::string::npos && std::get<0>(position) < 470)
+                time->setActive(false);
             time->_startTime = time->_now;
         }
     }

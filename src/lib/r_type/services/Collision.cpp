@@ -35,6 +35,10 @@ void Collision::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentR
                     _serverSocket->broadcast(sendpacket.get());
                     free(sendpacket->data);
                 }
+                if (other->_textureId == BOSS) {
+                    drawable->_toDelete = true;
+                    other->_toDelete = true;
+                }
             }
         }
     }

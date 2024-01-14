@@ -74,7 +74,7 @@ void MenuScene::init_scene()
     addComponent(text_button);
     addComponent(address_input);
     addComponent(port_input);
-    addComponent(sound);
+//    addComponent(sound);
     addComponent(text_ping);
 }
 

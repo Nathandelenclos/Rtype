@@ -84,8 +84,8 @@ void MainScene::init_scene()
     text_error_not_init->setColor(sf::Color::Red);
 
     addComponent(background);
-    addComponent(music);
-    addComponent(sound);
+//    addComponent(music);
+//    addComponent(sound);
     addComponent(text);
     addComponent(button_init_serv);
     addComponent(text_button_init_serv);

@@ -120,11 +120,15 @@ typedef enum type {
     MISSINGTXT,
     PLAYER,
     ENEMY,
+    BOSS,
+    BOSS_BULLET,
     BULLET,
     BACKGROUND1,
     BACKGROUND2,
     BACKGROUND3,
     BACKGROUND4,
+    FLOOR_BACKGROUND,
+    ROOF_BACKGROUND,
 } Type;
 
 // obsolete

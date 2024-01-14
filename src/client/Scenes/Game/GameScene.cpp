@@ -59,8 +59,10 @@ void GameScene::init_scene()
 
     sound_player_left->setAttribute("player left");
 
-    // addComponent(sprite);
-    addComponent(music);
+
+    //addComponent(sprite);
+//    addComponent(music);
+
     addComponent(text_ping);
     addComponent(text_score);
     addComponent(sound_new_player);
@@ -102,6 +104,12 @@ void GameScene::receiveData()
                     if (component->getAttribute() == "sprite bullet") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BULLET));
                     }
+                    if (component->getAttribute() == "sprite floor bg") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::FLOOR_BACKGROUND));
+                    }
+                    if (component->getAttribute() == "sprite roof bg") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::ROOF_BACKGROUND));
+                    }
                     if (component->getAttribute() == "sprite bg1") {
                         dynamic_cast<SpriteComponent *>(component.get())
                             ->setTexture(getTextureByType(Type::BACKGROUND1));
@@ -114,6 +122,12 @@ void GameScene::receiveData()
                     }
                     if (component->getAttribute() == "sprite bg4") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BACKGROUND4));
+                    }
+                    if (component->getAttribute() == "sprite boss") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BOSS));
+                    }
+                    if (component->getAttribute() == "boss attack") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BOSS_BULLET));
                     }
                 }
             }
@@ -290,6 +304,14 @@ void GameScene::initTextures()
     _textures[Type::BACKGROUND3].loadFromFile("../testsprites/bg_800_600/background_3.png");
     _textures[Type::BACKGROUND4] = sf::Texture();
     _textures[Type::BACKGROUND4].loadFromFile("../testsprites/bg_800_600/background_4.png");
+    _textures[Type::FLOOR_BACKGROUND] = sf::Texture();
+    _textures[Type::FLOOR_BACKGROUND].loadFromFile("../testsprites/bg_800_600/ground_texture_bg.png");
+    _textures[Type::ROOF_BACKGROUND] = sf::Texture();
+    _textures[Type::ROOF_BACKGROUND].loadFromFile("../testsprites/bg_800_600/roof_texture_bg.png");
+    _textures[Type::BOSS] = sf::Texture();
+    _textures[Type::BOSS].loadFromFile("../testsprites/r-typesheet30-alone.png");
+    _textures[Type::BOSS_BULLET] = sf::Texture();
+    _textures[Type::BOSS_BULLET].loadFromFile("../testsprites/boss-bullets.png");
 }
 
 /**
