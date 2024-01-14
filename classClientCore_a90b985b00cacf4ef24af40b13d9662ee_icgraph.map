@@ -1,4 +1,4 @@
 <map id="ClientCore::startHeartBeat" name="ClientCore::startHeartBeat">
 <area shape="rect" id="node1" title="startHeartBeat, start the heart beat" alt="" coords="237,5,432,32"/>
-<area shape="rect" id="node2" href="$classMenuScene.html#a26c4ab794b5d85fbd3b60c32fd65f321" title="receiveData, receive the data" alt="" coords="5,5,189,32"/>
+<area shape="rect" id="node2" href="$classMenuScene.html#a26c4ab794b5d85fbd3b60c32fd65f321" title="receiveData, receive data from the server" alt="" coords="5,5,189,32"/>
 </map>

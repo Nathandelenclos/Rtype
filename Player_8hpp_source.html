@@ -85,37 +85,19 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classPlayer.html">   14</a></span>&#160;<span class="keyword">class</span> <a class="code" href="classPlayer.html">Player</a> : <span class="keyword">public</span> <a class="code" href="classDrawable.html">Drawable</a>, <span class="keyword">public</span> <a class="code" href="classIObject.html">IObject</a></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">     * @brief Construct a new Player:: Player object</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">     * @param socket</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classPlayer.html#a8a21ea10a2a555a30adc5dcf241ad702">Player</a>(<a class="code" href="classServerSocket.html">ServerSocket</a> *socket);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">     * @brief Destroy the Player:: Player object</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classPlayer.html#a1228878de27edb8544145dc7964ce72a">   27</a></span>&#160;    ~<a class="code" href="classPlayer.html#a1228878de27edb8544145dc7964ce72a">Player</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">     * @brief getPacket, get the packet</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">     * @return packet (Packet *)</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    [[<a class="code" href="classPlayer.html">nodiscard</a>]] Packet *<a class="code" href="classPlayer.html#ae7795a23d699159778c471f76ed0f804">getPacket</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">     * @brief draw, draw the player</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#a7abe0fbf95b42b9ff4a2c0c7d334bc68">draw</a>() <a class="code" href="classPlayer.html#a7abe0fbf95b42b9ff4a2c0c7d334bc68">override</a>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classServerSocket.html">ServerSocket</a> *socket;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    timeval _annimationTime{};</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">float</span> _positionX;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">float</span> _positionY;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">float</span> _direction;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classPlayer.html#a8a21ea10a2a555a30adc5dcf241ad702">Player</a>(<a class="code" href="classServerSocket.html">ServerSocket</a> *socket);</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classPlayer.html#a1228878de27edb8544145dc7964ce72a">   18</a></span>&#160;    ~<a class="code" href="classPlayer.html#a1228878de27edb8544145dc7964ce72a">Player</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    [[<a class="code" href="classPlayer.html">nodiscard</a>]] Packet *<a class="code" href="classPlayer.html#ae7795a23d699159778c471f76ed0f804">getPacket</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlayer.html#a7abe0fbf95b42b9ff4a2c0c7d334bc68">draw</a>() <a class="code" href="classPlayer.html#a7abe0fbf95b42b9ff4a2c0c7d334bc68">override</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classServerSocket.html">ServerSocket</a> *socket;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    timeval _annimationTime{};</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">float</span> _positionX;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">float</span> _positionY;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">float</span> _direction;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
