@@ -172,6 +172,8 @@ void LobbyScene::initEntities()
     addEntity(bg2);
     addEntity(bg3);
     addEntity(bg4);
+    // addEntity(floor_bg);
+    // addEntity(roof_bg);
     // addEntity(enemy1);
     // addEntity(enemy2);
 }
@@ -435,6 +437,7 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
         _lastEvent = nullptr;
         _chrono = now;
     }
+
     if (!_bossActive) {
         if (now.tv_sec - _start.tv_sec >= 5) {
             if (_spawnerActive) {
@@ -444,12 +447,13 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
                 _spawnerActive = true;
             }
         }
-        if (now.tv_sec - _start.tv_sec >= 29) {
+        if (now.tv_sec - _start.tv_sec >= 45) {
             _bossActive = true;
             _timing = now.tv_sec;
             spawnBoss();
         }
     }
+
     if (_bossActive) {
         if (now.tv_sec - _start.tv_sec >= 45 && now.tv_sec - _timing >= 5 && _nbBossBullets < 11) {
             shootBoss(generateRandomNumber(1, 5));
@@ -457,14 +461,6 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
         }
         if (allBulletsLeftScreen())
             bulletDeletion();
-
-    if (now.tv_sec - _start.tv_sec >= 5) {
-        if (_spawnerActive) {
-            checkSpawnerActivation();
-        } else if (allEnemiesLeftScreen()) {
-            enemyDeletion();
-            _spawnerActive = true;
-        }
     }
     
     checkBulletDeletion();

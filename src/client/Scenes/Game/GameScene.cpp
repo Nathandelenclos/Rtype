@@ -60,8 +60,8 @@ void GameScene::init_scene()
     sound_player_left->setAttribute("player left");
 
 
-    //addComponent(sprite);
-//    addComponent(music);
+    // addComponent(sprite);
+    addComponent(music);
 
     addComponent(text_ping);
     addComponent(text_score);
