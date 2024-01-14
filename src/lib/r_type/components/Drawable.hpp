@@ -38,20 +38,19 @@ class Drawable : public IComponentRType
 
     std::shared_ptr<Packet> getPacket();
 
-    void setHasChanged(bool hasChanged);
-    bool getHasChanged() const;
+        void setHasChanged(bool hasChanged);
+        bool getHasChanged() const;
 
-    void addDrawableCollision(std::shared_ptr<Drawable> drawableCollision);
-    [[nodiscard]] std::vector<std::shared_ptr<Drawable>> getDrawablesCollision() const;
+        void addDrawableCollision(std::shared_ptr<Drawable> drawableCollision);
+        [[nodiscard]] std::vector<std::shared_ptr<Drawable>> getDrawablesCollision() const;
 
-    int _textureId;
-    bool _toDelete = false;
-
-  protected:
-    Position _position;
-    Size _size;
-    Rect _rect;
-    float _scale;
-    bool hasChanged = false;
-    std::vector<std::shared_ptr<Drawable>> _drawablesCollision;
-};
+        int _textureId;
+        bool _toDelete = false;
+    protected:
+            Position _position;
+            Size _size;
+            Rect _rect;
+            float _scale;
+            bool hasChanged = false;
+            std::vector<std::shared_ptr<Drawable>> _drawablesCollision;
+    };

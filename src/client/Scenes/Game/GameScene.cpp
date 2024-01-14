@@ -112,6 +112,9 @@ void GameScene::receiveData()
                     if (component->getAttribute() == "sprite boss") {
                         dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BOSS));
                     }
+                    if (component->getAttribute() == "boss attack") {
+                        dynamic_cast<SpriteComponent *>(component.get())->setTexture(getTextureByType(Type::BOSS_BULLET));
+                    }
                 }
             }
         }
@@ -233,7 +236,7 @@ void GameScene::initTextures()
     _textures[Type::PLAYER] = sf::Texture();
     _textures[Type::PLAYER].loadFromFile("../sprites/r-typesheet1.gif");
     _textures[Type::ENEMY] = sf::Texture();
-    _textures[Type::ENEMY].loadFromFile("../testsprites/r-typesheet5.png");
+    _textures[Type::ENEMY].loadFromFile("../testsprites/r-typesheet5_invert.png");
     _textures[Type::BULLET] = sf::Texture();
     _textures[Type::BULLET].loadFromFile("../sprites/r-typesheet1.gif");
     _textures[Type::BACKGROUND1] = sf::Texture();
@@ -250,6 +253,8 @@ void GameScene::initTextures()
     _textures[Type::ROOF_BACKGROUND].loadFromFile("../testsprites/bg_800_600/roof_texture_bg.png");
     _textures[Type::BOSS] = sf::Texture();
     _textures[Type::BOSS].loadFromFile("../testsprites/r-typesheet30-alone.png");
+    _textures[Type::BOSS_BULLET] = sf::Texture();
+    _textures[Type::BOSS_BULLET].loadFromFile("../testsprites/boss-bullets.png");
 }
 
 /**

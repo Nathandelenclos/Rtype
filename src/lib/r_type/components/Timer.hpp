@@ -16,18 +16,23 @@ class Timer : public IComponentRType
     [[nodiscard]] char *getAttribute() const override;
     void setAttribute(std::string attribute) override;
 
-    void setTarget(std::shared_ptr<Drawable> target);
-    std::shared_ptr<Drawable> getTarget();
+        void setTarget(std::shared_ptr<Drawable> target);
+        std::shared_ptr<Drawable> getTarget();
 
-    void setActive(bool active);
-    bool isActive() const;
+        void setActive(bool active);
+        bool isActive() const;
 
-    timeval _startTime{};
-    timeval _now{};
-    timeval _targetTime{};
-    timeval _diff{};
+        void setDirection(int direction);
+        int getDirection() const;
 
-  protected:
-    std::shared_ptr<Drawable> _target;
-    bool _active;
+
+        timeval _startTime{};
+        timeval _now{};
+        timeval _targetTime{};
+        timeval _diff{};
+
+    protected:
+        std::shared_ptr<Drawable> _target;
+        bool _active;
+        int _direction;
 };

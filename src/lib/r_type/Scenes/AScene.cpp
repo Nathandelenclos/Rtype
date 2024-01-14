@@ -95,7 +95,7 @@ void AScene::sendGameState(int clientID)
                 newComponent.id = drawable->_textureId;
                 std::memset(&newComponent.attribute, 0, 16);
                 std::memcpy(&newComponent.attribute, entity->getAttribute().c_str(), 16);
-                // std::memcpy(&newComponent.attribute2, entity->getAttribute().c_str() + 8, 8);
+                 std::memcpy(&newComponent.attribute2, entity->getAttribute().c_str() + 8, 8);
                 newComponent.type = ComponentTypeSocket ::SPRITESOCKET;
                 packet->code = NEW_COMPONENT;
                 packet->data_size = sizeof(NewComponent);

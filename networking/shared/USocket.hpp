@@ -110,6 +110,7 @@ typedef enum type {
     PLAYER,
     ENEMY,
     BOSS,
+    BOSS_BULLET,
     BULLET,
     BACKGROUND1,
     BACKGROUND2,
