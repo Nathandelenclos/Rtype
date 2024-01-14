@@ -208,12 +208,12 @@ void LobbyScene::initEntities()
     boss->addComponent(sprite_boss);
     boss->addComponent(animation_boss);
 
-    addEntity(bg1);
-    addEntity(bg2);
-    addEntity(bg3);
-    addEntity(bg4);
-    addEntity(floor_bg);
-    addEntity(roof_bg);
+//    addEntity(bg1);
+//    addEntity(bg2);
+//    addEntity(bg3);
+//    addEntity(bg4);
+//    addEntity(floor_bg);
+//    addEntity(roof_bg);
     addEntity(enemy1);
     addEntity(boss);
 }
