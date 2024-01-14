@@ -1,7 +1,7 @@
 <map id="ServerSocket::receive" name="ServerSocket::receive">
-<area shape="rect" id="node1" title="Receive a packet from a client." alt="" coords="5,56,168,83"/>
-<area shape="rect" id="node2" href="$classServerSocket.html#ae1b1e978c5e06777bfb8a240a294bdeb" title="receivePacketAndAddToBuffer, receive a packet and add it to the buffer" alt="" coords="216,49,421,90"/>
-<area shape="rect" id="node3" href="$classServerSocket.html#a5ca47a6c0725ffab45fb61d19f29032d" title="Add a client to the server." alt="" coords="482,5,659,32"/>
-<area shape="rect" id="node4" href="$classServerSocket.html#ae4d7dd827d2d5a6cd76648ab2def0d52" title="Remove a client from the server." alt="" coords="477,56,664,83"/>
-<area shape="rect" id="node5" href="$classServerSocket.html#ab2d1f0a81f00f70a9d4a296654a5ba28" title="setNewClientConnected, set the new client connected" alt="" coords="469,107,672,149"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,168,83"/>
+<area shape="rect" id="node2" href="$classServerSocket.html#ae1b1e978c5e06777bfb8a240a294bdeb" title=" " alt="" coords="216,49,421,90"/>
+<area shape="rect" id="node3" href="$classServerSocket.html#a5ca47a6c0725ffab45fb61d19f29032d" title=" " alt="" coords="482,5,659,32"/>
+<area shape="rect" id="node4" href="$classServerSocket.html#ae4d7dd827d2d5a6cd76648ab2def0d52" title=" " alt="" coords="477,56,664,83"/>
+<area shape="rect" id="node5" href="$classServerSocket.html#ab2d1f0a81f00f70a9d4a296654a5ba28" title=" " alt="" coords="469,107,672,149"/>
 </map>
