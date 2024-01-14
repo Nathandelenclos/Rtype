@@ -117,3 +117,11 @@ the server sends the client the information it needs to display the game and the
 If you want to know more about the UDP protocol, you can read it here:
 
 - [DOCUMENTATION RFC PROTOCOL R-TYPE 69007](docs/rfc69420.txt)
+
+## Authors
+
+- [Ewen Talleux]
+- [David Plouvier]
+- [Simon Riembault]
+- [Nathan Delenclos]
+- [Benjamin Goussard]
