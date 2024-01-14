@@ -278,29 +278,6 @@ void LobbyScene::checkSpawnerActivation()
 // }
 }
 
-void LobbyScene::setScore()
-{
-    old
-    for (auto &entity : getEntities()) {
-        if (entity->getAttribute().find("player")) {
-            for (const auto &component : entity->getComponents()) {
-                auto drawable = std::dynamic_pointer_cast<Drawable>(component);
-                if (drawable != nullptr) {
-                    _score = 0;
-                    _score += drawable->_score;
-                }
-            }
-        }
-    }
-    std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
-    sendpacket->code = DELETE_COMPONENT;
-    sendpacket->data_size = ("player " + std::to_string(id)).size();
-    sendpacket->data = malloc(sendpacket->data_size);
-    std::memcpy(sendpacket->data, ("player " + std::to_string(id)).c_str(), sendpacket->data_size);
-    _serverSocket->broadcast(sendpacket.get());
-    free(sendpacket->data);
-}
-
 bool LobbyScene::allEnemiesLeftScreen()
 {
     for (auto &entity : getEntities()) {
@@ -380,7 +357,6 @@ void LobbyScene::update(std::shared_ptr<Event> event, std::shared_ptr<Packet> pa
     }
     
     checkBulletDeletion();
-    setScore();
 
     auto entitytodelete = _entities.begin();
     while (entitytodelete != _entities.end()) {

@@ -8,6 +8,9 @@
 #include "GameScene.hpp"
 #include "ClientCore.hpp"
 #include <utility>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 /**
  * @brief Construct a new Game Scene:: Game Scene object
@@ -78,8 +81,8 @@ void GameScene::receiveData()
                     std::string attributeString(attributechar);
                     std::string componentAttribute = component->getAttribute();
                     if (component->getAttribute() == attributeString) {
-                        std::cout << "element: " << drawable->rectLeft << " " << drawable->rectTop << " "
-                                  << drawable->rectWidth << " " << drawable->rectHeight << std::endl;
+                        // std::cout << "element: " << drawable->rectLeft << " " << drawable->rectTop << " "
+                        //           << drawable->rectWidth << " " << drawable->rectHeight << std::endl;
                         // sprite->setTexture(getTextureByType(element->type));
                         auto *sprite = dynamic_cast<SpriteComponent *>(component.get());
                         sprite->setPosition({drawable->x, drawable->y});
@@ -126,13 +129,27 @@ void GameScene::receiveData()
                 }
             }
         }
+
         if (p->code == MESSAGE) {
-            if (std::string(static_cast<const char*>(p->data).find("Score"))) {
+            std::string attribute = static_cast<char *>(p->data);
+            if (attribute.find("Score") != std::string::npos) {
                 for (auto &component : _components) {
                     if (component->getType() == ComponentType::TEXT) {
                         if (component->getAttribute() == "text score") {
+                            std::istringstream iss(attribute);
+                            std::string prefix;
+                            int score;
+
+                            // Lire la partie "Score: " de la chaîne
+                            iss >> prefix;
+
+                            // Si le préfixe est "Score:", lire le nombre
+                            if (prefix == "Score:") {
+                                iss >> score;
+                            }
+                            std::cout << "Score: " << std::to_string(score) << std::endl;
                             dynamic_cast<TextComponent *>(component.get())
-                                ->setText("Score: " + std::string(static_cast<const char*>(p->data)));
+                                ->setText("Score: " + std::to_string(score));
                         }
                     }
                 }

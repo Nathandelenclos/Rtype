@@ -44,4 +44,5 @@ class Collision : public AService
      * @param drawable
      */
     static void cancelMove(const std::shared_ptr<Event> &event, const std::shared_ptr<Drawable> &drawable);
+    int _score = 0;
 };

@@ -26,7 +26,14 @@ void Collision::update(std::shared_ptr<Event> event, std::shared_ptr<IComponentR
                 if (other->_textureId == ENEMY) {
                     drawable->_toDelete = true;
                     other->_toDelete = true;
-                    drawable->_score += 1;
+                    _score += 1;
+                    std::shared_ptr<Packet> sendpacket = std::make_shared<Packet>();
+                    sendpacket->code = MESSAGE;
+                    sendpacket->data_size = strlen(("Score: " + std::to_string(_score)).c_str());
+                    sendpacket->data = malloc(sendpacket->data_size);
+                    std::memcpy(sendpacket->data, ("Score: " + std::to_string(_score)).c_str(), sendpacket->data_size);
+                    _serverSocket->broadcast(sendpacket.get());
+                    free(sendpacket->data);
                 }
             }
         }

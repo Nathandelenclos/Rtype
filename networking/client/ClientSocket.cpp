@@ -142,8 +142,8 @@ void ClientSocket::receivePacketAndAddToBuffer()
         if (recvfrom(sockfd, buffer, sizeof(SplitPacket), 0, (struct sockaddr *)&cli_addr, &len) < 0) {
             throw std::runtime_error("Failed to read from socket");
         }
-        std::cout << "Received packet from " << inet_ntoa(cli_addr.sin_addr) << ":" << ntohs(cli_addr.sin_port)
-                  << std::endl;
+        // std::cout << "Received packet from " << inet_ntoa(cli_addr.sin_addr) << ":" << ntohs(cli_addr.sin_port)
+        //           << std::endl;
     } else {
         free(buffer);
         return;
